@@ -19,8 +19,9 @@ const preview: Preview = {
         order: [
           'Foundation',
           ['Design Tokens', 'Colors', 'Typography'],
+          'Patterns',
+          ['Sections'],
           'Components',
-          'Sections',
         ],
       },
     },
