@@ -1,7 +1,8 @@
 'use client';
 
-import { EnvelopeIcon, InstagramLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import { EnvelopeIcon, InstagramLogoIcon, LinkedinLogoIcon, MoonIcon, SunIcon } from '@phosphor-icons/react';
 import { useScroll } from '@/components/layout/SmoothScrollLayout';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 interface NavigationProps {
   className?: string;
@@ -9,6 +10,7 @@ interface NavigationProps {
 
 export default function Navigation({ className = '' }: NavigationProps) {
   const { scrollToSection } = useScroll();
+  const { theme, toggleTheme } = useTheme();
 
   // Handle smooth scroll to sections with Lenis
   const handleNavClick = (sectionId: string) => {
@@ -16,24 +18,38 @@ export default function Navigation({ className = '' }: NavigationProps) {
   };
 
   return (
-    <nav 
+    <nav
       className={`relative z-10 flex items-center justify-between p-6 lg:px-12 lg:py-8 ${className}`}
       role="navigation"
       aria-label="Main navigation"
     >
-      {/* Logo/Brand */}
-      <div className="flex items-center">
+      {/* Logo/Brand + Theme Switcher */}
+      <div className="flex items-center gap-3">
         <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick('hero');
           }}
-          className="text-xs font-mono text-neutral-500 hover:text-neutral-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
+          className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
           aria-label="Gianeo Studio - Go to top of page"
         >
           <span aria-hidden="true">Gianeo Studio</span>
         </a>
+
+        {/* Theme Switcher */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        >
+          {theme === 'light' ? (
+            <MoonIcon className="size-4" aria-hidden="true" />
+          ) : (
+            <SunIcon className="size-4" aria-hidden="true" />
+          )}
+        </button>
       </div>
 
       {/* Skip navigation menu for keyboard users */}

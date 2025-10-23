@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from 'next/script';
 import { switzer, azeretMono } from "@/lib/fonts";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 // Enhanced metadata with comprehensive SEO
@@ -178,7 +179,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="scroll-smooth dark" // Improves scroll behavior
+      className="scroll-smooth" // Improves scroll behavior
     >
       <head>
         {/* Structured Data - JSON-LD */}
@@ -210,33 +211,35 @@ export default function RootLayout({
         className={`${switzer.variable} ${azeretMono.variable} font-copy antialiased`}
         suppressHydrationWarning
       >
-        {/* Skip to main content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-        >
-          Skip to main content
-        </a>
+        <ThemeProvider>
+          {/* Skip to main content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          >
+            Skip to main content
+          </a>
 
-        {children}
+          {children}
 
-        {/* Google Analytics using Next.js Script component - only in production */}
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <Script
-              src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'GA_MEASUREMENT_ID');
-              `}
-            </Script>
-          </>
-        )}
+          {/* Google Analytics using Next.js Script component - only in production */}
+          {process.env.NODE_ENV === 'production' && (
+            <>
+              <Script
+                src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'GA_MEASUREMENT_ID');
+                `}
+              </Script>
+            </>
+          )}
+        </ThemeProvider>
       </body>
     </html>
   );
