@@ -35,11 +35,9 @@ const formatTextWithLineBreaks = (text: string) => {
 // Memoized optimized image component with enhanced accessibility
 const OptimizedImageContainer = memo(({
   image,
-  // className = "", // Commented out unused parameter
   priority = false
 }: {
   image: PersonalImage;
-  className?: string;
   priority?: boolean;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -146,7 +144,6 @@ const ImageRow = memo(({
         <OptimizedImageContainer
           key={`profile-${image.id}`}
           image={image}
-          className="h-full w-full"
           priority={priority && index === 0} // Only first image of first row is priority
         />
       ))}
@@ -359,17 +356,6 @@ export default function PersonalProfile({
     }
   }), [memoizedProfile]);
 
-  // Commented out unused variables - ready for future image gallery feature
-  // const imageRows = useMemo(() => {
-  //   const organizeImages = (images: PersonalImage[]) => {
-  //     return {
-  //       row1: images.slice(0, 2),
-  //       row2: images.slice(2, 4),
-  //       row3: images.slice(4, 6),
-  //     };
-  //   };
-  //   return organizeImages(memoizedProfile.images);
-  // }, [memoizedProfile.images]);
 
   return (
     <section className="bg-background text-foreground">

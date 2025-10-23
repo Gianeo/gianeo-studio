@@ -178,7 +178,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="scroll-smooth" // Improves scroll behavior
+      className="scroll-smooth dark" // Improves scroll behavior
     >
       <head>
         {/* Structured Data - JSON-LD */}

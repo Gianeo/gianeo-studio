@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/navigation/Navigation";
 import Hero from "@/components/sections/Hero";
-// import ProductShowcase from "@/components/sections/ProductShowcase";
 import ClientsLogos from "@/components/sections/ClientsLogos";
-import WorkHistory from "@/components/sections/WorkHistory";
 import PersonalProfile from "@/components/sections/Profile";
-// import Services from "@/components/sections/Services";
+import Services from "@/components/sections/Services";
+import ProductShowcase from "@/components/sections/ProductShowcase";
 
 // Page-specific metadata that extends the root layout
 export const metadata: Metadata = {
@@ -94,35 +93,7 @@ export default function HomePage() {
           </h2>
           <ClientsLogos />
         </section>
-
-        {/* Work history section */}
-        <section 
-          id="work-history" 
-          aria-labelledby="work-heading"
-          role="region"
-          aria-label="Professional work experience and portfolio"
-        >
-          <h2 id="work-heading" className="sr-only">
-            Work History and Experience
-          </h2>
-          <WorkHistory />
-        </section>
-
-        {/* Personal profile section */}
-        <section 
-          id="profile" 
-          aria-labelledby="profile-heading"
-          role="region"
-          aria-label="Personal background and philosophy"
-        >
-          <h2 id="profile-heading" className="sr-only">
-            Personal Profile and Background
-          </h2>
-          <PersonalProfile />
-        </section>
-
-        {/* Commented out sections for future use */}
-        {/* 
+        
         <section 
           id="product-showcase" 
           aria-labelledby="products-heading"
@@ -146,7 +117,20 @@ export default function HomePage() {
           </h2>
           <Services />
         </section>
-        */}
+
+        {/* Personal profile section */}
+        <section 
+          id="profile" 
+          aria-labelledby="profile-heading"
+          role="region"
+          aria-label="Personal background and philosophy"
+        >
+          <h2 id="profile-heading" className="sr-only">
+            Personal Profile and Background
+          </h2>
+          <PersonalProfile />
+        </section>
+       
       </main>
 
       {/* Site footer - will be added when you create a footer component */}

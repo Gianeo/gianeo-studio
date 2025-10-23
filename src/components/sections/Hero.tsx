@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo, memo } from "react";
-import { Tag } from "phosphor-react"; // Only import what we actually use
+import { TagIcon } from "@phosphor-icons/react"; // Only import what we actually use
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { LogoGf } from "@/components/logo/LogoGf";
@@ -91,7 +91,7 @@ const TextCell = memo(({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <div className={`rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-square p-4 ${className}`}>
+  <div className={`rounded-lg w-full bg-neutral-900 flex items-center text-xs text-neutral-600 aspect-square p-4 ${className}`}>
     <div className="font-mono text-left max-w-sm mx-auto">
       {children}
     </div>
@@ -105,7 +105,7 @@ const LogoSection = memo(() => (
   <div className="mb-6 lg:mb-12 px-6 lg:px-0">
     <LogoGf 
       className="w-32 lg:w-48 xl:w-56 h-auto" 
-      aria-label="Gianni Favaretto professional logo"
+      aria-label="Gianeo Studio logo"
     />
   </div>
 ));
@@ -116,8 +116,8 @@ LogoSection.displayName = 'LogoSection';
 const BadgeSection = memo(() => (
   <div className="flex flex-wrap gap-4 mb-4 text-xs text-muted-foreground px-6 lg:px-0">
     <div className="flex items-center gap-2 font-mono" role="text">
-      <Tag size={16} aria-hidden="true" />
-      <span>Craftsmanship + Leadership.</span>
+      <TagIcon size={16} aria-hidden="true" />
+      <span>Design + Development Studio</span>
     </div>
   </div>
 ));
@@ -132,24 +132,13 @@ const ContentSection = memo(() => (
       id="hero-heading"
       className="font-heading font-bold text-5xl md:text-6xl heading-tight text-foreground mb-8 xl:mb-8 px-6 lg:px-0"
     >
-      Design+ for what&apos;s now—and next.
+      We help launch digital experiences.
     </h1>
 
     {/* Main description with proper semantic structure */}
     <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed max-w-lg mb-12 prose-optimized px-6 lg:px-0 space-y-4">
       <p>
         You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others… not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead. You&apos;re not looking for a silver bullet. You want clarity. Someone who can see the whole thing end-to-end—how it works, how it looks, how it feels to use—and shape it into something that moves with purpose.
-      </p>
-      
-      <p>
-        <strong>That&apos;s where I come in.</strong>
-      </p>
-      
-      <p>
-        I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.
-      </p>
-      <p>
-        <em>Not disruptive. Just effective. <br />For the business, and for the people it serves.</em>
       </p>
     </div>
   </>
@@ -160,7 +149,7 @@ ContentSection.displayName = 'ContentSection';
 // Memoized bottom section
 const BottomSection = memo(() => (
   <aside 
-    className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-4 xl:pb-16 px-4 py-16 mb-16 mt-1 mx-6 lg:mx-0 rounded-lg bg-neutral-100 space-y-6 text-xs text-neutral-600 text-left font-mono"
+    className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-4 xl:pb-16 px-4 py-16 mb-16 mt-1 mx-6 lg:mx-0 rounded-lg bg-neutral-900 space-y-6 text-xs text-neutral-500 text-left font-mono"
     aria-label="Key capabilities summary"
   >
     <p className="w-[11rem] mx-auto">
@@ -205,9 +194,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       {/* 1st Cell - Text */}
       <TextCell>
         <span role="text">
-          SaaS <br />
-          Ecommerce <br />
-          Fintech <br />
+          Product development <br />
+          UX/UI Design <br />
+          Branding <br />
           +
         </span>
       </TextCell>
@@ -226,9 +215,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       {/* 4th Cell - Text */}
       <TextCell>
         <span role="text">
-          End-to-end Design <br />
+          AI <br />
           Prototyping <br />
-          Systems <br />
+          Design Systems <br />
           +
         </span>
       </TextCell>
@@ -236,9 +225,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       {/* 5th Cell - Text */}
       <TextCell>
         <span role="text">
-          Leadership <br />
-          Team Management <br />
-          Growth <br />
+          Websites <br />
+          Web Apps <br />
+          Native Apps <br />
           +
         </span>
       </TextCell>
@@ -255,7 +244,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
   // Memoized decorative element
   const DecorativeElement = memo(() => (
     <div 
-      className="absolute top-20 lg:top-24 xl:top-28 left-0 w-full lg:w-1/3 h-40 lg:h-48 xl:h-56 -translate-y-1/2 bg-neutral-100 rounded-r-lg"
+      className="absolute top-20 lg:top-24 xl:top-28 left-0 w-full lg:w-1/3 h-40 lg:h-48 xl:h-56 -translate-y-1/2 bg-neutral-900 rounded-r-lg"
       aria-hidden="true"
     >
       <div className="relative w-full mix-blend-multiply" />

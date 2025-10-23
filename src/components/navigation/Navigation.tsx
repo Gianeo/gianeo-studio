@@ -1,23 +1,18 @@
 'use client';
 
-import { Envelope, InstagramLogo, LinkedinLogo } from 'phosphor-react';
+import { EnvelopeIcon, InstagramLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import { useScroll } from '@/components/layout/SmoothScrollLayout';
 
 interface NavigationProps {
   className?: string;
 }
 
 export default function Navigation({ className = '' }: NavigationProps) {
-  // Handle smooth scroll to sections
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start' 
-      });
-      // Update focus for accessibility
-      element.focus({ preventScroll: true });
-    }
+  const { scrollToSection } = useScroll();
+
+  // Handle smooth scroll to sections with Lenis
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(`#${sectionId}`);
   };
 
   return (
@@ -28,16 +23,16 @@ export default function Navigation({ className = '' }: NavigationProps) {
     >
       {/* Logo/Brand */}
       <div className="flex items-center">
-        <a 
+        <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection('hero');
+            handleNavClick('hero');
           }}
-          className="text-xs font-mono text-neutral-700 hover:text-neutral-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
-          aria-label="Gianni J. Favaretto - Go to top of page"
+          className="text-xs font-mono text-neutral-500 hover:text-neutral-900 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
+          aria-label="Gianeo Studio - Go to top of page"
         >
-          <span aria-hidden="true">Gianni J. Favaretto</span>
+          <span aria-hidden="true">Gianeo Studio</span>
         </a>
       </div>
 
@@ -50,7 +45,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('main-content');
+                handleNavClick('main-content');
               }}
             >
               Main Content
@@ -62,7 +57,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('work-history');
+                handleNavClick('work-history');
               }}
             >
               Work History
@@ -74,7 +69,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('profile');
+                handleNavClick('profile');
               }}
             >
               Profile
@@ -95,8 +90,8 @@ export default function Navigation({ className = '' }: NavigationProps) {
           aria-label="Send email to Gianni Favaretto"
           role="listitem"
         >
-          <Envelope 
-            className="size-5" 
+          <EnvelopeIcon
+            className="size-5"
             aria-hidden="true"
           />
           <span className="sr-only">Email: giannijfavaretto@gmail.com</span>
@@ -110,8 +105,8 @@ export default function Navigation({ className = '' }: NavigationProps) {
           aria-label="Follow Gianni Favaretto on Instagram (opens in new tab)"
           role="listitem"
         >
-          <InstagramLogo 
-            className="size-5" 
+          <InstagramLogoIcon
+            className="size-5"
             aria-hidden="true"
           />
           <span className="sr-only">Instagram profile</span>
@@ -125,8 +120,8 @@ export default function Navigation({ className = '' }: NavigationProps) {
           aria-label="Connect with Gianni Favaretto on LinkedIn (opens in new tab)"
           role="listitem"
         >
-          <LinkedinLogo 
-            className="size-5" 
+          <LinkedinLogoIcon
+            className="size-5"
             aria-hidden="true"
           />
           <span className="sr-only">LinkedIn profile</span>

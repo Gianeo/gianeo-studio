@@ -4,11 +4,10 @@ import { useState, useCallback, useMemo, memo } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import {
-  ArrowRight,
-  Calendar,
-  Tag,
-  // Link as ExternalLink, // Commented out unused import
-} from "phosphor-react";
+  ArrowRightIcon,
+  CalendarIcon,
+  TagIcon,
+} from "@phosphor-icons/react";
 
 interface ProjectData {
   title: string;
@@ -31,9 +30,9 @@ const sampleProject: ProjectData = {
   category: "Product ideation, Brand development, Go to Market.",
   client: "JustScore",
   date: "2025",
-  images: Array.from({ length: 8 }, (_, i) => ({
+  images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
-    src: `/images/products/justscore/${i + 1}.webp`,
+    src: `/images/work/justscore/${i + 1}.webp`,
     alt: `Showcase image ${i + 1}`,
     aspectRatio: "square" as const,
   })),
@@ -41,7 +40,6 @@ const sampleProject: ProjectData = {
 
 interface ProjectShowcaseProps {
   project?: ProjectData;
-  // onBack?: () => void; // Commented out unused prop
 }
 
 // Memoized optimized image component with lazy loading
@@ -101,7 +99,7 @@ const OptimizedImageContainer = memo(({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover transition-all duration-700 group-hover:scale-105"
               priority={priority}
-              quality={85}
+              quality={90}
             />
           </div>
         </div>
@@ -114,14 +112,13 @@ OptimizedImageContainer.displayName = 'OptimizedImageContainer';
 
 export default function ProductShowcase({
   project = sampleProject,
-  // onBack, // Removed unused parameter
 }: ProjectShowcaseProps) {
   
   // Memoize image organization to prevent recalculation
   const imageRows = useMemo(() => {
     // Just return all images as one array - let CSS grid handle the responsive layout
     return {
-      allImages: project.images.slice(0, 6), // Take first 6 images
+      allImages: project.images.slice(0, 9), // Take first 6 images
     };
   }, [project.images]);
 
@@ -130,7 +127,7 @@ export default function ProductShowcase({
     <header className="sticky top-0 z-50 glass border-b border-border/50">
       <div className="flex justify-between px-6 lg:px-12 py-4">
         <div className="flex items-center justify-end gap-4 text-xs font-mono text-muted-foreground">
-          <ArrowRight size={16} />
+          <ArrowRightIcon size={16} />
           Latest Ideation and Development
         </div>
       </div>
@@ -145,11 +142,11 @@ export default function ProductShowcase({
       <div className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-4">
         <div className="flex flex-wrap gap-4 mb-6 text-xs text-muted-foreground">
           <div className="flex items-center gap-2 font-mono">
-            <Tag size={16} />
+            <TagIcon size={16} />
             {project.category}
           </div>
           <div className="flex items-center gap-2 font-mono">
-            <Calendar size={16} />
+            <CalendarIcon size={16} />
             {project.date}
           </div>
         </div>
@@ -170,7 +167,7 @@ export default function ProductShowcase({
   // Memoized image row component
   const ImageRow = memo(({ 
     images, 
-    gridCols = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" 
+    gridCols = "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
   }: { 
     images: typeof project.images; 
     gridCols?: string;
@@ -201,7 +198,7 @@ export default function ProductShowcase({
       {/* Optimized Image Gallery */}
       <section className="px-6 lg:px-1 pb-20">
         {/* Single responsive grid - let CSS handle the layout */}
-        <div className="grid gap-1 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {imageRows.allImages.map((image, index) => (
             <OptimizedImageContainer
               key={`image-${image.id}`}

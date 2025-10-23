@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Moon, 
-  Sun, 
-  Palette, 
-  Layout, 
-  Sparkle,
-  ArrowRight,
-  Play,
-  Star
-} from "phosphor-react";
+import {
+  MoonIcon,
+  SunIcon,
+  PaletteIcon,
+  LayoutIcon,
+  SparkleIcon,
+  ArrowRightIcon,
+  PlayIcon,
+  StarIcon
+} from "@phosphor-icons/react";
 
 export default function TestPage() {
   const [isDark, setIsDark] = useState(false);
@@ -30,9 +30,9 @@ export default function TestPage() {
           aria-label="Toggle theme"
         >
           {isDark ? (
-            <Sun size={20} className="text-foreground group-hover:rotate-12 transition-transform" />
+            <SunIcon size={20} className="text-foreground group-hover:rotate-12 transition-transform" />
           ) : (
-            <Moon size={20} className="text-foreground group-hover:rotate-12 transition-transform" />
+            <MoonIcon size={20} className="text-foreground group-hover:rotate-12 transition-transform" />
           )}
         </button>
       </div>
@@ -51,7 +51,7 @@ export default function TestPage() {
         {/* Typography Test */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Sparkle size={24} className="text-primary" />
+            <SparkleIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Typography System</h2>
           </div>
           
@@ -110,7 +110,7 @@ export default function TestPage() {
         {/* Color System Test */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Palette size={24} className="text-primary" />
+            <PaletteIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Color System</h2>
           </div>
 
@@ -146,7 +146,7 @@ export default function TestPage() {
         {/* Component Test */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Layout size={24} className="text-primary" />
+            <LayoutIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Component Styles</h2>
           </div>
 
@@ -174,7 +174,7 @@ export default function TestPage() {
                 This card demonstrates the glass morphism effect with backdrop blur and transparency.
               </p>
               <div className="flex items-center gap-2 text-sm">
-                <Star size={16} className="text-warning" />
+                <StarIcon size={16} className="text-warning" />
                 <span className="font-copy font-medium">Premium Feature</span>
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function TestPage() {
               </p>
               <button className="flex items-center gap-2 text-primary hover:gap-3 transition-all text-sm font-copy font-medium">
                 <span>Learn More</span>
-                <ArrowRight size={16} />
+                <ArrowRightIcon size={16} />
               </button>
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function TestPage() {
         {/* Animation Test */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Sparkle size={24} className="text-primary" />
+            <SparkleIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Animation System</h2>
           </div>
 
@@ -221,7 +221,7 @@ export default function TestPage() {
         {/* Responsive Test */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Play size={24} className="text-primary" />
+            <PlayIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Responsive Design</h2>
           </div>
 
@@ -241,7 +241,7 @@ export default function TestPage() {
         {/* Font Loading Status */}
         <section className="space-y-8">
           <div className="flex items-center gap-3 mb-6">
-            <Sparkle size={24} className="text-primary" />
+            <SparkleIcon size={24} className="text-primary" />
             <h2 className="text-3xl font-heading font-semibold">Font Loading Status</h2>
           </div>
 

@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, memo } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { ArrowRight } from "phosphor-react";
+import { ArrowRightIcon } from "@phosphor-icons/react";
 
 interface ClientsLogosProps {
   className?: string;
@@ -173,7 +173,7 @@ const OptimizedLogoContainer = memo(({
     >
       {/* Logo Container with semantic meaning */}
       <div 
-        className="relative bg-neutral-100 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
+        className="relative bg-neutral-900 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
         role="presentation"
       >
         <div className="relative w-full h-full flex items-center justify-center">
@@ -224,7 +224,7 @@ const AndManyMoreBox = memo(() => (
     role="text"
     aria-label="Additional client relationships beyond those displayed"
   >
-    <div className="bg-neutral-100 text-[10px] sm:text-xs text-neutral-600 text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
+    <div className="bg-neutral-900 text-[10px] sm:text-xs text-neutral-600 text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
         and many more
       </div>
@@ -243,7 +243,7 @@ const HeaderSection = memo(() => (
         role="banner"
         aria-label="Client section navigation"
       >
-        <ArrowRight size={16} aria-hidden="true" />
+        <ArrowRightIcon size={16} aria-hidden="true" />
         <span>From 0-1 to Enterprises</span>
       </div>
     </div>
