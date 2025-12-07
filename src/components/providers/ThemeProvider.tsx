@@ -48,7 +48,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    // Return default values if not within ThemeProvider (e.g., Storybook, SSR)
+    // Return default values if not within ThemeProvider (e.g., SSR)
     return {
       theme: 'light' as Theme,
       toggleTheme: () => {},

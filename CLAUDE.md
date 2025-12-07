@@ -11,7 +11,6 @@ This is a personal portfolio website for Gianni Favaretto, a design leader and p
 - React 19
 - TypeScript
 - Tailwind CSS v4 (with CSS @theme inline configuration)
-- Storybook 9.1 for component development
 - Lenis for smooth scrolling
 
 ## Development Commands
@@ -26,10 +25,6 @@ npm start               # Start production server
 
 # Code Quality
 npm run lint            # Run ESLint
-
-# Storybook
-npm run storybook       # Start Storybook dev server on port 6006
-npm run build-storybook # Build Storybook static site
 ```
 
 ## Architecture & Code Organization
@@ -49,7 +44,6 @@ npm run build-storybook # Build Storybook static site
 **UI Components** (`src/components/ui/`)
 - Reusable UI primitives built on Radix UI primitives
 - Follow shadcn/ui patterns with Tailwind styling
-- Each component has corresponding `.stories.tsx` file for Storybook
 - Use the `cn()` utility from `src/lib/utils.ts` for conditional class merging
 
 **Layout Components** (`src/components/layout/`)
@@ -98,13 +92,6 @@ npm run build-storybook # Build Storybook static site
 - Alternative: Lucide React icons available
 - Usage: Import and render as React components
 
-## Component Development with Storybook
-
-- Stories are co-located with components in `src/components/ui/`
-- Storybook configured for Next.js with Vite bundler
-- Addons enabled: a11y, docs, vitest
-- Static assets served from `public/` directory
-
 ## Important Notes
 
 - **Font Files**: Located in `public/fonts/` - do not move or rename
@@ -112,7 +99,3 @@ npm run build-storybook # Build Storybook static site
 - **Responsive**: Mobile-first approach with standard Tailwind breakpoints
 - **Images**: Work-related images in `public/images/work/`, client logos in `public/images/logos/clients/`
 - **Type Safety**: Strict TypeScript configuration - ensure all components are properly typed
-
-## Current State
-
-The git status shows uncommitted changes to multiple files including images, components, and configuration. The site appears to be in active development with recent improvements to Storybook integration and component stories.
