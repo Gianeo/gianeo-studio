@@ -5,6 +5,7 @@ import ClientsLogos from "@/components/sections/ClientsLogos";
 import PersonalProfile from "@/components/sections/Profile";
 import Services from "@/components/sections/Services";
 import ProductShowcase from "@/components/sections/ProductShowcase";
+import WorkHistory from "@/components/sections/WorkHistory";
 
 // Page-specific metadata that extends the root layout
 export const metadata: Metadata = {
@@ -104,6 +105,18 @@ export default function HomePage() {
             Featured Product Work
           </h2>
           <ProductShowcase />
+        </section>
+
+        <section 
+          id="history" 
+          aria-labelledby="history-heading"
+          role="region"
+          aria-label="History"
+        >
+          <h2 id="history-heading" className="sr-only">
+            History
+          </h2>
+          <WorkHistory />
         </section>
 
         <section 
