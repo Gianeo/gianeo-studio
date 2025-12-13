@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, memo } from "react";
-import Image from "next/image";
+import { useMemo, memo } from "react";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import {
@@ -15,6 +14,8 @@ import { ExternalLinkIcon } from "lucide-react";
 // Import the updated data structure
 import { workHistoryData, WorkExperience, GridItem } from "./data";
 import { Button } from "@/components/ui/button";
+import { LazyImage } from "@/components/media/LazyImage";
+import { SectionBanner } from "@/components/primitives/SectionBanner";
 
 interface WorkHistoryProps {
   experiences?: WorkExperience[];
@@ -32,10 +33,7 @@ const OptimizedImageContainer = memo(({
   className?: string;
   priority?: boolean;
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
-
-  // Lazy loading with intersection observer
+  // Lazy loading with intersection observer (for text blocks too)
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -43,57 +41,31 @@ const OptimizedImageContainer = memo(({
     rootMargin: '50px',
   });
 
-  // Memoized callbacks to prevent re-renders
-  const handleLoad = useCallback(() => {
-    setIsLoaded(true);
-  }, []);
-
-  const handleError = useCallback(() => {
-    setHasError(true);
-  }, []);
-
-  // Don't render if there's an error
-  if (hasError) return null;
-
   const shouldLoad = priority || inView;
 
-  return (
-    <figure 
-      ref={ref} 
-      className={`relative overflow-hidden bg-neutral-100 rounded-lg ${className}`}
-      role="img"
-      aria-label={item.alt || `Work sample from ${experienceId}`}
-    >
-      {/* Simple loading placeholder */}
-      {!isLoaded && shouldLoad && (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 to-neutral-300 animate-pulse z-10" />
-      )}
+  if (item.type === 'image' && item.src) {
+    return (
+      <figure 
+        ref={ref} 
+        className={`relative overflow-hidden rounded-lg ${className}`}
+        role="img"
+        aria-label={item.alt || `Work sample from ${experienceId}`}
+      >
+        {shouldLoad && (
+          <LazyImage
+            image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId} project deliverables` }}
+            containerClassName="h-full w-full"
+            overlayClassName="from-primary/10 to-accent/10"
+            priority={priority}
+            quality={85}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        )}
+      </figure>
+    );
+  }
 
-      {/* Hover effect - only render when loaded and for images */}
-      {isLoaded && item.type === 'image' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
-      )}
-
-      {/* Image container - only load when in view or priority */}
-      {shouldLoad && item.type === 'image' && item.src && (
-        <div className="absolute inset-0 z-30">
-          <div className="relative w-full h-full overflow-hidden rounded-lg">
-            <Image
-              src={item.src}
-              alt={item.alt || `Work sample showcasing ${experienceId} project deliverables`}
-              fill
-              onLoad={handleLoad}
-              onError={handleError}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-contain rounded-lg transition-all duration-700 group-hover:scale-105"
-              priority={priority}
-              quality={85}
-            />
-          </div>
-        </div>
-      )}
-    </figure>
-  );
+  return null;
 });
 
 OptimizedImageContainer.displayName = 'OptimizedImageContainer';
@@ -406,20 +378,6 @@ export default function WorkHistory({
     }))
   }), [experiences]);
 
-  // Memoized header component
-  const HeaderSection = memo(() => (
-    <header className="sticky top-0 z-50 glass border-b border-border/50">
-      <div className="flex justify-between px-6 lg:px-12 py-4">
-        <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
-          <ArrowRightIcon size={16} aria-hidden="true" />
-          <span>Work History</span>
-        </div>
-      </div>
-    </header>
-  ));
-
-  HeaderSection.displayName = 'HeaderSection';
-
   // Memoize experiences to prevent unnecessary recalculations
   const memoizedExperiences = useMemo(() => experiences, [experiences]);
 
@@ -433,7 +391,7 @@ export default function WorkHistory({
         }}
       />
 
-      <HeaderSection />
+      <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="Work History" />
 
       {/* Work Experience Entries */}
       <div 

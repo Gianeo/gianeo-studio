@@ -4,6 +4,12 @@ import clsx from "clsx";
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Button } from "@/components/ui/button";
+import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionIntro } from "@/components/primitives/SectionIntro";
+import { DotList } from "@/components/primitives/DotList";
+import { MetaRow } from "@/components/primitives/MetaRow";
+import { CardShell } from "@/components/primitives/CardShell";
+import { LazyImage } from "@/components/media/LazyImage";
 
 type Swatch = {
   name: string;
@@ -64,6 +70,15 @@ const buttonVariantsDemo = [
 ];
 
 const buttonSizesDemo = ["sm", "base", "lg"] as const;
+
+const primitives = [
+  { name: "SectionBanner", description: "Sticky top banner for section labels with icon support.", usage: "<SectionBanner icon={<Icon />} label=\"Latest Work\" />" },
+  { name: "SectionIntro", description: "Eyebrow + title + body intro block.", usage: "<SectionIntro eyebrow=\"Eyebrow\" title=\"Heading\" description={<p>Body</p>} />" },
+  { name: "DotList", description: "Bullet list with consistent spacing and tone options.", usage: "<DotList items={['Item']} tone=\"primary\" />" },
+  { name: "MetaRow", description: "Inline meta pills row with icons.", usage: "<MetaRow items={[{ icon: <Icon />, label: 'Meta' }]} />" },
+  { name: "CardShell", description: "Rounded card with border/shadow and optional hover lift.", usage: "<CardShell interactive>Content</CardShell>" },
+  { name: "LazyImage", description: "Shared lazy-loaded image with placeholder and hover overlay.", usage: "<LazyImage image={{src, alt}} />" },
+];
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="space-y-4">
@@ -202,6 +217,71 @@ export default function SystemPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </Section>
+
+        <Section title="Primitives">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {primitives.map((primitive) => (
+              <CardShell key={primitive.name} className="p-4">
+                <p className="font-semibold">{primitive.name}</p>
+                <p className="text-sm text-muted-foreground">{primitive.description}</p>
+                <p className="mt-2 text-xs font-mono text-muted-foreground/80 break-words">{primitive.usage}</p>
+              </CardShell>
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Examples">
+          <div className="grid gap-4 lg:grid-cols-2">
+            <CardShell className="p-4 space-y-4" interactive>
+              <p className="text-sm font-semibold">SectionIntro + MetaRow</p>
+              <MetaRow
+                items={[
+                  { label: "Product", icon: <span className="size-2 rounded-full bg-primary" /> },
+                  { label: "2025", icon: <span className="size-2 rounded-full bg-muted-foreground" /> },
+                ]}
+              />
+              <SectionIntro
+                eyebrow={<span className="text-xs font-mono text-muted-foreground">Eyebrow</span>}
+                title="Composable Sections"
+                description={<p className="text-sm">Use SectionIntro to keep intros consistent.</p>}
+                className="space-y-2"
+                titleClassName="text-2xl"
+              />
+            </CardShell>
+            <CardShell className="p-4 space-y-4" interactive>
+              <p className="text-sm font-semibold">DotList + LazyImage</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
+                <DotList items={["Strategy", "Technology", "Design"]} />
+                <div className="w-full aspect-[4/3]">
+                  <LazyImage
+                    image={{ src: "/images/work/intro/1.webp", alt: "Sample" }}
+                    className="h-full"
+                    overlayClassName="from-primary/10 to-accent/10"
+                    sizes="200px"
+                    quality={80}
+                  />
+                </div>
+              </div>
+            </CardShell>
+            <CardShell className="p-4 space-y-3" interactive>
+              <p className="text-sm font-semibold">SectionBanner</p>
+              <SectionBanner
+                sticky={false}
+                icon={<span className="size-2 rounded-full bg-primary" />}
+                label="Preview banner"
+                className="relative"
+              />
+              <p className="text-xs text-muted-foreground">Use for section headers; default is sticky.</p>
+            </CardShell>
+            <CardShell className="p-4 space-y-3" interactive>
+              <p className="text-sm font-semibold">CardShell</p>
+              <CardShell className="p-3 bg-background shadow-sm">
+                <p className="text-sm">Nested content in CardShell.</p>
+              </CardShell>
+              <p className="text-xs text-muted-foreground">Adds radius, border, and optional hover lift.</p>
+            </CardShell>
           </div>
         </Section>
       </div>

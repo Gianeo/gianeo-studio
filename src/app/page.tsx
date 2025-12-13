@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/navigation/Navigation";
 import Hero from "@/components/sections/Hero";
+import Intro from "@/components/sections/Intro";
+import Statement from "@/components/sections/Statement";
 import ClientsLogos from "@/components/sections/ClientsLogos";
 import PersonalProfile from "@/components/sections/Profile";
 import Services from "@/components/sections/Services";
@@ -74,6 +76,22 @@ export default function HomePage() {
         aria-label="Introduction and overview"
       >
         <Hero />
+      </section>
+
+      <section 
+        id="intro" 
+        aria-label="Intro overview"
+        role="region"
+      >
+        <Intro />
+      </section>
+
+      <section
+        id="statement"
+        aria-label="Statement"
+        role="region"
+      >
+        <Statement />
       </section>
 
       {/* Main content area */}
