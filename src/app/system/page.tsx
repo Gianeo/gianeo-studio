@@ -1,0 +1,175 @@
+"use client";
+
+import clsx from "clsx";
+
+type Swatch = {
+  name: string;
+  token: string;
+  className: string;
+  note?: string;
+};
+
+const colors: Swatch[] = [
+  { name: "Background", token: "--background / --foreground", className: "bg-background text-foreground" },
+  { name: "Card", token: "--card / --card-foreground", className: "bg-card text-card-foreground" },
+  { name: "Primary", token: "--primary / --primary-foreground", className: "bg-primary text-primary-foreground" },
+  { name: "Secondary", token: "--secondary / --secondary-foreground", className: "bg-secondary text-secondary-foreground" },
+  { name: "Muted", token: "--muted / --muted-foreground", className: "bg-muted text-muted-foreground" },
+  { name: "Accent", token: "--accent / --accent-foreground", className: "bg-accent text-accent-foreground" },
+  { name: "Destructive", token: "--destructive", className: "bg-destructive text-white", note: "Use sparingly for alerts" },
+  { name: "Border", token: "--border", className: "bg-border text-foreground" },
+  { name: "Input", token: "--input", className: "bg-input text-foreground" },
+  { name: "Ring", token: "--ring", className: "bg-ring text-foreground" },
+];
+
+const charts: Swatch[] = [
+  { name: "Chart 1", token: "--chart-1", className: "bg-[color:var(--chart-1)] text-white" },
+  { name: "Chart 2", token: "--chart-2", className: "bg-[color:var(--chart-2)] text-white" },
+  { name: "Chart 3", token: "--chart-3", className: "bg-[color:var(--chart-3)] text-white" },
+  { name: "Chart 4", token: "--chart-4", className: "bg-[color:var(--chart-4)] text-foreground" },
+  { name: "Chart 5", token: "--chart-5", className: "bg-[color:var(--chart-5)] text-foreground" },
+];
+
+const radii = [
+  { name: "Radius", token: "--radius" },
+  { name: "Radius Sm", token: "--radius-sm" },
+  { name: "Radius Md", token: "--radius-md" },
+  { name: "Radius Lg", token: "--radius-lg" },
+  { name: "Radius Xl", token: "--radius-xl" },
+];
+
+const utilities = [
+  { name: "font-copy", description: "Body stack with kerning + ligatures." },
+  { name: "font-heading", description: "Heading stack with stylistic set 01." },
+  { name: "font-mono", description: "Azeret Mono stack." },
+  { name: "heading-tight / heading-normal", description: "Letter-spacing helpers for headings." },
+  { name: "text-balance / text-pretty", description: "Prevent awkward text wrapping." },
+  { name: "prose-optimized", description: "Long-form copy line-height + features." },
+  { name: "glass", description: "Blurred background + subtle border for panels." },
+];
+
+const typeScale = [
+  { label: "Display / H1", className: "text-5xl md:text-6xl font-heading heading-tight", note: "Primary hero statement" },
+  { label: "H2", className: "text-3xl md:text-4xl font-heading heading-tight", note: "Section titles" },
+  { label: "H3", className: "text-2xl font-heading heading-tight", note: "Sub-section titles" },
+  { label: "H4", className: "text-xl font-heading heading-normal", note: "Card headers / small sections" },
+  { label: "Body L", className: "text-lg font-copy", note: "Lead paragraphs" },
+  { label: "Body M", className: "text-base font-copy", note: "Default copy" },
+  { label: "Body S", className: "text-sm font-copy", note: "Supporting text" },
+  { label: "Caption", className: "text-xs font-copy", note: "Meta, captions" },
+  { label: "Label Mono", className: "text-xs font-mono uppercase tracking-[0.3em]", note: "Meta labels, overlines" },
+];
+
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <section className="space-y-4">
+    <div className="flex items-center gap-3">
+      <div className="h-5 w-1 rounded-full bg-primary" />
+      <h2 className="text-xl font-semibold heading-tight">{title}</h2>
+    </div>
+    {children}
+  </section>
+);
+
+const SwatchCard = ({ swatch }: { swatch: Swatch }) => (
+  <div className="flex flex-col gap-2 rounded-xl border border-border bg-card/60 p-4 shadow-sm">
+    <div className={clsx("rounded-lg border border-border/60 p-4 text-sm font-medium", swatch.className)}>
+      {swatch.name}
+    </div>
+    <div className="text-xs text-muted-foreground flex items-center justify-between">
+      <span>{swatch.token}</span>
+      {swatch.note && <span className="text-[11px] text-muted-foreground/70">{swatch.note}</span>}
+    </div>
+  </div>
+);
+
+const RadiusCard = ({ name, token }: { name: string; token: string }) => (
+  <div className="flex items-center gap-4 rounded-xl border border-border bg-card/60 p-4 shadow-sm">
+    <div className="h-12 w-20 bg-accent/60" style={{ borderRadius: `var(${token})` }} />
+    <div className="text-sm">
+      <p className="font-semibold">{name}</p>
+      <p className="text-xs text-muted-foreground">{token}</p>
+    </div>
+  </div>
+);
+
+export default function SystemPage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12 space-y-10">
+        <header className="space-y-3">
+          <p className="text-xs font-mono uppercase tracking-[0.4em] text-muted-foreground">System</p>
+          <h1 className="text-4xl font-semibold heading-tight">Design Tokens & Utilities</h1>
+          <p className="max-w-3xl text-muted-foreground text-base">
+            Live reference for the core styling system: tokens, typography, radii, and utilities. Values are theme-aware—toggle light/dark to verify contrast.
+          </p>
+        </header>
+
+        <Section title="Core Palette">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {colors.map((swatch) => (
+              <SwatchCard key={swatch.name} swatch={swatch} />
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Chart Palette">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {charts.map((swatch) => (
+              <SwatchCard key={swatch.name} swatch={swatch} />
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Typography">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
+              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Headings</p>
+              <p className="text-3xl font-heading heading-tight">Font heading (Switzer)</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-heading heading-tight</code></p>
+            </div>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
+              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Body</p>
+              <p className="text-lg font-copy prose-optimized">Font copy (Switzer) with balanced reading rhythm.</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-copy prose-optimized</code></p>
+            </div>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
+              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Mono</p>
+              <p className="text-lg font-mono">Font mono (Azeret Mono) for code and meta.</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-mono</code></p>
+            </div>
+          </div>
+        </Section>
+
+        <Section title="Radii">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {radii.map((radius) => (
+              <RadiusCard key={radius.name} name={radius.name} token={radius.token} />
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Utilities">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {utilities.map((item) => (
+              <div key={item.name} className="rounded-xl border border-border bg-card/60 p-4 shadow-sm">
+                <p className="font-semibold">{item.name}</p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Typography Scale">
+          <div className="space-y-3 rounded-xl border border-border bg-card/60 p-6 shadow-sm">
+            {typeScale.map((item) => (
+              <div key={item.label} className="flex flex-col gap-1 border-b border-border/60 pb-3 last:border-0 last:pb-0">
+                <p className={clsx(item.className)}>{item.label}</p>
+                <p className="text-xs text-muted-foreground">{item.note}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </div>
+    </div>
+  );
+}
