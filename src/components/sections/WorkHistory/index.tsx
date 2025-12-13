@@ -155,7 +155,7 @@ const ExternalLinkButton = memo(({
   url: string; 
   company: string; 
 }) => (
-  <Button asChild size="lg" variant="default" className="btn">
+  <Button asChild size="lg" variant="primary" className="btn">
     <Link 
       href={url} 
       target="_blank" 

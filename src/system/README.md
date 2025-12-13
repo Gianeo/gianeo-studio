@@ -3,7 +3,7 @@
 Centralized foundations for typography, color, layout radius, and reusable utilities used across the site. Tokens live as CSS custom properties and are theme-aware (light + dark).
 
 ## Files
-- `design-tokens.css`: Tokens, semantic aliases, radii, and theme variants (`:root`, `.dark`).
+- `design-tokens.css`: Tokens, semantic aliases, radii, and theme variants (`:root`, `.dark`). Accent aligns with the Hero “Get in touch” CTA.
 - `design-utilities.css`: Base resets, typography helpers, letter-spacing shorthands, prose tweaks, glass effect, and accessibility media queries.
 - Imported via `src/app/globals.css` to keep all pages on the same system.
 
@@ -18,5 +18,5 @@ Centralized foundations for typography, color, layout radius, and reusable utili
 - Avoid duplicating colors in components—prefer semantic tokens (`primary`, `muted`, `border`, `ring`, etc.).
 
 ## Extending
-- Add new primitives (e.g., `--radius-xxl`, `--chart-6`) inside `design-tokens.css` and reference them semantically.
+- Add new primitives (e.g., `--radius-xxl`) inside `design-tokens.css` and reference them semantically. Avoid ad-hoc colors—extend the palette instead.
 - Add utility helpers (e.g., animation shorthands) inside `design-utilities.css` to keep usage consistent and avoid per-component overrides.***

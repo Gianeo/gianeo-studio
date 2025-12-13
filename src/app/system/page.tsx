@@ -1,6 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { Button } from "@/components/ui/button";
 
 type Swatch = {
   name: string;
@@ -20,14 +23,6 @@ const colors: Swatch[] = [
   { name: "Border", token: "--border", className: "bg-border text-foreground" },
   { name: "Input", token: "--input", className: "bg-input text-foreground" },
   { name: "Ring", token: "--ring", className: "bg-ring text-foreground" },
-];
-
-const charts: Swatch[] = [
-  { name: "Chart 1", token: "--chart-1", className: "bg-[color:var(--chart-1)] text-white" },
-  { name: "Chart 2", token: "--chart-2", className: "bg-[color:var(--chart-2)] text-white" },
-  { name: "Chart 3", token: "--chart-3", className: "bg-[color:var(--chart-3)] text-white" },
-  { name: "Chart 4", token: "--chart-4", className: "bg-[color:var(--chart-4)] text-foreground" },
-  { name: "Chart 5", token: "--chart-5", className: "bg-[color:var(--chart-5)] text-foreground" },
 ];
 
 const radii = [
@@ -60,6 +55,16 @@ const typeScale = [
   { label: "Label Mono", className: "text-xs font-mono uppercase tracking-[0.3em]", note: "Meta labels, overlines" },
 ];
 
+const buttonVariantsDemo = [
+  { label: "Primary", variant: "primary" as const },
+  { label: "Secondary", variant: "secondary" as const },
+  { label: "Accent", variant: "accent" as const },
+  { label: "Outline", variant: "outline" as const },
+  { label: "Ghost", variant: "ghost" as const },
+];
+
+const buttonSizesDemo = ["sm", "base", "lg"] as const;
+
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="space-y-4">
     <div className="flex items-center gap-3">
@@ -84,7 +89,7 @@ const SwatchCard = ({ swatch }: { swatch: Swatch }) => (
 
 const RadiusCard = ({ name, token }: { name: string; token: string }) => (
   <div className="flex items-center gap-4 rounded-xl border border-border bg-card/60 p-4 shadow-sm">
-    <div className="h-12 w-20 bg-accent/60" style={{ borderRadius: `var(${token})` }} />
+    <div className="h-12 w-20 bg-muted/50" style={{ borderRadius: `var(${token})` }} />
     <div className="text-sm">
       <p className="font-semibold">{name}</p>
       <p className="text-xs text-muted-foreground">{token}</p>
@@ -93,28 +98,34 @@ const RadiusCard = ({ name, token }: { name: string; token: string }) => (
 );
 
 export default function SystemPage() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto w-full max-w-6xl px-6 py-12 space-y-10">
         <header className="space-y-3">
-          <p className="text-xs font-mono uppercase tracking-[0.4em] text-muted-foreground">System</p>
-          <h1 className="text-4xl font-semibold heading-tight">Design Tokens & Utilities</h1>
-          <p className="max-w-3xl text-muted-foreground text-base">
-            Live reference for the core styling system: tokens, typography, radii, and utilities. Values are theme-aware—toggle light/dark to verify contrast.
-          </p>
+          <div className="flex items-center justify-between gap-4">
+            <div className="space-y-3">
+              <p className="text-xs font-mono uppercase tracking-[0.4em] text-muted-foreground">System</p>
+              <h1 className="text-4xl font-semibold heading-tight">Design Tokens & Utilities</h1>
+              <p className="max-w-3xl text-muted-foreground text-base">
+                Live reference for the core styling system: tokens, typography, radii, and utilities. Values are theme-aware—toggle light/dark to verify contrast.
+              </p>
+            </div>
+            <button
+              onClick={toggleTheme}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            >
+              {theme === "light" ? <MoonIcon className="size-4" /> : <SunIcon className="size-4" />}
+              <span>{theme === "light" ? "Dark mode" : "Light mode"}</span>
+            </button>
+          </div>
         </header>
 
         <Section title="Core Palette">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {colors.map((swatch) => (
-              <SwatchCard key={swatch.name} swatch={swatch} />
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Chart Palette">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {charts.map((swatch) => (
               <SwatchCard key={swatch.name} swatch={swatch} />
             ))}
           </div>
@@ -167,6 +178,30 @@ export default function SystemPage() {
                 <p className="text-xs text-muted-foreground">{item.note}</p>
               </div>
             ))}
+          </div>
+        </Section>
+
+        <Section title="Buttons">
+          <div className="space-y-4 rounded-xl border border-border bg-card/60 p-6 shadow-sm">
+            <div className="flex flex-wrap gap-2">
+              {buttonVariantsDemo.map((item) => (
+                <Button key={item.label} variant={item.variant} size="base">
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {buttonSizesDemo.map((size) => (
+                <div key={size} className="flex flex-col gap-2 rounded-lg border border-border/70 bg-card/50 p-4">
+                  <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">Size: {size}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <Button variant="primary" size={size}>Primary</Button>
+                    <Button variant="secondary" size={size}>Secondary</Button>
+                    <Button variant="accent" size={size}>Accent</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </Section>
       </div>
