@@ -562,24 +562,24 @@ export interface GridItem {
         {
           id: 13,
           type: 'image',
-          src: '/images/work/ogm/10.webp',
+          src: '/images/work/ogm/11.webp',
           alt: 'Ocado General Merchandise project 3',
           aspectRatio: 'square'
         },
         {
           id: 14,
           type: 'image',
-          src: '/images/work/ogm/12.webp',
+          src: '/images/work/ogm/10.webp',
           alt: 'Ocado General Merchandise project 3',
           aspectRatio: 'square'
         },
-        {
-          id: 15,
-          type: 'image',
-          src: '/images/work/ogm/11.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
+        // {
+        //   id: 13,
+        //   type: 'image',
+        //   src: '/images/work/ogm/12.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
       ]
     },
     {

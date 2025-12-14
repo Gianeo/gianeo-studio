@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, CSSProperties } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ interface LazyImageProps {
   containerClassName?: string;
   sizes?: string;
   quality?: number;
+  style?: CSSProperties;
 }
 
 /**
@@ -27,6 +28,7 @@ export function LazyImage({
   containerClassName,
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
   quality = 88,
+  style,
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -50,6 +52,7 @@ export function LazyImage({
         containerClassName,
         className
       )}
+      style={style}
     >
       {(!isLoaded || hasError) && (
         <div className="absolute inset-0 z-10 animate-pulse bg-gradient-to-br from-neutral-200 to-neutral-300" />
