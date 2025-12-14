@@ -24,9 +24,10 @@ const highlightSlots = [
   { span: "start-row-3 md:col-span-8 md:row-span-2", aspect: "aspect-auto" },
   { span: "start-row-3 start-col-9 md:col-span-4", aspect: "aspect-auto" },
   { span: "start-row-4 start-col-9 md:col-span-4", aspect: "aspect-auto" },
-  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
-  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
-  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-5 md:col-span-6", aspect: "aspect-auto" },
+  { span: "start-row-5 md:col-span-6", aspect: "aspect-auto" },
+  { span: "start-row-6 md:col-span-6", aspect: "aspect-auto" },
+  { span: "start-row-6 md:col-span-6", aspect: "aspect-auto" },
 ];
 
 export function GalleryGrid({ images, layout = "simple", className }: GalleryGridProps) {
