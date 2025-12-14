@@ -32,7 +32,7 @@ const TextContainer = memo(({
 
   return (
     <div
-      className={`rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-[4/3] p-4 ${className}`}
+      className={`rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >

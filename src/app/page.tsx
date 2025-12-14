@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/navigation/Navigation";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
-import Statement from "@/components/sections/Statement";
+import Statement from "@/components/sections/Statements/Statement01";
 import ClientsLogos from "@/components/sections/ClientsLogos";
 import PersonalProfile from "@/components/sections/Profile";
 import Services from "@/components/sections/Services";
@@ -100,18 +100,6 @@ export default function HomePage() {
       >
         <Statement />
       </section>
-        {/* Client logos section */}
-        <section 
-          id="clients" 
-          aria-labelledby="clients-heading"
-          role="region"
-          aria-label="Client companies and partnerships"
-        >
-          <h2 id="clients-heading" className="sr-only">
-            Companies I&apos;ve worked with
-          </h2>
-          <ClientsLogos />
-        </section>
 
         <section 
           id="services" 

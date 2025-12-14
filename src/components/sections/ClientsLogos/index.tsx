@@ -234,24 +234,6 @@ const AndManyMoreBox = memo(() => (
 
 AndManyMoreBox.displayName = 'AndManyMoreBox';
 
-// Memoized header section with semantic navigation
-const HeaderSection = memo(() => (
-  <header className="sticky top-0 z-50 glass border-b border-border/50">
-    <div className="flex justify-between px-6 lg:px-12 py-4">
-      <div 
-        className="flex items-center justify-end gap-4 text-xs font-mono text-muted-foreground"
-        role="banner"
-        aria-label="Client section navigation"
-      >
-        <ArrowRightIcon size={16} aria-hidden="true" />
-        <span>From 0-1 to Enterprises</span>
-      </div>
-    </div>
-  </header>
-));
-
-HeaderSection.displayName = 'HeaderSection';
-
 // Memoized logo grid component with enhanced semantics
 const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
   // Create staggered loading delays for smooth loading experience
@@ -265,7 +247,7 @@ const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
 
   return (
     <section 
-      className="grid grid-cols-3 lg:grid-cols-5 gap-1 auto-rows-fr"
+      className="grid grid-cols-3 xl:grid-cols-4 gap-1 auto-rows-fr"
       role="region"
       aria-label="Client companies and partnerships"
     >
@@ -339,10 +321,8 @@ export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
           __html: JSON.stringify(clientsStructuredData),
         }}
       />
-
-      <HeaderSection />
       
-      <main className={`grid grid-cols-7 m-6 lg:m-12 pb-16 lg:pb-0 ${className}`}>
+      <main className={`grid grid-cols-7 pb-16 lg:pb-0 ${className}`}>
         <div className="col-span-7">
           <div className="mb-6 sr-only">
             <h2>Client Portfolio Overview</h2>
