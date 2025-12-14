@@ -54,6 +54,27 @@
   .glass {
     @apply backdrop-blur-md bg-background/40 border border-border/20;
   }
+
+  /* Typography scale overrides (4 sizes total) */
+  .text-sm, .text-xs {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  .text-base, .text-lg {
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+
+  .text-xl, .text-2xl, .text-3xl, .text-4xl {
+    font-size: var(--text-lg);
+    line-height: 1.25;
+  }
+
+  .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl {
+    font-size: var(--text-xl);
+    line-height: 1.1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

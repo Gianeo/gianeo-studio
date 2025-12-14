@@ -15,7 +15,7 @@ export function Intro() {
 
         <div className="lg:col-span-4 flex flex-col justify-center lg:px-12 xl:px-16 2xl:px-24">
           <div className="space-y-6 max-w-sm md:mx-auto">
-            <p className="text-[11px] font-mono uppercase tracking-[0.5em] text-accent">Why me</p>
+            <p className="text-sm font-mono uppercase tracking-[0.5em] text-accent">Why me</p>
             <SectionIntro
               eyebrow={null}
               title="With intention, precision, and care."

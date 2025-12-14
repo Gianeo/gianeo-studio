@@ -150,7 +150,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-[11px] font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
+            <p className="text-sm font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
               What I do
             </p>
             <ul className="space-y-2">
@@ -171,7 +171,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-[11px] font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
+            <p className="text-sm font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
               Served
             </p>
             <ul className="space-y-2">
@@ -192,7 +192,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-[11px] font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
+            <p className="text-sm font-mono uppercase tracking-[0.5em] text-neutral-600 dark:text-white/50">
               History
             </p>
             <ul className="space-y-2">

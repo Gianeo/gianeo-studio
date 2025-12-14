@@ -50,15 +50,10 @@ const utilities = [
 ];
 
 const typeScale = [
-  { label: "Display / H1", className: "text-5xl md:text-6xl font-heading heading-tight", note: "Primary hero statement" },
-  { label: "H2", className: "text-3xl md:text-4xl font-heading heading-tight", note: "Section titles" },
-  { label: "H3", className: "text-2xl font-heading heading-tight", note: "Sub-section titles" },
-  { label: "H4", className: "text-xl font-heading heading-normal", note: "Card headers / small sections" },
-  { label: "Body L", className: "text-lg font-copy", note: "Lead paragraphs" },
-  { label: "Body M", className: "text-base font-copy", note: "Default copy" },
-  { label: "Body S", className: "text-sm font-copy", note: "Supporting text" },
-  { label: "Caption", className: "text-xs font-copy", note: "Meta, captions" },
-  { label: "Label Mono", className: "text-xs font-mono uppercase tracking-[0.3em]", note: "Meta labels, overlines" },
+  { label: "XL", className: "text-xl font-heading heading-tight", note: "Hero / display (48px)" },
+  { label: "LG", className: "text-lg font-heading heading-tight", note: "Section titles / leads (36px)" },
+  { label: "Base", className: "text-base font-copy", note: "Body copy (18px)" },
+  { label: "SM", className: "text-sm font-copy", note: "Meta, captions, overlines (12px)" },
 ];
 
 const buttonVariantsDemo = [
@@ -97,7 +92,7 @@ const SwatchCard = ({ swatch }: { swatch: Swatch }) => (
     </div>
     <div className="text-xs text-muted-foreground flex items-center justify-between">
       <span>{swatch.token}</span>
-      {swatch.note && <span className="text-[11px] text-muted-foreground/70">{swatch.note}</span>}
+      {swatch.note && <span className="text-sm text-muted-foreground/70">{swatch.note}</span>}
     </div>
   </div>
 );
@@ -149,19 +144,19 @@ export default function SystemPage() {
         <Section title="Typography">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Headings</p>
-              <p className="text-3xl font-heading heading-tight">Font heading (Switzer)</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-heading heading-tight</code></p>
+              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Headings</p>
+              <p className="text-lg font-heading heading-tight">Font heading (Switzer)</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-heading heading-tight</code></p>
             </div>
             <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Body</p>
-              <p className="text-lg font-copy prose-optimized">Font copy (Switzer) with balanced reading rhythm.</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-copy prose-optimized</code></p>
+              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Body</p>
+              <p className="text-base font-copy prose-optimized">Font copy (Switzer) with balanced reading rhythm.</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-copy prose-optimized</code></p>
             </div>
             <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Mono</p>
-              <p className="text-lg font-mono">Font mono (Azeret Mono) for code and meta.</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-xs">font-mono</code></p>
+              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Mono</p>
+              <p className="text-base font-mono">Font mono (Azeret Mono) for code and meta.</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-mono</code></p>
             </div>
           </div>
         </Section>
@@ -185,12 +180,12 @@ export default function SystemPage() {
           </div>
         </Section>
 
-        <Section title="Typography Scale">
+        <Section title="Typography Scale (4 sizes)">
           <div className="space-y-3 rounded-xl border border-border bg-card/60 p-6 shadow-sm">
             {typeScale.map((item) => (
               <div key={item.label} className="flex flex-col gap-1 border-b border-border/60 pb-3 last:border-0 last:pb-0">
                 <p className={clsx(item.className)}>{item.label}</p>
-                <p className="text-xs text-muted-foreground">{item.note}</p>
+                <p className="text-sm text-muted-foreground">{item.note}</p>
               </div>
             ))}
           </div>

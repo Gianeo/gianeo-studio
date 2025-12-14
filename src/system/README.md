@@ -10,6 +10,7 @@ Centralized foundations for typography, color, layout radius, and reusable utili
 ## Usage
 - Use semantic Tailwind tokens (`bg-background`, `text-foreground`, `border-border`, etc.)—they resolve to the custom properties defined in `design-tokens.css`.
 - Typography stacks: `font-heading`, `font-copy`, `font-mono`. Letter spacing helpers: `heading-tight`, `heading-normal`.
+- Typography scale is limited to **4 sizes** only: `text-sm` (12px), `text-base` (18px), `text-lg` (36px), `text-xl` (48px). All other Tailwind text-size utilities are aliased to these four sizes via `design-utilities.css`.
 - Use `glass` for the blurred panel effect; `prose-optimized` for longer copy blocks.
 - Keep any new component-level styles token-driven (no hard-coded hex values); extend tokens by editing `design-tokens.css` only.
 
