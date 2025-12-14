@@ -2,7 +2,6 @@
 
 import { useMemo, memo } from "react";
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
 import {
   ArrowRightIcon,
   TrendUpIcon,
@@ -14,61 +13,12 @@ import { ExternalLinkIcon } from "lucide-react";
 // Import the updated data structure
 import { workHistoryData, WorkExperience, GridItem } from "./data";
 import { Button } from "@/components/ui/button";
-import { LazyImage } from "@/components/media/LazyImage";
 import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { GalleryGrid } from "@/components/media/GalleryGrid";
 
 interface WorkHistoryProps {
   experiences?: WorkExperience[];
 }
-
-// Memoized optimized image component
-const OptimizedImageContainer = memo(({
-  item,
-  experienceId,
-  className = "",
-  priority = false
-}: {
-  item: GridItem;
-  experienceId: string;
-  className?: string;
-  priority?: boolean;
-}) => {
-  // Lazy loading with intersection observer (for text blocks too)
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-    skip: priority,
-    rootMargin: '50px',
-  });
-
-  const shouldLoad = priority || inView;
-
-  if (item.type === 'image' && item.src) {
-    return (
-      <figure 
-        ref={ref} 
-        className={`relative overflow-hidden rounded-lg ${className}`}
-        role="img"
-        aria-label={item.alt || `Work sample from ${experienceId}`}
-      >
-        {shouldLoad && (
-          <LazyImage
-            image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId} project deliverables` }}
-            containerClassName="h-full w-full"
-            overlayClassName="from-primary/10 to-accent/10"
-            priority={priority}
-            quality={85}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        )}
-      </figure>
-    );
-  }
-
-  return null;
-});
-
-OptimizedImageContainer.displayName = 'OptimizedImageContainer';
 
 // Memoized text container component
 const TextContainer = memo(({
@@ -143,47 +93,43 @@ const ExternalLinkButton = memo(({
 ExternalLinkButton.displayName = 'ExternalLinkButton';
 
 // Memoized grid gallery component
-const GridGallery = memo(({
-  gridItems,
-  experienceId,
-  companyName,
-  priority = false
-}: {
+const GridGallery = memo(({ gridItems, experienceId, companyName }: {
   gridItems: GridItem[];
   experienceId: string;
   companyName: string;
-  priority?: boolean;
 }) => {
   if (gridItems.length === 0) return null;
 
+  const images = gridItems
+    .filter((item) => item.type === "image" && item.src)
+    .map((item, idx) => ({
+      id: `${experienceId}-${item.id ?? idx}`,
+      src: item.src as string,
+      alt: item.alt || `Work sample showcasing ${experienceId}`,
+    }));
+
+  const textItems = gridItems.filter((item) => item.type === "text");
+
   return (
-    <div 
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1"
-      role="region"
-      aria-label={`${companyName} project gallery`}
-    >
+    <div role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
       <div className="sr-only">
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
-      
-      {gridItems.map((item, index) => (
-        <div key={`${experienceId}-${item.id}`} className="w-full aspect-[4/3] group">
-          {item.type === 'image' ? (
-            <OptimizedImageContainer
-              item={item}
-              experienceId={experienceId}
-              className="w-full h-full"
-              priority={priority && index === 0}
-            />
-          ) : (
+
+      <GalleryGrid images={images} layout="highlight" className="w-full" />
+
+      {textItems.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          {textItems.map((item, idx) => (
             <TextContainer
-              content={item.content || ''}
-              className="w-full h-full"
+              key={`${experienceId}-text-${idx}`}
+              content={item.content || ""}
+              className="w-full"
             />
-          )}
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 });
@@ -337,7 +283,6 @@ const WorkExperienceEntry = memo(({
             gridItems={experience.gridItems}
             experienceId={experience.id}
             companyName={experience.company}
-            priority={isFirst}
           />
         )}
       </div>

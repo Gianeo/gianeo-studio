@@ -18,12 +18,15 @@ interface GalleryGridProps {
 }
 
 const highlightSlots = [
-  { span: "md:col-span-4 md:row-span-2", aspect: "aspect-square" },
-  { span: "md:col-span-8 md:row-span-2", aspect: "aspect-[7/4]" },
-  { span: "md:col-span-6 md:row-span-3", aspect: "aspect-[3/4]" },
-  { span: "md:col-span-6 md:row-span-3", aspect: "aspect-[4/3]" },
-  { span: "md:col-span-6 md:row-span-2", aspect: "aspect-[4/3]" },
-  { span: "md:col-span-6 md:row-span-2", aspect: "aspect-[4/3]" },
+  { span: "start-row-1 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-1 md:col-span-8 md:row-span-2", aspect: "aspect-auto" },
+  { span: "start-row-2 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-3 md:col-span-8 md:row-span-2", aspect: "aspect-auto" },
+  { span: "start-row-3 start-col-9 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-4 start-col-9 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
+  { span: "start-row-5 md:col-span-4", aspect: "aspect-auto" },
 ];
 
 export function GalleryGrid({ images, layout = "simple", className }: GalleryGridProps) {
@@ -36,7 +39,7 @@ export function GalleryGrid({ images, layout = "simple", className }: GalleryGri
     return (
       <div
         className={clsx(
-          "grid w-full h-full gap-2 md:grid-cols-12 auto-rows-[120px] md:auto-rows-[140px]",
+          "grid w-full h-full gap-2 md:grid-cols-12 auto-rows-[120px] md:auto-rows-[340px]",
           className
         )}
       >

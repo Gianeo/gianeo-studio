@@ -109,7 +109,7 @@ export default function ProductShowcase({
 
       {/* Optimized Image Gallery */}
       <section className="px-6 lg:px-1 pb-20">
-        <GalleryGrid images={imageRows.allImages} layout="simple" className="w-full" />
+        <GalleryGrid images={imageRows.allImages} layout="highlight" className="w-full" />
       </section>
     </div>
   );

@@ -67,11 +67,11 @@ export interface GridItem {
           alt: 'JustScore project 2',
           aspectRatio: 'landscape'
         },
-        {
-          id: 3,
-          type: 'text',
-          content: '0 to 1\nSaaS\nAI'
-        },
+        // {
+        //   id: 3,
+        //   type: 'text',
+        //   content: '0 to 1\nSaaS\nAI'
+        // },
         {
           id: 4,
           type: 'image',
@@ -79,11 +79,11 @@ export interface GridItem {
           alt: 'JustScore project 3',
           aspectRatio: 'landscape'
         },
-        {
-          id: 5,
-          type: 'text',
-          content: 'Web App\nMobile Native\nAPIs first\n+'
-        },
+        // {
+        //   id: 5,
+        //   type: 'text',
+        //   content: 'Web App\nMobile Native\nAPIs first\n+'
+        // },
         {
           id: 6,
           type: 'image',
@@ -105,11 +105,11 @@ export interface GridItem {
           alt: 'JustScore project 5',
           aspectRatio: 'landscape'
         },
-        {
-          id: 9,
-          type: 'text',
-          content: 'Product Design\nBranding\nMarketing\n+'
-        }
+        // {
+        //   id: 9,
+        //   type: 'text',
+        //   content: 'Product Design\nBranding\nMarketing\n+'
+        // }
       ]
     },
     {
@@ -139,11 +139,11 @@ export interface GridItem {
           alt: 'Chargebee project 1',
           aspectRatio: 'landscape'
         },
-        {
-          id: 2,
-          type: 'text',
-          content: 'Scale-Up\nSaaS\nSubscription'
-        },
+        // {
+        //   id: 2,
+        //   type: 'text',
+        //   content: 'Scale-Up\nSaaS\nSubscription'
+        // },
         {
           id: 3,
           type: 'image',
@@ -151,11 +151,11 @@ export interface GridItem {
           alt: 'Chargebee project 2',
           aspectRatio: 'landscape'
         },
-        {
-          id: 4,
-          type: 'text',
-          content: '57 badges in\nhigh customer satisfaction\nProduct excellence'
-        },
+        // {
+        //   id: 4,
+        //   type: 'text',
+        //   content: '57 badges in\nhigh customer satisfaction\nProduct excellence'
+        // },
         {
           id: 5,
           type: 'image',
@@ -184,11 +184,11 @@ export interface GridItem {
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
-        {
-          id: 9,
-          type: 'text',
-          content: '+40% operation efficiency\nscaled team from 12 to 30\n92% employee retention'
-        },
+        // {
+        //   id: 9,
+        //   type: 'text',
+        //   content: '+40% operation efficiency\nscaled team from 12 to 30\n92% employee retention'
+        // },
         {
           id: 10,
           type: 'image',
@@ -196,11 +196,11 @@ export interface GridItem {
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
-        {
-          id: 11,
-          type: 'text',
-          content: 'Ranked #1\nin 39 subscription\ncategories'
-        },
+        // {
+        //   id: 11,
+        //   type: 'text',
+        //   content: 'Ranked #1\nin 39 subscription\ncategories'
+        // },
         {
           id: 12,
           type: 'image',
@@ -236,11 +236,11 @@ export interface GridItem {
           alt: 'Zopa Bank project 1',
           aspectRatio: 'square'
         },
-        {
-          id: 2,
-          type: 'text',
-          content: 'Scale-up\nFintech\nBank\n+'
-        },
+        // {
+        //   id: 2,
+        //   type: 'text',
+        //   content: 'Scale-up\nFintech\nBank\n+'
+        // },
         {
           id: 3,
           type: 'image',
@@ -262,16 +262,16 @@ export interface GridItem {
           alt: 'Zopa Bank project 3',
           aspectRatio: 'square'
         },
-        {
-          id: 6,
-          type: 'text',
-          content: '+27%\nincrease in\nCustomers'
-        },
-        {
-          id: 7,
-          type: 'text',
-          content: '4.5/5\nCustomer\nsatisfaction'
-        },
+        // {
+        //   id: 6,
+        //   type: 'text',
+        //   content: '+27%\nincrease in\nCustomers'
+        // },
+        // {
+        //   id: 7,
+        //   type: 'text',
+        //   content: '4.5/5\nCustomer\nsatisfaction'
+        // },
         {
           id: 8,
           type: 'image',
@@ -315,11 +315,11 @@ export interface GridItem {
           alt: 'Sainsbury\'s Argos project 1',
           aspectRatio: 'landscape'
         },
-        {
-          id: 2,
-          type: 'text',
-          content: 'Enterprise\nEcommerce\nFintech\nIn-Store\n+'
-        },
+        // {
+        //   id: 2,
+        //   type: 'text',
+        //   content: 'Enterprise\nEcommerce\nFintech\nIn-Store\n+'
+        // },
         {
           id: 3,
           type: 'image',
@@ -327,11 +327,11 @@ export interface GridItem {
           alt: 'Sainsbury\'s Argos project 2',
           aspectRatio: 'square'
         },
-        {
-          id: 4,
-          type: 'text',
-          content: 'Argos Financial Services\nTu Clothing\nHabitat'
-        },
+        // {
+        //   id: 4,
+        //   type: 'text',
+        //   content: 'Argos Financial Services\nTu Clothing\nHabitat'
+        // },
         {
           id: 5,
           type: 'image',
@@ -360,11 +360,11 @@ export interface GridItem {
           alt: 'Sainsbury\'s Argos project 3',
           aspectRatio: 'landscape'
         },
-        {
-          id: 9,
-          type: 'text',
-          content: 'Design Systems\nOptimization\nEfficiency\n+'
-        },
+        // {
+        //   id: 9,
+        //   type: 'text',
+        //   content: 'Design Systems\nOptimization\nEfficiency\n+'
+        // },
       ]
     },
     {
@@ -400,16 +400,16 @@ export interface GridItem {
           alt: 'Ocado Technology project 2',
           aspectRatio: 'landscape'
         },
-        {
-          id: 3,
-          type: 'text',
-          content: '0-1\nRaaS/PaaS\nEcommerce\n+'
-        },
-        {
-          id: 4,
-          type: 'text',
-          content: '95%\nEmployee\nretention'
-        },
+        // {
+        //   id: 3,
+        //   type: 'text',
+        //   content: '0-1\nRaaS/PaaS\nEcommerce\n+'
+        // },
+        // {
+        //   id: 4,
+        //   type: 'text',
+        //   content: '95%\nEmployee\nretention'
+        // },
         {
           id: 5,
           type: 'image',
@@ -431,11 +431,11 @@ export interface GridItem {
           alt: 'Ocado Technology project 4',
           aspectRatio: 'landscape'
         },
-        {
-          id: 8,
-          type: 'text',
-          content: 'Kroger\nSobeys\nGroupe Casino\nMorrisons\nBon Preu\nIca\n+'
-        },
+        // {
+        //   id: 8,
+        //   type: 'text',
+        //   content: 'Kroger\nSobeys\nGroupe Casino\nMorrisons\nBon Preu\nIca\n+'
+        // },
         {
           id: 9,
           type: 'image',
@@ -443,11 +443,11 @@ export interface GridItem {
           alt: 'Ocado Technology project 4',
           aspectRatio: 'landscape'
         },
-        {
-          id: 10,
-          type: 'text',
-          content: 'Growth\n593%\nShare Value'
-        },
+        // {
+        //   id: 10,
+        //   type: 'text',
+        //   content: 'Growth\n593%\nShare Value'
+        // },
         {
           id: 11,
           type: 'image',
@@ -488,11 +488,11 @@ export interface GridItem {
           alt: 'Ocado General Merchandise project 1',
           aspectRatio: 'square'
         },
-        {
-          id: 2,
-          type: 'text',
-          content: '0-1\nRetail\nEcommerce\n+'
-        },
+        // {
+        //   id: 2,
+        //   type: 'text',
+        //   content: '0-1\nRetail\nEcommerce\n+'
+        // },
         {
           id: 3,
           type: 'image',
@@ -521,11 +521,11 @@ export interface GridItem {
           alt: 'Ocado General Merchandise project 3',
           aspectRatio: 'square'
         },
-        {
-          id: 7,
-          type: 'text',
-          content: '>34% YoY growth\nin general merchandise\nrevenue'
-        },
+        // {
+        //   id: 7,
+        //   type: 'text',
+        //   content: '>34% YoY growth\nin general merchandise\nrevenue'
+        // },
         {
           id: 8,
           type: 'image',
@@ -533,11 +533,11 @@ export interface GridItem {
           alt: 'Ocado General Merchandise project 3',
           aspectRatio: 'square'
         },
-        {
-          id: 9,
-          type: 'text',
-          content: 'Platform as a Service\nDesign System\nIn-store tech\n+'
-        },
+        // {
+        //   id: 9,
+        //   type: 'text',
+        //   content: 'Platform as a Service\nDesign System\nIn-store tech\n+'
+        // },
         {
           id: 10,
           type: 'image',
@@ -614,11 +614,11 @@ export interface GridItem {
           alt: 'Ocado.com project 2',
           aspectRatio: 'landscape'
         },
-        {
-          id: 3,
-          type: 'text',
-          content: 'Scale-up\nRetail\nEcommerce\n+'
-        },
+        // {
+        //   id: 3,
+        //   type: 'text',
+        //   content: 'Scale-up\nRetail\nEcommerce\n+'
+        // },
       ]
     },
     {
