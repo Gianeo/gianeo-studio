@@ -15,7 +15,7 @@ export function DotList({ items, className, tone = "primary" }: DotListProps) {
     <ul className={cn("space-y-2", className)}>
       {items.map((item, index) => (
         <li key={`${item}-${index}`} className="flex items-start gap-2 text-sm">
-          <div className={cn("w-1 h-1 rounded-full mt-2 flex-shrink-0", dotClass)} />
+          <div className={cn("w-1 h-1 rounded-full mt-2 shrink-0", dotClass)} />
           <span className="font-copy text-muted-foreground hover:text-foreground transition-colors">
             {item}
           </span>

@@ -1,57 +1,18 @@
 "use client";
 
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import clsx from "clsx";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
-import { CardShell } from "@/components/primitives/CardShell";
-
-const clients = [
-  "Adobe",
-  "Sainsbury's Argos",
-  "Chargebee",
-  "fetch",
-  "FILA",
-  "LOVABLE",
-  "Novartis",
-  "Ocado",
-  "Sun",
-  "ENI",
-  "Thomson Reuters",
-  "Zopa",
-  "MassiveMusic",
-  "Nova",
-  "and many more",
-];
+import ClientsLogos from "../ClientsLogos";
 
 export function Intro() {
   return (
     <section className="bg-background text-foreground py-16 lg:py-24">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 px-6 lg:px-0">
-        <div className="lg:col-span-7 space-y-6">
-          <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.35em] text-muted-foreground">
-            <ArrowRightIcon size={16} />
-            <span>From 0-1 to enterprises</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-            {clients.map((client) => (
-              <CardShell
-                key={client}
-                className={clsx(
-                  "h-28 sm:h-32 lg:h-36 flex items-center justify-center border-border/60 bg-muted/5",
-                  "text-sm font-semibold text-muted-foreground"
-                )}
-                interactive={false}
-              >
-                <span className="text-sm font-semibold text-muted-foreground/90 text-center px-2 leading-tight">
-                  {client}
-                </span>
-              </CardShell>
-            ))}
-          </div>
+      <div className="mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 px-6 lg:px-0">
+        <div className="lg:col-span-8 space-y-6">
+            <ClientsLogos />
         </div>
 
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-4 space-y-6">
           <p className="text-[11px] font-mono uppercase tracking-[0.5em] text-muted-foreground">Why me</p>
           <SectionIntro
             eyebrow={null}

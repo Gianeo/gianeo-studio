@@ -78,6 +78,13 @@ export default function HomePage() {
         <Hero />
       </section>
 
+      {/* Main content area */}
+      <main 
+        id="main-content" 
+        role="main"
+        className="space-y-8 lg:space-y-32 pb-24 md:px-8 lg:px-0"
+      >
+
       <section 
         id="intro" 
         aria-label="Intro overview"
@@ -93,13 +100,6 @@ export default function HomePage() {
       >
         <Statement />
       </section>
-
-      {/* Main content area */}
-      <main 
-        id="main-content" 
-        role="main"
-        className="space-y-8 lg:space-y-32 pb-24 md:px-8 lg:px-0"
-      >
         {/* Client logos section */}
         <section 
           id="clients" 
@@ -112,30 +112,6 @@ export default function HomePage() {
           </h2>
           <ClientsLogos />
         </section>
-        
-        <section 
-          id="product-showcase" 
-          aria-labelledby="products-heading"
-          role="region"
-          aria-label="Featured product work and case studies"
-        >
-          <h2 id="products-heading" className="sr-only">
-            Featured Product Work
-          </h2>
-          <ProductShowcase />
-        </section>
-
-        <section 
-          id="history" 
-          aria-labelledby="history-heading"
-          role="region"
-          aria-label="History"
-        >
-          <h2 id="history-heading" className="sr-only">
-            History
-          </h2>
-          <WorkHistory />
-        </section>
 
         <section 
           id="services" 
@@ -147,6 +123,30 @@ export default function HomePage() {
             Services and Capabilities
           </h2>
           <Services />
+        </section>
+        
+        {/* <section 
+          id="product-showcase" 
+          aria-labelledby="products-heading"
+          role="region"
+          aria-label="Featured product work and case studies"
+        >
+          <h2 id="products-heading" className="sr-only">
+            Featured Product Work
+          </h2>
+          <ProductShowcase />
+        </section> */}
+
+        <section 
+          id="history" 
+          aria-labelledby="history-heading"
+          role="region"
+          aria-label="History"
+        >
+          <h2 id="history-heading" className="sr-only">
+            History
+          </h2>
+          <WorkHistory />
         </section>
 
         {/* Personal profile section */}

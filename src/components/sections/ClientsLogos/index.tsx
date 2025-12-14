@@ -167,7 +167,7 @@ const OptimizedLogoContainer = memo(({
   return (
     <figure 
       ref={ref} 
-      className="group relative flex items-center justify-center rounded-lg aspect-[3/2] w-full"
+      className="group relative flex items-center justify-center rounded-lg aspect-3/2 w-full"
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
     >
@@ -220,7 +220,7 @@ OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 // Memoized "and many more" component with semantic meaning
 const AndManyMoreBox = memo(() => (
   <div 
-    className="relative flex items-center justify-center rounded-lg aspect-[3/2] w-full"
+    className="relative flex items-center justify-center rounded-lg aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
   >

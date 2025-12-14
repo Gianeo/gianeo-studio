@@ -31,7 +31,7 @@ const TextContainer = memo(({
   const lines = content.split('\n').filter(line => line.trim());
 
   return (
-    <div 
+    <div
       className={`rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-[4/3] p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
@@ -70,17 +70,17 @@ const AchievementValue = memo(({ value }: { value: string }) => {
 AchievementValue.displayName = 'AchievementValue';
 
 // Memoized external link button component
-const ExternalLinkButton = memo(({ 
-  url, 
-  company 
-}: { 
-  url: string; 
-  company: string; 
+const ExternalLinkButton = memo(({
+  url,
+  company
+}: {
+  url: string;
+  company: string;
 }) => (
   <Button asChild size="lg" variant="primary" className="btn">
-    <Link 
-      href={url} 
-      target="_blank" 
+    <Link
+      href={url}
+      target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${company} website (opens in new tab)`}
     >
@@ -161,11 +161,11 @@ const WorkExperienceEntry = memo(({
     "jobTitle": experience.role,
     "workLocation": experience.location || "London, UK",
     "responsibilities": experience.keyResponsibilities,
-    "skills": experience.keyResponsibilities.map(resp => 
+    "skills": experience.keyResponsibilities.map(resp =>
       resp.includes('design') ? 'Design Leadership' :
-      resp.includes('team') ? 'Team Management' :
-      resp.includes('system') ? 'Design Systems' :
-      'Product Strategy'
+        resp.includes('team') ? 'Team Management' :
+          resp.includes('system') ? 'Design Systems' :
+            'Product Strategy'
     ).filter((skill, index, self) => self.indexOf(skill) === index)
   }), [experience]);
 
@@ -173,7 +173,7 @@ const WorkExperienceEntry = memo(({
   const CompanyInfo = memo(() => (
     <aside className="col-span-12 lg:col-span-2">
       <div className="sticky top-24 px-6 lg:px-12">
-        <time 
+        <time
           className="text-xs font-mono text-muted-foreground mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
           aria-label={`Employment period: ${experience.duration}`}
@@ -198,14 +198,18 @@ const WorkExperienceEntry = memo(({
       <article className="space-y-6 md:space-y-10">
         {/* Work experience header */}
         <header className="space-y-8">
-          <h3 
-            className="font-heading font-bold text-5xl heading-normal leading-13 max-w-lg lg:-mt-1.5"
+          <h3
+            className="font-heading font-bold text-5xl heading-normal leading-13 max-w-xl lg:-mt-1.5"
             id={`work-${experience.id}`}
           >
             {experience.title}
           </h3>
+        </header>
 
-          <div 
+        {/* Key Responsibilities */}
+        <section aria-labelledby={`responsibilities-${experience.id}`} className="flex gap-16">
+
+          <div
             className="font-copy text-muted-foreground text-base prose-optimized max-w-lg"
             aria-describedby={`work-${experience.id}`}
           >
@@ -215,15 +219,13 @@ const WorkExperienceEntry = memo(({
               </p>
             ))}
           </div>
-        </header>
 
-        {/* Key Responsibilities */}
-        <section aria-labelledby={`responsibilities-${experience.id}`}>
           <h4 id={`responsibilities-${experience.id}`} className="sr-only">
             Key Responsibilities at {experience.company}
           </h4>
-          <div className="max-w-2xl">
-            <ul 
+
+          <div className="max-w-2xl space-y-8">
+            <ul
               className="space-y-1.5 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
               role="list"
               aria-label={`Key achievements and responsibilities at ${experience.company}`}
@@ -234,26 +236,26 @@ const WorkExperienceEntry = memo(({
                   className="flex items-start gap-3 text-xs font-copy text-muted-foreground"
                   role="listitem"
                 >
-                  <span 
-                    className="size-2 rounded-full bg-primary mt-1 flex-shrink-0" 
+                  <span
+                    className="size-2 rounded-full bg-primary mt-1 shrink-0"
                     aria-hidden="true"
                   />
                   <span>{responsibility}</span>
                 </li>
               ))}
             </ul>
+
+            {/* External Link Button */}
+            {experience.buttonUrl && (
+              <div className="pt-4">
+                <ExternalLinkButton
+                  url={experience.buttonUrl}
+                  company={experience.company}
+                />
+              </div>
+            )}
           </div>
         </section>
-
-        {/* External Link Button */}
-        {experience.buttonUrl && (
-          <div className="pt-4">
-            <ExternalLinkButton 
-              url={experience.buttonUrl} 
-              company={experience.company} 
-            />
-          </div>
-        )}
       </article>
     </div>
   ));
@@ -261,7 +263,7 @@ const WorkExperienceEntry = memo(({
   ContentSection.displayName = 'ContentSection';
 
   return (
-    <article 
+    <article
       className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 xl:gap-8"
       aria-labelledby={`work-${experience.id}`}
     >
@@ -318,8 +320,8 @@ export default function WorkHistory({
       "creator": "Gianni Favaretto",
       "dateCreated": exp.startDate,
       "industry": exp.company.includes('Bank') ? 'Financial Services' :
-                  exp.company.includes('Ocado') ? 'E-commerce' :
-                  exp.company.includes('Chargebee') ? 'SaaS' : 'Technology'
+        exp.company.includes('Ocado') ? 'E-commerce' :
+          exp.company.includes('Chargebee') ? 'SaaS' : 'Technology'
     }))
   }), [experiences]);
 
@@ -339,7 +341,7 @@ export default function WorkHistory({
       <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="Work History" />
 
       {/* Work Experience Entries */}
-      <div 
+      <div
         className="py-6 sm:py-8 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48"
         role="main"
         aria-label="Professional work experience and portfolio"
