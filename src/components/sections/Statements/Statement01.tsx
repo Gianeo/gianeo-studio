@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export function Statement() {
   return (
-    <section className="bg-background text-foreground">
+    <section className="bg-background text-foreground pb-24">
       <div className="relative grid grid-cols-12">
         <div className="col-span-2 bg-muted/10 pointer-events-none" aria-hidden="true" />
 

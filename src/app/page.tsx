@@ -100,18 +100,6 @@ export default function HomePage() {
       >
         <Statement />
       </section>
-
-        <section 
-          id="services" 
-          aria-labelledby="services-heading"
-          role="region"
-          aria-label="Services and capabilities offered"
-        >
-          <h2 id="services-heading" className="sr-only">
-            Services and Capabilities
-          </h2>
-          <Services />
-        </section>
         
         {/* <section 
           id="product-showcase" 

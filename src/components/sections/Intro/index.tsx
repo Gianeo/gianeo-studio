@@ -2,12 +2,12 @@
 
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import ClientsLogos from "../ClientsLogos";
-import { HeaderSection } from "../ClientsLogos/HeaderSection";
+import { SectionBanner } from "@/components/primitives/SectionBanner";
 
 export function Intro() {
   return (
     <section className="bg-background text-foreground py-16 lg:py-24">
-      <HeaderSection />
+      <SectionBanner icon={null} label="From 0-1 to Enterprises" />
       <div className="mx-auto grid w-full grid-cols-1 lg:grid-cols-12 px-6 lg:px-0 pt-6">
         <div className="lg:col-span-8 space-y-6">
           <ClientsLogos />

@@ -14,17 +14,18 @@ export function SectionBanner({ icon, label, className, sticky = true }: Section
   return (
     <header
       className={cn(
-        "z-50 glass border-b border-border/50",
+        "z-50 glass border-b border-border/50 mb-8",
         sticky && "sticky top-0",
         !sticky && "relative",
         className
       )}
     >
-      <div className="flex justify-between px-6 lg:px-12 py-4">
-        <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
+      <div className="grid grid-cols-12">
+        <div className="col-span-2 px-6 lg:px-12 py-4 flex items-center gap-4 text-xs font-mono text-muted-foreground">
           {icon}
           {label}
         </div>
+        <div className="col-span-10 bg-muted/10"></div>
       </div>
     </header>
   );
