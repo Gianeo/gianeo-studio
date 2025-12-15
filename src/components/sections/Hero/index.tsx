@@ -57,12 +57,21 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   return (
     <section
-      className={`relative isolate overflow-hidden bg-background text-foreground dark:bg-background dark:text-white min-h-screen flex items-end pb-16 lg:pb-24 ${className}`}
+      className={`relative bg-background text-foreground dark:bg-background dark:text-white min-h-screen flex flex-col justify-between items-center pb-16 lg:pb-24 ${className}`}
     >
-      <div className="" />
+      <div className="flex items-center justify-center pointer-events-none">
+        <div className="relative w-[360px] md:w-[420px] h-[360px] md:h-[420px] lg:h-full flex items-center justify-center">
+          <LogoGf
+            className="w-32 md:w-40 lg:w-48 h-auto"
+            aria-label="Gianeo Studio logo"
+          />
+        </div>
+      </div>
 
-      <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-12 items-start">
+{/* Content */}
+      <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
+
           <div className="space-y-8">
             <p className="body-label text-neutral-600 dark:text-white/50">
               Gianni G. Favaretto
@@ -148,6 +157,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               ))}
             </ul>
           </div>
+
         </div>
       </div>
     </section>
