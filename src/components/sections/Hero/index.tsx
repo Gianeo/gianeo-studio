@@ -33,8 +33,8 @@ const collageImages = [
 
 const whatIDo = [
   { title: "Product", description: "Creation and building" },
-  { title: "Leadership", description: "People and Performance Management" },
   { title: "User Interfaces", description: "Design and Engineering" },
+  { title: "Leadership", description: "People and Performance" },
   { title: "Coaching", description: "Talent development" },
   { title: "Brand", description: "Development" },
 ];
@@ -43,7 +43,7 @@ const served = [
   { title: "SaaS", description: "Subscriptions, Analytics, Services" },
   { title: "Fintech", description: "Banking, Payments" },
   { title: "Ecommerce", description: "General Merchandise, Grocery" },
-  { title: "0-1, ScaleUp", description: "Best fit for" },
+  { title: "0-1 to ScaleUp", description: "Best fit for" },
   { title: "Global", description: "From the US, UK, EU, to India" },
 ];
 
@@ -71,29 +71,29 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
 
       {/* Content */}
       <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
 
-          <div className="space-y-6">
-            <p className="body-label text-neutral-600 dark:text-white/30">
-              Craftsmanship + Leadership
-            </p>
-            <div className="flex flex-col justify-between space-y-12 bg-neutral-700">
+          <div className="space-y-6 flex flex-col justify-between">
+            <div className="space-y-6">
+              <p className="body-label text-neutral-600 dark:text-white/30">
+                Craftsmanship + Leadership
+              </p>
               <h1
                 id="hero-heading"
                 className="heading-display leading-tight text-foreground dark:text-white"
               >
                 Design+ expertise for growth.
               </h1>
-              <div>
-                <Button asChild variant="accent" size="base" className="gap-2">
-                  <a href="mailto:giannijfavaretto@gmail.com">
-                    <span className="inline-flex size-7 items-center justify-center rounded-full border border-black/10 text-xs dark:border-white/30">
-                      ↗
-                    </span>
-                    Get in touch
-                  </a>
-                </Button>
-              </div>
+            </div>
+            <div>
+              <Button asChild variant="accent" size="base" className="gap-2">
+                <a href="mailto:giannijfavaretto@gmail.com">
+                  <span className="inline-flex size-7 items-center justify-center rounded-full border border-black/10 text-xs dark:border-white/30">
+                    ↗
+                  </span>
+                  Get in touch
+                </a>
+              </Button>
             </div>
           </div>
 

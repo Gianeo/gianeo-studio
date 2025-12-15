@@ -61,11 +61,11 @@
   }
 
   .body-sm {
-    @apply text-sm font-copy tracking-wide subpixel-antialiased;
+    @apply text-sm font-copy tracking-wider subpixel-antialiased;
   }
 
   .body-base {
-    @apply text-base font-copy antialiased;
+    @apply text-base font-copy font-medium antialiased;
   }
 
   .heading-sm {
