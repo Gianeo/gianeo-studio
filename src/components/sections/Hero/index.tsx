@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { memo } from "react";
 import { LogoGf } from "@/components/logo/LogoGf";
+import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation/Navigation";
 
 interface HeroSectionProps {
@@ -62,36 +63,37 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
     >
       <Navigation />
       <div className="flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
-          <LogoGf
-            className="w-32 md:w-40 lg:w-48 h-auto"
-            aria-label="Gianeo Studio logo"
-          />
+        <LogoGf
+          className="w-32 md:w-40 lg:w-48 h-auto"
+          aria-label="Gianeo Studio logo"
+        />
       </div>
 
-{/* Content */}
+      {/* Content */}
       <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             <p className="body-label text-neutral-600 dark:text-white/30">
               Craftsmanship + Leadership
             </p>
-            <div className="flex flex-col justify-between">
-            <h1
-              id="hero-heading"
-              className="heading-display leading-tight text-foreground dark:text-white"
-            >
-              Design+ expertise for growth.
-            </h1>
-            <a
-              href="mailto:giannijfavaretto@gmail.com"
-              className="inline-flex items-center gap-3 rounded-full bg-[#ff1957] px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-[0_10px_40px_rgba(255,25,87,0.35)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_42px_rgba(255,25,87,0.45)] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white/50"
-            >
-              <span className="inline-flex size-7 items-center justify-center rounded-full border border-black/10 text-xs dark:border-white/30">
-                ↗
-              </span>
-              Get in touch
-            </a>
+            <div className="flex flex-col justify-between space-y-12 bg-neutral-700">
+              <h1
+                id="hero-heading"
+                className="heading-display leading-tight text-foreground dark:text-white"
+              >
+                Design+ expertise for growth.
+              </h1>
+              <div>
+                <Button asChild variant="accent" size="base" className="gap-2">
+                  <a href="mailto:giannijfavaretto@gmail.com">
+                    <span className="inline-flex size-7 items-center justify-center rounded-full border border-black/10 text-xs dark:border-white/30">
+                      ↗
+                    </span>
+                    Get in touch
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -99,11 +101,11 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             <p className="body-label text-neutral-600 dark:text-white/30">
               What I do
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {whatIDo.map((item) => (
                 <li
                   key={item.title}
-                  className="border-b border-black/10 pb-3 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                  className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <span className="heading-sm text-foreground dark:text-white/60">
                     {item.title}
@@ -120,11 +122,11 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             <p className="body-label text-neutral-600 dark:text-white/30">
               Served
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {served.map((item) => (
                 <li
                   key={item.title}
-                  className="border-b border-black/10 pb-3 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                  className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <span className="heading-sm text-foreground dark:text-white/60">
                     {item.title}
@@ -141,11 +143,11 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             <p className="body-label text-neutral-600 dark:text-white/30">
               History
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {history.map((item) => (
                 <li
                   key={item.label}
-                  className="border-b border-black/10 pb-3 last:border-0 last:pb-0 dark:border-white/8"
+                  className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="body-sm text-neutral-600 dark:text-white/30">
