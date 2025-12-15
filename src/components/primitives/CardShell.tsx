@@ -13,7 +13,7 @@ export function CardShell({ children, className, interactive = false }: CardShel
   return (
     <div
       className={cn(
-        "rounded-xl border border-border bg-card/60 shadow-sm",
+        "rounded-xl border border-border bg-neutral-lighter dark:bg-neutral-darker shadow-sm",
         interactive && "transition hover:-translate-y-[1px] hover:shadow-md",
         className
       )}

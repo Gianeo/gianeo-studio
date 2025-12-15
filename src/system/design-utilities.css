@@ -57,13 +57,13 @@
 
   /* Typographic roles */
   .body-label {
-    @apply text-[10px] font-mono font-bold uppercase tracking-[0.5em];
+    @apply text-[10px] font-mono font-bold uppercase tracking-[0.42em];
   }
   .body-sm {
-    @apply text-sm tracking-wider subpixel-antialiased;
+    @apply text-sm font-normal tracking-wider subpixel-antialiased;
   }
   .body-base {
-    @apply text-base font-medium;
+    @apply text-base font-normal;
   }
   .heading-sm {
     @apply text-base;
@@ -78,17 +78,29 @@
     @apply antialiased;
   }
   .body-sm, .body-base {
-    @apply font-copy font-bold;
+    @apply font-copy;
   }
   .heading-sm, .heading-base, .heading-display {
     @apply font-heading font-bold;
   }
 
   .text-primary {
-    @apply text-neutral-darkest dark:text-neutral-lightest;
+    color: var(--neutral-darkest);
+  }
+  .dark .text-primary {
+    color: var(--neutral-lightest);
   }
   .text-secondary {
-    @apply text-neutral-darker dark:text-neutral-lighter;
+    color: var(--neutral-darker);
+  }
+  .dark .text-secondary {
+    color: var(--neutral-lighter);
+  }
+  .text-muted {
+    color: var(--neutral-dark);
+  }
+  .dark .text-muted {
+    color: var(--neutral-light);
   }
 
   /* Typography scale overrides (4 sizes total) */

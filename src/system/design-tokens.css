@@ -37,14 +37,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 
   /* Typography scale (only four sizes) */
   --text-sm: 0.75rem;   /* 12px */
@@ -64,7 +56,7 @@
 :root {
   --radius: 0.625rem;
   --background: var(--neutral-lightest);
-  --foreground: var(--neutral-darkest);
+  --foreground: var(--neutral-dark);
   --card: var(--neutral-lightest);
   --card-foreground: var(--neutral-darkest);
   --popover: var(--neutral-lightest);
@@ -73,7 +65,7 @@
   --primary-foreground: var(--neutral-lightest);
   --secondary: var(--neutral-dark);
   --secondary-foreground: var(--neutral-lightest);
-  --muted: var(--neutral-lighter);
+  --muted: var(--neutral-lightest);
   --muted-foreground: var(--neutral-dark);
   --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
   --accent-foreground: oklch(0.985 0 0);
@@ -81,19 +73,11 @@
   --border: var(--neutral-lighter);
   --input: var(--neutral-lighter);
   --ring: var(--neutral-light);
-  --sidebar: var(--neutral-lightest);
-  --sidebar-foreground: var(--neutral-darkest);
-  --sidebar-primary: var(--neutral-dark);
-  --sidebar-primary-foreground: var(--neutral-lightest);
-  --sidebar-accent: var(--neutral-lighter);
-  --sidebar-accent-foreground: var(--neutral-darkest);
-  --sidebar-border: var(--neutral-lighter);
-  --sidebar-ring: var(--neutral-light);
 }
 
 .dark {
   --background: var(--neutral-darkest);
-  --foreground: var(--neutral-lightest);
+  --foreground: var(--neutral-light);
   --card: var(--neutral-dark);
   --card-foreground: var(--neutral-lightest);
   --popover: var(--neutral-dark);
@@ -101,21 +85,13 @@
   --primary: var(--neutral-lightest);
   --primary-foreground: var(--neutral-darkest);
   --secondary: var(--neutral-darker);
-  --secondary-foreground: var(--neutral-lightest);
-  --muted: var(--neutral-darker);
-  --muted-foreground: var(--neutral-lighter);
+  --secondary-foreground: var(--neutral-lighter);
+  --muted: var(--neutral-dark);
+  --muted-foreground: var(--neutral-light);
   --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: var(--neutral-dark);
   --input: var(--neutral-dark);
   --ring: var(--neutral-light);
-  --sidebar: var(--neutral-dark);
-  --sidebar-foreground: var(--neutral-lightest);
-  --sidebar-primary: var(--neutral-darker);
-  --sidebar-primary-foreground: var(--neutral-lightest);
-  --sidebar-accent: var(--neutral-darker);
-  --sidebar-accent-foreground: var(--neutral-lightest);
-  --sidebar-border: var(--neutral-dark);
-  --sidebar-ring: var(--neutral-light);
 }

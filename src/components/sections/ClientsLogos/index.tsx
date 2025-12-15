@@ -172,7 +172,7 @@ const OptimizedLogoContainer = memo(({
     >
       {/* Logo Container with semantic meaning */}
       <div 
-        className="relative bg-neutral-900 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
+        className="relative bg-neutral-lighter dark:bg-neutral-darker flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
         role="presentation"
       >
         <div className="relative w-full h-full flex items-center justify-center">

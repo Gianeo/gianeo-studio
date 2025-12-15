@@ -32,7 +32,7 @@ OptimizedImageContainer.displayName = 'OptimizedImageContainer';
 // Memoized text container component
 const TextContainer = memo(({ content, className = "" }) => {
     const lines = content.split('\n').filter(line => line.trim());
-    return (_jsx("div", { className: `rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-[4/3] p-4 ${className}`, role: "text", "aria-label": `Key metrics: ${lines.join(', ')}`, children: _jsx("div", { className: "font-mono text-left max-w-sm mx-auto", children: _jsx("div", { className: "space-y-1", children: lines.map((line, index) => (_jsx("div", { className: "text-xs font-normal", children: line }, index))) }) }) }));
+    return (_jsx("div", { className: `rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-center text-xs text-neutral-600 aspect-[4/3] p-4 ${className}`, role: "text", "aria-label": `Key metrics: ${lines.join(', ')}`, children: _jsx("div", { className: "font-mono text-left max-w-sm mx-auto", children: _jsx("div", { className: "space-y-1", children: lines.map((line, index) => (_jsx("div", { className: "text-xs font-normal", children: line }, index))) }) }) }));
 });
 TextContainer.displayName = 'TextContainer';
 // Memoized achievement value renderer

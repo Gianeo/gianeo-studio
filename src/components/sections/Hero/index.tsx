@@ -59,7 +59,7 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   return (
     <section
-      className={`relative bg-background text-foreground dark:bg-background dark:text-white min-h-screen flex flex-col justify-between items-center pb-12 ${className}`}
+      className={`relative bg-background text-primary min-h-screen flex flex-col justify-between items-center pb-12 ${className}`}
     >
       <Navigation />
       <div className="flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
@@ -75,12 +75,12 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
 
           <div className="space-y-6 flex flex-col justify-between">
             <div className="space-y-6">
-              <p className="body-label">
+              <p className="body-label text-muted">
                 Craftsmanship + Leadership
               </p>
               <h1
                 id="hero-heading"
-                className="heading-display leading-tight text-foreground dark:text-white"
+                className="heading-display leading-tight text-primary"
               >
                 Design+ expertise for growth.
               </h1>
@@ -98,7 +98,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label">
+            <p className="body-label text-muted">
               What I do
             </p>
             <ul className="space-y-1.5">
@@ -107,10 +107,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   key={item.title}
                   className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm">
+                  <span className="heading-sm text-secondary">
                     {item.title}
                   </span>
-                  <span className="body-sm">
+                  <span className="body-sm text-muted">
                     {item.description}
                   </span>
                 </li>
@@ -119,7 +119,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label">
+            <p className="body-label text-muted">
               Served
             </p>
             <ul className="space-y-1.5">
@@ -128,10 +128,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   key={item.title}
                   className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm">
+                  <span className="heading-sm text-secondary">
                     {item.title}
                   </span>
-                  <span className="body-sm">
+                  <span className="body-sm text-muted">
                     {item.description}
                   </span>
                 </li>
@@ -140,7 +140,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label">
+            <p className="body-label text-muted">
               History
             </p>
             <ul className="space-y-1.5">
@@ -150,10 +150,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="body-sm">
+                    <span className="body-sm text-muted">
                       {item.label}
                     </span>
-                    <span className="body-sm">
+                    <span className="body-sm text-secondary">
                       {item.company}
                     </span>
                   </div>
