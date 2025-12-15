@@ -60,6 +60,10 @@
     @apply text-sm font-mono uppercase tracking-[0.5em];
   }
 
+  .body-sm {
+    @apply text-sm font-copy;
+  }
+
   .body-base {
     @apply text-base font-copy;
   }

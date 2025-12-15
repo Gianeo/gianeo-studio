@@ -137,7 +137,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   className="border-b border-black/10 pb-3 last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="body-label text-neutral-600 dark:text-white/70">
+                    <span className="body-sm text-neutral-600 dark:text-white/70">
                       {item.label}
                     </span>
                     <span className="body-sm text-foreground dark:text-white">
