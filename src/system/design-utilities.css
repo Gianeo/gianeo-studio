@@ -59,26 +59,36 @@
   .body-label {
     @apply text-[10px] font-mono font-bold uppercase tracking-[0.5em];
   }
-
   .body-sm {
-    @apply text-sm font-copy tracking-wider subpixel-antialiased;
+    @apply text-sm tracking-wider subpixel-antialiased;
   }
-
   .body-base {
-    @apply text-base font-copy font-medium antialiased;
+    @apply text-base font-medium;
   }
-
   .heading-sm {
-    @apply text-base font-heading font-bold antialiased;
+    @apply text-base;
   }
-
   .heading-base {
-    @apply text-lg font-heading font-bold antialiased;
+    @apply text-lg;
+  }
+  .heading-display {
+    @apply text-xl leading-13 tracking-[-0.025em];
+  }
+  .body-base, .heading-sm, .heading-base, .heading-display {
+    @apply antialiased;
+  }
+  .body-sm, .body-base {
+    @apply font-copy font-bold;
+  }
+  .heading-sm, .heading-base, .heading-display {
+    @apply font-heading font-bold;
   }
 
-  .heading-display {
-    @apply text-xl font-heading font-bold leading-15;
-    letter-spacing: -0.025em;
+  .text-primary {
+    @apply text-neutral-darkest dark:text-neutral-lightest;
+  }
+  .text-secondary {
+    @apply text-neutral-darker dark:text-neutral-lighter;
   }
 
   /* Typography scale overrides (4 sizes total) */

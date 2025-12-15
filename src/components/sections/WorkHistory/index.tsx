@@ -174,16 +174,16 @@ const WorkExperienceEntry = memo(({
     <aside className="col-span-12 lg:col-span-2">
       <div className="sticky top-24 px-6 lg:px-12">
         <time 
-          className="body-sm text-muted-foreground mb-2 block"
+          className="body-sm mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
           aria-label={`Employment period: ${experience.duration}`}
         >
           {experience.duration}
         </time>
-        <h3 className="heading-sm tracking-normal leading-none mb-1">
+        <h3 className="heading-sm leading-none mb-1">
           {experience.company}
         </h3>
-        <p className="body-sm text-muted-foreground font-mono sr-only">
+        <p className="body-sm font-mono sr-only">
           Role: {experience.role}
         </p>
       </div>
@@ -199,7 +199,7 @@ const WorkExperienceEntry = memo(({
         {/* Work experience header */}
         <header className="space-y-8">
           <h3 
-            className="heading-display leading-13 max-w-xl lg:-mt-1.5"
+            className="heading-display max-w-xl lg:-mt-1.5"
             id={`work-${experience.id}`}
           >
             {experience.title}
@@ -210,7 +210,7 @@ const WorkExperienceEntry = memo(({
         <section aria-labelledby={`responsibilities-${experience.id}`} className="flex gap-16">
 
           <div 
-            className="body-base text-muted-foreground prose-optimized max-w-lg"
+            className="body-base prose-optimized max-w-lg"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
@@ -233,11 +233,11 @@ const WorkExperienceEntry = memo(({
               {experience.keyResponsibilities.map((responsibility, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 body-base text-muted-foreground"
+                  className="flex items-start gap-3 body-base"
                   role="listitem"
                 >
                   <span 
-                    className="size-2 rounded-full bg-primary mt-1 shrink-0" 
+                    className="size-2 rounded-full mt-1 shrink-0" 
                     aria-hidden="true"
                   />
                   <span>{responsibility}</span>
@@ -329,7 +329,7 @@ export default function WorkHistory({
   const memoizedExperiences = useMemo(() => experiences, [experiences]);
 
   return (
-    <section className="min-h-screen bg-background text-foreground">
+    <section className="min-h-screen">
       {/* Overall work history structured data */}
       <script
         type="application/ld+json"

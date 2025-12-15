@@ -65,7 +65,7 @@ const OptimizedImageContainer = memo(({
   return (
     <figure 
       ref={ref} 
-      className="group relative overflow-hidden bg-neutral-100 rounded-lg glass cursor-pointer h-full w-full"
+      className="group relative overflow-hidden rounded-lg glass cursor-pointer h-full w-full"
       role="img"
       aria-label={`Personal photo: ${image.alt}`}
     >
@@ -80,8 +80,8 @@ const OptimizedImageContainer = memo(({
       {/* Enhanced hover effects for visual feedback */}
       {isLoaded && !hasError && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30" />
+          <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30" />
           <div 
             className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40"
             aria-hidden="true"
@@ -158,7 +158,7 @@ const HeaderSection = memo(() => (
   <header className="sticky top-0 z-50 glass border-b border-border/50">
     <div className="flex justify-between px-6 lg:px-12 py-4">
       <div 
-        className="flex items-center gap-4 text-xs font-mono text-muted-foreground"
+        className="flex items-center gap-4 text-xs font-mono"
         role="banner"
         aria-label="Profile section navigation"
       >
@@ -229,7 +229,7 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
     <article className="lg:col-start-3 lg:col-span-4">
       {/* Profile metadata */}
       <div 
-        className="flex flex-wrap gap-4 mb-8 text-xs text-muted-foreground"
+        className="flex flex-wrap gap-4 mb-8 text-xs"
         role="group"
         aria-label="Profile metadata"
       >
@@ -249,7 +249,7 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
 
       {/* Main heading with proper structure */}
       <h1 
-        className="font-heading font-bold text-5xl leading-13 heading-tight mb-6"
+        className="heading-display mb-6"
         id="profile-heading"
       >
         {formatTextWithLineBreaks(profile.name)}
@@ -257,7 +257,7 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
 
       {/* Personal statement with enhanced readability */}
       <div 
-        className="font-copy text-lg md:text-base text-muted-foreground leading-relaxed mb-8 prose-optimized max-w-lg"
+        className="body-base mb-8 max-w-lg"
         role="region"
         aria-labelledby="profile-heading"
         aria-describedby="profile-statement"

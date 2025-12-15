@@ -75,7 +75,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
 
           <div className="space-y-6 flex flex-col justify-between">
             <div className="space-y-6">
-              <p className="body-label text-neutral-600 dark:text-white/30">
+              <p className="body-label">
                 Craftsmanship + Leadership
               </p>
               <h1
@@ -98,7 +98,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label text-neutral-600 dark:text-white/30">
+            <p className="body-label">
               What I do
             </p>
             <ul className="space-y-1.5">
@@ -107,10 +107,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   key={item.title}
                   className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm text-foreground dark:text-white/60">
+                  <span className="heading-sm">
                     {item.title}
                   </span>
-                  <span className="body-sm text-neutral-600 dark:text-white/30">
+                  <span className="body-sm">
                     {item.description}
                   </span>
                 </li>
@@ -119,7 +119,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label text-neutral-600 dark:text-white/30">
+            <p className="body-label">
               Served
             </p>
             <ul className="space-y-1.5">
@@ -128,10 +128,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   key={item.title}
                   className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm text-foreground dark:text-white/60">
+                  <span className="heading-sm">
                     {item.title}
                   </span>
-                  <span className="body-sm text-neutral-600 dark:text-white/30">
+                  <span className="body-sm">
                     {item.description}
                   </span>
                 </li>
@@ -140,7 +140,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <div className="space-y-6">
-            <p className="body-label text-neutral-600 dark:text-white/30">
+            <p className="body-label">
               History
             </p>
             <ul className="space-y-1.5">
@@ -150,10 +150,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="body-sm text-neutral-600 dark:text-white/30">
+                    <span className="body-sm">
                       {item.label}
                     </span>
-                    <span className="body-sm text-foreground dark:text-white/60">
+                    <span className="body-sm">
                       {item.company}
                     </span>
                   </div>
