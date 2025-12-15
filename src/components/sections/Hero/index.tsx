@@ -73,9 +73,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
 
           <div className="space-y-8">
-            <p className="body-label text-neutral-600 dark:text-white/50">
-              Gianni G. Favaretto
+            <p className="body-label text-neutral-600 dark:text-white/30">
+              Craftsmanship + Leadership
             </p>
+            <div className="flex flex-col justify-between">
             <h1
               id="hero-heading"
               className="heading-display leading-tight text-foreground dark:text-white"
@@ -91,22 +92,23 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               </span>
               Get in touch
             </a>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            <p className="body-label text-neutral-600 dark:text-white/50">
+          <div className="space-y-6">
+            <p className="body-label text-neutral-600 dark:text-white/30">
               What I do
             </p>
             <ul className="space-y-2">
               {whatIDo.map((item) => (
                 <li
                   key={item.title}
-                  className="border-b border-black/10 pb-3 flex flex-col gap-1 last:border-0 last:pb-0 dark:border-white/8"
+                  className="border-b border-black/10 pb-3 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm text-foreground dark:text-white">
+                  <span className="heading-sm text-foreground dark:text-white/60">
                     {item.title}
                   </span>
-                  <span className="body-sm text-neutral-600 dark:text-white/60">
+                  <span className="body-sm text-neutral-600 dark:text-white/30">
                     {item.description}
                   </span>
                 </li>
@@ -114,20 +116,20 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <p className="body-label text-neutral-600 dark:text-white/50">
+          <div className="space-y-6">
+            <p className="body-label text-neutral-600 dark:text-white/30">
               Served
             </p>
             <ul className="space-y-2">
               {served.map((item) => (
                 <li
                   key={item.title}
-                  className="border-b border-black/10 pb-3 flex flex-col gap-1 last:border-0 last:pb-0 dark:border-white/8"
+                  className="border-b border-black/10 pb-3 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
                 >
-                  <span className="heading-sm text-foreground dark:text-white">
+                  <span className="heading-sm text-foreground dark:text-white/60">
                     {item.title}
                   </span>
-                  <span className="body-sm text-neutral-600 dark:text-white/60">
+                  <span className="body-sm text-neutral-600 dark:text-white/30">
                     {item.description}
                   </span>
                 </li>
@@ -135,8 +137,8 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <p className="body-label text-neutral-600 dark:text-white/50">
+          <div className="space-y-6">
+            <p className="body-label text-neutral-600 dark:text-white/30">
               History
             </p>
             <ul className="space-y-2">
@@ -146,10 +148,10 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   className="border-b border-black/10 pb-3 last:border-0 last:pb-0 dark:border-white/8"
                 >
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="body-sm text-neutral-600 dark:text-white/70">
+                    <span className="body-sm text-neutral-600 dark:text-white/30">
                       {item.label}
                     </span>
-                    <span className="body-sm text-foreground dark:text-white">
+                    <span className="body-sm text-foreground dark:text-white/60">
                       {item.company}
                     </span>
                   </div>

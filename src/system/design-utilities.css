@@ -57,27 +57,27 @@
 
   /* Typographic roles */
   .body-label {
-    @apply text-sm font-mono uppercase tracking-[0.5em];
+    @apply text-[10px] font-mono font-bold uppercase tracking-[0.5em];
   }
 
   .body-sm {
-    @apply text-sm font-copy;
+    @apply text-sm font-copy tracking-wide subpixel-antialiased;
   }
 
   .body-base {
-    @apply text-base font-copy;
+    @apply text-base font-copy antialiased;
   }
 
   .heading-sm {
-    @apply text-base font-heading font-bold;
+    @apply text-base font-heading font-bold antialiased;
   }
 
   .heading-base {
-    @apply text-lg font-heading font-bold;
+    @apply text-lg font-heading font-bold antialiased;
   }
 
   .heading-display {
-    @apply text-xl font-heading font-bold;
+    @apply text-xl font-heading font-bold leading-15;
     letter-spacing: -0.025em;
   }
 

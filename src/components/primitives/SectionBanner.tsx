@@ -14,7 +14,7 @@ export function SectionBanner({ icon, label, className, sticky = true }: Section
   return (
     <header
       className={cn(
-        "z-50 glass border-b border-border/50 mb-8",
+        "z-50 glass mb-8",
         sticky && "sticky top-0",
         !sticky && "relative",
         className
