@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { memo } from "react";
 import { LogoGf } from "@/components/logo/LogoGf";
+import Navigation from "@/components/navigation/Navigation";
 
 interface HeroSectionProps {
   className?: string;
@@ -57,15 +58,14 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   return (
     <section
-      className={`relative bg-background text-foreground dark:bg-background dark:text-white min-h-screen flex flex-col justify-between items-center pb-16 lg:pb-24 ${className}`}
+      className={`relative bg-background text-foreground dark:bg-background dark:text-white min-h-screen flex flex-col justify-between items-center pb-12 ${className}`}
     >
-      <div className="flex items-center justify-center pointer-events-none">
-        <div className="relative w-[360px] md:w-[420px] h-[360px] md:h-[420px] lg:h-full flex items-center justify-center">
+      <Navigation />
+      <div className="flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
           <LogoGf
             className="w-32 md:w-40 lg:w-48 h-auto"
             aria-label="Gianeo Studio logo"
           />
-        </div>
       </div>
 
 {/* Content */}

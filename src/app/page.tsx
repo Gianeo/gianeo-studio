@@ -64,9 +64,9 @@ export default function HomePage() {
       />
 
       {/* Site header with navigation */}
-      <header role="banner">
+      {/* <header role="banner">
         <Navigation />
-      </header>
+      </header> */}
 
       {/* Hero section - primary content */}
       <section 

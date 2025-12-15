@@ -19,7 +19,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
 
   return (
     <nav
-      className={`relative z-10 flex items-center justify-between p-6 lg:px-12 lg:py-8 ${className}`}
+      className={`relative w-full z-10 flex items-center justify-between p-6 lg:px-12 lg:py-8 ${className}`}
       role="navigation"
       aria-label="Main navigation"
     >
