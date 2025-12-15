@@ -50,64 +50,72 @@
   --text-sm: 0.75rem;   /* 12px */
   --text-base: 1.125rem; /* 18px */
   --text-lg: 2.25rem;   /* 36px */
-  --text-xl: 3.625rem;      /* 58px */
+  --text-xl: 3rem;      /* 48px */
+
+  /* Neutral scale (HSL) */
+  --neutral-lightest: hsl(220, 6%, 90%);
+  --neutral-lighter: hsl(220, 6%, 70%);
+  --neutral-light: hsl(220, 6%, 40%);
+  --neutral-dark: hsl(220, 6%, 15%);
+  --neutral-darker: hsl(220, 6%, 10%);
+  --neutral-darkest: hsl(220, 6%, 5%);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --background: var(--neutral-lightest);
+  --foreground: var(--neutral-darkest);
+  --card: var(--neutral-lightest);
+  --card-foreground: var(--neutral-darkest);
+  --popover: var(--neutral-lightest);
+  --popover-foreground: var(--neutral-darkest);
+  --primary: var(--neutral-darkest);
+  --primary-foreground: var(--neutral-lightest);
+  --secondary: var(--neutral-dark);
+  --secondary-foreground: var(--neutral-lightest);
+  --muted: var(--neutral-lighter);
+  --muted-foreground: var(--neutral-dark);
   --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: var(--neutral-lighter);
+  --input: var(--neutral-lighter);
+  --ring: var(--neutral-light);
+  --sidebar: var(--neutral-lightest);
+  --sidebar-foreground: var(--neutral-darkest);
+  --sidebar-primary: var(--neutral-dark);
+  --sidebar-primary-foreground: var(--neutral-lightest);
+  --sidebar-accent: var(--neutral-lighter);
+  --sidebar-accent-foreground: var(--neutral-darkest);
+  --sidebar-border: var(--neutral-lighter);
+  --sidebar-ring: var(--neutral-light);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --background: var(--neutral-darkest);
+  --foreground: var(--neutral-lightest);
+  --card: var(--neutral-dark);
+  --card-foreground: var(--neutral-lightest);
+  --popover: var(--neutral-dark);
+  --popover-foreground: var(--neutral-lightest);
+  --primary: var(--neutral-lightest);
+  --primary-foreground: var(--neutral-darkest);
+  --secondary: var(--neutral-darker);
+  --secondary-foreground: var(--neutral-lightest);
+  --muted: var(--neutral-darker);
+  --muted-foreground: var(--neutral-lighter);
   --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: var(--neutral-dark);
+  --input: var(--neutral-dark);
+  --ring: var(--neutral-light);
+  --sidebar: var(--neutral-dark);
+  --sidebar-foreground: var(--neutral-lightest);
+  --sidebar-primary: var(--neutral-darker);
+  --sidebar-primary-foreground: var(--neutral-lightest);
+  --sidebar-accent: var(--neutral-darker);
+  --sidebar-accent-foreground: var(--neutral-lightest);
+  --sidebar-border: var(--neutral-dark);
+  --sidebar-ring: var(--neutral-light);
 }
