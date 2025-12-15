@@ -12,12 +12,7 @@ export function Statement() {
           <p className="text-sm font-mono font-bold uppercase tracking-[0.5em] text-accent">
             Experience
           </p>
-          <p
-            className={clsx(
-              "max-w-6xl font-heading heading-tight text-xl font-bold",
-              "text-muted-foreground/50 leading-tighter max-w-4xl"
-            )}
-          >
+          <p className="heading-display text-muted-foreground/50 max-w-4xl">
             Only seven years of actively producing cool shit. Other years were me
             messing around and navigating through my career.
           </p>

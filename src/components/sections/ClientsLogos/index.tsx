@@ -3,8 +3,6 @@
 import { useState, useCallback, useMemo, memo } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { ArrowRightIcon } from "@phosphor-icons/react";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
 
 interface ClientsLogosProps {
   className?: string;
@@ -322,8 +320,6 @@ export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
           __html: JSON.stringify(clientsStructuredData),
         }}
       />
-
-      <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="From 0-1 to Enterprises" />
 
       <main className={`grid grid-cols-7 pb-16 lg:pb-0 ${className}`}>
         <div className="col-span-7">

@@ -47,13 +47,18 @@ const utilities = [
   { name: "text-balance / text-pretty", description: "Prevent awkward text wrapping." },
   { name: "prose-optimized", description: "Long-form copy line-height + features." },
   { name: "glass", description: "Blurred background + subtle border for panels." },
+  { name: "body-label", description: "Uppercase micro label (12px)." },
+  { name: "body-base", description: "Paragraph copy (18px)." },
+  { name: "heading-sm", description: "Small heading / meta names." },
+  { name: "heading-base", description: "Section/card heading." },
+  { name: "heading-display", description: "Hero/statement heading." },
 ];
 
 const typeScale = [
-  { label: "XL", className: "text-xl font-heading heading-tight", note: "Hero / display (48px)" },
-  { label: "LG", className: "text-lg font-heading heading-tight", note: "Section titles / leads (36px)" },
-  { label: "Base", className: "text-base font-copy", note: "Body copy (18px)" },
-  { label: "SM", className: "text-sm font-copy", note: "Meta, captions, overlines (12px)" },
+  { label: "XL", className: "heading-display", note: "Hero / display (48px)" },
+  { label: "LG", className: "heading-base", note: "Section titles / leads (36px)" },
+  { label: "Base", className: "body-base", note: "Body copy (18px)" },
+  { label: "SM", className: "body-label", note: "Meta, captions, overlines (12px)" },
 ];
 
 const buttonVariantsDemo = [
@@ -142,22 +147,41 @@ export default function SystemPage() {
         </Section>
 
         <Section title="Typography">
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Headings</p>
-              <p className="text-lg font-heading heading-tight">Font heading (Switzer)</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-heading heading-tight</code></p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-2 shadow-sm">
+              <p className="body-label text-muted-foreground">Body Label</p>
+              <p className="body-label text-foreground">EXAMPLE LABEL</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">body-label</code></p>
             </div>
-            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Body</p>
-              <p className="text-base font-copy prose-optimized">Font copy (Switzer) with balanced reading rhythm.</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-copy prose-optimized</code></p>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-2 shadow-sm">
+              <p className="body-label text-muted-foreground">Body Base</p>
+              <p className="body-base text-foreground">Paragraph body copy.</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">body-base</code></p>
             </div>
-            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-3 shadow-sm">
-              <p className="text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground">Mono</p>
-              <p className="text-base font-mono">Font mono (Azeret Mono) for code and meta.</p>
-              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">font-mono</code></p>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-2 shadow-sm">
+              <p className="body-label text-muted-foreground">Heading SM</p>
+              <p className="heading-sm text-foreground">Small heading</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">heading-sm</code></p>
             </div>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-2 shadow-sm">
+              <p className="body-label text-muted-foreground">Heading Base</p>
+              <p className="heading-base text-foreground">Section heading</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">heading-base</code></p>
+            </div>
+            <div className="rounded-xl border border-border bg-card/60 p-6 space-y-2 shadow-sm">
+              <p className="body-label text-muted-foreground">Heading Display</p>
+              <p className="heading-display text-foreground">Display heading</p>
+              <p className="text-sm text-muted-foreground">Utility: <code className="text-sm">heading-display</code></p>
+            </div>
+          </div>
+
+          <div className="space-y-3 rounded-xl border border-border bg-card/60 p-6 shadow-sm mt-6">
+            {typeScale.map((item) => (
+              <div key={item.label} className="flex flex-col gap-1 border-b border-border/60 pb-3 last:border-0 last:pb-0">
+                <p className={clsx(item.className)}>{item.label}</p>
+                <p className="text-sm text-muted-foreground">{item.note}</p>
+              </div>
+            ))}
           </div>
         </Section>
 

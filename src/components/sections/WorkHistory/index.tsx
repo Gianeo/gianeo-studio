@@ -31,8 +31,8 @@ const TextContainer = memo(({
   const lines = content.split('\n').filter(line => line.trim());
 
   return (
-    <div
-      className={`rounded-lg w-full bg-neutral-100 flex items-center text-xs text-neutral-600 aspect-4/3 p-4 ${className}`}
+    <div 
+      className={`rounded-lg w-full bg-neutral-100 flex items-center body-base text-neutral-600 aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
@@ -41,7 +41,7 @@ const TextContainer = memo(({
           {lines.map((line, index) => (
             <div
               key={index}
-              className="text-xs font-normal">
+              className="body-base font-normal">
               {line}
             </div>
           ))}
@@ -63,7 +63,7 @@ const AchievementValue = memo(({ value }: { value: string }) => {
     case "International":
       return <GlobeIcon size={24} className="text-primary" aria-label="International scope" />;
     default:
-      return <span className="text-2xl font-heading font-medium text-primary">{value}</span>;
+      return <span className="heading-base text-primary">{value}</span>;
   }
 });
 
@@ -173,17 +173,17 @@ const WorkExperienceEntry = memo(({
   const CompanyInfo = memo(() => (
     <aside className="col-span-12 lg:col-span-2">
       <div className="sticky top-24 px-6 lg:px-12">
-        <time
-          className="text-xs font-mono text-muted-foreground mb-2 block"
+        <time 
+          className="body-sm text-muted-foreground mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
           aria-label={`Employment period: ${experience.duration}`}
         >
           {experience.duration}
         </time>
-        <h3 className="font-copy font-semibold text-xl lg:text-base xl:text-xl tracking-normal leading-none mb-1">
+        <h3 className="heading-sm tracking-normal leading-none mb-1">
           {experience.company}
         </h3>
-        <p className="text-sm text-muted-foreground font-mono sr-only">
+        <p className="body-sm text-muted-foreground font-mono sr-only">
           Role: {experience.role}
         </p>
       </div>
@@ -198,8 +198,8 @@ const WorkExperienceEntry = memo(({
       <article className="space-y-6 md:space-y-10">
         {/* Work experience header */}
         <header className="space-y-8">
-          <h3
-            className="font-heading font-bold text-5xl heading-normal leading-13 max-w-xl lg:-mt-1.5"
+          <h3 
+            className="heading-display leading-13 max-w-xl lg:-mt-1.5"
             id={`work-${experience.id}`}
           >
             {experience.title}
@@ -209,8 +209,8 @@ const WorkExperienceEntry = memo(({
         {/* Key Responsibilities */}
         <section aria-labelledby={`responsibilities-${experience.id}`} className="flex gap-16">
 
-          <div
-            className="font-copy text-muted-foreground text-base prose-optimized max-w-lg"
+          <div 
+            className="body-base text-muted-foreground prose-optimized max-w-lg"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
@@ -225,7 +225,7 @@ const WorkExperienceEntry = memo(({
           </h4>
 
           <div className="max-w-2xl space-y-8">
-            <ul
+            <ul 
               className="space-y-1.5 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
               role="list"
               aria-label={`Key achievements and responsibilities at ${experience.company}`}
@@ -233,11 +233,11 @@ const WorkExperienceEntry = memo(({
               {experience.keyResponsibilities.map((responsibility, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 text-xs font-copy text-muted-foreground"
+                  className="flex items-start gap-3 body-base text-muted-foreground"
                   role="listitem"
                 >
-                  <span
-                    className="size-2 rounded-full bg-primary mt-1 shrink-0"
+                  <span 
+                    className="size-2 rounded-full bg-primary mt-1 shrink-0" 
                     aria-hidden="true"
                   />
                   <span>{responsibility}</span>

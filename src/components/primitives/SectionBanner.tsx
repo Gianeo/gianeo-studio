@@ -21,7 +21,7 @@ export function SectionBanner({ icon, label, className, sticky = true }: Section
       )}
     >
       <div className="grid grid-cols-12">
-        <div className="col-span-2 px-6 lg:px-12 py-4 flex items-center gap-4 text-xs font-mono text-muted-foreground">
+        <div className="col-span-2 px-6 lg:px-12 py-4 flex items-center gap-4 body-label text-muted-foreground">
           {icon}
           {label}
         </div>

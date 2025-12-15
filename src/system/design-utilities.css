@@ -55,6 +55,28 @@
     @apply backdrop-blur-md bg-background/40 border border-border/20;
   }
 
+  /* Typographic roles */
+  .body-label {
+    @apply text-sm font-mono uppercase tracking-[0.5em];
+  }
+
+  .body-base {
+    @apply text-base font-copy;
+  }
+
+  .heading-sm {
+    @apply text-base font-heading font-bold;
+  }
+
+  .heading-base {
+    @apply text-lg font-heading font-bold;
+  }
+
+  .heading-display {
+    @apply text-xl font-heading font-bold;
+    letter-spacing: -0.025em;
+  }
+
   /* Typography scale overrides (4 sizes total) */
   .text-sm, .text-xs {
     font-size: var(--text-sm);
