@@ -32,7 +32,7 @@ const TextContainer = memo(({
 
   return (
     <div 
-      className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-center body-base text-neutral-600 aspect-4/3 p-4 ${className}`}
+      className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-center body-base text-muted aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
@@ -77,7 +77,7 @@ const ExternalLinkButton = memo(({
   url: string;
   company: string;
 }) => (
-  <Button asChild size="lg" variant="primary" className="btn">
+  <Button asChild size="lg" variant="accent" className="btn">
     <Link
       href={url}
       target="_blank"
@@ -180,7 +180,7 @@ const WorkExperienceEntry = memo(({
         >
           {experience.duration}
         </time>
-        <h3 className="heading-sm leading-none mb-1">
+        <h3 className="heading-sm text-primary leading-none mb-1">
           {experience.company}
         </h3>
         <p className="body-sm font-mono sr-only">
@@ -199,7 +199,7 @@ const WorkExperienceEntry = memo(({
         {/* Work experience header */}
         <header className="space-y-8">
           <h3 
-            className="heading-display max-w-xl lg:-mt-1.5"
+            className="heading-display text-primary max-w-xl lg:-mt-1.5"
             id={`work-${experience.id}`}
           >
             {experience.title}
@@ -210,7 +210,7 @@ const WorkExperienceEntry = memo(({
         <section aria-labelledby={`responsibilities-${experience.id}`} className="flex gap-16">
 
           <div 
-            className="body-base prose-optimized max-w-lg"
+            className="body-base text-muted prose-optimized"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
@@ -224,7 +224,7 @@ const WorkExperienceEntry = memo(({
             Key Responsibilities at {experience.company}
           </h4>
 
-          <div className="max-w-2xl space-y-8">
+          <div className="max-w-xl space-y-8">
             <ul 
               className="space-y-1.5 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
               role="list"
@@ -233,14 +233,11 @@ const WorkExperienceEntry = memo(({
               {experience.keyResponsibilities.map((responsibility, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 body-base"
+                  className="flex items-start gap-3 body-sm text-muted px-4 relative"
                   role="listitem"
                 >
-                  <span 
-                    className="size-2 rounded-full mt-1 shrink-0" 
-                    aria-hidden="true"
-                  />
                   <span>{responsibility}</span>
+                  <div className="absolute top-1 -left-4 size-4 bg-neutral-darker"></div>
                 </li>
               ))}
             </ul>
@@ -276,7 +273,7 @@ const WorkExperienceEntry = memo(({
       />
 
       <CompanyInfo />
-      <div className="col-span-12 lg:col-span-10 px-6 lg:px-0 space-y-10 md:space-y-14">
+      <div className="col-span-12 lg:col-span-10 px-6 lg:px-0 space-y-10 md:space-y-20">
         <ContentSection />
 
         {/* Project Gallery */}
