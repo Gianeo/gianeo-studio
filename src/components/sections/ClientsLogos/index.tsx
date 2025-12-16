@@ -172,7 +172,7 @@ const OptimizedLogoContainer = memo(({
     >
       {/* Logo Container with semantic meaning */}
       <div 
-        className="relative bg-neutral-lighter dark:bg-neutral-darker flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
+        className="relative bg-neutral-lighter dark:bg-neutral-darker opacity-50 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
         role="presentation"
       >
         <div className="relative w-full h-full flex items-center justify-center">
@@ -188,7 +188,7 @@ const OptimizedLogoContainer = memo(({
               className={`w-auto h-auto object-contain transition-all duration-500 filter grayscale group-hover:grayscale-0
                 max-w-[100px] sm:max-w-[131px] lg:max-w-[163px] 
                 max-h-[32px] sm:max-h-[42px] lg:max-h-[52px] ${
-                isLoaded ? 'opacity-60 group-hover:opacity-100' : 'opacity-0'
+                isLoaded ? 'opacity-50 group-hover:opacity-100' : 'opacity-0'
               }`}
               priority={priority}
               quality={90}
@@ -199,7 +199,7 @@ const OptimizedLogoContainer = memo(({
           {/* Loading placeholder with better UX */}
           {shouldLoad && (!isLoaded || hasError) && (
             <div 
-              className="absolute inset-0 bg-neutral-200 animate-pulse rounded-lg"
+              className="absolute inset-0 bg-neutral-lighter dark:bg-neutral-darker opacity-50 animate-pulse rounded-lg"
               aria-label={hasError ? `Failed to load ${client.name} logo` : `Loading ${client.name} logo`}
             />
           )}
@@ -223,7 +223,7 @@ const AndManyMoreBox = memo(() => (
     role="text"
     aria-label="Additional client relationships beyond those displayed"
   >
-    <div className="bg-neutral-900 text-[10px] sm:text-xs text-neutral-600 text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
+    <div className="bg-neutral-lighter dark:bg-neutral-darker opacity-50 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
         and many more
       </div>
@@ -246,7 +246,7 @@ const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
 
   return (
     <section 
-      className="grid grid-cols-3 xl:grid-cols-4 gap-1 auto-rows-fr"
+      className="grid grid-cols-3 xl:grid-cols-5 gap-1 auto-rows-fr"
       role="region"
       aria-label="Client companies and partnerships"
     >
@@ -321,8 +321,7 @@ export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
         }}
       />
 
-      <main className={`grid grid-cols-7 pb-16 lg:pb-0 ${className}`}>
-        <div className="col-span-7">
+      <main className={`pb-16 lg:pb-0 ${className}`}>
           <div className="mb-6 sr-only">
             <h2>Client Portfolio Overview</h2>
             <p>
@@ -331,7 +330,6 @@ export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
             </p>
           </div>
           <LogoGrid validClients={validClients} />
-        </div>
       </main>
     </section>
   );

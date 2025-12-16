@@ -46,7 +46,8 @@
     letter-spacing: -0.015em;
   }
 
-  .prose-optimized {
+  p, .prose-optimized {
+    @apply max-w-xl;
     line-height: 1.6;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
@@ -96,6 +97,36 @@
   .dark .text-secondary {
     color: var(--neutral-lighter);
   }
+
+  /* Neutral scale utilities (usable as Tailwind-style classes) */
+  .bg-neutral-lightest { background-color: var(--neutral-lightest); }
+  .bg-neutral-lighter { background-color: var(--neutral-lighter); }
+  .bg-neutral-light { background-color: var(--neutral-light); }
+  .bg-neutral-dark { background-color: var(--neutral-dark); }
+  .bg-neutral-darker { background-color: var(--neutral-darker); }
+  .bg-neutral-darkest { background-color: var(--neutral-darkest); }
+
+  .text-neutral-lightest { color: var(--neutral-lightest); }
+  .text-neutral-lighter { color: var(--neutral-lighter); }
+  .text-neutral-light { color: var(--neutral-light); }
+  .text-neutral-dark { color: var(--neutral-dark); }
+  .text-neutral-darker { color: var(--neutral-darker); }
+  .text-neutral-darkest { color: var(--neutral-darkest); }
+
+  .border-neutral-lightest { border-color: var(--neutral-lightest); }
+  .border-neutral-lighter { border-color: var(--neutral-lighter); }
+  .border-neutral-light { border-color: var(--neutral-light); }
+  .border-neutral-dark { border-color: var(--neutral-dark); }
+  .border-neutral-darker { border-color: var(--neutral-darker); }
+  .border-neutral-darkest { border-color: var(--neutral-darkest); }
+
+  /* Dark-prefixed helpers so `dark:bg-neutral-darker` works */
+  .dark\:bg-neutral-lightest { background-color: var(--neutral-lightest); }
+  .dark\:bg-neutral-lighter { background-color: var(--neutral-lighter); }
+  .dark\:bg-neutral-light { background-color: var(--neutral-light); }
+  .dark\:bg-neutral-dark { background-color: var(--neutral-dark); }
+  .dark\:bg-neutral-darker { background-color: var(--neutral-darker); }
+  .dark\:bg-neutral-darkest { background-color: var(--neutral-darkest); }
   .text-muted {
     color: var(--neutral-dark);
   }
