@@ -194,28 +194,32 @@ const WorkExperienceEntry = memo(({
 
   // Memoized content section
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4">
+    <div className="col-span-12 lg:col-span-4 -mt-21">
+      <div className="leading-4 body-sm heading-base text-muted/50 pb-16">
+        {/* {index + 1}/{total} */}
+        1/8
+      </div>
       <article className="space-y-6 md:space-y-14">
         {/* Work experience header */}
         <div className="grid grid-cols-12 gap-16">
-        <header className="col-span-8 space-y-8">
-          <h3
-            className="heading-display text-primary max-w-5xl lg:-mt-1.5"
-            id={`work-${experience.id}`}
-          >
-            {experience.title}
-          </h3>
-        </header>
+          <header className="col-span-8 space-y-8">
+            <h3
+              className="heading-display text-primary max-w-5xl lg:-mt-1.5"
+              id={`work-${experience.id}`}
+            >
+              {experience.title}
+            </h3>
+          </header>
 
-        {/* External Link Button */}
-        {experience.buttonUrl && (
-          <div className="col-span-4 px-6 lg:px-12 text-right">
-            <ExternalLinkButton
-              url={experience.buttonUrl}
-              company={experience.company}
-            />
-          </div>
-        )}
+          {/* External Link Button */}
+          {experience.buttonUrl && (
+            <div className="col-span-4 px-6 lg:px-12 text-right">
+              <ExternalLinkButton
+                url={experience.buttonUrl}
+                company={experience.company}
+              />
+            </div>
+          )}
         </div>
 
         {/* Key Responsibilities */}
@@ -263,7 +267,7 @@ const WorkExperienceEntry = memo(({
 
   return (
     <article
-      className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 xl:gap-8"
+      className="grid grid-cols-1 lg:grid-cols-12"
       aria-labelledby={`work-${experience.id}`}
     >
       {/* Structured data for this work experience */}
@@ -341,7 +345,7 @@ export default function WorkHistory({
 
       {/* Work Experience Entries */}
       <div
-        className="py-6 sm:py-8 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48"
+        className="py-6 sm:py-24 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48"
         role="main"
         aria-label="Professional work experience and portfolio"
       >

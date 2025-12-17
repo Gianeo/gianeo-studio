@@ -105,6 +105,10 @@
   .bg-neutral-dark { background-color: var(--neutral-dark); }
   .bg-neutral-darker { background-color: var(--neutral-darker); }
   .bg-neutral-darkest { background-color: var(--neutral-darkest); }
+  
+  .bg-decoration {
+    @apply bg-muted/25;
+  }
 
   .text-neutral-lightest { color: var(--neutral-lightest); }
   .text-neutral-lighter { color: var(--neutral-lighter); }
@@ -127,6 +131,7 @@
   .dark\:bg-neutral-dark { background-color: var(--neutral-dark); }
   .dark\:bg-neutral-darker { background-color: var(--neutral-darker); }
   .dark\:bg-neutral-darkest { background-color: var(--neutral-darkest); }
+
   .text-muted {
     color: var(--neutral-dark);
   }

@@ -14,18 +14,18 @@ export function SectionBanner({ icon, label, className, sticky = true }: Section
   return (
     <header
       className={cn(
-        "z-50 glass mb-8",
+        "z-50 mb-8",
         sticky && "sticky top-0",
         !sticky && "relative",
         className
       )}
     >
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 border-t border-muted/50">
         <div className="col-span-2 px-6 lg:px-12 py-4 flex items-center gap-4 body-label text-muted-foreground">
           {icon}
           {label}
         </div>
-        <div className="col-span-10 bg-muted/10"></div>
+        {/* <div className="col-span-9"><div className="bg-decoration h-0.5" /></div> */}
       </div>
     </header>
   );
