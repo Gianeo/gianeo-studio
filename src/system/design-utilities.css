@@ -61,10 +61,10 @@
     @apply text-[10px] font-mono font-bold uppercase tracking-[0.42em];
   }
   .body-sm {
-    @apply text-sm font-normal tracking-wider subpixel-antialiased;
+    @apply text-sm font-medium tracking-wider subpixel-antialiased;
   }
   .body-base {
-    @apply text-base font-normal;
+    @apply text-base font-medium;
   }
   .heading-sm {
     @apply text-base;
@@ -73,7 +73,7 @@
     @apply text-lg;
   }
   .heading-display {
-    @apply text-xl leading-13 tracking-[-0.025em];
+    @apply text-xl leading-20 tracking-[-0.025em];
   }
   .body-base, .heading-sm, .heading-base, .heading-display {
     @apply antialiased;

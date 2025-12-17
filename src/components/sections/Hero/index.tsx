@@ -5,6 +5,7 @@ import { memo } from "react";
 import { LogoGf } from "@/components/logo/LogoGf";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation/Navigation";
+import { ArrowDownIcon } from "@phosphor-icons/react";
 
 interface HeroSectionProps {
   className?: string;
@@ -71,9 +72,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
 
       {/* Content */}
       <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-          <div className="space-y-6 flex flex-col justify-between">
+          <div className="col-span-4 space-y-12 flex flex-col justify-between">
             <div className="space-y-6">
               <p className="body-label text-muted">
                 Craftsmanship + Leadership
@@ -97,6 +98,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </div>
           </div>
 
+          <div className="col-span-8 grid grid-cols-3 gap-8 lg:gap-12">
           <div className="space-y-6">
             <p className="body-label text-muted">
               What I do
@@ -139,7 +141,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </ul>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 relative">
             <p className="body-label text-muted">
               History
             </p>
@@ -160,6 +162,8 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                 </li>
               ))}
             </ul>
+            <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent " />
+          </div>
           </div>
 
         </div>

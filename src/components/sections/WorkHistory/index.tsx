@@ -31,7 +31,7 @@ const TextContainer = memo(({
   const lines = content.split('\n').filter(line => line.trim());
 
   return (
-    <div 
+    <div
       className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-center body-base text-muted aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
@@ -173,7 +173,7 @@ const WorkExperienceEntry = memo(({
   const CompanyInfo = memo(() => (
     <aside className="col-span-12 lg:col-span-2">
       <div className="sticky top-24 px-6 lg:px-12">
-        <time 
+        <time
           className="body-sm mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
           aria-label={`Employment period: ${experience.duration}`}
@@ -195,22 +195,34 @@ const WorkExperienceEntry = memo(({
   // Memoized content section
   const ContentSection = memo(() => (
     <div className="col-span-12 lg:col-span-4">
-      <article className="space-y-6 md:space-y-10">
+      <article className="space-y-6 md:space-y-14">
         {/* Work experience header */}
-        <header className="space-y-8">
-          <h3 
-            className="heading-display text-primary max-w-xl lg:-mt-1.5"
+        <div className="grid grid-cols-12 gap-16">
+        <header className="col-span-8 space-y-8">
+          <h3
+            className="heading-display text-primary max-w-5xl lg:-mt-1.5"
             id={`work-${experience.id}`}
           >
             {experience.title}
           </h3>
         </header>
 
-        {/* Key Responsibilities */}
-        <section aria-labelledby={`responsibilities-${experience.id}`} className="flex gap-16">
+        {/* External Link Button */}
+        {experience.buttonUrl && (
+          <div className="col-span-4 px-6 lg:px-12 text-right">
+            <ExternalLinkButton
+              url={experience.buttonUrl}
+              company={experience.company}
+            />
+          </div>
+        )}
+        </div>
 
-          <div 
-            className="body-base text-muted prose-optimized"
+        {/* Key Responsibilities */}
+        <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
+
+          <div
+            className="col-span-4 body-base text-muted prose-optimized"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
@@ -220,12 +232,12 @@ const WorkExperienceEntry = memo(({
             ))}
           </div>
 
-          <h4 id={`responsibilities-${experience.id}`} className="sr-only">
+          {/* <h4 id={`responsibilities-${experience.id}`} className="sr-only">
             Key Responsibilities at {experience.company}
-          </h4>
+          </h4> */}
 
-          <div className="max-w-xl space-y-8">
-            <ul 
+          <div className="col-start-6 col-span-4 space-y-8">
+            <ul
               className="space-y-1.5 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
               role="list"
               aria-label={`Key achievements and responsibilities at ${experience.company}`}
@@ -237,20 +249,10 @@ const WorkExperienceEntry = memo(({
                   role="listitem"
                 >
                   <span>{responsibility}</span>
-                  <div className="absolute top-1 -left-4 size-4 bg-neutral-darker"></div>
+                  <div className="absolute top-1 -left-4 size-4 bg-neutral-darker rounded-full"></div>
                 </li>
               ))}
             </ul>
-
-            {/* External Link Button */}
-            {experience.buttonUrl && (
-              <div className="pt-4">
-                <ExternalLinkButton
-                  url={experience.buttonUrl}
-                  company={experience.company}
-                />
-              </div>
-            )}
           </div>
         </section>
       </article>
@@ -335,7 +337,7 @@ export default function WorkHistory({
         }}
       />
 
-      <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="Work History" />
+      <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="History" className="mb-8 lg:mb-16" />
 
       {/* Work Experience Entries */}
       <div
