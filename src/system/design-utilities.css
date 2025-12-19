@@ -70,7 +70,7 @@
     @apply text-base;
   }
   .heading-base {
-    @apply text-lg;
+    @apply text-lg leading-15 tracking-[-0.025em];
   }
   .heading-display {
     @apply text-xl leading-20 tracking-[-0.025em];
@@ -105,7 +105,7 @@
   .bg-neutral-dark { background-color: var(--neutral-dark); }
   .bg-neutral-darker { background-color: var(--neutral-darker); }
   .bg-neutral-darkest { background-color: var(--neutral-darkest); }
-  
+
   .bg-decoration {
     @apply bg-muted/25;
   }

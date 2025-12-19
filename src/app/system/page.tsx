@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Button } from "@/components/ui/button";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { DotList } from "@/components/primitives/DotList";
 import { MetaRow } from "@/components/primitives/MetaRow";
@@ -72,7 +72,7 @@ const buttonVariantsDemo = [
 const buttonSizesDemo = ["sm", "base", "lg"] as const;
 
 const primitives = [
-  { name: "SectionBanner", description: "Sticky top banner for section labels with icon support.", usage: "<SectionBanner icon={<Icon />} label=\"Latest Work\" />" },
+  { name: "SectionHeader", description: "Sticky top banner for section labels with icon support.", usage: "<SectionHeader icon={<Icon />} label=\"Latest Work\" />" },
   { name: "SectionIntro", description: "Eyebrow + title + body intro block.", usage: "<SectionIntro eyebrow=\"Eyebrow\" title=\"Heading\" description={<p>Body</p>} />" },
   { name: "DotList", description: "Bullet list with consistent spacing and tone options.", usage: "<DotList items={['Item']} tone=\"primary\" />" },
   { name: "MetaRow", description: "Inline meta pills row with icons.", usage: "<MetaRow items={[{ icon: <Icon />, label: 'Meta' }]} />" },
@@ -285,8 +285,8 @@ export default function SystemPage() {
               </div>
             </CardShell>
             <CardShell className="p-4 space-y-3" interactive>
-              <p className="text-sm font-semibold">SectionBanner</p>
-              <SectionBanner
+              <p className="text-sm font-semibold">SectionHeader</p>
+              <SectionHeader
                 sticky={false}
                 icon={<span className="size-2 rounded-full bg-primary" />}
                 label="Preview banner"

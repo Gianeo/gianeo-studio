@@ -13,7 +13,7 @@ import { ExternalLinkIcon } from "lucide-react";
 // Import the updated data structure
 import { workHistoryData, WorkExperience, GridItem } from "./data";
 import { Button } from "@/components/ui/button";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { GalleryGrid } from "@/components/media/GalleryGrid";
 
 interface WorkHistoryProps {
@@ -198,16 +198,16 @@ const WorkExperienceEntry = memo(({
 
   // Memoized content section
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4 -mt-21">
-      <div className="leading-4 body-sm heading-base text-muted/50 pb-16">
+    <div className="col-span-12 lg:col-span-4 -mt-25">
+      <div className="heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
-      <article className="space-y-6 md:space-y-14">
+      <article className="space-y-6 md:space-y-10">
         {/* Work experience header */}
         <div className="grid grid-cols-12 gap-16">
           <header className="col-span-8 space-y-8">
             <h3
-              className="heading-display text-primary max-w-5xl lg:-mt-1.5"
+              className="heading-base text-primary max-w-2xl lg:-mt-1.5"
               id={`work-${experience.id}`}
             >
               {experience.title}
@@ -344,7 +344,7 @@ export default function WorkHistory({
         }}
       />
 
-      <SectionBanner icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="History" className="mb-8 lg:mb-16" />
+      <SectionHeader icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="History" className="mb-8 lg:mb-16" />
 
       {/* Work Experience Entries */}
       <div

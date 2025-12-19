@@ -3,14 +3,14 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface SectionBannerProps {
+interface SectionHeaderProps {
   icon?: ReactNode;
   label: string;
   className?: string;
   sticky?: boolean;
 }
 
-export function SectionBanner({ icon, label, className, sticky = true }: SectionBannerProps) {
+export function SectionHeader({ icon, label, className, sticky = true }: SectionHeaderProps) {
   return (
     <header
       className={cn(

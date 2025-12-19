@@ -9,7 +9,7 @@ import {
 // Import the data structure
 import { studioServicesData } from "./data";
 import type { StudioServices, Capability } from "./data";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { DotList } from "@/components/primitives/DotList";
 
@@ -94,7 +94,7 @@ export default function Services({
 
   return (
     <div className="bg-background text-foreground">
-      <SectionBanner
+      <SectionHeader
         icon={<ArrowRightIcon size={16} />}
         label="Studio Services"
       />

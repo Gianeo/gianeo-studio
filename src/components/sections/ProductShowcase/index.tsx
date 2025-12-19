@@ -6,7 +6,7 @@ import {
   CalendarIcon,
   TagIcon,
 } from "@phosphor-icons/react";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { MetaRow } from "@/components/primitives/MetaRow";
 import { GalleryGrid } from "@/components/media/GalleryGrid";
@@ -84,7 +84,7 @@ export default function ProductShowcase({
 
   return (
     <div className="bg-background text-foreground">
-      <SectionBanner
+      <SectionHeader
         icon={<ArrowRightIcon size={16} />}
         label="Latest Ideation and Development"
       />

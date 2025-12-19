@@ -9,7 +9,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { workHistoryData } from "./data";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 // Memoized optimized image component
 const OptimizedImageContainer = memo(({ item, experienceId, className = "", priority = false }) => {
     const [hasError, setHasError] = useState(false);
@@ -126,5 +126,5 @@ export default function WorkHistory({ experiences = workHistoryData, }) {
     const memoizedExperiences = useMemo(() => experiences, [experiences]);
     return (_jsxs("section", { className: "min-h-screen bg-background text-foreground", children: [_jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: {
                     __html: JSON.stringify(workHistoryStructuredData),
-                } }), _jsx(SectionBanner, { icon: _jsx(ArrowRightIcon, { size: 16, "aria-hidden": "true" }), label: "Work History" }), _jsxs("div", { className: "py-6 sm:py-8 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48", role: "main", "aria-label": "Professional work experience and portfolio", children: [_jsxs("div", { className: "sr-only", children: [_jsx("h2", { children: "Professional Work Experience" }), _jsxs("p", { children: ["Detailed overview of ", memoizedExperiences.length, " professional positions spanning ", new Date().getFullYear() - 1999, "+ years of design and leadership experience."] })] }), memoizedExperiences.map((experience, index) => (_jsx(WorkExperienceEntry, { experience: experience, isFirst: index === 0 }, experience.id)))] })] }));
+                } }), _jsx(SectionHeader, { icon: _jsx(ArrowRightIcon, { size: 16, "aria-hidden": "true" }), label: "Work History" }), _jsxs("div", { className: "py-6 sm:py-8 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48", role: "main", "aria-label": "Professional work experience and portfolio", children: [_jsxs("div", { className: "sr-only", children: [_jsx("h2", { children: "Professional Work Experience" }), _jsxs("p", { children: ["Detailed overview of ", memoizedExperiences.length, " professional positions spanning ", new Date().getFullYear() - 1999, "+ years of design and leadership experience."] })] }), memoizedExperiences.map((experience, index) => (_jsx(WorkExperienceEntry, { experience: experience, isFirst: index === 0 }, experience.id)))] })] }));
 }

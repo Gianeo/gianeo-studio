@@ -10,7 +10,7 @@ import { personalProfileData, PersonalImage } from "./data";
 import type { PersonalProfile } from "./data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { SectionBanner } from "@/components/primitives/SectionBanner";
+import { SectionHeader } from "@/components/primitives/SectionHeader";
 
 interface PersonalProfileProps {
   profile?: PersonalProfile;
@@ -343,7 +343,7 @@ export default function PersonalProfile({
         }}
       />
 
-      <SectionBanner icon={null} label="Profile" />
+      <SectionHeader icon={null} label="Profile" />
       
       <main role="main" aria-label="Personal profile and background">
         <div className="sr-only">

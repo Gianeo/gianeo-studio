@@ -41,9 +41,9 @@
   /* Typography scale (only four sizes) */
   --text-sm: 0.75rem;   /* 12px */
   --text-base: 1.125rem; /* 18px */
-  --text-lg: 2.25rem;   /* 36px */
+  --text-lg: 3.5rem;   /* 56px */
   /*--text-xl: 3rem;       48px */
-  --text-xl: 5rem;      /* 80px */
+  --text-xl: 5.125rem;      /* 82px */
 
   /* Neutral scale (HSL) */
   --neutral-lightest: hsl(220, 6%, 90%);

@@ -14,7 +14,7 @@ export function Intro() {
         <div className="grid grid-cols-12 body-base text-muted mt-6 space-y-8 py-24">
           <div className="col-start-7 col-span-4 space-y-8">
             <p className="body-label text-accent">Why me</p>
-            <h2 className="heading-display text-primary">With intention, precision, and care.</h2>
+            <h2 className="heading-base text-primary">With intention, precision, and care.</h2>
           </div>
           <div className="row-start-2 col-start-7 col-span-4 space-y-8">
             <p className="">
