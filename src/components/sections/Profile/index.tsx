@@ -3,20 +3,14 @@
 import { useState, useCallback, useMemo, memo } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import {
-  ArrowRightIcon,
-  MapPinIcon,
-  EnvelopeIcon,
-  TagIcon,
-  CalendarIcon,
-  LinkIcon as ExternalLinkIcon,
-} from "@phosphor-icons/react";
+import { MapPinIcon, EnvelopeIcon, TagIcon, CalendarIcon, LinkIcon as ExternalLinkIcon } from "@phosphor-icons/react";
 
 // Import the data structure
 import { personalProfileData, PersonalImage } from "./data";
 import type { PersonalProfile } from "./data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { SectionBanner } from "@/components/primitives/SectionBanner";
 
 interface PersonalProfileProps {
   profile?: PersonalProfile;
@@ -152,24 +146,6 @@ const ImageRow = memo(({
 });
 
 ImageRow.displayName = 'ImageRow';
-
-// Memoized header section with enhanced navigation
-const HeaderSection = memo(() => (
-  <header className="sticky top-0 z-50 glass border-b border-border/50">
-    <div className="flex justify-between px-6 lg:px-12 py-4">
-      <div 
-        className="flex items-center gap-4 text-xs font-mono"
-        role="banner"
-        aria-label="Profile section navigation"
-      >
-        <ArrowRightIcon size={16} aria-hidden="true" />
-        <span>Profile</span>
-      </div>
-    </div>
-  </header>
-));
-
-HeaderSection.displayName = 'HeaderSection';
 
 // Memoized contact actions with enhanced accessibility
 const ContactActions = memo(({ profile }: { profile: PersonalProfile }) => (
@@ -367,7 +343,7 @@ export default function PersonalProfile({
         }}
       />
 
-      <HeaderSection />
+      <SectionBanner icon={null} label="Profile" />
       
       <main role="main" aria-label="Personal profile and background">
         <div className="sr-only">
