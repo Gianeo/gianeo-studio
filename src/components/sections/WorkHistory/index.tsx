@@ -139,10 +139,14 @@ GridGallery.displayName = 'GridGallery';
 // Memoized work experience entry component
 const WorkExperienceEntry = memo(({
   experience,
-  isFirst = false
+  isFirst = false,
+  index,
+  total,
 }: {
   experience: WorkExperience;
   isFirst?: boolean;
+  index: number;
+  total: number;
 }) => {
   // Generate structured data for this work experience
   const workExperienceStructuredData = useMemo(() => ({
@@ -196,8 +200,7 @@ const WorkExperienceEntry = memo(({
   const ContentSection = memo(() => (
     <div className="col-span-12 lg:col-span-4 -mt-21">
       <div className="leading-4 body-sm heading-base text-muted/50 pb-16">
-        {/* {index + 1}/{total} */}
-        1/8
+        {index + 1}/{total}
       </div>
       <article className="space-y-6 md:space-y-14">
         {/* Work experience header */}
@@ -345,7 +348,7 @@ export default function WorkHistory({
 
       {/* Work Experience Entries */}
       <div
-        className="py-6 sm:py-24 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-48"
+        className="py-6 sm:py-24 space-y-16 sm:space-y-24 lg:space-y-32 xl:space-y-64"
         role="main"
         aria-label="Professional work experience and portfolio"
       >
@@ -359,6 +362,8 @@ export default function WorkHistory({
             key={experience.id}
             experience={experience}
             isFirst={index === 0}
+            index={index}
+            total={memoizedExperiences.length}
           />
         ))}
       </div>
