@@ -262,11 +262,11 @@ const WorkExperienceEntry = memo(({
               ))}
             </ul>
           </div>
-          <div className="row-start-2 col-start-1 col-span-12 grid grid-cols-12 pt-16">
-            <div className="col-span-2 pr-8"><span className="block heading-base">1<span className="heading-sm">st</span></span> in 39 subscription categories <span className="block pt-2 caption">(Fall 2024 reports)</span></div>
-            <div className="col-span-2 pr-8"><span className="block heading-base">57<span className="heading-sm">badges</span></span> for high customer satisfaction and product excellence <span className="block pt-2 caption">((Fall 2024 reports))</span></div>
-            <div className="col-span-2 pr-8"><span className="block heading-base">40<span className="heading-sm">%</span></span> operational efficiency improvement.</div>
-            <div className="col-span-2 pr-8"><span className="block heading-base">92<span className="heading-sm">%</span></span> Yearly talent retention rate</div>
+          <div className="history-prj-stats">
+            <div><span className="block heading-base">1<span className="heading-sm">st</span></span> in 39 subscription categories <span className="block pt-2 caption">(Fall 2024 reports)</span></div>
+            <div><span className="block heading-base">57<span className="heading-sm">badges</span></span> for high customer satisfaction and product excellence <span className="block pt-2 caption">((Fall 2024 reports))</span></div>
+            <div><span className="block heading-base">40<span className="heading-sm">%</span></span> operational efficiency improvement.</div>
+            <div><span className="block heading-base">92<span className="heading-sm">%</span></span> Yearly talent retention rate</div>
           </div>
         </section>
       </article>
