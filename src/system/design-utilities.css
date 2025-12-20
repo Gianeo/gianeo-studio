@@ -84,6 +84,9 @@
   .heading-sm, .heading-base, .heading-display {
     @apply font-heading font-bold;
   }
+  .caption {
+    @apply font-copy text-sm font-normal;
+  }
 
   .text-primary {
     color: var(--neutral-darkest);

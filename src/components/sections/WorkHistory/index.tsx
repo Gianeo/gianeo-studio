@@ -198,10 +198,11 @@ const WorkExperienceEntry = memo(({
 
   // Memoized content section
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4 -mt-25">
+    <div className="col-span-12 lg:col-span-4 -mt-25 relative">
       <div className="heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
+      <div className="size-10 bg-decoration absolute top-3 right-0" />
       <article className="space-y-6 md:space-y-10">
         {/* Work experience header */}
         <div className="grid grid-cols-12 gap-16">
@@ -260,6 +261,12 @@ const WorkExperienceEntry = memo(({
                 </li>
               ))}
             </ul>
+          </div>
+          <div className="row-start-2 col-start-1 col-span-12 grid grid-cols-12 pt-16">
+            <div className="col-span-2 pr-8"><span className="block heading-base">1<span className="heading-sm">st</span></span> in 39 subscription categories <span className="block pt-2 caption">(Fall 2024 reports)</span></div>
+            <div className="col-span-2 pr-8"><span className="block heading-base">57<span className="heading-sm">badges</span></span> for high customer satisfaction and product excellence <span className="block pt-2 caption">((Fall 2024 reports))</span></div>
+            <div className="col-span-2 pr-8"><span className="block heading-base">40<span className="heading-sm">%</span></span> operational efficiency improvement.</div>
+            <div className="col-span-2 pr-8"><span className="block heading-base">92<span className="heading-sm">%</span></span> Yearly talent retention rate</div>
           </div>
         </section>
       </article>

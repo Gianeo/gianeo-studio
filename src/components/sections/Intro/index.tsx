@@ -28,9 +28,9 @@ export function Intro() {
             <span className="heading-sm block text-secondary">That&apos;s where I come in.</span>
             <span>I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.</span>
           </p>
-          {/* <div className="row-start-4 col-start-4 col-span-1 flex flex-col justify-end">
-            <div className="h-0.5 bg-neutral-lighter dark:bg-neutral-darker mb-8"></div>
-          </div> */}
+          <div className="row-start-4 col-start-3 col-span-1 flex flex-col justify-end">
+            <div className="size-24 bg-decoration"></div>
+          </div>
           <div className="row-start-4 col-start-1 px-6 md:px-12 pb-8 flex flex-col justify-end">
             <ArrowDownIcon className="size-8 text-accent " />
             </div>
