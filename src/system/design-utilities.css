@@ -47,8 +47,7 @@
   }
 
   p, .prose-optimized {
-    @apply max-w-xl;
-    line-height: 1.6;
+    @apply max-w-xl leading-6;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
   
@@ -134,14 +133,6 @@
   .dark\:bg-neutral-dark { background-color: var(--neutral-dark); }
   .dark\:bg-neutral-darker { background-color: var(--neutral-darker); }
   .dark\:bg-neutral-darkest { background-color: var(--neutral-darkest); }
-
-  /* Work history stats layout */
-  .history-prj-stats {
-    @apply row-start-2 col-start-1 col-span-12 grid grid-cols-12 pt-16;
-  }
-  .history-prj-stats div {
-    @apply col-span-3 2xl:col-span-2 pr-8;
-  }
 
   .text-muted {
     color: var(--neutral-dark);

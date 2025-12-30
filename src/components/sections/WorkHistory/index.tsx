@@ -240,20 +240,35 @@ const WorkExperienceEntry = memo(({
             ))}
           </div>
 
+          {experience.stats && experience.stats.length > 0 && (
+            <div className="start-col-4 col-span-6 grid grid-cols-4 px-16 gap-8" aria-label="Project highlights">
+              {experience.stats.map((stat, statIndex) => (
+                <div key={`${experience.id}-stat-${statIndex}`} className="">
+                  <span className="block heading-base">
+                    {stat.value}
+                    {stat.suffix && <span className="heading-sm">{stat.suffix}</span>}
+                  </span>
+                  <span className="block body-sm">{stat.body}</span>
+                  {stat.caption && <span className="block pt-2 caption">{stat.caption}</span>}
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* <h4 id={`responsibilities-${experience.id}`} className="sr-only">
             Key Responsibilities at {experience.company}
           </h4> */}
 
-          <div className="col-start-6 col-span-4 space-y-8">
+          <div className="hidden row-start-2 col-start-1 col-span-12">
             <ul
-              className="space-y-1.5 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
+              className="space-y-1.5 grid grid-cols-12 pt-16 gap-6 md:gap-16"
               role="list"
               aria-label={`Key achievements and responsibilities at ${experience.company}`}
             >
               {experience.keyResponsibilities.map((responsibility, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 body-sm text-muted px-4 relative"
+                  className="col-span-2 flex items-start gap-3 body-sm text-muted px-4 relative"
                   role="listitem"
                 >
                   <span>{responsibility}</span>
@@ -261,12 +276,6 @@ const WorkExperienceEntry = memo(({
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="history-prj-stats">
-            <div><span className="block heading-base">1<span className="heading-sm">st</span></span> in 39 subscription categories <span className="block pt-2 caption">(Fall 2024 reports)</span></div>
-            <div><span className="block heading-base">57<span className="heading-sm">badges</span></span> for high customer satisfaction and product excellence <span className="block pt-2 caption">((Fall 2024 reports))</span></div>
-            <div><span className="block heading-base">40<span className="heading-sm">%</span></span> operational efficiency improvement.</div>
-            <div><span className="block heading-base">92<span className="heading-sm">%</span></span> Yearly talent retention rate</div>
           </div>
         </section>
       </article>
