@@ -320,7 +320,7 @@ const WorkExperienceEntry = memo(({
       />
 
       <CompanyInfo />
-      <div className="col-span-12 lg:col-span-10 px-6 lg:px-0 space-y-10 md:space-y-20">
+      <div className="col-span-12 lg:col-span-10 space-y-10 md:space-y-20">
         <ContentSection />
 
         {/* Project Gallery */}
