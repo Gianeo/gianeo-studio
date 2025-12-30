@@ -244,8 +244,8 @@ const WorkExperienceEntry = memo(({
       <div className="hidden lg:block size-10 bg-decoration absolute top-3 right-0" />
       <article className="space-y-4 pt-8 lg:pt-0">
         {/* Work experience header */}
-        <div className="grid grid-cols-12 gap-16">
-          <header className="row-start-1 col-start-1 col-span-6 space-y-8">
+        <div className="grid grid-cols-12 lg:gap-16">
+          <header className="row-start-1 col-start-2 lg:col-start-1 col-span-10 lg:col-span-6 space-y-8 pb-8 lg:pb-0">
             <h3
               className="heading-base text-primary max-w-2xl lg:-mt-1.5"
               id={`work-${experience.id}`}
@@ -254,7 +254,7 @@ const WorkExperienceEntry = memo(({
             </h3>
             {/* External Link Button */}
             {experience.buttonUrl && (
-              <div className="pt-4">
+              <div className="lg:pt-4">
                 <ExternalLinkButton
                   url={experience.buttonUrl}
                   company={experience.company}
@@ -263,7 +263,7 @@ const WorkExperienceEntry = memo(({
             )}
           </header>
           <div
-            className="row-start-1 col-start-7 col-span-5 xl:col-span-4"
+            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 xl:col-span-4"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
