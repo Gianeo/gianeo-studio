@@ -17,13 +17,6 @@ export interface GridItem {
   source?: string;
 }
 
-export interface StatItem {
-  value: string;
-  suffix?: string;
-  body: string;
-  caption?: string;
-}
-  
   export interface WorkExperience {
     id: string;
     company: string;
@@ -38,7 +31,6 @@ export interface StatItem {
     caseStudyUrl?: string;
     buttonUrl?: string; // Added buttonUrl property
     gridItems: GridItem[];
-    stats?: StatItem[];
   }
   
   // Sample data structure based on your CV
@@ -61,28 +53,6 @@ export interface StatItem {
         "Designed and coded the Marketing website",
       ],
       buttonUrl: "https://justscore.com",
-      stats: [
-        {
-          value: "0→1",
-          body: "From idea to launch.",
-          // caption: "(2025 launch)",
-        },
-        {
-          value: "3",
-          // suffix: "+",
-          body: "Interconnected Design Systems (Web App, Mobile, Marketing).",
-        },
-        {
-          value: "8",
-          suffix: " %",
-          body: "weekly acquisition growth.",
-        },
-        {
-          value: "100",
-          suffix: " %",
-          body: "self-funded.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -162,30 +132,6 @@ export interface StatItem {
       ],
       caseStudyUrl: "#",
       // buttonUrl: "https://chargebee.com",
-      stats: [
-        {
-          value: "1",
-          suffix: " st",
-          body: "in 39 subscription categories.",
-          caption: "(Fall 2024 reports)",
-        },
-        {
-          value: "57",
-          suffix: " badges",
-          body: "for high customer satisfaction and product excellence.",
-          caption: "(Fall 2024 reports)",
-        },
-        {
-          value: "40",
-          suffix: " %",
-          body: "operational efficiency improvement.",
-        },
-        {
-          value: "92",
-          suffix: " %",
-          body: "yearly talent retention rate.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -296,22 +242,6 @@ export interface StatItem {
       ],
       caseStudyUrl: "#",
       // buttonUrl: "https://zopa.com",
-      stats: [
-        {
-          value: "4→8",
-          body: "Scaled design team in 3 months for bank launch.",
-        },
-        {
-          value: "2",
-          suffix: " products",
-          body: "launched (savings + credit) on schedule.",
-        },
-        {
-          value: "1",
-          suffix: "st",
-          body: "service design practice embedded in the bank.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -391,22 +321,6 @@ export interface StatItem {
       ],
       caseStudyUrl: "#",
       // buttonUrl: "https://argos.co.uk",
-      stats: [
-        {
-          value: "16",
-          suffix: " people",
-          body: "design org stabilised across four brands.",
-        },
-        {
-          value: "£2m",
-          body: "annual savings through asset optimisation.",
-        },
-        {
-          value: "3",
-          suffix: " brands",
-          body: "aligned across Argos, Tu, and Habitat.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -485,23 +399,6 @@ export interface StatItem {
       ],
       caseStudyUrl: "#",
       // buttonUrl: "https://ocadogroup.com/technology/",
-      stats: [
-        {
-          value: "3",
-          suffix: " regions",
-          body: "team built across UK, Poland, and Spain.",
-        },
-        {
-          value: "2",
-          suffix: " systems",
-          body: "Aeris (B2B) + Fraisy (B2C) design systems launched.",
-        },
-        {
-          value: "7",
-          suffix: " global",
-          body: "retail partners won with OSP.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -596,23 +493,6 @@ export interface StatItem {
         "Defined UX vision and design systems across all platforms.",
         "Partnered with marketing and merch teams to align brand, content, and product.",
         "Implemented full accessibility standards and service design practices."
-      ],
-      stats: [
-        {
-          value: "3",
-          suffix: " brands",
-          body: "Fabled, Fetch, and Sizzle launched from zero.",
-        },
-        {
-          value: "34",
-          suffix: "% YoY",
-          body: "growth in general merchandise revenue.",
-        },
-        {
-          value: "1",
-          suffix: " shared",
-          body: "design system across retail experiences.",
-        },
       ],
       gridItems: [
         {
@@ -733,22 +613,6 @@ export interface StatItem {
         "Supported Ocado's 2010 IPO, during which weekly orders surged from ~90K to 100K+ in 2011 and beyond."
       ],
       // buttonUrl: "https://ocado.com",
-      stats: [
-        {
-          value: "35",
-          suffix: "%+",
-          body: "year-over-year order growth.",
-        },
-        {
-          value: "100K",
-          body: "weekly orders supported post-IPO.",
-        },
-        {
-          value: "2",
-          suffix: " core",
-          body: "flows rebuilt: search/navigation and checkout.",
-        },
-      ],
       gridItems: [
         {
           id: 1,
@@ -787,23 +651,6 @@ export interface StatItem {
         "Awarded Macromedia Site of the Month for accessibility and design.",
         "Selected to be one of the few Macromedia spacialist consultants in Italy.",
         "Recognised for accessibility excellence in government portals."
-      ],
-      stats: [
-        {
-          value: "10+",
-          suffix: " industries",
-          body: "consulted across design and development.",
-        },
-        {
-          value: "20+",
-          suffix: " brands",
-          body: "partnered globally.",
-        },
-        {
-          value: "1",
-          suffix: " award",
-          body: "Macromedia Site of the Month for accessibility.",
-        },
       ],
       gridItems: []
     }

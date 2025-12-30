@@ -279,21 +279,6 @@ const WorkExperienceEntry = memo(({
             ))}
           </div>
 
-          {experience.stats && experience.stats.length > 0 && (
-            <div className="start-col-4 col-span-6 grid grid-cols-4 px-16 gap-8" aria-label="Project highlights">
-              {experience.stats.map((stat, statIndex) => (
-                <div key={`${experience.id}-stat-${statIndex}`} className="">
-                  <span className="block heading-base">
-                    {stat.value}
-                    {stat.suffix && <span className="heading-sm">{stat.suffix}</span>}
-                  </span>
-                  <span className="block body-sm">{stat.body}</span>
-                  {stat.caption && <span className="block pt-2 caption">{stat.caption}</span>}
-                </div>
-              ))}
-            </div>
-          )}
-
           {/* <h4 id={`responsibilities-${experience.id}`} className="sr-only">
             Key Responsibilities at {experience.company}
           </h4> */}
