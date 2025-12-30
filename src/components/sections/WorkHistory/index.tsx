@@ -14,7 +14,18 @@ import { ExternalLinkIcon } from "lucide-react";
 import { workHistoryData, WorkExperience, GridItem } from "./data";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/primitives/SectionHeader";
-import { GalleryGrid } from "@/components/media/GalleryGrid";
+import { LazyImage } from "@/components/media/LazyImage";
+
+const highlightSlots = [
+  { span: "md:col-span-4" },
+  { span: "md:col-span-8 md:row-span-2" },
+  { span: "md:col-span-4" },
+  { span: "md:col-span-8 md:row-span-2" },
+  { span: "md:col-span-4" },
+  { span: "md:col-span-4" },
+  { span: "md:col-span-6 md:row-span-2" },
+  { span: "md:col-span-6 md:row-span-2" },
+];
 
 interface WorkHistoryProps {
   experiences?: WorkExperience[];
@@ -41,7 +52,7 @@ const TextContainer = memo(({
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
-      <div className="font-mono text-left max-w-md mx-auto">
+      <div className="font-mono text-left max-w-md mx-auto p-8">
         <div className="space-y-1">
           {lines.map((line, index) => (
             <div
@@ -117,15 +128,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
 }) => {
   if (gridItems.length === 0) return null;
 
-  const images = gridItems
-    .filter((item) => item.type === "image" && item.src)
-    .map((item, idx) => ({
-      id: `${experienceId}-${item.id ?? idx}`,
-      src: item.src as string,
-      alt: item.alt || `Work sample showcasing ${experienceId}`,
-    }));
-
-  const textItems = gridItems.filter((item) => item.type === "text");
+  const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
 
   return (
     <div role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
@@ -133,21 +136,39 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
+      <div className="grid w-full h-full gap-2 md:grid-cols-12">
+        {orderedItems.map((item, idx) => {
+          const slot = highlightSlots[idx % highlightSlots.length];
+          if (item.type === "image" && item.src) {
+            return (
+              <div
+                key={`${experienceId}-${item.id ?? idx}`}
+                className={`overflow-hidden rounded-lg ${slot.span}`}
+                style={{ aspectRatio: "4 / 3" }}
+              >
+                <LazyImage
+                  image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
+                  className="h-full w-full"
+                  containerClassName="h-full w-full"
+                  overlayClassName="from-primary/10 to-accent/10"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={88}
+                />
+              </div>
+            );
+          }
 
-      <GalleryGrid images={images} layout="highlight" className="w-full" />
-
-      {textItems.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {textItems.map((item, idx) => (
-            <TextContainer
-              key={`${experienceId}-text-${idx}`}
-              content={item.content || ""}
-              source={item.source}
-              className="w-full"
-            />
-          ))}
-        </div>
-      )}
+          return (
+            <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
+              <TextContainer
+                content={item.content || ""}
+                source={item.source}
+                className="w-full h-full"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 });

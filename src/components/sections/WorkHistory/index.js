@@ -56,7 +56,8 @@ ExternalLinkButton.displayName = 'ExternalLinkButton';
 const GridGallery = memo(({ gridItems, experienceId, companyName, priority = false }) => {
     if (gridItems.length === 0)
         return null;
-    return (_jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1", role: "region", "aria-label": `${companyName} project gallery`, children: [_jsxs("div", { className: "sr-only", children: [_jsxs("h4", { children: ["Project Gallery for ", companyName] }), _jsxs("p", { children: ["Visual examples and key metrics from work completed at ", companyName] })] }), gridItems.map((item, index) => (_jsx("div", { className: "w-full aspect-[4/3] group", children: item.type === 'image' ? (_jsx(OptimizedImageContainer, { item: item, experienceId: experienceId, className: "w-full h-full", priority: priority && index === 0 })) : (_jsx(TextContainer, { content: item.content || '', className: "w-full h-full" })) }, `${experienceId}-${item.id}`)))] }));
+    const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
+    return (_jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1", role: "region", "aria-label": `${companyName} project gallery`, children: [_jsxs("div", { className: "sr-only", children: [_jsxs("h4", { children: ["Project Gallery for ", companyName] }), _jsxs("p", { children: ["Visual examples and key metrics from work completed at ", companyName] })] }), orderedItems.map((item, index) => (_jsx("div", { className: "w-full aspect-[4/3] group", children: item.type === 'image' ? (_jsx(OptimizedImageContainer, { item: item, experienceId: experienceId, className: "w-full h-full", priority: priority && index === 0 })) : (_jsx(TextContainer, { content: item.content || '', className: "w-full h-full" })) }, `${experienceId}-${item.id}`)))] }));
 });
 GridGallery.displayName = 'GridGallery';
 // Memoized work experience entry component

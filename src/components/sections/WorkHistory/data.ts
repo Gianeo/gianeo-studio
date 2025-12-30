@@ -201,37 +201,43 @@ export interface StatItem {
         // },
         {
           id: 2,
-          type: 'text',
-          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
-          source: 'Julia H. - Snr Manager Research'
-        },
-        {
-          id: 3,
           type: 'image',
           src: '/images/work/chargebee/2.webp',
           alt: 'Chargebee project 2',
           aspectRatio: 'landscape'
         },
         {
-          id: 5,
+          id: 3,
           type: 'image',
           src: '/images/work/chargebee/3.webp',
           alt: 'Chargebee project 3',
           aspectRatio: 'portrait'
         },
         {
-          id: 6,
+          id: 4,
           type: 'image',
           src: '/images/work/chargebee/4.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
         {
-          id: 7,
+          id: 5,
           type: 'image',
           src: '/images/work/chargebee/5.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
+        },
+        {
+          id: 6,
+          type: 'text',
+          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
+          source: 'Julia H. - Snr Manager Research'
+        },
+        {
+          id: 7,
+          type: 'text',
+          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
+          source: 'Julia H. - Snr Manager Research'
         },
         {
           id: 8,
@@ -246,7 +252,7 @@ export interface StatItem {
         //   content: '+40% operation efficiency\nscaled team from 12 to 30\n92% employee retention'
         // },
         {
-          id: 10,
+          id: 9,
           type: 'image',
           src: '/images/work/chargebee/6.webp',
           alt: 'Chargebee project 4',
@@ -258,11 +264,17 @@ export interface StatItem {
         //   content: 'Ranked #1\nin 39 subscription\ncategories'
         // },
         {
-          id: 12,
+          id: 10,
           type: 'image',
           src: '/images/work/chargebee/8.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
+        },
+        {
+          id: 11,
+          type: 'text',
+          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
+          source: 'Julia H. - Snr Manager Research'
         },
       ]
     },
