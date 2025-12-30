@@ -23,12 +23,17 @@ interface WorkHistoryProps {
 // Memoized text container component
 const TextContainer = memo(({
   content,
+  source,
   className = ""
 }: {
   content: string;
+  source?: string;
   className?: string;
 }) => {
   const lines = content.split('\n').filter(line => line.trim());
+  const sourceParts = source?.split(" - ").map((part) => part.trim()).filter(Boolean) || [];
+  const sourceName = sourceParts[0];
+  const sourceTitle = sourceParts.slice(1).join(" - ");
 
   return (
     <div
@@ -36,7 +41,7 @@ const TextContainer = memo(({
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
-      <div className="font-mono text-left max-w-sm mx-auto">
+      <div className="font-mono text-left max-w-md mx-auto">
         <div className="space-y-1">
           {lines.map((line, index) => (
             <div
@@ -46,6 +51,18 @@ const TextContainer = memo(({
             </div>
           ))}
         </div>
+        {source && (
+          <div className="body-base mt-4">
+            {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
+            {sourceTitle && (
+              <>
+                {" "}
+                <span className="italic text-secondary">{sourceTitle}</span>
+              </>
+            )}
+            {!sourceName && <span className="italic">{source}</span>}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -125,6 +142,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
             <TextContainer
               key={`${experienceId}-text-${idx}`}
               content={item.content || ""}
+              source={item.source}
               className="w-full"
             />
           ))}

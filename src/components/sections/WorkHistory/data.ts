@@ -14,6 +14,7 @@ export interface GridItem {
   alt?: string;
   aspectRatio?: "square" | "landscape" | "portrait";
   content?: string;
+  source?: string;
 }
 
 export interface StatItem {
@@ -199,17 +200,18 @@ export interface StatItem {
         //   content: 'Scale-Up\nSaaS\nSubscription'
         // },
         {
+          id: 2,
+          type: 'text',
+          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
+          source: 'Julia H. - Snr Manager Research'
+        },
+        {
           id: 3,
           type: 'image',
           src: '/images/work/chargebee/2.webp',
           alt: 'Chargebee project 2',
           aspectRatio: 'landscape'
         },
-        // {
-        //   id: 4,
-        //   type: 'text',
-        //   content: '57 badges in\nhigh customer satisfaction\nProduct excellence'
-        // },
         {
           id: 5,
           type: 'image',
