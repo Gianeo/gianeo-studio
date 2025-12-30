@@ -74,7 +74,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-          <div className="col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
+          <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
             <div className="space-y-6">
               <p className="body-label text-muted">
                 Craftsmanship + Leadership
@@ -98,7 +98,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </div>
           </div>
 
-          <div className="col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
             <div className="space-y-6">
               <p className="body-label text-muted">
                 What I do

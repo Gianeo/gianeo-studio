@@ -28,7 +28,7 @@ export function Intro() {
             </div>
           </div> */}
 
-          <div className="col-start-2 lg:col-start-5 xl:col-start-7 col-span-10 md:col-span-7 lg:col-span-5 xl:col-span-4 space-y-8 max-w-lg">
+          <div className="col-start-2 md:col-start-5 xl:col-start-7 col-span-10 md:col-span-7 lg:col-span-5 xl:col-span-4 space-y-8 max-w-lg">
             <p className="body-label text-accent">Why me</p>
             <h2 className="heading-base text-primary">With intention, precision, and care.</h2>
             <p>

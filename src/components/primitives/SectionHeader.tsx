@@ -21,7 +21,7 @@ export function SectionHeader({ icon, label, className, sticky = true }: Section
       )}
     >
       <div className="grid grid-cols-12 border-t border-muted/50">
-        <div className="col-span-2 px-6 lg:px-12 py-4 flex items-center gap-4 body-label text-muted-foreground">
+        <div className="col-span-10 lg:col-span-1 py-4 flex items-center gap-2 body-label text-muted-foreground px-2">
           {icon}
           {label}
         </div>

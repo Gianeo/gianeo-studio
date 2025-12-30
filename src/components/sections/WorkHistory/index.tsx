@@ -214,8 +214,8 @@ const WorkExperienceEntry = memo(({
 
   // Memoized company info section
   const CompanyInfo = memo(() => (
-    <aside className="col-span-12 lg:col-span-2">
-      <div className="sticky top-24 px-6 lg:px-12">
+    <aside className="col-start-2 col-span-10 lg:col-span-2 lg:px-8">
+      <div className="lg:sticky top-24">
         <time
           className="body-sm mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
@@ -263,7 +263,7 @@ const WorkExperienceEntry = memo(({
             )}
           </header>
           <div
-            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 xl:col-span-4"
+            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 lg:col-span-5"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
@@ -308,7 +308,7 @@ const WorkExperienceEntry = memo(({
 
   return (
     <article
-      className="grid grid-cols-1 lg:grid-cols-12 pb-32 xl:pb-24"
+      className="grid grid-cols-12 pb-32 xl:pb-24"
       aria-labelledby={`work-${experience.id}`}
     >
       {/* Structured data for this work experience */}
@@ -320,7 +320,9 @@ const WorkExperienceEntry = memo(({
       />
 
       <CompanyInfo />
-      <div className="col-span-12 lg:col-span-10 space-y-10 md:space-y-20">
+
+      <div className="lg:col-start-3 col-span-12 lg:col-span-10 space-y-10 md:space-y-20">
+        
         <ContentSection />
 
         {/* Project Gallery */}

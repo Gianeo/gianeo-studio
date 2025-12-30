@@ -4,11 +4,11 @@ import clsx from "clsx";
 
 export function Statement() {
   return (
-    <section className="bg-background text-foreground pb-24">
+    <section className="bg-background text-foreground pb-16 lg:pb-24">
       <div className="relative grid grid-cols-12">
         <div className="hidden lg:block col-span-1 bg-decoration pointer-events-none" aria-hidden="true" />
 
-        <div className="col-start-2 lg:col-start-3 col-span-6 relative mx-auto w-full flex flex-col gap-4">
+        <div className="col-start-2 lg:col-start-3 col-span-10 lg:col-span-6 relative mx-auto w-full flex flex-col gap-4">
           <p className="body-label text-muted">
             Experience
           </p>
