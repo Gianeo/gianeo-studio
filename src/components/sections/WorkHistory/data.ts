@@ -177,13 +177,13 @@ export interface GridItem {
           id: 6,
           type: 'text',
           content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
-          source: 'Julia H. - Snr Manager Research'
+          source: 'Julia Hassing - - Snr Manager Research'
         },
         {
           id: 7,
           type: 'text',
-          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
-          source: 'Julia H. - Snr Manager Research'
+          content: 'From our very first conversation, it was evident that Gianni was anything but conventional. His leadership style was a breath of fresh air, combining autonomy with meticulous attention to the finer details of delivery.',
+          source: 'Aparna Ravikumaran - - Snr Manager, Product Design'
         },
         {
           id: 8,
@@ -219,8 +219,8 @@ export interface GridItem {
         {
           id: 11,
           type: 'text',
-          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
-          source: 'Julia H. - Snr Manager Research'
+          content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
+          source: 'Jayaraj Elaraj - - Manager, Design Technology'
         },
       ]
     },

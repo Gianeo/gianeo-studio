@@ -74,7 +74,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-          <div className="col-span-4 space-y-12 flex flex-col justify-between">
+          <div className="col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
             <div className="space-y-6">
               <p className="body-label text-muted">
                 Craftsmanship + Leadership
@@ -98,72 +98,72 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </div>
           </div>
 
-          <div className="col-span-8 grid grid-cols-3 gap-8 lg:gap-12">
-          <div className="space-y-6">
-            <p className="body-label text-muted">
-              What I do
-            </p>
-            <ul className="space-y-1.5">
-              {whatIDo.map((item) => (
-                <li
-                  key={item.title}
-                  className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
-                >
-                  <span className="heading-sm text-secondary">
-                    {item.title}
-                  </span>
-                  <span className="body-sm text-muted">
-                    {item.description}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <p className="body-label text-muted">
-              Served
-            </p>
-            <ul className="space-y-1.5">
-              {served.map((item) => (
-                <li
-                  key={item.title}
-                  className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
-                >
-                  <span className="heading-sm text-secondary">
-                    {item.title}
-                  </span>
-                  <span className="body-sm text-muted">
-                    {item.description}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-6 relative">
-            <p className="body-label text-muted">
-              History
-            </p>
-            <ul className="space-y-1.5">
-              {history.map((item) => (
-                <li
-                  key={item.label}
-                  className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
-                >
-                  <div className="flex items-baseline justify-between gap-3">
+          <div className="col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="space-y-6">
+              <p className="body-label text-muted">
+                What I do
+              </p>
+              <ul className="space-y-1.5">
+                {whatIDo.map((item) => (
+                  <li
+                    key={item.title}
+                    className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                  >
+                    <span className="heading-sm text-secondary">
+                      {item.title}
+                    </span>
                     <span className="body-sm text-muted">
-                      {item.label}
+                      {item.description}
                     </span>
-                    <span className="body-sm text-secondary">
-                      {item.company}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="hidden md:block space-y-6">
+              <p className="body-label text-muted">
+                Served
+              </p>
+              <ul className="space-y-1.5">
+                {served.map((item) => (
+                  <li
+                    key={item.title}
+                    className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                  >
+                    <span className="heading-sm text-secondary">
+                      {item.title}
                     </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent " />
-          </div>
+                    <span className="body-sm text-muted">
+                      {item.description}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-6 relative">
+              <p className="body-label text-muted">
+                History
+              </p>
+              <ul className="space-y-1.5">
+                {history.map((item) => (
+                  <li
+                    key={item.label}
+                    className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
+                  >
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span className="body-sm text-muted">
+                        {item.label}
+                      </span>
+                      <span className="body-sm text-secondary text-right">
+                        {item.company}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent" />
+            </div>
           </div>
 
         </div>

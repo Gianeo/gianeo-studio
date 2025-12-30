@@ -55,20 +55,20 @@ const TextContainer = memo(({
       <div className="font-mono text-left max-w-md mx-auto p-8">
         <div className="space-y-1">
           {lines.map((line, index) => (
-            <div
+            <p
               key={index}
-              className="body-base font-normal">
+              className="body-base">
               {line}
-            </div>
+            </p>
           ))}
         </div>
         {source && (
-          <div className="body-base mt-4">
+          <div className="body-sm mt-6">
             {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
             {sourceTitle && (
               <>
                 {" "}
-                <span className="italic text-secondary">{sourceTitle}</span>
+                <span className="italic text-muted">{sourceTitle}</span>
               </>
             )}
             {!sourceName && <span className="italic">{source}</span>}
@@ -237,47 +237,45 @@ const WorkExperienceEntry = memo(({
 
   // Memoized content section
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4 -mt-25 relative">
-      <div className="heading-base leading-4 text-muted/75 pb-8">
+    <div className="col-span-12 lg:col-span-4 lg:-mt-25 relative">
+      <div className="hidden lg:block heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
-      <div className="size-10 bg-decoration absolute top-3 right-0" />
-      <article className="space-y-6 md:space-y-10">
+      <div className="hidden lg:block size-10 bg-decoration absolute top-3 right-0" />
+      <article className="space-y-4 pt-8 lg:pt-0">
         {/* Work experience header */}
         <div className="grid grid-cols-12 gap-16">
-          <header className="col-span-8 space-y-8">
+          <header className="row-start-1 col-start-1 col-span-6 space-y-8">
             <h3
               className="heading-base text-primary max-w-2xl lg:-mt-1.5"
               id={`work-${experience.id}`}
             >
               {experience.title}
             </h3>
+            {/* External Link Button */}
+            {experience.buttonUrl && (
+              <div className="pt-4">
+                <ExternalLinkButton
+                  url={experience.buttonUrl}
+                  company={experience.company}
+                />
+              </div>
+            )}
           </header>
-
-          {/* External Link Button */}
-          {experience.buttonUrl && (
-            <div className="col-span-4 px-6 lg:px-12 text-right">
-              <ExternalLinkButton
-                url={experience.buttonUrl}
-                company={experience.company}
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Key Responsibilities */}
-        <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
-
           <div
-            className="col-span-4 body-base text-muted prose-optimized"
+            className="row-start-1 col-start-7 col-span-5 xl:col-span-4"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, index) => (
-              <p key={index} className={index > 0 ? 'mt-4' : ''}>
+              <p key={index} className={`body-base ${index > 0 ? 'mt-4' : ''}`}>
                 {paragraph}
               </p>
+
             ))}
           </div>
+        </div>
+        {/* Key Responsibilities */}
+        <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
 
           {/* <h4 id={`responsibilities-${experience.id}`} className="sr-only">
             Key Responsibilities at {experience.company}
@@ -310,7 +308,7 @@ const WorkExperienceEntry = memo(({
 
   return (
     <article
-      className="grid grid-cols-1 lg:grid-cols-12"
+      className="grid grid-cols-1 lg:grid-cols-12 pb-32 xl:pb-24"
       aria-labelledby={`work-${experience.id}`}
     >
       {/* Structured data for this work experience */}

@@ -82,7 +82,7 @@ export default function HomePage() {
       <main 
         id="main-content" 
         role="main"
-        className="space-y-8 lg:space-y-32 pb-24 md:px-8 lg:px-0"
+        className="space-y-8 lg:space-y-32 pb-24 px-0"
       >
 
       <section 
