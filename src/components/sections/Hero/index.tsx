@@ -60,19 +60,22 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   return (
     <section
-      className={`relative bg-background text-primary min-h-screen flex flex-col justify-between items-center pb-12 ${className}`}
+      className={`relative bg-background text-primary min-h-screen flex flex-col justify-between items-center ${className}`}
     >
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero/01.jpg"
+          alt="Hero background"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-background/0" />
+      </div>
       <Navigation />
-      <div className="flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
+      <div className="relative flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
         <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
-          <Image
-            src="/images/hero/01.png"
-            alt="Hero background"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 900px"
-            priority
-          />
           <LogoGf
             className="relative z-10 w-32 md:w-40 lg:w-48 h-auto"
             aria-label="Gianeo Studio logo"
@@ -81,7 +84,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       </div>
 
       {/* Content */}
-      <div className="relative w-full px-6 md:px-10 lg:px-12 space-y-12 lg:space-y-16">
+      <div className="relative w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/70">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
           <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
