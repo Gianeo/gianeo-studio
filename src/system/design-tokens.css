@@ -45,8 +45,8 @@
   --text-xl: 5.125rem;      /* 82px */
 
   /* Neutral scale (HSL) */
-  --neutral-lightest: hsl(220, 6%, 90%);
-  --neutral-lighter: hsl(220, 6%, 70%);
+  --neutral-lightest: hsl(220, 6%, 80%);
+  --neutral-lighter: hsl(220, 6%, 65%);
   --neutral-light: hsl(220, 6%, 40%);
   --neutral-dark: hsl(220, 6%, 15%);
   --neutral-darker: hsl(220, 6%, 10%);

@@ -64,14 +64,14 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
     >
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/01.jpg"
+          src="/images/hero/02.png"
           alt="Hero background"
           fill
           className="object-cover"
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-background/0" />
+        <div className="absolute inset-0 bg-background/90" />
       </div>
       <Navigation />
       <div className="relative flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
@@ -84,7 +84,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       </div>
 
       {/* Content */}
-      <div className="relative w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/70">
+      <div className="relative w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/90">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
           <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">

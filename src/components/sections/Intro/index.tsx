@@ -6,13 +6,13 @@ import Image from "next/image";
 
 export function Intro() {
   return (
-    <section className="bg-background py-8">
-      <div className="flex flex-col pt-6">
+    <section className="bg-background pt-1">
+      <div className="flex flex-col">
         <div className="space-y-6">
           <ClientsLogos />
         </div>
 
-        <div className="grid grid-cols-12 body-base text-muted mt-6 space-y-8 md:py-24">
+        <div className="grid grid-cols-12 body-base text-muted space-y-8 md:py-24">
           {/* <div className="row-start-1 row-span-4 relative">
             <div className="relative w-[500px] aspect-3/4 overflow-hidden rounded-lg shadow-md">
               <Image

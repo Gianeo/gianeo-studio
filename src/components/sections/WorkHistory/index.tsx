@@ -136,7 +136,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
-      <div className="grid w-full h-full gap-2 md:grid-cols-12">
+      <div className="grid w-full h-full gap-1 md:grid-cols-12">
         {orderedItems.map((item, idx) => {
           const slot = highlightSlots[idx % highlightSlots.length];
           if (item.type === "image" && item.src) {
