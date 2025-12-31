@@ -71,7 +71,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-background/90" />
+        <div className="absolute inset-0 bg-background/80" />
       </div>
       <Navigation />
       <div className="relative flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
@@ -96,16 +96,16 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                 id="hero-heading"
                 className="heading-display leading-tight text-primary"
               >
-                Design+ expertise for growth.
+                Design+ for growth.
               </h1>
             </div>
             <div>
               <Button asChild variant="accent" size="base" className="gap-2">
                 <a href="mailto:giannijfavaretto@gmail.com">
-                  <span className="inline-flex size-7 items-center justify-center rounded-full border border-black/10 text-xs dark:border-white/30">
+                  <span className="inline-flex size-7 items-center justify-center">
                     ↗
                   </span>
-                  Get in touch
+                  Hire me
                 </a>
               </Button>
             </div>
@@ -165,7 +165,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                     className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
                   >
                     <div className="flex items-baseline justify-between gap-3">
-                      <span className="body-sm text-muted">
+                      <span className="body-sm text-muted whitespace-nowrap">
                         {item.label}
                       </span>
                       <span className="body-sm text-secondary text-right">
@@ -175,7 +175,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   </li>
                 ))}
               </ul>
-              <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent" />
+              <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent animate-bounce" />
             </div>
           </div>
 

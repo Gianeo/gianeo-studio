@@ -45,12 +45,14 @@
   --text-xl: 5.125rem;      /* 82px */
 
   /* Neutral scale (HSL) */
-  --neutral-lightest: hsl(220, 6%, 80%);
-  --neutral-lighter: hsl(220, 6%, 65%);
-  --neutral-light: hsl(220, 6%, 40%);
-  --neutral-dark: hsl(220, 6%, 15%);
-  --neutral-darker: hsl(220, 6%, 10%);
-  --neutral-darkest: hsl(220, 6%, 5%);
+  --neutral-lightest: hsl(20, 1%, 80%);
+  --neutral-lighter: hsl(20, 1%, 65%);
+  --neutral-light: hsl(20, 1%, 40%);
+  --neutral-dark: hsl(20, 1%, 15%);
+  --neutral-darker: hsl(20, 1%, 10%);
+  --neutral-darkest: hsl(20, 1%, 5%);
+
+  --accent-base: hsl(8, 100%, 44%);
 }
 
 :root {
@@ -67,7 +69,8 @@
   --secondary-foreground: var(--neutral-lightest);
   --muted: var(--neutral-lightest);
   --muted-foreground: var(--neutral-dark);
-  --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
+  /* --accent: oklch(0.605 0.24 17); */
+  --accent: var(--accent-base);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: var(--neutral-lighter);
@@ -88,7 +91,8 @@
   --secondary-foreground: var(--neutral-lighter);
   --muted: var(--neutral-dark);
   --muted-foreground: var(--neutral-light);
-  --accent: oklch(0.605 0.24 17); /* Hero CTA pink/red */
+  /* --accent: oklch(0.605 0.24 17); */
+  --accent: var(--accent-base);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: var(--neutral-dark);
