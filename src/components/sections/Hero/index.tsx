@@ -64,10 +64,20 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
     >
       <Navigation />
       <div className="flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
-        <LogoGf
-          className="w-32 md:w-40 lg:w-48 h-auto"
-          aria-label="Gianeo Studio logo"
-        />
+        <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
+          <Image
+            src="/images/hero/01.png"
+            alt="Hero background"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 900px"
+            priority
+          />
+          <LogoGf
+            className="relative z-10 w-32 md:w-40 lg:w-48 h-auto"
+            aria-label="Gianeo Studio logo"
+          />
+        </div>
       </div>
 
       {/* Content */}
