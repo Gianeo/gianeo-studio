@@ -47,7 +47,7 @@
   }
 
   p, .prose-optimized {
-    @apply max-w-xl leading-6;
+    @apply max-w-xl;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
   
@@ -63,7 +63,10 @@
     @apply text-sm font-medium tracking-wider subpixel-antialiased;
   }
   .body-base {
-    @apply text-base font-medium;
+    @apply text-base font-medium leading-6;
+  }
+  .body-base-responsive {
+    @apply text-base md:text-sm md:leading-5 xl:text-base xl:leading-6 font-medium;
   }
   .heading-sm {
     @apply text-base;
@@ -77,7 +80,7 @@
   .body-base, .heading-sm, .heading-base, .heading-display {
     @apply antialiased;
   }
-  .body-sm, .body-base {
+  .body-sm, .body-base, .body-base-responsive {
     @apply font-copy;
   }
   .heading-sm, .heading-base, .heading-display {

@@ -52,18 +52,18 @@ const TextContainer = memo(({
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
-      <div className="font-mono text-left max-w-md mx-auto p-8">
+      <div className="max-w-md md:max-w-sm xl:max-w-md mx-auto p-4 lg:p-6 xl:p-8">
         <div className="space-y-1">
           {lines.map((line, index) => (
             <p
               key={index}
-              className="body-base">
+              className="body-base-responsive">
               {line}
             </p>
           ))}
         </div>
         {source && (
-          <div className="body-sm mt-6">
+          <div className="body-sm mt-6 md:mt-4 xl:mt-6">
             {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
             {sourceTitle && (
               <>
