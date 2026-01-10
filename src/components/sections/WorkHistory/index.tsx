@@ -48,11 +48,11 @@ const TextContainer = memo(({
 
   return (
     <div
-      className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-center body-base text-muted aspect-4/3 p-4 ${className}`}
+      className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
-      <div className="max-w-md md:max-w-sm xl:max-w-md mx-auto p-4 lg:p-6 xl:p-8">
+      <div className="max-w-md md:max-w-sm xl:max-w-md p-4 lg:p-6 xl:p-8">
         <div className="space-y-1">
           {lines.map((line, index) => (
             <p

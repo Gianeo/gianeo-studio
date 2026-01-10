@@ -31,12 +31,14 @@ export default function Navigation({ className = '' }: NavigationProps) {
             e.preventDefault();
             handleNavClick('hero');
           }}
-          className="text-xs font-mono text-primary hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
+          className="text-xs tracking-widest font-mono text-primary hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded"
           aria-label="Gianeo Studio - Go to top of page"
         >
-          <span aria-hidden="true">Gianeo Studio</span>
+          <span aria-hidden="true">Gianni J Favaretto</span>
         </a>
+      </div>
 
+      <div>
         {/* Theme Switcher */}
         <button
           onClick={toggleTheme}

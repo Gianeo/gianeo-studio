@@ -16,7 +16,7 @@ export function Intro() {
 
           <div className="absolute inset-0">
             <Image
-              src="/images/hero/02.png"
+              src="/images/hero/14.png"
               alt="Hero background"
               fill
               className="object-cover"
