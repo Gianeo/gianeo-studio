@@ -13,7 +13,7 @@ export function Statement() {
             Experience
           </p>
           <p className="heading-display text-muted/75 max-w-4xl">
-            Merging design and technology, with obsession and care.
+            Playing at the intersection of design and technology.
           </p>
         </div>
         <div className="hidden lg:block col-start-11 col-span-2 bg-decoration pointer-events-none" aria-hidden="true" />

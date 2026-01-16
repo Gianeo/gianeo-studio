@@ -48,20 +48,20 @@ export function LazyImage({
     <div
       ref={ref}
       className={cn(
-        "group relative overflow-hidden rounded-lg bg-neutral-100",
+        "group relative overflow-hidden rounded-lg bg-neutral-lighter dark:bg-neutral-darker",
         containerClassName,
         className
       )}
       style={style}
     >
       {(!isLoaded || hasError) && (
-        <div className="absolute inset-0 z-10 animate-pulse bg-gradient-to-br from-neutral-200 to-neutral-300" />
+        <div className="absolute inset-0 z-10 animate-pulse bg-linear-to-br from-neutral-200 to-neutral-300" />
       )}
 
       {isLoaded && !hasError && (
         <div
           className={cn(
-            "absolute inset-0 z-20 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100",
+            "absolute inset-0 z-20 bg-linear-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100",
             overlayClassName
           )}
         />

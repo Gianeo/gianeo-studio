@@ -136,7 +136,7 @@ export interface GridItem {
         {
           id: 1,
           type: 'image',
-          src: '/images/work/chargebee/1.webp',
+          src: '/images/work/chargebee/cb01.webp',
           alt: 'Chargebee project 1',
           aspectRatio: 'landscape'
         },
@@ -148,28 +148,28 @@ export interface GridItem {
         {
           id: 2,
           type: 'image',
-          src: '/images/work/chargebee/2.webp',
+          src: '/images/work/chargebee/cb02.webp',
           alt: 'Chargebee project 2',
           aspectRatio: 'landscape'
         },
         {
           id: 3,
           type: 'image',
-          src: '/images/work/chargebee/3.webp',
+          src: '/images/work/chargebee/cb03.webp',
           alt: 'Chargebee project 3',
           aspectRatio: 'portrait'
         },
         {
           id: 4,
           type: 'image',
-          src: '/images/work/chargebee/4.webp',
+          src: '/images/work/chargebee/cb05.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
         {
           id: 5,
           type: 'image',
-          src: '/images/work/chargebee/5.webp',
+          src: '/images/work/chargebee/cb07.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
@@ -188,7 +188,7 @@ export interface GridItem {
         {
           id: 8,
           type: 'image',
-          src: '/images/work/chargebee/7.webp',
+          src: '/images/work/chargebee/cb06.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
@@ -200,7 +200,7 @@ export interface GridItem {
         {
           id: 9,
           type: 'image',
-          src: '/images/work/chargebee/6.webp',
+          src: '/images/work/chargebee/cb06.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },

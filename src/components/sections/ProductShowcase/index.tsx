@@ -101,7 +101,7 @@ export default function ProductShowcase({
             eyebrow={null}
             title={project.title}
             description={<p>{project.description}</p>}
-            titleClassName="bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
+            titleClassName="bg-linear-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
             className="space-y-4"
           />
         </div>

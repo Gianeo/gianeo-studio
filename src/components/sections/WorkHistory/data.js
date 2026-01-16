@@ -102,7 +102,7 @@ export const workHistoryData = [
             {
                 id: 1,
                 type: 'image',
-                src: '/images/work/chargebee/1.webp',
+                src: '/images/work/chargebee/cb01.webp',
                 alt: 'Chargebee project 1',
                 aspectRatio: 'landscape'
             },

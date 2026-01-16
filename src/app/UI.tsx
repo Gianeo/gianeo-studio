@@ -227,7 +227,7 @@ export default function TestPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {Array.from({ length: 6 }, (_, i) => (
-              <div key={i} className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
+              <div key={i} className="aspect-square bg-linear-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
                 <span className="text-sm font-copy font-medium">{i + 1}</span>
               </div>
             ))}
