@@ -29,7 +29,7 @@ const sampleProject: ProjectData = {
   title: "JustScore",
   description:
     "JustScore is an AI-powered performance management tool that helps team leaders score real-time actions and behaviours—turning quick observations into clear, data-driven insights. It replaces gut-feel evaluations and delayed feedback with a simple, human-friendly interface that delivers consistent, actionable reviews in minutes.",
-  category: "Product & Brand development, Go to Market.",
+  category: "Co-founder / Product & Brand development, GTM.",
   client: "JustScore",
   date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
@@ -74,8 +74,16 @@ export default function ProductShowcase({
     },
   ]), [project.images]);
 
-  const GalleryText = ({ title, description }: { title?: string; description?: string }) => (
-    <div className="flex h-full flex-col">
+  const GalleryText = ({
+    title,
+    description,
+    className = "",
+  }: {
+    title?: string;
+    description?: string;
+    className?: string;
+  }) => (
+    <div className={`flex h-full flex-col p-6 md:p-0 space-y-4 md:space-y-0 ${className}`}>
       <div className="flex flex-1 items-center">
         <h3 className="heading-base text-primary">{title}</h3>
       </div>
@@ -89,16 +97,19 @@ export default function ProductShowcase({
         icon={<ArrowRightIcon size={16} />}
         label="Latest"
       />
-      <div className="relative grid grid-cols-12 py-8 lg:py-20 px-6 lg:px-1">
+      <div className="relative grid grid-cols-1 md:grid-cols-12 md:py-8 lg:py-20 px-6 lg:px-1">
         <div className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-5 space-y-6">
-          <MetaRow
+          {/* <MetaRow
             className="mb-2"
             items={[
               { icon: <TagIcon size={16} />, label: project.category },
               { icon: <CalendarIcon size={16} />, label: project.date },
             ]}
-          />
-          <div className="space-y-2 mt-8">
+          /> */}
+          <div className="space-y-2">
+            <p className="body-label text-accent mb-8">
+              {project.category}
+            </p>
             <h1
               className="heading-display text-primary">
               {project.title}
@@ -106,21 +117,21 @@ export default function ProductShowcase({
             <h2 className="heading-display text-muted/75">Where an idea found its form and voice.</h2>
           </div>
         </div>
-        <div className="col-start-6 col-span-4 pb-16">
-            <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
-              {project.description}
-            </div>
+        <div className="col-start-6 col-span-4 pt-8 pb-16">
+          <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
+            {project.description}
+          </div>
         </div>
       </div>
 
       {/* Gallery */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+      <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24">
 
-        <div className="col-start-3 col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+        <div className="md:col-start-3 md:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-6">
               {galleryItems[0]?.image && (
-                <div className="overflow-hidden  bg-neutral-darker/60">
+                <div className="overflow-hidden bg-neutral-darker/60">
                   <LazyImage
                     image={galleryItems[0].image}
                     className="w-full aspect-4/3"
@@ -138,12 +149,13 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="col-start-3 col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+        <div className="md:col-start-3 md:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[1]?.title}
                 description={galleryItems[1]?.description}
+                className="md:text-right md:items-end"
               />
             </div>
             <div className="cols-start-5 col-span-8">
@@ -159,8 +171,8 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="col-start-3 col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+        <div className="md:col-start-3 md:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-6">
               {galleryItems[2]?.image && (
                 <div className="overflow-hidden  bg-neutral-darker/60">
@@ -180,12 +192,13 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="col-start-3 col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+        <div className="md:col-start-3 md:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[3]?.title}
                 description={galleryItems[3]?.description}
+                className="md:text-right md:items-end"
               />
             </div>
             <div className="cols-start-5 col-span-8">

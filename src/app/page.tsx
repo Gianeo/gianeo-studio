@@ -69,8 +69,8 @@ export default function HomePage() {
       </header> */}
 
       {/* Hero section - primary content */}
-      <section 
-        id="hero" 
+      <section
+        id="hero"
         aria-labelledby="hero-heading"
         role="region"
         aria-label="Introduction and overview"
@@ -79,30 +79,30 @@ export default function HomePage() {
       </section>
 
       {/* Main content area */}
-      <main 
-        id="main-content" 
+      <main
+        id="main-content"
         role="main"
         className="space-y-8 lg:space-y-32 pb-24 px-0"
       >
 
-      <section 
-        id="intro" 
-        aria-label="Intro overview"
-        role="region"
-      >
-        <Intro />
-      </section>
+        <section
+          id="intro"
+          aria-label="Intro overview"
+          role="region"
+        >
+          <Intro />
+        </section>
 
-      <section
-        id="statement"
-        aria-label="Statement"
-        role="region"
-      >
-        <Statement />
-      </section>
-        
-        <section 
-          id="product-showcase" 
+        <section
+          id="statement"
+          aria-label="Statement"
+          role="region"
+        >
+          <Statement />
+        </section>
+
+        <section
+          id="product-showcase"
           aria-labelledby="products-heading"
           role="region"
           aria-label="Featured product work and case studies"
@@ -113,8 +113,8 @@ export default function HomePage() {
           <ProductShowcase />
         </section>
 
-        <section 
-          id="history" 
+        <section
+          id="history"
           aria-labelledby="history-heading"
           role="region"
           aria-label="History"
@@ -126,8 +126,8 @@ export default function HomePage() {
         </section>
 
         {/* Personal profile section */}
-        <section 
-          id="profile" 
+        <section
+          id="profile"
           aria-labelledby="profile-heading"
           role="region"
           aria-label="Personal background and philosophy"
@@ -137,11 +137,11 @@ export default function HomePage() {
           </h2>
           <PersonalProfile />
         </section>
-       
+
       </main>
 
       {/* Site footer - will be added when you create a footer component */}
-      <footer 
+      <footer
         role="contentinfo"
         className="sr-only"
         aria-label="Site footer and additional information"
