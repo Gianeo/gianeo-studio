@@ -27,12 +27,12 @@ export function Intro() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 body-base text-muted space-y-8 px-6 md:px-0 md:pt-24 relative">
 
-            <div className="md:col-start-5 xl:col-start-8 md:col-span-7 lg:col-span-5 xl:col-span-4 space-y-8 max-w-xl md:pt-24">
+            <div className="md:col-start-8 xl:col-start-8 md:col-span-7 xl:col-span-4 space-y-8 max-w-xl md:pt-8 xl:pt-24">
               <p className="body-label text-accent">Design Leadership</p>
-              <h2 className="heading-display text-primary">With intention, precision, and care.</h2>
+              <h2 className="heading-display text-primary">With intention, action, and care.</h2>
             </div>
 
-            <div className="md:col-start-5 md:col-span-3 space-y-6 md:mt-40 md:pr-24">
+            <div className="md:col-start-5 xl:col-start-5 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-24">
               <p>
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
               </p>
@@ -41,7 +41,7 @@ export function Intro() {
               </p>
             </div>
 
-            <div className="md:col-start-8 md:col-span-3 space-y-6 md:mt-40 md:pr-24">
+            <div className="md:col-start-8 xl:col-start-8 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-24">
               <p className="heading-sm text-secondary">That&apos;s where I come in.</p>
               <p>
                 I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.

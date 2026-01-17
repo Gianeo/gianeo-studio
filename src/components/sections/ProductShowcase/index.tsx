@@ -87,7 +87,7 @@ export default function ProductShowcase({
     description?: string;
     className?: string;
   }) => (
-    <div className={`flex h-full flex-col p-6 pb-16 md:p-0 space-y-4 md:space-y-0 ${className}`}>
+    <div className={`flex h-full flex-col p-6 pb-16 md:px-16 md:py-0 xl:px-24 xl:py-0 space-y-4 md:space-y-0 ${className}`}>
       <div className="flex flex-1 items-center">
         <h3 className="heading-base text-primary">{title}</h3>
       </div>
@@ -104,15 +104,8 @@ export default function ProductShowcase({
         icon={<ArrowRightIcon size={16} />}
         label="Latest"
       />
-      <div className="relative grid grid-cols-1 md:grid-cols-12 md:py-8 lg:py-20 px-6 lg:px-1">
-        <div className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-5 space-y-6">
-          {/* <MetaRow
-            className="mb-2"
-            items={[
-              { icon: <TagIcon size={16} />, label: project.category },
-              { icon: <CalendarIcon size={16} />, label: project.date },
-            ]}
-          /> */}
+      <div className="relative grid grid-cols-1 md:grid-cols-12 md:py-8 xl:py-20 px-6 md:px-0">
+        <div className="md:col-start-2 md:col-span-8 xl:col-start-3 xl:col-span-5 space-y-6">
           <div className="space-y-2">
             <p className="body-label text-muted mb-8">
               {project.category}
@@ -124,7 +117,7 @@ export default function ProductShowcase({
             <h2 className="heading-display text-muted/75">Where an idea found its form and voice.</h2>
           </div>
         </div>
-        <div className="col-start-3 py-16">
+        <div className="md:col-start-2 xl:col-start-3 py-8 md:py-24">
             <Button asChild size="lg" variant="accent" className="btn">
               <Link
                 href="https://justscore.com"
@@ -137,7 +130,7 @@ export default function ProductShowcase({
               </Link>
             </Button>
         </div>
-        <div className="col-start-6 col-span-4 py-16">
+        <div className="md:col-start-6 xl:col-start-6 md:col-span-4 pb-8 md:py-24">
           <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
             {project.description}
           </div>
@@ -147,8 +140,8 @@ export default function ProductShowcase({
       {/* Gallery */}
       <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24">
 
-        <div className="md:col-start-3 md:col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
+        <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
               <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
                 {hasValidImage(galleryItems[0]?.image) ? (
@@ -172,8 +165,8 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="md:col-start-3 md:col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
+        <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="order-2 md:order-0 col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[1]?.title}
@@ -197,8 +190,8 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="md:col-start-3 md:col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
+        <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
               <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
                 {hasValidImage(galleryItems[2]?.image) ? (
@@ -221,8 +214,8 @@ export default function ProductShowcase({
           </div>
         </div>
 
-        <div className="md:col-start-3 md:col-span-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
+        <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="order-2 md:order-0 col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[3]?.title}
