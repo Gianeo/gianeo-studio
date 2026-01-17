@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react";
 
 import { workHistoryData, WorkExperience } from "./data";
 import { SectionHeader } from "@/components/primitives/SectionHeader";
-import { WorkExperienceEntry } from "./WorkExperienceEntry";
+import { WorkExperienceEntry2 } from "./WorkExperienceEntry2";
 
 interface WorkHistoryProps {
   experiences?: WorkExperience[];
@@ -65,7 +65,7 @@ export default function WorkHistory({
         </div>
 
         {memoizedExperiences.map((experience, index) => (
-          <WorkExperienceEntry
+          <WorkExperienceEntry2
             key={experience.id}
             experience={experience}
             index={index}

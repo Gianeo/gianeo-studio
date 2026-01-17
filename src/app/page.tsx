@@ -101,7 +101,7 @@ export default function HomePage() {
         <Statement />
       </section>
         
-        {/* <section 
+        <section 
           id="product-showcase" 
           aria-labelledby="products-heading"
           role="region"
@@ -111,7 +111,7 @@ export default function HomePage() {
             Featured Product Work
           </h2>
           <ProductShowcase />
-        </section> */}
+        </section>
 
         <section 
           id="history" 

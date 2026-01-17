@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, memo } from "react";
+import { useMemo } from "react";
 import {
   ArrowRightIcon,
   CalendarIcon,
@@ -9,7 +9,6 @@ import {
 import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { MetaRow } from "@/components/primitives/MetaRow";
-import { GalleryGrid } from "@/components/media/GalleryGrid";
 import { LazyImage } from "@/components/media/LazyImage";
 
 interface ProjectData {
@@ -30,9 +29,9 @@ const sampleProject: ProjectData = {
   title: "JustScore",
   description:
     "JustScore is an AI-powered performance management tool that helps team leaders score real-time actions and behaviours—turning quick observations into clear, data-driven insights. It replaces gut-feel evaluations and delayed feedback with a simple, human-friendly interface that delivers consistent, actionable reviews in minutes.",
-  category: "Product ideation, Brand development, Go to Market.",
+  category: "Product & Brand development, Go to Market.",
   client: "JustScore",
-  date: "2025",
+  date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     src: `/images/work/justscore/${i + 1}.webp`,
@@ -48,48 +47,41 @@ interface ProjectShowcaseProps {
 export default function ProductShowcase({
   project = sampleProject,
 }: ProjectShowcaseProps) {
-  
-  // Memoize image organization to prevent recalculation
-  const imageRows = useMemo(() => {
-    return {
-      allImages: project.images.slice(0, 9),
-    };
-  }, [project.images]);
-
-  // Memoized image row component
-  const ImageRow = memo(({ 
-    images, 
-    gridCols = "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
-  }: { 
-    images: typeof project.images; 
-    gridCols?: string;
-  }) => {
-    if (images.length === 0) return null;
-
-    return (
-      <div className={`grid gap-1 ${gridCols}`}>
-        {images.map((image, index) => (
-          <LazyImage
-            key={`image-${image.id}`}
-            image={image}
-            className="w-full aspect-4/3"
-            priority={index === 0} // Only first image is priority
-          />
-        ))}
-      </div>
-    );
-  });
-
-  ImageRow.displayName = 'ImageRow';
+  const galleryItems = useMemo(() => ([
+    {
+      title: "Mobile Native App",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: project.images[0],
+    },
+    {
+      title: "Web App",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: project.images[1],
+    },
+    {
+      title: "Marketing",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: project.images[2],
+    },
+    {
+      title: "Brand",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: project.images[3],
+    },
+  ]), [project.images]);
 
   return (
-    <div className="bg-background text-foreground">
+    <section className="bg-background text-foreground">
       <SectionHeader
         icon={<ArrowRightIcon size={16} />}
-        label="Latest Ideation and Development"
+        label="Latest"
       />
-      <section className="relative grid grid-cols-12 py-8 lg:py-20 px-6 lg:px-1">
-        <div className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-4 space-y-6">
+      <div className="relative grid grid-cols-12 py-8 lg:py-20 px-6 lg:px-1">
+        <div className="col-span-12 lg:col-start-2 lg:col-span-5 xl:col-start-3 xl:col-span-5 space-y-6">
           <MetaRow
             className="mb-2"
             items={[
@@ -97,20 +89,102 @@ export default function ProductShowcase({
               { icon: <CalendarIcon size={16} />, label: project.date },
             ]}
           />
-          <SectionIntro
-            eyebrow={null}
-            title={project.title}
-            description={<p>{project.description}</p>}
-            titleClassName="bg-linear-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
-            className="space-y-4"
-          />
+          <div className="space-y-2 mt-8">
+            <h1
+              className="heading-display text-primary">
+              {project.title}
+            </h1>
+            <h2 className="heading-display text-muted/75">Where an idea found its form and voice.</h2>
+          </div>
         </div>
-      </section>
+        <div className="col-start-6 col-span-4 pb-16">
+            <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
+              {project.description}
+            </div>
+        </div>
+      </div>
 
-      {/* Optimized Image Gallery */}
-      <section className="px-6 lg:px-1 pb-20">
-        <GalleryGrid images={imageRows.allImages} layout="highlight" className="w-full" />
-      </section>
-    </div>
+      {/* Alternating gallery */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+
+        <div className="col-start-3 col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+            <div className="col-span-6">
+              {galleryItems[0]?.image && (
+                <div className="overflow-hidden  bg-neutral-darker/60">
+                  <LazyImage
+                    image={galleryItems[0].image}
+                    className="w-full aspect-4/3"
+                    priority
+                  />
+                </div>
+              )}
+            </div>
+            <div className="cols-start-7 col-span-5">
+              <h3 className="heading-base text-primary mb-4">{galleryItems[0]?.title}</h3>
+              <p className="body-sm text-muted max-w-md">{galleryItems[0]?.description}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-start-3 col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+            <div className="col-span-4">
+              <h3 className="heading-base text-primary mb-4">{galleryItems[1]?.title}</h3>
+              <p className="body-sm text-muted max-w-md">{galleryItems[1]?.description}</p>
+            </div>
+            <div className="cols-start-5 col-span-8">
+              {galleryItems[1]?.image && (
+                <div className="overflow-hidden  bg-neutral-darker/60">
+                  <LazyImage
+                    image={galleryItems[1].image}
+                    className="w-full aspect-4/3"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-start-3 col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+            <div className="col-span-6">
+              {galleryItems[2]?.image && (
+                <div className="overflow-hidden  bg-neutral-darker/60">
+                  <LazyImage
+                    image={galleryItems[2].image}
+                    className="w-full aspect-4/3"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="cols-start-7 col-span-5">
+              <h3 className="heading-base text-primary mb-4">{galleryItems[2]?.title}</h3>
+              <p className="body-sm text-muted max-w-md">{galleryItems[2]?.description}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-start-3 col-span-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+            <div className="col-span-4">
+              <h3 className="heading-base text-primary mb-4">{galleryItems[3]?.title}</h3>
+              <p className="body-sm text-muted max-w-md">{galleryItems[3]?.description}</p>
+            </div>
+            <div className="cols-start-5 col-span-8">
+              {galleryItems[3]?.image && (
+                <div className="overflow-hidden  bg-neutral-darker/60">
+                  <LazyImage
+                    image={galleryItems[3].image}
+                    className="w-full aspect-4/3"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }

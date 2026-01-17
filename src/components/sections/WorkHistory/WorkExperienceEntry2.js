@@ -17,44 +17,8 @@ const highlightSlots = [
   { span: "md:col-span-6 md:row-span-2" },
 ];
 
-const TextContainer = memo(({ content, source, className = "" }) => {
-  const lines = content.split('\n').filter(line => line.trim());
-  const sourceParts = source?.split(" - ").map((part) => part.trim()).filter(Boolean) || [];
-  const sourceName = sourceParts[0];
-  const sourceTitle = sourceParts.slice(1).join(" - ");
-
-  return (
-    <div
-      className={` w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
-      role="text"
-      aria-label={`Key metrics: ${lines.join(', ')}`}
-    >
-      <div className="max-w-md md:max-w-sm xl:max-w-md p-4 lg:p-6 xl:p-8">
-        <div className="space-y-1">
-          {lines.map((line, index) => (
-            <p key={index} className="body-base-responsive">
-              {line}
-            </p>
-          ))}
-        </div>
-        {source && (
-          <div className="body-sm mt-6 md:mt-4 xl:mt-6">
-            {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
-            {sourceTitle && (
-              <>
-                {" "}
-                <span className="italic text-muted">{sourceTitle}</span>
-              </>
-            )}
-            {!sourceName && <span className="italic">{source}</span>}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-});
-
-TextContainer.displayName = "TextContainer";
+const placeholderCaption =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 
 const ExternalLinkButton = memo(({ url, company }) => (
   <Button asChild size="lg" variant="accent" className="btn">
@@ -86,32 +50,30 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }) => {
       <div className="grid w-full h-full gap-1 md:grid-cols-12">
         {orderedItems.map((item, idx) => {
           const slot = highlightSlots[idx % highlightSlots.length];
-          if (item.type === "image" && item.src) {
-            return (
-              <div
-                key={`${experienceId}-${item.id ?? idx}`}
-                className={`overflow-hidden ${slot.span}`}
-                style={{ aspectRatio: "4 / 3" }}
-              >
-                <LazyImage
-                  image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
-                  className="h-full w-full"
-                  containerClassName="h-full w-full"
-                  overlayClassName="from-primary/10 to-accent/10"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={88}
-                />
-              </div>
-            );
-          }
-
+          const captionText = item.type === "text" ? item.content || "" : placeholderCaption;
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
-              <TextContainer
-                content={item.content || ""}
-                source={item.source}
-                className="w-full h-full"
-              />
+              <div className="flex flex-col gap-3">
+                <div className="overflow-hidden" style={{ aspectRatio: "4 / 3" }}>
+                  {item.type === "image" && item.src ? (
+                    <LazyImage
+                      image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
+                      className="h-full w-full"
+                      containerClassName="h-full w-full"
+                      overlayClassName="from-primary/10 to-accent/10"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={88}
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
+                  )}
+                </div>
+                {captionText && (
+                  <p className="body-sm text-muted">
+                    {captionText}
+                  </p>
+                )}
+              </div>
             </div>
           );
         })}
@@ -122,7 +84,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }) => {
 
 GridGallery.displayName = "GridGallery";
 
-export const WorkExperienceEntry = memo(({ experience, index, total }) => {
+export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
   const workExperienceStructuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "WorkExperience",
@@ -134,7 +96,7 @@ export const WorkExperienceEntry = memo(({ experience, index, total }) => {
     "employer": {
       "@type": "Organization",
       "name": experience.company,
-      "url": experience.buttonUrl || `https://${experience.company.toLowerCase().replace(/\s+/g, '')}.com`
+      "url": experience.buttonUrl || `https://${experience.company.toLowerCase().replace(/\\s+/g, '')}.com`
     },
     "jobTitle": experience.role,
     "workLocation": experience.location || "London, UK",
@@ -197,7 +159,7 @@ export const WorkExperienceEntry = memo(({ experience, index, total }) => {
             className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 lg:col-span-5"
             aria-describedby={`work-${experience.id}`}
           >
-            {experience.description.split('\n').map((paragraph, paragraphIndex) => (
+            {experience.description.split('\\n').map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex} className={`body-base ${paragraphIndex > 0 ? 'mt-4' : ''}`}>
                 {paragraph}
               </p>
@@ -259,4 +221,4 @@ export const WorkExperienceEntry = memo(({ experience, index, total }) => {
   );
 });
 
-WorkExperienceEntry.displayName = "WorkExperienceEntry";
+WorkExperienceEntry2.displayName = "WorkExperienceEntry2";

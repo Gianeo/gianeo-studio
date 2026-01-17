@@ -57,14 +57,14 @@ export interface GridItem {
         {
           id: 1,
           type: 'image',
-          src: '/images/work/justscore/1.webp',
+          // src: '/images/work/justscore/1.webp',
           alt: 'JustScore project 1',
           aspectRatio: 'landscape'
         },
         {
           id: 2,
           type: 'image',
-          src: '/images/work/justscore/2.webp',
+          // src: '/images/work/justscore/2.webp',
           alt: 'JustScore project 2',
           aspectRatio: 'landscape'
         },
@@ -76,7 +76,7 @@ export interface GridItem {
         {
           id: 4,
           type: 'image',
-          src: '/images/work/justscore/3.webp',
+          // src: '/images/work/justscore/3.webp',
           alt: 'JustScore project 3',
           aspectRatio: 'landscape'
         },
@@ -88,21 +88,21 @@ export interface GridItem {
         {
           id: 6,
           type: 'image',
-          src: '/images/work/justscore/4.webp',
+          // src: '/images/work/justscore/4.webp',
           alt: 'JustScore project 4',
           aspectRatio: 'landscape'
         },
         {
           id: 7,
           type: 'image',
-          src: '/images/work/justscore/5.webp',
+          // src: '/images/work/justscore/5.webp',
           alt: 'JustScore project 5',
           aspectRatio: 'landscape'
         },
         {
           id: 8,
           type: 'image',
-          src: '/images/work/justscore/6.webp',
+          // src: '/images/work/justscore/6.webp',
           alt: 'JustScore project 5',
           aspectRatio: 'landscape'
         },

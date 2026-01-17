@@ -48,7 +48,7 @@ export function LazyImage({
     <div
       ref={ref}
       className={cn(
-        "group relative overflow-hidden rounded-lg bg-neutral-lighter dark:bg-neutral-darker",
+        "group relative overflow-hidden bg-neutral-lighter dark:bg-neutral-darker",
         containerClassName,
         className
       )}
@@ -69,7 +69,7 @@ export function LazyImage({
 
       {shouldLoad && !hasError && (
         <div className="absolute inset-0 z-30">
-          <div className="relative h-full w-full overflow-hidden rounded-lg">
+          <div className="relative h-full w-full overflow-hidden">
             <Image
               src={image.src}
               alt={image.alt}

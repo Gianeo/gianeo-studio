@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
+import { GridItem, WorkExperience } from "./data";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -17,46 +18,16 @@ const highlightSlots = [
   { span: "md:col-span-6 md:row-span-2" },
 ];
 
-const TextContainer = memo(({ content, source, className = "" }) => {
-  const lines = content.split('\n').filter(line => line.trim());
-  const sourceParts = source?.split(" - ").map((part) => part.trim()).filter(Boolean) || [];
-  const sourceName = sourceParts[0];
-  const sourceTitle = sourceParts.slice(1).join(" - ");
+const placeholderCaption =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 
-  return (
-    <div
-      className={` w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
-      role="text"
-      aria-label={`Key metrics: ${lines.join(', ')}`}
-    >
-      <div className="max-w-md md:max-w-sm xl:max-w-md p-4 lg:p-6 xl:p-8">
-        <div className="space-y-1">
-          {lines.map((line, index) => (
-            <p key={index} className="body-base-responsive">
-              {line}
-            </p>
-          ))}
-        </div>
-        {source && (
-          <div className="body-sm mt-6 md:mt-4 xl:mt-6">
-            {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
-            {sourceTitle && (
-              <>
-                {" "}
-                <span className="italic text-muted">{sourceTitle}</span>
-              </>
-            )}
-            {!sourceName && <span className="italic">{source}</span>}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-});
-
-TextContainer.displayName = "TextContainer";
-
-const ExternalLinkButton = memo(({ url, company }) => (
+const ExternalLinkButton = memo(({
+  url,
+  company
+}: {
+  url: string;
+  company: string;
+}) => (
   <Button asChild size="lg" variant="accent" className="btn">
     <Link
       href={url}
@@ -72,7 +43,11 @@ const ExternalLinkButton = memo(({ url, company }) => (
 
 ExternalLinkButton.displayName = "ExternalLinkButton";
 
-const GridGallery = memo(({ gridItems, experienceId, companyName }) => {
+const GridGallery = memo(({ gridItems, experienceId, companyName }: {
+  gridItems: GridItem[];
+  experienceId: string;
+  companyName: string;
+}) => {
   if (gridItems.length === 0) return null;
 
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
@@ -83,35 +58,33 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }) => {
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
-      <div className="grid w-full h-full gap-1 md:grid-cols-12">
+      <div className="grid w-full h-full gap-24 md:grid-cols-12">
         {orderedItems.map((item, idx) => {
           const slot = highlightSlots[idx % highlightSlots.length];
-          if (item.type === "image" && item.src) {
-            return (
-              <div
-                key={`${experienceId}-${item.id ?? idx}`}
-                className={`overflow-hidden ${slot.span}`}
-                style={{ aspectRatio: "4 / 3" }}
-              >
-                <LazyImage
-                  image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
-                  className="h-full w-full"
-                  containerClassName="h-full w-full"
-                  overlayClassName="from-primary/10 to-accent/10"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={88}
-                />
-              </div>
-            );
-          }
-
+          const captionText = item.type === "text" ? item.content || "" : placeholderCaption;
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
-              <TextContainer
-                content={item.content || ""}
-                source={item.source}
-                className="w-full h-full"
-              />
+              <div className="flex flex-col gap-4 pb-0">
+                <div className="overflow-hidden rounded-none" style={{ aspectRatio: "4 / 3" }}>
+                  {item.type === "image" && item.src ? (
+                    <LazyImage
+                      image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
+                      className="h-full w-full"
+                      containerClassName="h-full w-full"
+                      overlayClassName="from-primary/10 to-accent/10"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={88}
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
+                  )}
+                </div>
+                {captionText && (
+                  <p className="body-sm text-muted max-w-sm">
+                    {captionText}
+                  </p>
+                )}
+              </div>
             </div>
           );
         })}
@@ -122,7 +95,15 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }) => {
 
 GridGallery.displayName = "GridGallery";
 
-export const WorkExperienceEntry = memo(({ experience, index, total }) => {
+export const WorkExperienceEntry2 = memo(({
+  experience,
+  index,
+  total,
+}: {
+  experience: WorkExperience;
+  index: number;
+  total: number;
+}) => {
   const workExperienceStructuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "WorkExperience",
@@ -259,4 +240,4 @@ export const WorkExperienceEntry = memo(({ experience, index, total }) => {
   );
 });
 
-WorkExperienceEntry.displayName = "WorkExperienceEntry";
+WorkExperienceEntry2.displayName = "WorkExperienceEntry2";

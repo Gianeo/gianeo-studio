@@ -92,7 +92,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 
 const SwatchCard = ({ swatch }: { swatch: Swatch }) => (
   <div className="flex flex-col gap-2 rounded-xl border border-border bg-card/60 p-4 shadow-sm">
-    <div className={clsx("rounded-lg border border-border/60 p-4 text-sm font-medium", swatch.className)}>
+    <div className={clsx(" border border-border/60 p-4 text-sm font-medium", swatch.className)}>
       {swatch.name}
     </div>
     <div className="text-xs text-muted-foreground flex items-center justify-between">
@@ -226,7 +226,7 @@ export default function SystemPage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               {buttonSizesDemo.map((size) => (
-                <div key={size} className="flex flex-col gap-2 rounded-lg border border-border/70 bg-card/50 p-4">
+                <div key={size} className="flex flex-col gap-2  border border-border/70 bg-card/50 p-4">
                   <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">Size: {size}</p>
                   <div className="flex flex-wrap gap-2">
                     <Button variant="primary" size={size}>Primary</Button>

@@ -34,7 +34,7 @@ const TextContainer = memo(({
 
   return (
     <div
-      className={`rounded-lg w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
+      className={` w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
       role="text"
       aria-label={`Key metrics: ${lines.join(', ')}`}
     >
@@ -111,7 +111,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
             return (
               <div
                 key={`${experienceId}-${item.id ?? idx}`}
-                className={`overflow-hidden rounded-lg ${slot.span}`}
+                className={`overflow-hidden ${slot.span}`}
                 style={{ aspectRatio: "4 / 3" }}
               >
                 <LazyImage

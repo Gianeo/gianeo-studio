@@ -50,7 +50,7 @@ export function GalleryGrid({ images, layout = "simple", className }: GalleryGri
           return (
             <div
               key={image.id}
-              className={clsx("overflow-hidden rounded-lg", slot.span)}
+              className={clsx("overflow-hidden", slot.span)}
               style={{ aspectRatio: typeof aspect === "number" ? `${aspect}` : aspect }}
             >
               <LazyImage

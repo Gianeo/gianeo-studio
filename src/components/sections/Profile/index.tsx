@@ -59,7 +59,7 @@ const OptimizedImageContainer = memo(({
   return (
     <figure 
       ref={ref} 
-      className="group relative overflow-hidden rounded-lg glass cursor-pointer h-full w-full"
+      className="group relative overflow-hidden glass cursor-pointer h-full w-full"
       role="img"
       aria-label={`Personal photo: ${image.alt}`}
     >
@@ -88,7 +88,7 @@ const OptimizedImageContainer = memo(({
       {/* Image container with enhanced alt text */}
       {shouldLoad && !hasError && (
         <div className="absolute inset-0 z-20">
-          <div className="relative w-full h-full overflow-hidden rounded-lg">
+          <div className="relative w-full h-full overflow-hidden">
             <Image
               src={image.src}
               alt={`${image.alt} - Personal photo showcasing professional and adventure lifestyle`}

@@ -166,7 +166,7 @@ const OptimizedLogoContainer = memo(({
   return (
     <figure 
       ref={ref} 
-      className="group relative flex items-center justify-center rounded-lg aspect-3/2 w-full"
+      className="group relative flex items-center justify-center  aspect-3/2 w-full"
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
     >
@@ -199,7 +199,7 @@ const OptimizedLogoContainer = memo(({
           {/* Loading placeholder with better UX */}
           {shouldLoad && (!isLoaded || hasError) && (
             <div 
-              className="absolute inset-0 bg-neutral-lighter dark:bg-neutral-darker opacity-50 animate-pulse rounded-lg"
+              className="absolute inset-0 bg-neutral-lighter dark:bg-neutral-darker opacity-50 animate-pulse "
               aria-label={hasError ? `Failed to load ${client.name} logo` : `Loading ${client.name} logo`}
             />
           )}
@@ -219,7 +219,7 @@ OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 // Memoized "and many more" component with semantic meaning
 const AndManyMoreBox = memo(() => (
   <div 
-    className="relative flex items-center justify-center rounded-lg aspect-3/2 w-full"
+    className="relative flex items-center justify-center  aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
   >
