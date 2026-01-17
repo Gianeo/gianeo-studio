@@ -110,8 +110,8 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
   }), [experience]);
 
   const CompanyInfo = memo(() => (
-    <aside className="col-start-2 col-span-10 lg:col-span-2 lg:px-8">
-      <div className="lg:sticky top-24">
+    <aside className="col-start-2 col-span-10 xl:col-span-2 xl:px-8">
+      <div className="xl:sticky top-24">
         <time
           className="body-sm mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
@@ -132,22 +132,22 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
   CompanyInfo.displayName = "CompanyInfo";
 
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4 lg:-mt-25 relative">
-      <div className="hidden lg:block heading-base leading-4 text-muted/75 pb-8">
+    <div className="col-span-12 xl:col-span-4 xl:-mt-25 relative">
+      <div className="hidden xl:block heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
-      <div className="hidden lg:block size-10 bg-decoration absolute top-3 right-0" />
-      <article className="space-y-4 pt-8 lg:pt-0">
-        <div className="grid grid-cols-12 lg:gap-16">
-          <header className="row-start-1 col-start-2 lg:col-start-1 col-span-10 lg:col-span-6 space-y-8 pb-8 lg:pb-0">
+      <div className="hidden xl:block size-10 bg-decoration absolute top-3 right-0" />
+      <article className="space-y-4 pt-8 xl:pt-0">
+        <div className="grid grid-cols-12 xl:gap-16">
+          <header className="row-start-1 col-start-2 xl:col-start-1 col-span-10 xl:col-span-6 space-y-8 pb-8 xl:pb-0">
             <h3
-              className="heading-base text-primary max-w-2xl lg:-mt-1.5"
+              className="heading-base text-primary max-w-2xl xl:-mt-1.5"
               id={`work-${experience.id}`}
             >
               {experience.title}
             </h3>
             {experience.buttonUrl && (
-              <div className="lg:pt-4">
+              <div className="xl:pt-4">
                 <ExternalLinkButton
                   url={experience.buttonUrl}
                   company={experience.company}
@@ -156,7 +156,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
             )}
           </header>
           <div
-            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 lg:col-span-5"
+            className="row-start-2 xl:row-start-1 col-start-2 xl:col-start-7 col-span-10 xl:col-span-5"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\\n').map((paragraph, paragraphIndex) => (
@@ -206,7 +206,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
 
       <CompanyInfo />
 
-      <div className="lg:col-start-3 col-span-12 lg:col-span-10 space-y-10 md:space-y-20">
+      <div className="xl:col-start-3 col-span-12 xl:col-span-10 space-y-10 md:space-y-20">
         <ContentSection />
 
         {experience.gridItems && experience.gridItems.length > 0 && (
