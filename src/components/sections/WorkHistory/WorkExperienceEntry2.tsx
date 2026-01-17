@@ -158,9 +158,9 @@ export const WorkExperienceEntry2 = memo(({
       <div className="hidden lg:block size-10 bg-decoration absolute top-3 right-0" />
       <article className="space-y-4 pt-8 lg:pt-0">
         <div className="grid grid-cols-12 lg:gap-16">
-          <header className="row-start-1 col-start-2 lg:col-start-1 col-span-10 lg:col-span-6 space-y-8 pb-8 lg:pb-0">
+          <header className="row-start-1 col-start-2 lg:col-start-1 lg:col-span-7 space-y-8 pb-8 lg:pb-0">
             <h3
-              className="heading-base text-primary max-w-2xl lg:-mt-1.5"
+              className="heading-display text-primary max-w-4xl lg:-mt-1.5"
               id={`work-${experience.id}`}
             >
               {experience.title}
@@ -175,7 +175,7 @@ export const WorkExperienceEntry2 = memo(({
             )}
           </header>
           <div
-            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-7 col-span-10 lg:col-span-5"
+            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-8 lg:col-span-4"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, paragraphIndex) => (

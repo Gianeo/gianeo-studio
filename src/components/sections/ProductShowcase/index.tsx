@@ -10,6 +10,9 @@ import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { MetaRow } from "@/components/primitives/MetaRow";
 import { LazyImage } from "@/components/media/LazyImage";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ExternalLinkIcon } from "lucide-react";
 
 interface ProjectData {
   title: string;
@@ -34,7 +37,8 @@ const sampleProject: ProjectData = {
   date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
-    src: `/images/work/justscore/${i + 1}.webp`,
+    // src: `/images/work/justscore/${i + 1}.webp`,
+    src: ``,
     alt: `Showcase image ${i + 1}`,
     aspectRatio: "square" as const,
   })),
@@ -91,6 +95,9 @@ export default function ProductShowcase({
     </div>
   );
 
+  const hasValidImage = (image?: ProjectData["images"][number]) =>
+    Boolean(image?.src);
+
   return (
     <section className="bg-background text-foreground">
       <SectionHeader
@@ -117,7 +124,20 @@ export default function ProductShowcase({
             <h2 className="heading-display text-muted/75">Where an idea found its form and voice.</h2>
           </div>
         </div>
-        <div className="col-start-6 col-span-4 pt-8 pb-16">
+        <div className="col-start-3 py-16">
+            <Button asChild size="lg" variant="accent" className="btn">
+              <Link
+                href=""
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Justscore website (opens in new tab)"
+              >
+                <ExternalLinkIcon size={16} aria-hidden="true" />
+                justscore.com
+              </Link>
+            </Button>
+        </div>
+        <div className="col-start-6 col-span-4 py-16">
           <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
             {project.description}
           </div>
@@ -130,15 +150,18 @@ export default function ProductShowcase({
         <div className="md:col-start-3 md:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-6">
-              {galleryItems[0]?.image && (
-                <div className="overflow-hidden bg-neutral-darker/60">
+              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+                {hasValidImage(galleryItems[0]?.image) ? (
                   <LazyImage
                     image={galleryItems[0].image}
                     className="w-full aspect-4/3"
                     priority
+                    showPlaceholder={false}
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="w-full aspect-4/3" aria-hidden="true" />
+                )}
+              </div>
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -159,14 +182,17 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              {galleryItems[1]?.image && (
-                <div className="overflow-hidden  bg-neutral-darker/60">
+              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+                {hasValidImage(galleryItems[1]?.image) ? (
                   <LazyImage
                     image={galleryItems[1].image}
                     className="w-full aspect-4/3"
+                    showPlaceholder={false}
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="w-full aspect-4/3" aria-hidden="true" />
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -174,14 +200,17 @@ export default function ProductShowcase({
         <div className="md:col-start-3 md:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
             <div className="col-span-6">
-              {galleryItems[2]?.image && (
-                <div className="overflow-hidden  bg-neutral-darker/60">
+              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+                {hasValidImage(galleryItems[2]?.image) ? (
                   <LazyImage
                     image={galleryItems[2].image}
                     className="w-full aspect-4/3"
+                    showPlaceholder={false}
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="w-full aspect-4/3" aria-hidden="true" />
+                )}
+              </div>
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -202,14 +231,17 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              {galleryItems[3]?.image && (
-                <div className="overflow-hidden  bg-neutral-darker/60">
+              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+                {hasValidImage(galleryItems[3]?.image) ? (
                   <LazyImage
                     image={galleryItems[3].image}
                     className="w-full aspect-4/3"
+                    showPlaceholder={false}
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="w-full aspect-4/3" aria-hidden="true" />
+                )}
+              </div>
             </div>
           </div>
         </div>

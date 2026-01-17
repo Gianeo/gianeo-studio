@@ -9,6 +9,7 @@ interface LazyImageProps {
   image: { src: string; alt: string };
   className?: string;
   priority?: boolean;
+  showPlaceholder?: boolean;
   overlayClassName?: string;
   containerClassName?: string;
   sizes?: string;
@@ -24,6 +25,7 @@ export function LazyImage({
   image,
   className,
   priority = false,
+  showPlaceholder = true,
   overlayClassName = "from-primary/10 to-accent/10",
   containerClassName,
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
@@ -54,7 +56,7 @@ export function LazyImage({
       )}
       style={style}
     >
-      {(!isLoaded || hasError) && (
+      {showPlaceholder && (!isLoaded || hasError) && (
         <div className="absolute inset-0 z-10 animate-pulse bg-linear-to-br from-neutral-200 to-neutral-300" />
       )}
 
