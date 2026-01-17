@@ -23,7 +23,7 @@ export function Intro() {
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-background/90" />
+            <div className="absolute inset-0 bg-background/60" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 body-base text-muted space-y-8 px-6 md:px-0 md:pt-24 relative">
 

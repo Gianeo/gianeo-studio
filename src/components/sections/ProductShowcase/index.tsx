@@ -83,7 +83,7 @@ export default function ProductShowcase({
     description?: string;
     className?: string;
   }) => (
-    <div className={`flex h-full flex-col p-6 md:p-0 space-y-4 md:space-y-0 ${className}`}>
+    <div className={`flex h-full flex-col p-6 pb-16 md:p-0 space-y-4 md:space-y-0 ${className}`}>
       <div className="flex flex-1 items-center">
         <h3 className="heading-base text-primary">{title}</h3>
       </div>
@@ -151,14 +151,14 @@ export default function ProductShowcase({
 
         <div className="md:col-start-3 md:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
-            <div className="col-span-4 self-stretch">
+            <div className="order-2 md:order-0 col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[1]?.title}
                 description={galleryItems[1]?.description}
                 className="md:text-right md:items-end"
               />
             </div>
-            <div className="cols-start-5 col-span-8">
+            <div className="order-1 md:order-0 cols-start-5 col-span-8">
               {galleryItems[1]?.image && (
                 <div className="overflow-hidden  bg-neutral-darker/60">
                   <LazyImage
@@ -194,14 +194,14 @@ export default function ProductShowcase({
 
         <div className="md:col-start-3 md:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24">
-            <div className="col-span-4 self-stretch">
+            <div className="order-2 md:order-0 col-span-4 self-stretch">
               <GalleryText
                 title={galleryItems[3]?.title}
                 description={galleryItems[3]?.description}
                 className="md:text-right md:items-end"
               />
             </div>
-            <div className="cols-start-5 col-span-8">
+            <div className="order-1 md:order-0 cols-start-5 col-span-8">
               {galleryItems[3]?.image && (
                 <div className="overflow-hidden  bg-neutral-darker/60">
                   <LazyImage
