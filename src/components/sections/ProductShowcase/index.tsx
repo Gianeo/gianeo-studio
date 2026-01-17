@@ -114,7 +114,7 @@ export default function ProductShowcase({
             ]}
           /> */}
           <div className="space-y-2">
-            <p className="body-label text-accent mb-8">
+            <p className="body-label text-muted mb-8">
               {project.category}
             </p>
             <h1
@@ -127,7 +127,7 @@ export default function ProductShowcase({
         <div className="col-start-3 py-16">
             <Button asChild size="lg" variant="accent" className="btn">
               <Link
-                href=""
+                href="https://justscore.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit Justscore website (opens in new tab)"
