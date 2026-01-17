@@ -74,6 +74,15 @@ export default function ProductShowcase({
     },
   ]), [project.images]);
 
+  const GalleryText = ({ title, description }: { title?: string; description?: string }) => (
+    <div className="flex h-full flex-col">
+      <div className="flex flex-1 items-center">
+        <h3 className="heading-base text-primary">{title}</h3>
+      </div>
+      <p className="body-sm text-muted max-w-md mt-auto">{description}</p>
+    </div>
+  );
+
   return (
     <section className="bg-background text-foreground">
       <SectionHeader
@@ -104,7 +113,7 @@ export default function ProductShowcase({
         </div>
       </div>
 
-      {/* Alternating gallery */}
+      {/* Gallery */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
 
         <div className="col-start-3 col-span-10">
@@ -120,18 +129,22 @@ export default function ProductShowcase({
                 </div>
               )}
             </div>
-            <div className="cols-start-7 col-span-5 flex flex-col justify-end">
-              <h3 className="heading-base text-primary mb-4">{galleryItems[0]?.title}</h3>
-              <p className="body-sm text-muted max-w-md">{galleryItems[0]?.description}</p>
+            <div className="cols-start-7 col-span-5 self-stretch">
+              <GalleryText
+                title={galleryItems[0]?.title}
+                description={galleryItems[0]?.description}
+              />
             </div>
           </div>
         </div>
 
         <div className="col-start-3 col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
-            <div className="col-span-4 flex flex-col justify-end">
-              <h3 className="heading-base text-primary mb-4">{galleryItems[1]?.title}</h3>
-              <p className="body-sm text-muted max-w-md">{galleryItems[1]?.description}</p>
+            <div className="col-span-4 self-stretch">
+              <GalleryText
+                title={galleryItems[1]?.title}
+                description={galleryItems[1]?.description}
+              />
             </div>
             <div className="cols-start-5 col-span-8">
               {galleryItems[1]?.image && (
@@ -158,18 +171,22 @@ export default function ProductShowcase({
                 </div>
               )}
             </div>
-            <div className="cols-start-7 col-span-5 flex flex-col justify-end">
-              <h3 className="heading-base text-primary mb-4">{galleryItems[2]?.title}</h3>
-              <p className="body-sm text-muted max-w-md">{galleryItems[2]?.description}</p>
+            <div className="cols-start-7 col-span-5 self-stretch">
+              <GalleryText
+                title={galleryItems[2]?.title}
+                description={galleryItems[2]?.description}
+              />
             </div>
           </div>
         </div>
 
         <div className="col-start-3 col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
-            <div className="col-span-4 flex flex-col justify-end">
-              <h3 className="heading-base text-primary mb-4">{galleryItems[3]?.title}</h3>
-              <p className="body-sm text-muted max-w-md">{galleryItems[3]?.description}</p>
+            <div className="col-span-4 self-stretch">
+              <GalleryText
+                title={galleryItems[3]?.title}
+                description={galleryItems[3]?.description}
+              />
             </div>
             <div className="cols-start-5 col-span-8">
               {galleryItems[3]?.image && (
