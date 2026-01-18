@@ -59,7 +59,7 @@ export default function HomePageContent() {
               <div className="absolute inset-0 bg-background/80" />
             </m.div>
 
-            <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[10%]">
               <m.div
                 className="relative w-full max-w-5xl aspect-video flex items-center justify-center"
                 style={
