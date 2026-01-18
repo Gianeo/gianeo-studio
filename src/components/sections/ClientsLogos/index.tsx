@@ -1,8 +1,14 @@
 'use client';
 
-import { useState, useCallback, useMemo, memo } from "react";
+import { useMemo, memo, useCallback, useState } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
+import {
+  m,
+  useReducedMotion,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 
 interface ClientsLogosProps {
   className?: string;
@@ -132,14 +138,26 @@ const clients = [
 const OptimizedLogoContainer = memo(({ 
   client,
   priority = false,
-  delay = 0
+  delay = 0,
+  progress,
+  index,
+  total,
+  reduceMotion = false,
 }: {
   client: typeof clients[0];
   priority?: boolean;
   delay?: number;
+  progress?: MotionValue<number>;
+  index: number;
+  total: number;
+  reduceMotion?: boolean;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const start = index / total;
+  const end = (index + 1) / total;
+  const opacity = useTransform(progress ?? 0, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? 0, [start, end], [0.5, 1]);
 
   // Lazy loading with intersection observer
   const { ref, inView } = useInView({
@@ -164,11 +182,16 @@ const OptimizedLogoContainer = memo(({
   const shouldLoad = priority || inView;
 
   return (
-    <figure 
+    <m.figure 
       ref={ref} 
-      className="group relative flex items-center justify-center  aspect-3/2 w-full"
+      className="group relative flex items-center justify-center aspect-3/2 w-full"
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
+      style={
+        reduceMotion || !progress
+          ? { opacity: 1, scale: 1 }
+          : { opacity, scale, transformOrigin: "center", willChange: "transform, opacity" }
+      }
     >
       {/* Logo Container with semantic meaning */}
       <div 
@@ -210,31 +233,60 @@ const OptimizedLogoContainer = memo(({
       <figcaption className="sr-only">
         {client.name} - {client.industry} company founded in {client.founded}. {client.description}
       </figcaption>
-    </figure>
+    </m.figure>
   );
 });
 
 OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 
 // Memoized "and many more" component with semantic meaning
-const AndManyMoreBox = memo(() => (
-  <div 
+const AndManyMoreBox = memo(({
+  progress,
+  index,
+  total,
+  reduceMotion = false,
+}: {
+  progress?: MotionValue<number>;
+  index: number;
+  total: number;
+  reduceMotion?: boolean;
+}) => {
+  const start = index / total;
+  const end = (index + 1) / total;
+  const opacity = useTransform(progress ?? 0, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? 0, [start, end], [0.5, 1]);
+
+  return (
+  <m.div 
     className="relative flex items-center justify-center  aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
+    style={
+      reduceMotion || !progress
+        ? { opacity: 1, scale: 1 }
+        : { opacity, scale, transformOrigin: "center", willChange: "transform, opacity" }
+    }
   >
     <div className="bg-neutral-lighter dark:bg-neutral-darker opacity-50 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
         and many more
       </div>
     </div>
-  </div>
-));
+  </m.div>
+)});
 
 AndManyMoreBox.displayName = 'AndManyMoreBox';
 
 // Memoized logo grid component with enhanced semantics
-const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
+const LogoGrid = memo(({
+  validClients,
+  progress,
+  reduceMotion,
+}: {
+  validClients: typeof clients;
+  progress?: MotionValue<number>;
+  reduceMotion: boolean;
+}) => {
   // Create staggered loading delays for smooth loading experience
   const clientsWithDelays = useMemo(() => 
     validClients.map((client, index) => ({
@@ -243,6 +295,8 @@ const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
       priority: index < 3, // First 3 logos are priority
     }))
   , [validClients]);
+
+  const totalSlots = clientsWithDelays.length + 1;
 
   return (
     <section 
@@ -258,25 +312,38 @@ const LogoGrid = memo(({ validClients }: { validClients: typeof clients }) => {
         </p>
       </div>
 
-      {clientsWithDelays.map((client) => (
+      {clientsWithDelays.map((client, index) => (
         <OptimizedLogoContainer
           key={`client-${client.name}`}
           client={client}
           priority={client.priority}
           delay={client.delay}
+          progress={progress}
+          index={index}
+          total={totalSlots}
+          reduceMotion={reduceMotion}
         />
       ))}
-      <AndManyMoreBox />
+      <AndManyMoreBox
+        progress={progress}
+        index={clientsWithDelays.length}
+        total={totalSlots}
+        reduceMotion={reduceMotion}
+      />
     </section>
   );
 });
 
 LogoGrid.displayName = 'LogoGrid';
 
-export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
+export default function ClientsLogos({
+  className = '',
+  animationProgress,
+}: ClientsLogosProps & { animationProgress?: MotionValue<number> }) {
   
   // Memoize clients data to prevent recreation
   const memoizedClients = useMemo(() => clients, []);
+  const reduceMotion = useReducedMotion();
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({
@@ -329,7 +396,11 @@ export default function ClientsLogos({ className = '' }: ClientsLogosProps) {
               including Fortune 500 companies, government agencies, startups, and international corporations.
             </p>
           </div>
-          <LogoGrid validClients={validClients} />
+          <LogoGrid
+            validClients={validClients}
+            progress={animationProgress}
+            reduceMotion={Boolean(reduceMotion)}
+          />
       </main>
     </section>
   );

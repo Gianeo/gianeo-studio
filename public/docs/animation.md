@@ -78,6 +78,32 @@ const shouldReduceMotion = prefersReducedMotion || isMobile;
 
 When `shouldReduceMotion` is true, transforms are disabled.
 
+### Client logos stagger (Intro)
+- Files:
+  - `src/app/HomePageContent.tsx`
+  - `src/components/sections/Intro/index.tsx`
+  - `src/components/sections/ClientsLogos/index.tsx`
+
+The background + logo layer is rendered in `HomePageContent` behind all sections. The logo grid animation uses the same scroll range that fades/scales the Hero logo.
+
+HomePageContent passes a progress MotionValue:
+
+```tsx
+const logosProgress = useTransform(scrollY, [0, viewportHeight * 0.75], [0, 1]);
+<Intro logosProgress={logosProgress} />
+```
+
+ClientsLogos uses that progress to stagger each tile:
+
+```tsx
+const start = index / total;
+const end = (index + 1) / total;
+const opacity = useTransform(progress, [start, end], [0, 1]);
+const scale = useTransform(progress, [start, end], [0.5, 1]);
+```
+
+If `prefers-reduced-motion` is enabled, the logos render fully visible with no transforms.
+
 ## How the layered scroll works
 - The hero section has a **pinned layer** (background + logo).
 - The bottom content is positioned so it appears to slide up over the pinned layer.

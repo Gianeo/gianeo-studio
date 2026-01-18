@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import Navigation from "@/components/navigation/Navigation";
-import Hero from "@/components/sections/Hero";
-import Intro from "@/components/sections/Intro";
-import Statement from "@/components/sections/Statements/Statement01";
-import ClientsLogos from "@/components/sections/ClientsLogos";
-import PersonalProfile from "@/components/sections/Profile";
-import Services from "@/components/sections/Services";
-import ProductShowcase from "@/components/sections/ProductShowcase";
-import WorkHistory from "@/components/sections/WorkHistory";
+import HomePageContent from "@/app/HomePageContent";
 
 // Page-specific metadata that extends the root layout
 export const metadata: Metadata = {
@@ -68,77 +60,7 @@ export default function HomePage() {
         <Navigation />
       </header> */}
 
-      {/* Hero section - primary content */}
-      <section
-        id="hero"
-        aria-labelledby="hero-heading"
-        role="region"
-        aria-label="Introduction and overview"
-      >
-        <Hero />
-      </section>
-
-      {/* Main content area */}
-      <main
-        id="main-content"
-        role="main"
-        className="space-y-8 lg:space-y-32 pb-24 px-0"
-      >
-
-        <section
-          id="intro"
-          aria-label="Intro overview"
-          role="region"
-        >
-          <Intro />
-        </section>
-
-        <section
-          id="statement"
-          aria-label="Statement"
-          role="region"
-        >
-          <Statement />
-        </section>
-
-        <section
-          id="product-showcase"
-          aria-labelledby="products-heading"
-          role="region"
-          aria-label="Featured product work and case studies"
-        >
-          <h2 id="products-heading" className="sr-only">
-            Featured Product Work
-          </h2>
-          <ProductShowcase />
-        </section>
-
-        <section
-          id="history"
-          aria-labelledby="history-heading"
-          role="region"
-          aria-label="History"
-        >
-          <h2 id="history-heading" className="sr-only">
-            History
-          </h2>
-          <WorkHistory />
-        </section>
-
-        {/* Personal profile section */}
-        <section
-          id="profile"
-          aria-labelledby="profile-heading"
-          role="region"
-          aria-label="Personal background and philosophy"
-        >
-          <h2 id="profile-heading" className="sr-only">
-            Personal Profile and Background
-          </h2>
-          <PersonalProfile />
-        </section>
-
-      </main>
+      <HomePageContent />
 
       {/* Site footer - will be added when you create a footer component */}
       <footer

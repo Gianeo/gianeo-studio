@@ -3,13 +3,19 @@
 import { ArrowDownIcon } from "@phosphor-icons/react";
 import ClientsLogos from "../ClientsLogos";
 import Image from "next/image";
+import type { MotionValue } from "motion/react";
 
-export function Intro() {
+interface IntroProps {
+  className?: string;
+  logosProgress?: MotionValue<number>;
+}
+
+export function Intro({ className = "", logosProgress }: IntroProps) {
   return (
-    <section className="bg-background pt-8">
+    <section className={`relative z-0 ${className}`}>
       <div className="flex flex-col">
-        <div className="space-y-6 py-1">
-          <ClientsLogos />
+        <div className="space-y-6">
+          <ClientsLogos animationProgress={logosProgress} />
         </div>
 
         <div className="relative pt-8">
