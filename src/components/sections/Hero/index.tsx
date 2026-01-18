@@ -86,7 +86,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           ref={heroRef}
           className={`relative bg-background text-primary min-h-[160vh] md:min-h-[180vh] ${className}`}
         >
-          <Navigation />
+          <div className="sticky top-0 z-10">
+            <Navigation />
+          </div>
 
           <div className="h-[70vh] min-h-[calc(8rem+40px)] w-full overflow-hidden md:sticky md:top-0 md:h-screen md:min-h-[calc(10rem+40px)] lg:min-h-[calc(12rem+40px)]">
             <m.div
@@ -119,7 +121,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <m.div
-            className="relative z-10 -mt-[70vh] min-h-screen w-full flex items-end md:-mt-[110vh] md:min-h-screen"
+            className="relative z-30 -mt-[70vh] min-h-screen w-full flex items-end md:-mt-[110vh] md:min-h-screen"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
