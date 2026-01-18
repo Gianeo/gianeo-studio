@@ -18,9 +18,16 @@ export const LogoGf = ({
       aria-label={ariaLabel}
       role="img"
     >
-      <circle cx="531" cy="59" r="59" fill="white" />
-      <path d="M236 0C366.339 0 472 105.661 472 236C472 366.339 366.339 472 236 472C105.661 472 0 366.339 0 236C0 105.661 105.661 0 236 0ZM236 118C170.83 118 118 170.83 118 236C118 301.17 170.83 354 236 354C301.17 354 354 301.17 354 236C354 170.83 301.17 118 236 118Z" fill="white" />
-      <circle cx="383.5" cy="591.5" r="88.5" fill="white" />
+      <defs>
+        <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#FFFFFF" floodOpacity="0.6" />
+        </filter>
+      </defs>
+      <g filter="url(#logo-shadow)">
+        <circle cx="531" cy="59" r="59" fill="white" />
+        <path d="M236 0C366.339 0 472 105.661 472 236C472 366.339 366.339 472 236 472C105.661 472 0 366.339 0 236C0 105.661 105.661 0 236 0ZM236 118C170.83 118 118 170.83 118 236C118 301.17 170.83 354 236 354C301.17 354 354 301.17 354 236C354 170.83 301.17 118 236 118Z" fill="white" />
+        <circle cx="383.5" cy="591.5" r="88.5" fill="white" />
+      </g>
     </svg>
   );
 };
