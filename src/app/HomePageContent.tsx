@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   LazyMotion,
@@ -23,7 +23,9 @@ import PersonalProfile from "@/components/sections/Profile";
 export default function HomePageContent() {
   const prefersReducedMotion = useReducedMotion();
   const [viewportHeight, setViewportHeight] = useState(1);
+  const [logoHeight, setLogoHeight] = useState(0);
   const { scrollY } = useScroll();
+  const logoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateHeight = () => setViewportHeight(window.innerHeight || 1);
@@ -32,9 +34,28 @@ export default function HomePageContent() {
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
-  const logoOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0]);
-  const logoY = useTransform(scrollY, [0, viewportHeight], [0, -8]);
-  const logoScale = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0.7]);
+  useEffect(() => {
+    if (!logoRef.current) return;
+    const updateLogoHeight = () => {
+      setLogoHeight(logoRef.current?.getBoundingClientRect().height || 0);
+    };
+    updateLogoHeight();
+    const resizeObserver = new ResizeObserver(updateLogoHeight);
+    resizeObserver.observe(logoRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  const logoY = useTransform(scrollY, (value) => {
+    const offset = Math.max(0, viewportHeight / 2 - 80 - logoHeight / 2);
+    const t = Math.min(value / (viewportHeight * 1.1), 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    return offset * (1 - eased);
+  });
+  const logoScale = useTransform(scrollY, (value) => {
+    const t = Math.min(value / (viewportHeight * 1.1), 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    return 1 - 0.75 * eased;
+  });
   const bgScale = useTransform(scrollY, (value) => {
     const t = Math.min(value / 1000, 1);
     const eased = 1 - Math.pow(1 - t, 3);
@@ -64,13 +85,14 @@ export default function HomePageContent() {
               <m.div className="absolute inset-0 bg-background" style={{ opacity: overlayOpacity }} />
             </m.div>
 
-            <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[14%]">
+            <div className="fixed left-1/2 -top-12 z-10 -translate-x-1/2">
               <m.div
+                ref={logoRef}
                 className="relative w-full max-w-5xl aspect-video flex items-center justify-center"
                 style={
                   prefersReducedMotion
-                    ? { opacity: 1, y: 0, scale: 1 }
-                    : { opacity: logoOpacity, y: logoY, scale: logoScale, transformOrigin: "center", willChange: "transform, opacity" }
+                    ? { y: 0, scale: 1 }
+                    : { y: logoY, scale: logoScale, transformOrigin: "center", willChange: "transform" }
                 }
               >
                 <LogoGf
