@@ -60,7 +60,7 @@ export default function HomePageContent() {
               <m.div className="absolute inset-0 bg-background" style={{ opacity: overlayOpacity }} />
             </m.div>
 
-            <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[10%]">
+            <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[14%]">
               <m.div
                 className="relative w-full max-w-5xl aspect-video flex items-center justify-center"
                 style={
