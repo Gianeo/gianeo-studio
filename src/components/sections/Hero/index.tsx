@@ -36,9 +36,13 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   return (
     <section
-      className={`relative text-primary min-h-screen flex flex-col justify-between ${className}`}
+      className={`relative text-primary min-h-screen flex flex-col ${className}`}
     >
-      <Navigation />
+      <div className="relative flex-1">
+        <div className="sticky top-0 z-20">
+          <Navigation />
+        </div>
+      </div>
 
       <div className="w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
