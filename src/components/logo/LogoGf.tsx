@@ -19,8 +19,8 @@ export const LogoGf = ({
       role="img"
     >
       <defs>
-        <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#FFFFFF" floodOpacity="0.6" />
+        <filter id="logo-shadow" x="-25%" y="-25%" width="150%" height="150%">
+          <feDropShadow dx="0" dy="0" stdDeviation="16" floodColor="#FFFFFF" floodOpacity="0.55" />
         </filter>
       </defs>
       <g filter="url(#logo-shadow)">
