@@ -99,7 +99,7 @@ export default function ProductShowcase({
     Boolean(image?.src);
 
   return (
-    <section className="text-foreground bg-background">
+    <section className="text-foreground bg-background pb-8 md:pb-32">
       <SectionHeader
         icon={<ArrowRightIcon size={16} />}
         label="Latest"

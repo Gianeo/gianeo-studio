@@ -36,6 +36,7 @@ export default function HomePageContent() {
   const logoY = useTransform(scrollY, [0, viewportHeight], [0, -8]);
   const logoScale = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0.7]);
   const bgScale = useTransform(scrollY, [0, viewportHeight], [1, 1.02]);
+  const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.8, 0.9]);
   const logosProgress = useTransform(scrollY, [viewportHeight * 0.4, viewportHeight * 0.75], [0, 1]);
 
   return (
@@ -56,7 +57,7 @@ export default function HomePageContent() {
                 sizes="100vw"
                 priority
               />
-              <div className="absolute inset-0 bg-background/80" />
+              <m.div className="absolute inset-0 bg-background" style={{ opacity: overlayOpacity }} />
             </m.div>
 
             <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[10%]">

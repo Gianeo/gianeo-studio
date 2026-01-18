@@ -1,84 +1,84 @@
 // types/work-history.ts
 // Sample data structure based on your CV
 export const workHistoryData = [
-    {
-        id: "justscore-2025",
-        company: "JustScore",
-        role: "Co-founder",
-        duration: "Jan 2025 - Today",
-        startDate: "2025-01",
-        endDate: "current",
-        title: "Where an idea found its form and voice.",
-        description: "I led the creation of JustScore end-to-end—from brand and UX to a polished, production-ready UI. The goal? A performance management platform that's simple, actionable, and genuinely motivating. I shaped not just the product, but the business: defining the model, pricing, and go-to-market. On the engineering side, I partnered closely with developers to keep the codebase scalable, performant, and clean. I also built reusable UI components to ensure design integrity carried through to production. \nAlong the way, I've been supported by my daughter—now growing into a confident co-founder, learning fast, and making decisions of her own. It's been part mentorship, part adventure.",
-        keyResponsibilities: [
-            "Bootstrapped the business to learn fast and hands-on.",
-            "Coded the UI—no handoff, no gaps.",
-            "Designed AI experience that feels natural.",
-            "Owned the business strategy end to end.",
-            "Shaped the brand, voice, and tone from scratch.",
-            "Designed and coded the Marketing website",
-        ],
-        buttonUrl: "https://justscore.com",
-        gridItems: [
-            {
-                id: 1,
-                type: 'image',
-                src: '/images/work/justscore/1.webp',
-                alt: 'JustScore project 1',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 2,
-                type: 'image',
-                src: '/images/work/justscore/2.webp',
-                alt: 'JustScore project 2',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 3,
-                type: 'text',
-                content: '0 to 1\nSaaS\nAI'
-            },
-            {
-                id: 4,
-                type: 'image',
-                src: '/images/work/justscore/3.webp',
-                alt: 'JustScore project 3',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 5,
-                type: 'text',
-                content: 'Web App\nMobile Native\nAPIs first\n+'
-            },
-            {
-                id: 6,
-                type: 'image',
-                src: '/images/work/justscore/4.webp',
-                alt: 'JustScore project 4',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 7,
-                type: 'image',
-                src: '/images/work/justscore/5.webp',
-                alt: 'JustScore project 5',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 8,
-                type: 'image',
-                src: '/images/work/justscore/6.webp',
-                alt: 'JustScore project 5',
-                aspectRatio: 'landscape'
-            },
-            {
-                id: 9,
-                type: 'text',
-                content: 'Product Design\nBranding\nMarketing\n+'
-            }
-        ]
-    },
+    // {
+    //     id: "justscore-2025",
+    //     company: "JustScore",
+    //     role: "Co-founder",
+    //     duration: "Jan 2025 - Today",
+    //     startDate: "2025-01",
+    //     endDate: "current",
+    //     title: "Where an idea found its form and voice.",
+    //     description: "I led the creation of JustScore end-to-end—from brand and UX to a polished, production-ready UI. The goal? A performance management platform that's simple, actionable, and genuinely motivating. I shaped not just the product, but the business: defining the model, pricing, and go-to-market. On the engineering side, I partnered closely with developers to keep the codebase scalable, performant, and clean. I also built reusable UI components to ensure design integrity carried through to production. \nAlong the way, I've been supported by my daughter—now growing into a confident co-founder, learning fast, and making decisions of her own. It's been part mentorship, part adventure.",
+    //     keyResponsibilities: [
+    //         "Bootstrapped the business to learn fast and hands-on.",
+    //         "Coded the UI—no handoff, no gaps.",
+    //         "Designed AI experience that feels natural.",
+    //         "Owned the business strategy end to end.",
+    //         "Shaped the brand, voice, and tone from scratch.",
+    //         "Designed and coded the Marketing website",
+    //     ],
+    //     buttonUrl: "https://justscore.com",
+    //     gridItems: [
+    //         {
+    //             id: 1,
+    //             type: 'image',
+    //             src: '/images/work/justscore/1.webp',
+    //             alt: 'JustScore project 1',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 2,
+    //             type: 'image',
+    //             src: '/images/work/justscore/2.webp',
+    //             alt: 'JustScore project 2',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 3,
+    //             type: 'text',
+    //             content: '0 to 1\nSaaS\nAI'
+    //         },
+    //         {
+    //             id: 4,
+    //             type: 'image',
+    //             src: '/images/work/justscore/3.webp',
+    //             alt: 'JustScore project 3',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 5,
+    //             type: 'text',
+    //             content: 'Web App\nMobile Native\nAPIs first\n+'
+    //         },
+    //         {
+    //             id: 6,
+    //             type: 'image',
+    //             src: '/images/work/justscore/4.webp',
+    //             alt: 'JustScore project 4',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 7,
+    //             type: 'image',
+    //             src: '/images/work/justscore/5.webp',
+    //             alt: 'JustScore project 5',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 8,
+    //             type: 'image',
+    //             src: '/images/work/justscore/6.webp',
+    //             alt: 'JustScore project 5',
+    //             aspectRatio: 'landscape'
+    //         },
+    //         {
+    //             id: 9,
+    //             type: 'text',
+    //             content: 'Product Design\nBranding\nMarketing\n+'
+    //         }
+    //     ]
+    // },
     {
         id: "chargebee-2024",
         company: "Chargebee",
