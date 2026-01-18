@@ -18,7 +18,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
           <ClientsLogos animationProgress={logosProgress} />
         </div>
 
-        <div className="relative pt-8">
+        <div className="relative pt-8 pb-24">
 
           {/* <div className="absolute inset-0 opacity-30">
             <Image
@@ -38,7 +38,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
               <h2 className="heading-display text-primary">With intention, action, and care.</h2>
             </div>
 
-            <div className="md:col-start-5 xl:col-start-5 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-24">
+            <div className="md:col-start-5 xl:col-start-5 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
               <p>
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
               </p>
@@ -47,16 +47,17 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
               </p>
             </div>
 
-            <div className="md:col-start-8 xl:col-start-8 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-24">
+            <div className="md:col-start-8 xl:col-start-8 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
               <p className="heading-sm text-secondary">That&apos;s where I come in.</p>
               <p>
                 I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.
               </p>
             </div>
-          </div>
 
-          <div className="hidden row-start-1 col-start-1 px-6 md:px-12 pb-8 md:flex flex-col justify-end">
-            <ArrowDownIcon className="size-8 text-accent animate-bounce" />
+            <div className="hidden row-start-2 col-start-1 pb-6 md:flex flex-col justify-end items-end">
+              <ArrowDownIcon className="size-8 text-accent animate-bounce" />
+            </div>
+
           </div>
         </div>
       </div>
