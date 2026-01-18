@@ -49,6 +49,7 @@ const history = [
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   const heroRef = useRef<HTMLElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(1);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -70,13 +71,19 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
   }, []);
 
   const shouldReduceMotion = prefersReducedMotion || isMobile;
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "start end"],
-  });
-  const logoOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
-  const logoY = useTransform(scrollYProgress, [0, 1], [0, -8]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const updateHeight = () => setViewportHeight(window.innerHeight || 1);
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
+  const logoOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0]);
+  const logoY = useTransform(scrollY, [0, viewportHeight], [0, -8]);
+  const logoScale = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0.7]);
+  const bgScale = useTransform(scrollY, [0, viewportHeight], [1, 1.02]);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -106,17 +113,17 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               <div className="absolute inset-0 bg-background/80" />
             </m.div>
 
-            <m.div
-              className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
-              style={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: logoOpacity, y: logoY }}
-            >
-              <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
+            <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+              <m.div
+                className="relative w-full max-w-5xl aspect-video flex items-center justify-center"
+                style={shouldReduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: logoOpacity, y: logoY, scale: logoScale, transformOrigin: "center", willChange: "transform, opacity" }}
+              >
                 <LogoGf
                   className="relative z-10 w-32 md:w-40 lg:w-48 h-auto"
                   aria-label="Gianeo Studio logo"
                 />
-              </div>
-            </m.div>
+              </m.div>
+            </div>
           </div>
 
           <m.div
