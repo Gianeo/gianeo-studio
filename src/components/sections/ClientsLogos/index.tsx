@@ -184,7 +184,7 @@ const OptimizedLogoContainer = memo(({
   return (
     <m.figure 
       ref={ref} 
-      className="group relative flex items-center justify-center aspect-3/2 w-full"
+      className="group relative flex items-center justify-center aspect-3/2 w-full "
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
       style={
@@ -258,7 +258,7 @@ const AndManyMoreBox = memo(({
 
   return (
   <m.div 
-    className="relative flex items-center justify-center  aspect-3/2 w-full"
+    className="relative flex items-center justify-center aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
     style={
@@ -379,7 +379,7 @@ export default function ClientsLogos({
   const validClients = useMemo(() => memoizedClients, [memoizedClients]);
 
   return (
-    <section className="bg-background text-foreground">
+    <section className="text-foreground backdrop-blur-md bg-background/20">
       {/* Structured data for client relationships */}
       <script
         type="application/ld+json"

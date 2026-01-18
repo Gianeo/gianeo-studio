@@ -12,7 +12,7 @@ interface IntroProps {
 
 export function Intro({ className = "", logosProgress }: IntroProps) {
   return (
-    <section className={`relative z-0 ${className}`}>
+    <section className={`relative z-0 bg-transparent ${className}`}>
       <div className="flex flex-col">
         <div className="space-y-6">
           <ClientsLogos animationProgress={logosProgress} />
@@ -20,7 +20,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
 
         <div className="relative pt-8">
 
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 opacity-30">
             <Image
               src="/images/hero/14.png"
               alt="Hero background"
@@ -29,7 +29,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-background/60" />
+            <div className="absolute inset-0 bg-background/20" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 body-base text-muted space-y-8 px-6 md:px-0 md:pt-24 relative">
 
