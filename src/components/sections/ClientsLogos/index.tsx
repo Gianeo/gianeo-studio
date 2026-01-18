@@ -156,10 +156,10 @@ const OptimizedLogoContainer = memo(({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const fallbackProgress = useMotionValue(0);
-  const start = index / total;
-  const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end + 0.08], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end + 0.08], [0.5, 1]);
+  const start = Math.min(1, index / total);
+  const end = Math.min(1, (index + 1) / total + 0.08);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
 
   // Lazy loading with intersection observer
   const { ref, inView } = useInView({
@@ -254,10 +254,10 @@ const AndManyMoreBox = memo(({
   reduceMotion?: boolean;
 }) => {
   const fallbackProgress = useMotionValue(0);
-  const start = index / total + 0.08;
-  const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end + 0.48], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end + 0.48], [0.5, 1]);
+  const start = Math.min(1, index / total + 0.08);
+  const end = Math.min(1, (index + 1) / total + 0.08);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
 
   return (
   <m.div 
@@ -270,7 +270,7 @@ const AndManyMoreBox = memo(({
         : { opacity, scale, transformOrigin: "center", willChange: "transform, opacity" }
     }
   >
-    <div className="bg-neutral-lighter dark:bg-neutral-darker opacity-50 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
+    <div className="backdrop-blur-md bg-black/20 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
         and many more
       </div>
