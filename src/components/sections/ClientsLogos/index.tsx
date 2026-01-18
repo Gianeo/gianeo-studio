@@ -254,8 +254,8 @@ const AndManyMoreBox = memo(({
   reduceMotion?: boolean;
 }) => {
   const fallbackProgress = useMotionValue(0);
-  const start = Math.min(1, index / total + 0.08);
-  const end = Math.min(1, (index + 1) / total + 0.08);
+  const start = Math.min(1, index / total);
+  const end = Math.min(1, (index + 1) / total);
   const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
   const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
 

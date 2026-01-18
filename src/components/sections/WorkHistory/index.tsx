@@ -44,7 +44,7 @@ export default function WorkHistory({
   const memoizedExperiences = useMemo(() => experiences, [experiences]);
 
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen bg-background">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
