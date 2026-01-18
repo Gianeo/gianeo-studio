@@ -1,36 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { memo } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  LazyMotion,
+  MotionConfig,
+  domAnimation,
+  m,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { LogoGf } from "@/components/logo/LogoGf";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation/Navigation";
 import { ArrowDownIcon } from "@phosphor-icons/react";
+import { motionTokens } from "@/system/motion-tokens";
 
 interface HeroSectionProps {
   className?: string;
 }
-
-const collageImages = [
-  {
-    id: "collage-1",
-    src: "/images/work/intro/1.webp",
-    alt: "Product dashboards and analytics overview",
-    className: "left-[8%] top-[16%] w-[28%] md:w-[26%]",
-  },
-  {
-    id: "collage-2",
-    src: "/images/work/intro/2.webp",
-    alt: "Mobile UI detail and interaction sample",
-    className: "left-[36%] top-[8%] w-[30%] md:w-[28%]",
-  },
-  {
-    id: "collage-3",
-    src: "/images/work/intro/3.webp",
-    alt: "Ecommerce experience and product grid",
-    className: "left-[54%] top-[32%] w-[30%] md:w-[28%]",
-  },
-];
 
 const whatIDo = [
   { title: "Product", description: "Creation and building" },
@@ -58,129 +47,179 @@ const history = [
 ];
 
 export default function HeroSection({ className = "" }: HeroSectionProps) {
+  const heroRef = useRef<HTMLElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const handleChange = () => setIsMobile(mediaQuery.matches);
+    handleChange();
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+    }
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleChange);
+      } else {
+        mediaQuery.removeListener(handleChange);
+      }
+    };
+  }, []);
+
+  const shouldReduceMotion = prefersReducedMotion || isMobile;
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "start end"],
+  });
+
+  const logoOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const logoY = useTransform(scrollYProgress, [0, 1], [0, -8]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
+
   return (
-    <section
-      className={`relative bg-background text-primary min-h-screen flex flex-col justify-between items-center ${className}`}
-    >
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero/15.png"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-background/80" />
-      </div>
-      <Navigation />
-      <div className="relative flex items-center justify-center w-full h-[360px] md:h-[420px] lg:h-full pointer-events-none">
-        <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
-          <LogoGf
-            className="relative z-10 w-32 md:w-40 lg:w-48 h-auto"
-            aria-label="Gianeo Studio logo"
-          />
-        </div>
-      </div>
+    <LazyMotion features={domAnimation}>
+      <MotionConfig transition={{ duration: motionTokens.durationShort, ease: motionTokens.easeOut }}>
+        <section
+          ref={heroRef}
+          className={`relative bg-background text-primary min-h-[160vh] md:min-h-[180vh] ${className}`}
+        >
+          <Navigation />
 
-      {/* Content */}
-      <div className="relative w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="h-[70vh] w-full overflow-hidden md:sticky md:top-0 md:h-screen">
+            <m.div
+              className="absolute inset-0"
+              style={shouldReduceMotion ? { scale: 1 } : { scale: bgScale }}
+              aria-hidden="true"
+            >
+              <Image
+                src="/images/hero/15.png"
+                alt="Hero background"
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-background/80" />
+            </m.div>
 
-          <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
-            <div className="space-y-6">
-              <p className="body-label text-muted">
-                Craftsmanship + Leadership
-              </p>
-              <h1
-                id="hero-heading"
-                className="heading-display leading-tight text-primary"
-              >
-                Design+ for growth.
-              </h1>
-            </div>
-            <div>
-              <Button asChild variant="accent" size="base" className="gap-2">
-                <a href="mailto:giannijfavaretto@gmail.com">
-                  <span className="inline-flex size-7 items-center justify-center">
-                    ↗
-                  </span>
-                  Hire me
-                </a>
-              </Button>
-            </div>
+            <m.div
+              className="relative z-10 flex h-full items-center justify-center pointer-events-none"
+              style={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: logoOpacity, y: logoY }}
+            >
+              <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
+                <LogoGf
+                  className="relative z-10 w-32 md:w-40 lg:w-48 h-auto"
+                  aria-label="Gianeo Studio logo"
+                />
+              </div>
+            </m.div>
           </div>
 
-          <div className="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
-            <div className="space-y-6">
-              <p className="body-label text-muted">
-                What I do
-              </p>
-              <ul className="space-y-1.5">
-                {whatIDo.map((item) => (
-                  <li
-                    key={item.title}
-                    className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+          <m.div
+            className="relative z-10 w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20 md:-mt-[30vh]"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+              <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
+                <div className="space-y-6">
+                  <p className="body-label text-muted">
+                    Craftsmanship + Leadership
+                  </p>
+                  <h1
+                    id="hero-heading"
+                    className="heading-display leading-tight text-primary"
                   >
-                    <span className="heading-sm text-secondary">
-                      {item.title}
-                    </span>
-                    <span className="body-sm text-muted">
-                      {item.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="hidden md:block space-y-6">
-              <p className="body-label text-muted">
-                Served
-              </p>
-              <ul className="space-y-1.5">
-                {served.map((item) => (
-                  <li
-                    key={item.title}
-                    className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
-                  >
-                    <span className="heading-sm text-secondary">
-                      {item.title}
-                    </span>
-                    <span className="body-sm text-muted">
-                      {item.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6 relative">
-              <p className="body-label text-muted">
-                History
-              </p>
-              <ul className="space-y-1.5">
-                {history.map((item) => (
-                  <li
-                    key={item.label}
-                    className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
-                  >
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="body-sm text-muted whitespace-nowrap">
-                        {item.label}
+                    Design+ for growth.
+                  </h1>
+                </div>
+                <div>
+                  <Button asChild variant="accent" size="base" className="gap-2">
+                    <a href="mailto:giannijfavaretto@gmail.com">
+                      <span className="inline-flex size-7 items-center justify-center">
+                        ↗
                       </span>
-                      <span className="body-sm text-secondary text-right">
-                        {item.company}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent animate-bounce" />
-            </div>
-          </div>
+                      Hire me
+                    </a>
+                  </Button>
+                </div>
+              </div>
 
-        </div>
-      </div>
-    </section>
+              <div className="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+                <div className="space-y-6">
+                  <p className="body-label text-muted">
+                    What I do
+                  </p>
+                  <ul className="space-y-1.5">
+                    {whatIDo.map((item) => (
+                      <li
+                        key={item.title}
+                        className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                      >
+                        <span className="heading-sm text-secondary">
+                          {item.title}
+                        </span>
+                        <span className="body-sm text-muted">
+                          {item.description}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="hidden md:block space-y-6">
+                  <p className="body-label text-muted">
+                    Served
+                  </p>
+                  <ul className="space-y-1.5">
+                    {served.map((item) => (
+                      <li
+                        key={item.title}
+                        className="border-b border-black/10 pb-2 flex flex-col last:border-0 last:pb-0 dark:border-white/8"
+                      >
+                        <span className="heading-sm text-secondary">
+                          {item.title}
+                        </span>
+                        <span className="body-sm text-muted">
+                          {item.description}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-6 relative">
+                  <p className="body-label text-muted">
+                    History
+                  </p>
+                  <ul className="space-y-1.5">
+                    {history.map((item) => (
+                      <li
+                        key={item.label}
+                        className="border-b border-black/10 pb-2 last:border-0 last:pb-0 dark:border-white/8"
+                      >
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="body-sm text-muted whitespace-nowrap">
+                            {item.label}
+                          </span>
+                          <span className="body-sm text-secondary text-right">
+                            {item.company}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent animate-bounce" />
+                </div>
+              </div>
+            </div>
+          </m.div>
+        </section>
+      </MotionConfig>
+    </LazyMotion>
   );
 }

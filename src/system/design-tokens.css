@@ -45,6 +45,12 @@
   --text-lg: 3.5rem;   /* 56px */
   --text-xl: 5.125rem;      /* 82px */
 
+  /* Motion tokens */
+  --motion-duration-short: 0.35s;
+  --motion-duration-medium: 0.6s;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
   /* Neutral scale (HSL) */
   --neutral-lightest: hsl(20, 1%, 80%);
   --neutral-lighter: hsl(20, 1%, 65%);
