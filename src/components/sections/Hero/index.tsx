@@ -88,14 +88,14 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
         >
           <Navigation />
 
-          <div className="h-[70vh] w-full overflow-hidden md:sticky md:top-0 md:h-screen">
+          <div className="h-[70vh] min-h-[calc(8rem+40px)] w-full overflow-hidden md:sticky md:top-0 md:h-screen md:min-h-[calc(10rem+40px)] lg:min-h-[calc(12rem+40px)]">
             <m.div
               className="absolute inset-0"
               style={shouldReduceMotion ? { scale: 1 } : { scale: bgScale }}
               aria-hidden="true"
             >
               <Image
-                src="/images/hero/15.png"
+                src="/images/hero/16.png"
                 alt="Hero background"
                 fill
                 className="object-cover"
@@ -106,7 +106,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </m.div>
 
             <m.div
-              className="relative z-10 flex h-full items-center justify-center pointer-events-none"
+              className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
               style={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: logoOpacity, y: logoY }}
             >
               <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
@@ -119,12 +119,13 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           </div>
 
           <m.div
-            className="relative z-10 w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20 md:-mt-[30vh]"
+            className="relative z-10 -mt-[70vh] min-h-screen w-full flex items-end md:-mt-[110vh] md:min-h-screen"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="w-full p-6 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
                 <div className="space-y-6">
                   <p className="body-label text-muted">
@@ -216,6 +217,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                   <ArrowDownIcon className="absolute bottom-0 size-8 right-0 text-accent animate-bounce" />
                 </div>
               </div>
+            </div>
             </div>
           </m.div>
         </section>
