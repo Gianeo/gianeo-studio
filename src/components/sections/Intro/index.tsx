@@ -20,7 +20,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
 
         <div className="relative pt-8">
 
-          <div className="absolute inset-0 opacity-30">
+          {/* <div className="absolute inset-0 opacity-30">
             <Image
               src="/images/hero/14.png"
               alt="Hero background"
@@ -30,7 +30,7 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
               priority
             />
             <div className="absolute inset-0 bg-background/20" />
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-12 body-base text-muted space-y-8 px-6 md:px-0 md:pt-24 relative">
 
             <div className="md:col-start-8 xl:col-start-8 md:col-span-7 xl:col-span-4 space-y-8 max-w-xl md:pt-8 xl:pt-24">

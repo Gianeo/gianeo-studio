@@ -7,6 +7,7 @@ import {
   m,
   useReducedMotion,
   useTransform,
+  useMotionValue,
   type MotionValue,
 } from "motion/react";
 
@@ -154,10 +155,11 @@ const OptimizedLogoContainer = memo(({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const fallbackProgress = useMotionValue(0);
   const start = index / total;
   const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? 0, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? 0, [start, end], [0.5, 1]);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
 
   // Lazy loading with intersection observer
   const { ref, inView } = useInView({
@@ -195,7 +197,7 @@ const OptimizedLogoContainer = memo(({
     >
       {/* Logo Container with semantic meaning */}
       <div 
-        className="relative bg-neutral-lighter dark:bg-neutral-darker opacity-50 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
+        className="relative backdrop-blur-md bg-black/20 flex items-center justify-center w-full h-full p-1 lg:p-6 z-30"
         role="presentation"
       >
         <div className="relative w-full h-full flex items-center justify-center">
@@ -210,7 +212,7 @@ const OptimizedLogoContainer = memo(({
               onError={handleError}
               className={`w-auto h-auto object-contain transition-all duration-500 filter grayscale group-hover:grayscale-0
                 max-w-[100px] sm:max-w-[131px] lg:max-w-[163px] 
-                max-h-[32px] sm:max-h-[42px] lg:max-h-[52px] ${
+                max-h-8 sm:max-h-[42px] lg:max-h-[52px] ${
                 isLoaded ? 'opacity-50 group-hover:opacity-100' : 'opacity-0'
               }`}
               priority={priority}
@@ -251,10 +253,11 @@ const AndManyMoreBox = memo(({
   total: number;
   reduceMotion?: boolean;
 }) => {
+  const fallbackProgress = useMotionValue(0);
   const start = index / total;
   const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? 0, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? 0, [start, end], [0.5, 1]);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
 
   return (
   <m.div 
