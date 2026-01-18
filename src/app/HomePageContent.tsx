@@ -35,7 +35,11 @@ export default function HomePageContent() {
   const logoOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0]);
   const logoY = useTransform(scrollY, [0, viewportHeight], [0, -8]);
   const logoScale = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0.7]);
-  const bgScale = useTransform(scrollY, [0, viewportHeight], [1, 1.02]);
+  const bgScale = useTransform(scrollY, (value) => {
+    const t = Math.min(value / 1000, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    return 1 - 0.25 * eased;
+  });
   const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.8, 0.95]);
   const logosProgress = useTransform(scrollY, [viewportHeight * 0.4, viewportHeight * 0.75], [0, 1]);
 
