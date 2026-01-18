@@ -58,7 +58,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
-      <div className="grid w-full h-full gap-24 md:grid-cols-12">
+      <div className="grid md:grid-cols-12 w-full h-full gap-12 md:gap-24">
         {orderedItems.map((item, idx) => {
           const slot = highlightSlots[idx % highlightSlots.length];
           const captionText = item.type === "text" ? item.content || "" : placeholderCaption;
@@ -80,7 +80,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   )}
                 </div>
                 {captionText && (
-                  <p className="body-sm text-muted max-w-sm">
+                  <p className="body-sm text-muted max-w-sm px-6 md:px-0">
                     {captionText}
                   </p>
                 )}
@@ -129,8 +129,8 @@ export const WorkExperienceEntry2 = memo(({
   }), [experience]);
 
   const CompanyInfo = memo(() => (
-    <aside className="col-start-2 col-span-10 lg:col-span-2 lg:px-8">
-      <div className="lg:sticky top-24">
+    <aside className="md:col-start-2 md:col-span-10 xl:col-span-2 px-6 md:px-0 xl:px-6">
+      <div className="xl:sticky top-24">
         <time
           className="body-sm mb-2 block"
           dateTime={`${experience.startDate}/${experience.endDate}`}
@@ -151,22 +151,22 @@ export const WorkExperienceEntry2 = memo(({
   CompanyInfo.displayName = "CompanyInfo";
 
   const ContentSection = memo(() => (
-    <div className="col-span-12 lg:col-span-4 lg:-mt-25 relative">
-      <div className="hidden lg:block heading-base leading-4 text-muted/75 pb-8">
+    <div className="md:col-span-12 xl:col-span-4 xl:-mt-25 relative">
+      <div className="hidden xl:block heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
-      <div className="hidden lg:block size-10 bg-decoration absolute top-3 right-0" />
-      <article className="space-y-4 pt-8 lg:pt-0">
-        <div className="grid grid-cols-12 lg:gap-16">
-          <header className="row-start-1 col-start-2 lg:col-start-1 lg:col-span-7 space-y-8 pb-8 lg:pb-0">
+      <div className="hidden xl:block size-10 bg-decoration absolute top-3 right-0" />
+      <article className="space-y-4 pt-8 xl:pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 xl:gap-16 px-6 md:px-0">
+          <header className="md:row-start-1 md:col-start-2 md:col-span-10 xl:col-start-1 xl:col-span-7 space-y-8 pb-8 xl:pb-0">
             <h3
-              className="heading-display text-primary max-w-4xl lg:-mt-1.5"
+              className="heading-display text-primary max-w-4xl xl:-mt-1.5"
               id={`work-${experience.id}`}
             >
               {experience.title}
             </h3>
             {experience.buttonUrl && (
-              <div className="lg:pt-4">
+              <div className="xl:pt-4">
                 <ExternalLinkButton
                   url={experience.buttonUrl}
                   company={experience.company}
@@ -175,7 +175,7 @@ export const WorkExperienceEntry2 = memo(({
             )}
           </header>
           <div
-            className="row-start-2 lg:row-start-1 col-start-2 lg:col-start-8 lg:col-span-4"
+            className="md:row-start-2 xl:row-start-1 md:col-start-2 md:col-span-10 xl:col-start-8 xl:col-span-4"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, paragraphIndex) => (
@@ -185,7 +185,7 @@ export const WorkExperienceEntry2 = memo(({
             ))}
           </div>
         </div>
-        <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
+        {/* <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
           <div className="hidden row-start-2 col-start-1 col-span-12">
             <ul
               className="space-y-1.5 grid grid-cols-12 pt-16 gap-6 md:gap-16"
@@ -204,7 +204,7 @@ export const WorkExperienceEntry2 = memo(({
               ))}
             </ul>
           </div>
-        </section>
+        </section> */}
       </article>
     </div>
   ));
@@ -213,7 +213,7 @@ export const WorkExperienceEntry2 = memo(({
 
   return (
     <article
-      className="grid grid-cols-12 pb-32 xl:pb-24"
+      className="grid grid-cols-1 md:grid-cols-12 pb-32 xl:pb-24"
       aria-labelledby={`work-${experience.id}`}
     >
       <script
@@ -225,7 +225,7 @@ export const WorkExperienceEntry2 = memo(({
 
       <CompanyInfo />
 
-      <div className="lg:col-start-3 col-span-12 lg:col-span-10 space-y-10 md:space-y-20">
+      <div className="xl:col-start-3 md:col-span-12 xl:col-span-10 space-y-10 md:space-y-20">
         <ContentSection />
 
         {experience.gridItems && experience.gridItems.length > 0 && (

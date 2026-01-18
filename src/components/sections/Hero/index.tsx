@@ -64,7 +64,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
     >
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/12.png"
+          src="/images/hero/15.png"
           alt="Hero background"
           fill
           className="object-cover"

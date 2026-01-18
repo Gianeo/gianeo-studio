@@ -112,7 +112,7 @@ export default function ProductShowcase({
             </p>
             <h1
               className="heading-display text-primary">
-              {project.title}
+              {project.title}.
             </h1>
             <h2 className="heading-display text-muted/75">Where an idea found its form and voice.</h2>
           </div>
@@ -130,7 +130,7 @@ export default function ProductShowcase({
               </Link>
             </Button>
         </div>
-        <div className="md:col-start-6 xl:col-start-6 md:col-span-4 pb-8 md:py-24">
+        <div className="md:col-start-6 xl:col-start-6 md:col-span-4 pb-8 md:pt-24 md:pb-16">
           <div className="font-copy text-lg md:text-lg text-muted-foreground leading-relaxed prose-optimized">
             {project.description}
           </div>

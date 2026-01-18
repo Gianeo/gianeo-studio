@@ -52,7 +52,7 @@ export default function WorkHistory({
         }}
       />
 
-      <SectionHeader icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="History" className="mb-8 md:mb-8" />
+      <SectionHeader icon={<ArrowRightIcon size={16} aria-hidden="true" />} label="History" className="mb-8 md:mb-16" />
 
       <div
         className="py-6 sm:py-24 space-y-16 sm:space-y-24 md:space-y-32 xl:space-y-64"

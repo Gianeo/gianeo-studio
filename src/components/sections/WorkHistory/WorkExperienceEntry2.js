@@ -110,7 +110,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
   }), [experience]);
 
   const CompanyInfo = memo(() => (
-    <aside className="col-start-2 col-span-10 xl:col-span-2 xl:px-8">
+    <aside className="md:col-start-2 md:col-span-10 xl:col-span-2 xl:px-8">
       <div className="xl:sticky top-24">
         <time
           className="body-sm mb-2 block"
@@ -132,14 +132,14 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
   CompanyInfo.displayName = "CompanyInfo";
 
   const ContentSection = memo(() => (
-    <div className="col-span-12 xl:col-span-4 xl:-mt-25 relative">
+    <div className="md:col-span-12 xl:col-span-4 xl:-mt-25 relative">
       <div className="hidden xl:block heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
       <div className="hidden xl:block size-10 bg-decoration absolute top-3 right-0" />
       <article className="space-y-4 pt-8 xl:pt-0">
-        <div className="grid grid-cols-12 xl:gap-16">
-          <header className="row-start-1 col-start-2 xl:col-start-1 col-span-10 xl:col-span-6 space-y-8 pb-8 xl:pb-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 xl:gap-16">
+          <header className="md:row-start-1 md:col-start-2 xl:col-start-1 md:col-span-10 xl:col-span-6 space-y-8 pb-8 xl:pb-0">
             <h3
               className="heading-base text-primary max-w-2xl xl:-mt-1.5"
               id={`work-${experience.id}`}
@@ -156,7 +156,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
             )}
           </header>
           <div
-            className="row-start-2 xl:row-start-1 col-start-2 xl:col-start-7 col-span-10 xl:col-span-5"
+            className="md:row-start-2 xl:row-start-1 md:col-start-2 xl:col-start-7 md:col-span-10 xl:col-span-5"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\\n').map((paragraph, paragraphIndex) => (
@@ -166,7 +166,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
             ))}
           </div>
         </div>
-        <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
+        {/* <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
           <div className="hidden row-start-2 col-start-1 col-span-12">
             <ul
               className="space-y-1.5 grid grid-cols-12 pt-16 gap-6 md:gap-16"
@@ -185,7 +185,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
               ))}
             </ul>
           </div>
-        </section>
+        </section> */}
       </article>
     </div>
   ));
@@ -194,7 +194,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
 
   return (
     <article
-      className="grid grid-cols-12 pb-32 xl:pb-24"
+      className="grid grid-cols-1 md:grid-cols-12 pb-32 xl:pb-24"
       aria-labelledby={`work-${experience.id}`}
     >
       <script
@@ -206,7 +206,7 @@ export const WorkExperienceEntry2 = memo(({ experience, index, total }) => {
 
       <CompanyInfo />
 
-      <div className="xl:col-start-3 col-span-12 xl:col-span-10 space-y-10 md:space-y-20">
+      <div className="xl:col-start-3 md:col-span-12 xl:col-span-10 space-y-10 md:space-y-20">
         <ContentSection />
 
         {experience.gridItems && experience.gridItems.length > 0 && (
