@@ -36,7 +36,7 @@ export default function HomePageContent() {
   const logoY = useTransform(scrollY, [0, viewportHeight], [0, -8]);
   const logoScale = useTransform(scrollY, [0, viewportHeight * 0.75], [1, 0.7]);
   const bgScale = useTransform(scrollY, [0, viewportHeight], [1, 1.02]);
-  const logosProgress = useTransform(scrollY, [viewportHeight * 0.6, viewportHeight * 0.75], [0, 1]);
+  const logosProgress = useTransform(scrollY, [viewportHeight * 0.4, viewportHeight * 0.75], [0, 1]);
 
   return (
     <LazyMotion features={domAnimation}>

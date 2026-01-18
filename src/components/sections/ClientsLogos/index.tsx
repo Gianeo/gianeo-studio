@@ -158,8 +158,8 @@ const OptimizedLogoContainer = memo(({
   const fallbackProgress = useMotionValue(0);
   const start = index / total;
   const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end + 0.08], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end + 0.08], [0.5, 1]);
 
   // Lazy loading with intersection observer
   const { ref, inView } = useInView({
@@ -254,10 +254,10 @@ const AndManyMoreBox = memo(({
   reduceMotion?: boolean;
 }) => {
   const fallbackProgress = useMotionValue(0);
-  const start = index / total;
+  const start = index / total + 0.08;
   const end = (index + 1) / total;
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
+  const opacity = useTransform(progress ?? fallbackProgress, [start, end + 0.48], [0, 1]);
+  const scale = useTransform(progress ?? fallbackProgress, [start, end + 0.48], [0.5, 1]);
 
   return (
   <m.div 
