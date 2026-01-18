@@ -46,7 +46,7 @@ export default function HomePageContent() {
   }, []);
 
   const logoY = useTransform(scrollY, (value) => {
-    const offset = Math.max(0, viewportHeight / 2 - 160 - logoHeight / 2);
+    const offset = Math.max(0, viewportHeight / 2 - 80 - logoHeight / 2);
     const t = Math.min(value / (viewportHeight * 1.1), 1);
     const eased = 1 - Math.pow(1 - t, 3);
     return offset * (1 - eased);
@@ -66,7 +66,7 @@ export default function HomePageContent() {
     const eased = 1 - Math.pow(1 - t, 3);
     return 1 - 0.25 * eased;
   });
-  const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.95]);
+  const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.965]);
   const logosProgress = useTransform(scrollY, [viewportHeight * 0.4, viewportHeight * 0.75], [0, 1]);
 
   return (
@@ -80,7 +80,7 @@ export default function HomePageContent() {
               aria-hidden="true"
             >
               <Image
-                src="/images/hero/16.png"
+                src="/images/hero/19.png"
                 alt="Hero background"
                 fill
                 className="object-cover"
@@ -101,7 +101,7 @@ export default function HomePageContent() {
                 }
               >
                 <LogoGf
-                  className="relative z-10 w-32 md:w-40 lg:w-44 h-auto"
+                  className="relative z-10 w-32 md:w-40 lg:w-64 h-auto"
                   aria-label="Gianeo Studio logo"
                 />
               </m.div>

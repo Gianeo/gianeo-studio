@@ -12,14 +12,14 @@ export const LogoGf = ({
   return (
     <svg
       className={className}
-      viewBox="0 0 590 680"
+      viewBox="-80 -80 750 840"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-label={ariaLabel}
       role="img"
     >
       <defs>
-        <filter id="logo-shadow" x="-25%" y="-25%" width="150%" height="150%">
+        <filter id="logo-shadow" x="-50%" y="-50%" width="200%" height="200%">
           <feDropShadow dx="0" dy="0" stdDeviation="16" floodColor="#FFFFFF" floodOpacity="0.55" />
         </filter>
       </defs>
