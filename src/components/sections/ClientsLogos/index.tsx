@@ -1,15 +1,14 @@
 'use client';
 
-import { useMemo, memo, useCallback, useState } from "react";
+import { useMemo, memo, useCallback, useRef, useState } from "react";
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
+import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
   m,
+  useInView,
   useReducedMotion,
-  useTransform,
-  useMotionValue,
-  type MotionValue,
 } from "motion/react";
+import { motionTokens } from "@/system/motion-tokens";
 
 interface ClientsLogosProps {
   className?: string;
@@ -140,29 +139,35 @@ const OptimizedLogoContainer = memo(({
   client,
   priority = false,
   delay = 0,
-  progress,
   index,
-  total,
+  animate,
   reduceMotion = false,
 }: {
   client: typeof clients[0];
   priority?: boolean;
   delay?: number;
-  progress?: MotionValue<number>;
   index: number;
-  total: number;
+  animate: boolean;
   reduceMotion?: boolean;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const fallbackProgress = useMotionValue(0);
-  const start = Math.min(1, index / total);
-  const end = Math.min(1, (index + 1) / total + 0.08);
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
+  const stagger = 0.12;
+  const duration = 0.75;
+  const itemVariants = {
+    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
+    visible: (i: number) => ({
+      clipPath: "inset(0% 0% 0% 0%)",
+      transition: {
+        duration,
+        ease: motionTokens.easeOut,
+        delay: i * stagger,
+      },
+    }),
+  };
 
   // Lazy loading with intersection observer
-  const { ref, inView } = useInView({
+  const { ref, inView } = useIntersectionInView({
     threshold: 0.1,
     triggerOnce: true,
     skip: priority,
@@ -189,11 +194,11 @@ const OptimizedLogoContainer = memo(({
       className="group relative flex items-center justify-center aspect-3/2 w-full "
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
-      style={
-        reduceMotion || !progress
-          ? { opacity: 1, scale: 1 }
-          : { opacity, scale, transformOrigin: "center", willChange: "transform, opacity" }
-      }
+      variants={itemVariants}
+      custom={index}
+      initial={reduceMotion ? "visible" : "hidden"}
+      animate={reduceMotion ? "visible" : animate ? "visible" : "hidden"}
+      style={reduceMotion ? undefined : { willChange: "clip-path" }}
     >
       {/* Logo Container with semantic meaning */}
       <div 
@@ -243,32 +248,38 @@ OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 
 // Memoized "and many more" component with semantic meaning
 const AndManyMoreBox = memo(({
-  progress,
   index,
-  total,
+  animate,
   reduceMotion = false,
 }: {
-  progress?: MotionValue<number>;
   index: number;
-  total: number;
+  animate: boolean;
   reduceMotion?: boolean;
 }) => {
-  const fallbackProgress = useMotionValue(0);
-  const start = Math.min(1, index / total);
-  const end = Math.min(1, (index + 1) / total);
-  const opacity = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const scale = useTransform(progress ?? fallbackProgress, [start, end], [0.5, 1]);
+  const stagger = 0.12;
+  const duration = 0.75;
+  const itemVariants = {
+    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
+    visible: (i: number) => ({
+      clipPath: "inset(0% 0% 0% 0%)",
+      transition: {
+        duration,
+        ease: motionTokens.easeOut,
+        delay: i * stagger,
+      },
+    }),
+  };
 
   return (
   <m.div 
     className="relative flex items-center justify-center aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
-    style={
-      reduceMotion || !progress
-        ? { opacity: 1, scale: 1 }
-        : { opacity, scale, transformOrigin: "center", willChange: "transform, opacity" }
-    }
+    variants={itemVariants}
+    custom={index}
+    initial={reduceMotion ? "visible" : "hidden"}
+    animate={reduceMotion ? "visible" : animate ? "visible" : "hidden"}
+    style={reduceMotion ? undefined : { willChange: "clip-path" }}
   >
     <div className="backdrop-blur-md bg-black/20 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
@@ -285,10 +296,11 @@ const LogoGrid = memo(({
   validClients,
   progress,
   reduceMotion,
+  animate,
 }: {
   validClients: typeof clients;
-  progress?: MotionValue<number>;
   reduceMotion: boolean;
+  animate: boolean;
 }) => {
   // Create staggered loading delays for smooth loading experience
   const clientsWithDelays = useMemo(() => 
@@ -298,8 +310,6 @@ const LogoGrid = memo(({
       priority: index < 3, // First 3 logos are priority
     }))
   , [validClients]);
-
-  const totalSlots = clientsWithDelays.length + 1;
 
   return (
     <section 
@@ -321,16 +331,14 @@ const LogoGrid = memo(({
           client={client}
           priority={client.priority}
           delay={client.delay}
-          progress={progress}
           index={index}
-          total={totalSlots}
+          animate={animate}
           reduceMotion={reduceMotion}
         />
       ))}
       <AndManyMoreBox
-        progress={progress}
         index={clientsWithDelays.length}
-        total={totalSlots}
+        animate={animate}
         reduceMotion={reduceMotion}
       />
     </section>
@@ -341,12 +349,17 @@ LogoGrid.displayName = 'LogoGrid';
 
 export default function ClientsLogos({
   className = '',
-  animationProgress,
-}: ClientsLogosProps & { animationProgress?: MotionValue<number> }) {
+}: ClientsLogosProps) {
   
   // Memoize clients data to prevent recreation
   const memoizedClients = useMemo(() => clients, []);
   const reduceMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef, {
+    amount: 0.35,
+    margin: "0px 0px -15% 0px",
+    once: true,
+  });
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({
@@ -391,7 +404,7 @@ export default function ClientsLogos({
         }}
       />
 
-      <main className={`pb-16 lg:pb-0 ${className}`}>
+      <main ref={containerRef} className={`pb-16 lg:pb-0 ${className}`}>
           <div className="mb-6 sr-only">
             <h2>Client Portfolio Overview</h2>
             <p>
@@ -401,8 +414,8 @@ export default function ClientsLogos({
           </div>
           <LogoGrid
             validClients={validClients}
-            progress={animationProgress}
             reduceMotion={Boolean(reduceMotion)}
+            animate={Boolean(isInView)}
           />
       </main>
     </section>

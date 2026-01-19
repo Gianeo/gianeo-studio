@@ -68,7 +68,6 @@ export default function HomePageContent() {
     return 1 - 0.25 * eased;
   });
   const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.965]);
-  const logosProgress = useTransform(scrollY, [viewportHeight * 0.4, viewportHeight * 0.75], [0, 1]);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -129,7 +128,7 @@ export default function HomePageContent() {
                 aria-label="Client logos"
                 role="region"
               >
-                <ClientsLogos animationProgress={logosProgress} />
+                <ClientsLogos />
               </section>
 
               <section
