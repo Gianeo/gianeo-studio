@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowDownIcon } from "@phosphor-icons/react";
-import ClientsLogos from "../ClientsLogos";
 import Image from "next/image";
 import type { MotionValue } from "motion/react";
 
@@ -10,15 +9,9 @@ interface IntroProps {
   logosProgress?: MotionValue<number>;
 }
 
-export function Intro({ className = "", logosProgress }: IntroProps) {
+export function Intro({ className = "" }: IntroProps) {
   return (
-    <section className={`relative z-0 bg-transparent ${className}`}>
-      <div className="flex flex-col">
-        <div className="space-y-6">
-          <ClientsLogos animationProgress={logosProgress} />
-        </div>
-
-        <div className="relative pt-8 pb-24">
+    <section className={`relative pb-24 z-0 bg-transparent ${className}`}>
 
           {/* <div className="absolute inset-0 opacity-30">
             <Image
@@ -59,8 +52,6 @@ export function Intro({ className = "", logosProgress }: IntroProps) {
             </div>
 
           </div>
-        </div>
-      </div>
     </section >
   );
 }

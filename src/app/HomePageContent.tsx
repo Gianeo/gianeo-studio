@@ -15,6 +15,7 @@ import { motionTokens } from "@/system/motion-tokens";
 import { LogoGf } from "@/components/logo/LogoGf";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
+import ClientsLogos from "@/components/sections/ClientsLogos";
 import Statement from "@/components/sections/Statements/Statement01";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import WorkHistory from "@/components/sections/WorkHistory";
@@ -124,11 +125,19 @@ export default function HomePageContent() {
               className="pb-24 px-0"
             >
               <section
+                id="clients"
+                aria-label="Client logos"
+                role="region"
+              >
+                <ClientsLogos animationProgress={logosProgress} />
+              </section>
+
+              <section
                 id="intro"
                 aria-label="Intro overview"
                 role="region"
               >
-                <Intro logosProgress={logosProgress} />
+                <Intro />
               </section>
 
               <section
