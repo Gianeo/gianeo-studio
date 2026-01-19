@@ -69,7 +69,7 @@ export default function HomePage() {
         aria-label="Site footer and additional information"
       >
         {/* Footer content will go here when you create a Footer component */}
-        <p>&copy; 2025 Gianni Favaretto. All rights reserved.</p>
+        <p>&copy; 2026 Gianni James Favaretto. All rights reserved.</p>
       </footer>
     </>
   );
