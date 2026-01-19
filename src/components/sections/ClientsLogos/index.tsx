@@ -229,7 +229,7 @@ const OptimizedLogoContainer = memo(({
           {/* Loading placeholder with better UX */}
           {shouldLoad && (!isLoaded || hasError) && (
             <div 
-              className="absolute inset-0 bg-neutral-lighter dark:bg-neutral-darker opacity-50 animate-pulse "
+              className="absolute inset-0 animate-pulse "
               aria-label={hasError ? `Failed to load ${client.name} logo` : `Loading ${client.name} logo`}
             />
           )}
@@ -294,7 +294,6 @@ AndManyMoreBox.displayName = 'AndManyMoreBox';
 // Memoized logo grid component with enhanced semantics
 const LogoGrid = memo(({
   validClients,
-  progress,
   reduceMotion,
   animate,
 }: {
