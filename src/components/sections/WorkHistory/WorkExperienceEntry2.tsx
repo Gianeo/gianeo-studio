@@ -1,13 +1,14 @@
 "use client";
 
-import { memo, useEffect, useMemo, useRef, type ReactNode } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
-import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
+import { useInView, useReducedMotion, useMotionValue, useSpring } from "motion/react";
+import { springPresets } from "@/system/motion-presets";
+import { BlindReveal } from "@/components/motion";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -67,35 +68,6 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
     }
   }, [galleryInView, reduceMotion, revealBase]);
 
-  const BlindItem = ({
-    children,
-    index,
-    total,
-  }: {
-    children: ReactNode;
-    index: number;
-    total: number;
-  }) => {
-    const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
-    const reveal = useTransform(revealProgress, [start, end], [0, 1]);
-    const clipPath = useTransform(
-      reveal,
-      (value) => getBlindClipPath(value)
-    );
-
-    return (
-      <m.div
-        className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
-        style={
-          reduceMotion
-            ? { aspectRatio: "4 / 3" }
-            : { aspectRatio: "4 / 3", clipPath, willChange: "clip-path" }
-        }
-      >
-        {children}
-      </m.div>
-    );
-  };
 
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
   const totalSlots = orderedItems.length;
@@ -113,7 +85,12 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
-                <BlindItem index={idx} total={totalSlots}>
+                <BlindReveal
+                  className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+                  index={idx}
+                  total={totalSlots}
+                  progress={revealProgress}
+                >
                   {item.type === "image" && item.src ? (
                     <LazyImage
                       image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
@@ -126,7 +103,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
                   )}
-                </BlindItem>
+                </BlindReveal>
                 {captionText && (
                   <p className="body-sm text-muted max-w-sm px-6 md:px-0">
                     {captionText}

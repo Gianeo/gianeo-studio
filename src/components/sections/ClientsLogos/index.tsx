@@ -4,15 +4,14 @@ import { useMemo, memo, useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
-  m,
   useReducedMotion,
   useScroll,
   useSpring,
-  useTransform,
   useMotionValue,
   type MotionValue,
 } from "motion/react";
-import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
+import { springPresets } from "@/system/motion-presets";
+import { BlindReveal } from "@/components/motion";
 
 interface ClientsLogosProps {
   className?: string;
@@ -143,28 +142,13 @@ const OptimizedLogoContainer = memo(({
   client,
   priority = false,
   delay = 0,
-  index,
-  total,
-  progress,
-  reduceMotion = false,
 }: {
   client: typeof clients[0];
   priority?: boolean;
   delay?: number;
-  index: number;
-  total: number;
-  progress?: MotionValue<number>;
-  reduceMotion?: boolean;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const fallbackProgress = useMotionValue(0);
-  const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
-  const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const clipPath = useTransform(
-    reveal,
-    (value) => getBlindClipPath(value)
-  );
 
   // Lazy loading with intersection observer
   const { ref, inView } = useIntersectionInView({
@@ -189,16 +173,11 @@ const OptimizedLogoContainer = memo(({
   const shouldLoad = priority || inView;
 
   return (
-    <m.figure 
+    <figure 
       ref={ref} 
       className="group relative flex items-center justify-center aspect-3/2 w-full "
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
-      style={
-        reduceMotion || !progress
-          ? undefined
-          : { clipPath, willChange: "clip-path" }
-      }
     >
       {/* Logo Container with semantic meaning */}
       <div 
@@ -240,49 +219,26 @@ const OptimizedLogoContainer = memo(({
       <figcaption className="sr-only">
         {client.name} - {client.industry} company founded in {client.founded}. {client.description}
       </figcaption>
-    </m.figure>
+    </figure>
   );
 });
 
 OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 
 // Memoized "and many more" component with semantic meaning
-const AndManyMoreBox = memo(({
-  index,
-  total,
-  progress,
-  reduceMotion = false,
-}: {
-  index: number;
-  total: number;
-  progress?: MotionValue<number>;
-  reduceMotion?: boolean;
-}) => {
-  const fallbackProgress = useMotionValue(0);
-  const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
-  const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
-  const clipPath = useTransform(
-    reveal,
-    (value) => getBlindClipPath(value)
-  );
-
+const AndManyMoreBox = memo(() => {
   return (
-  <m.div 
+  <div 
     className="relative flex items-center justify-center aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
-    style={
-      reduceMotion || !progress
-        ? undefined
-        : { clipPath, willChange: "clip-path" }
-    }
   >
     <div className="backdrop-blur-md bg-black/20 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
         and many more
       </div>
     </div>
-  </m.div>
+  </div>
 )});
 
 AndManyMoreBox.displayName = 'AndManyMoreBox';
@@ -323,23 +279,26 @@ const LogoGrid = memo(({
       </div>
 
       {clientsWithDelays.map((client, index) => (
-        <OptimizedLogoContainer
+        <BlindReveal
           key={`client-${client.name}`}
-          client={client}
-          priority={client.priority}
-          delay={client.delay}
           index={index}
           total={totalSlots}
           progress={progress}
-          reduceMotion={reduceMotion}
-        />
+        >
+          <OptimizedLogoContainer
+            client={client}
+            priority={client.priority}
+            delay={client.delay}
+          />
+        </BlindReveal>
       ))}
-      <AndManyMoreBox
+      <BlindReveal
         index={clientsWithDelays.length}
         total={totalSlots}
         progress={progress}
-        reduceMotion={reduceMotion}
-      />
+      >
+        <AndManyMoreBox />
+      </BlindReveal>
     </section>
   );
 });

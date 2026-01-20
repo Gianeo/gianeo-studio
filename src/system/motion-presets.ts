@@ -11,8 +11,8 @@ export const revealPresets = {
 } as const;
 
 export const parallaxPresets = {
-  subtle: [-10, 10],
-  medium: [-16, 16],
+  subtle: [-10, 10] as [number, number],
+  medium: [-16, 16] as [number, number],
 } as const;
 
 export const staggerPresets = {
@@ -33,3 +33,12 @@ export const getStaggerRange = (
 
 export const getBlindClipPath = (value: number) =>
   `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`;
+
+export const introRevealSequence = [
+  { label: "tag", start: 0.18 },
+  { label: "title", start: 0.26 },
+  { label: "p1", start: 0.34 },
+  { label: "p2", start: 0.42 },
+  { label: "p3", start: 0.5 },
+  { label: "p4", start: 0.58 },
+] as const;

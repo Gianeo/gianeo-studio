@@ -13,8 +13,9 @@ import { LazyImage } from "@/components/media/LazyImage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
-import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
+import { useInView, useReducedMotion, useMotionValue, useSpring } from "motion/react";
+import { springPresets } from "@/system/motion-presets";
+import { BlindReveal } from "@/components/motion";
 
 interface ProjectData {
   title: string;
@@ -124,36 +125,25 @@ export default function ProductShowcase({
     index: number;
     total: number;
     priority?: boolean;
-  }) => {
-    const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
-    const reveal = useTransform(revealProgress, [start, end], [0, 1]);
-    const clipPath = useTransform(
-      reveal,
-      (value) => getBlindClipPath(value)
-    );
-
-    return (
-      <m.div
-        className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
-        style={
-          reduceMotion
-            ? undefined
-            : { clipPath, willChange: "clip-path" }
-        }
-      >
-        {hasValidImage(image) ? (
-          <LazyImage
-            image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
-            className="w-full aspect-4/3"
-            priority={priority}
-            showPlaceholder={false}
-          />
-        ) : (
-          <div className="w-full aspect-4/3" aria-hidden="true" />
-        )}
-      </m.div>
-    );
-  };
+  }) => (
+    <BlindReveal
+      className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+      index={index}
+      total={total}
+      progress={revealProgress}
+    >
+      {hasValidImage(image) ? (
+        <LazyImage
+          image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
+          className="w-full aspect-4/3"
+          priority={priority}
+          showPlaceholder={false}
+        />
+      ) : (
+        <div className="w-full aspect-4/3" aria-hidden="true" />
+      )}
+    </BlindReveal>
+  );
 
   return (
     <section className="text-foreground bg-background pb-8 md:pb-32">

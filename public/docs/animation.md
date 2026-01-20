@@ -24,6 +24,10 @@ springPresets.calm
 
 **Where to look**
 - Motion presets (global): `src/system/motion-presets.ts`
+- Motion helpers: `src/components/motion/Reveal.tsx`, `src/components/motion/BlindReveal.tsx`
+- Scroll helper hook: `src/hooks/useScrollRange.ts`
+- Debug overlays (dev only): `src/components/motion/MotionDebugOverlay.tsx`, `src/components/motion/MotionRangeOverlay.tsx`
+- Motion barrel: `src/components/motion/index.ts`
 - Background + Logo: `src/app/HomePageContent.tsx`
 - Intro text reveal: `src/components/sections/Intro/index.tsx`
 - Client blinds: `src/components/sections/ClientsLogos/index.tsx`
@@ -227,6 +231,43 @@ export const springPresets = {
 - Use `useScroll` + `useTransform` for parallax.
 - For reveals, map a small scroll range to opacity/clip‑path.
 - If you want the reveal to reverse on scroll up, use scroll progress (not a one‑time `inView`).
+
+### Reusable components
+
+**`<Reveal />`** (text/blocks)
+- File: `src/components/motion/Reveal.tsx`
+- Scroll‑driven fade + slide based on a preset.
+
+```tsx
+<Reveal preset="slow" spring="calm" start={0.2}>
+  <h2>Heading</h2>
+</Reveal>
+```
+
+**`<BlindReveal />`** (images/logos/cards)
+- File: `src/components/motion/BlindReveal.tsx`
+- Uses a vertical clip‑path to “drop” the content.
+- Can run from an `inView` trigger or from a shared `progress` value.
+
+```tsx
+<BlindReveal index={idx} total={items.length}>
+  <img ... />
+</BlindReveal>
+```
+
+```tsx
+<BlindReveal index={idx} total={items.length} progress={sharedProgress}>
+  <img ... />
+</BlindReveal>
+```
+
+### Debug overlay
+- Press **d** to toggle a small motion debug panel in dev.
+- Only renders when `NODE_ENV !== "production"`.
+
+### Range overlay
+- Shows scroll progress + the reveal ranges used in a section.
+- Only renders when `NODE_ENV !== "production"`.
 
 ---
 
