@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
   useReducedMotion,
-  useScroll,
   useSpring,
   useMotionValue,
   type MotionValue,
 } from "motion/react";
 import { springPresets } from "@/system/motion-presets";
 import { BlindReveal } from "@/components/motion";
+import { useScrollRange } from "@/hooks/useScrollRange";
 
 interface ClientsLogosProps {
   className?: string;
@@ -312,11 +312,7 @@ export default function ClientsLogos({
   // Memoize clients data to prevent recreation
   const memoizedClients = useMemo(() => clients, []);
   const reduceMotion = useReducedMotion();
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  const { ref: containerRef, progress: scrollYProgress } = useScrollRange<HTMLDivElement>();
   const revealProgress = reduceMotion
     ? useMotionValue(1)
     : useSpring(scrollYProgress, springPresets.calm);
