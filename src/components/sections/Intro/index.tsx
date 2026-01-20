@@ -13,7 +13,10 @@ interface IntroProps {
 
 export function Intro({ className = "" }: IntroProps) {
   const reduceMotion = useReducedMotion();
-  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>();
+  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>({
+    offset: ["start end", "end end"],
+    endOffsetRem: 10,
+  });
   const parallaxY = useTransform(scrollYProgress, [0, 1], parallaxPresets.subtle);
   const titleY = parallaxY;
   const { range } = revealPresets.slow;

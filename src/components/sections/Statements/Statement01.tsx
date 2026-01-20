@@ -11,7 +11,10 @@ export function Statement() {
   const statementSequence = getRevealSequence("statement");
   const { getStart } = useRevealSequence(statementSequence, revealPresets.slow.range);
   const totalSlots = 3;
-  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>();
+  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>({
+    offset: ["start end", "end end"],
+    endOffsetRem: 10,
+  });
   const revealProgress = reduceMotion
     ? useMotionValue(1)
     : useSpring(scrollYProgress, springPresets.calm);
