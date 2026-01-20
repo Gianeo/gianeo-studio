@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, memo, useCallback, useRef, useState } from "react";
+import { useMemo, memo, useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
   m,
-  useInView,
   useReducedMotion,
+  useScroll,
   useSpring,
   useTransform,
   useMotionValue,
@@ -355,22 +355,17 @@ export default function ClientsLogos({
   const memoizedClients = useMemo(() => clients, []);
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(containerRef, {
-    amount: 0.35,
-    margin: "0px 0px -15% 0px",
-    once: true,
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
   });
-  const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, {
-    stiffness: 140,
-    damping: 26,
-    mass: 0.9,
-  });
-  useEffect(() => {
-    if (reduceMotion || isInView) {
-      revealBase.set(1);
-    }
-  }, [isInView, reduceMotion, revealBase]);
+  const revealProgress = reduceMotion
+    ? useMotionValue(1)
+    : useSpring(scrollYProgress, {
+        stiffness: 140,
+        damping: 26,
+        mass: 0.9,
+      });
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({
