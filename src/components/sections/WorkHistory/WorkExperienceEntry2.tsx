@@ -1,11 +1,13 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo, useMemo, useRef } from "react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
+import { m, useInView, useReducedMotion } from "motion/react";
+import { motionTokens } from "@/system/motion-tokens";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -50,10 +52,29 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
 }) => {
   if (gridItems.length === 0) return null;
 
+  const reduceMotion = useReducedMotion();
+  const galleryRef = useRef<HTMLDivElement | null>(null);
+  const galleryInView = useInView(galleryRef, {
+    amount: "some",
+    margin: "0px 0px -10% 0px",
+    once: true,
+  });
+  const blindVariants = {
+    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
+    visible: (index: number) => ({
+      clipPath: "inset(0% 0% 0% 0%)",
+      transition: {
+        duration: 0.75,
+        ease: motionTokens.easeOut,
+        delay: index * 0.12,
+      },
+    }),
+  };
+
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
 
   return (
-    <div role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
+    <div ref={galleryRef} role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
       <div className="sr-only">
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
@@ -65,7 +86,14 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
-                <div className="overflow-hidden rounded-none" style={{ aspectRatio: "4 / 3" }}>
+                <m.div
+                  className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+                  style={reduceMotion ? { aspectRatio: "4 / 3" } : { aspectRatio: "4 / 3", willChange: "clip-path" }}
+                  variants={blindVariants}
+                  custom={idx}
+                  initial={reduceMotion ? "visible" : "hidden"}
+                  animate={reduceMotion ? "visible" : galleryInView ? "visible" : "hidden"}
+                >
                   {item.type === "image" && item.src ? (
                     <LazyImage
                       image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
@@ -78,7 +106,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
                   )}
-                </div>
+                </m.div>
                 {captionText && (
                   <p className="body-sm text-muted max-w-sm px-6 md:px-0">
                     {captionText}

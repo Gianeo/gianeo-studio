@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import {
   ArrowRightIcon,
   CalendarIcon,
@@ -13,6 +13,8 @@ import { LazyImage } from "@/components/media/LazyImage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
+import { m, useInView, useReducedMotion } from "motion/react";
+import { motionTokens } from "@/system/motion-tokens";
 
 interface ProjectData {
   title: string;
@@ -51,6 +53,24 @@ interface ProjectShowcaseProps {
 export default function ProductShowcase({
   project = sampleProject,
 }: ProjectShowcaseProps) {
+  const reduceMotion = useReducedMotion();
+  const galleryRef = useRef<HTMLDivElement | null>(null);
+  const galleryInView = useInView(galleryRef, {
+    amount: 0.35,
+    margin: "0px 0px -15% 0px",
+    once: true,
+  });
+  const blindVariants = {
+    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
+    visible: (index: number) => ({
+      clipPath: "inset(0% 0% 0% 0%)",
+      transition: {
+        duration: 0.75,
+        ease: motionTokens.easeOut,
+        delay: index * 0.12,
+      },
+    }),
+  };
   const galleryItems = useMemo(() => ([
     {
       title: "Mobile Native App",
@@ -138,12 +158,19 @@ export default function ProductShowcase({
       </div>
 
       {/* Gallery */}
-      <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24">
+      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24">
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
-              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+              <m.div
+                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+                variants={blindVariants}
+                custom={0}
+                initial={reduceMotion ? "visible" : "hidden"}
+                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
+                style={reduceMotion ? undefined : { willChange: "clip-path" }}
+              >
                 {hasValidImage(galleryItems[0]?.image) ? (
                   <LazyImage
                     image={galleryItems[0].image}
@@ -154,7 +181,7 @@ export default function ProductShowcase({
                 ) : (
                   <div className="w-full aspect-4/3" aria-hidden="true" />
                 )}
-              </div>
+              </m.div>
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -175,7 +202,14 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+              <m.div
+                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+                variants={blindVariants}
+                custom={1}
+                initial={reduceMotion ? "visible" : "hidden"}
+                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
+                style={reduceMotion ? undefined : { willChange: "clip-path" }}
+              >
                 {hasValidImage(galleryItems[1]?.image) ? (
                   <LazyImage
                     image={galleryItems[1].image}
@@ -185,7 +219,7 @@ export default function ProductShowcase({
                 ) : (
                   <div className="w-full aspect-4/3" aria-hidden="true" />
                 )}
-              </div>
+              </m.div>
             </div>
           </div>
         </div>
@@ -193,7 +227,14 @@ export default function ProductShowcase({
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
-              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+              <m.div
+                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+                variants={blindVariants}
+                custom={2}
+                initial={reduceMotion ? "visible" : "hidden"}
+                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
+                style={reduceMotion ? undefined : { willChange: "clip-path" }}
+              >
                 {hasValidImage(galleryItems[2]?.image) ? (
                   <LazyImage
                     image={galleryItems[2].image}
@@ -203,7 +244,7 @@ export default function ProductShowcase({
                 ) : (
                   <div className="w-full aspect-4/3" aria-hidden="true" />
                 )}
-              </div>
+              </m.div>
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -224,7 +265,14 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              <div className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker">
+              <m.div
+                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+                variants={blindVariants}
+                custom={3}
+                initial={reduceMotion ? "visible" : "hidden"}
+                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
+                style={reduceMotion ? undefined : { willChange: "clip-path" }}
+              >
                 {hasValidImage(galleryItems[3]?.image) ? (
                   <LazyImage
                     image={galleryItems[3].image}
@@ -234,7 +282,7 @@ export default function ProductShowcase({
                 ) : (
                   <div className="w-full aspect-4/3" aria-hidden="true" />
                 )}
-              </div>
+              </m.div>
             </div>
           </div>
         </div>
