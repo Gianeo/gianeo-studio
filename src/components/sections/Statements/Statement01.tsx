@@ -1,30 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { useReducedMotion, useSpring, useMotionValue } from "motion/react";
 import { BlindReveal, Reveal } from "@/components/motion";
 import { getRevealSequence, revealPresets, springPresets } from "@/system/motion-presets";
 import { useRevealSequence } from "@/hooks/useRevealSequence";
+import { useScrollRange } from "@/hooks/useScrollRange";
 
 export function Statement() {
   const reduceMotion = useReducedMotion();
-  const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, springPresets.calm);
   const statementSequence = getRevealSequence("statement");
   const { getStart } = useRevealSequence(statementSequence, revealPresets.slow.range);
   const totalSlots = 3;
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const isInView = useInView(sectionRef, {
-    amount: 0.4,
-    margin: "0px 0px -20% 0px",
-    once: true,
-  });
-
-  useEffect(() => {
-    if (reduceMotion || isInView) {
-      revealBase.set(1);
-    }
-  }, [isInView, reduceMotion, revealBase]);
+  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>();
+  const revealProgress = reduceMotion
+    ? useMotionValue(1)
+    : useSpring(scrollYProgress, springPresets.calm);
 
   return (
     <section ref={sectionRef} className="text-foreground py-16 md:pt-16 md:pb-40">
