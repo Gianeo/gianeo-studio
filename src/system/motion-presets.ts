@@ -42,3 +42,21 @@ export const introRevealSequence = [
   { label: "p3", start: 0.5 },
   { label: "p4", start: 0.58 },
 ] as const;
+
+export const revealSequences = {
+  intro: introRevealSequence,
+} as const;
+
+export type RevealSequenceKey = keyof typeof revealSequences;
+
+export const getRevealSequence = (key: RevealSequenceKey) => revealSequences[key];
+
+export const createRevealSequence = (
+  sequence: readonly { label: string; start: number }[],
+  range: number
+) =>
+  sequence.map((item) => ({
+    label: item.label,
+    start: item.start,
+    end: item.start + range,
+  }));

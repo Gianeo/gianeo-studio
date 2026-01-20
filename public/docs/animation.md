@@ -28,6 +28,10 @@ springPresets.calm
 - Scroll helper hook: `src/hooks/useScrollRange.ts`
 - Debug overlays (dev only): `src/components/motion/MotionDebugOverlay.tsx`, `src/components/motion/MotionRangeOverlay.tsx`
 - Motion barrel: `src/components/motion/index.ts`
+- Debug provider: `src/components/motion/MotionDebugProvider.tsx`
+- Reveal sequence hook: `src/hooks/useRevealSequence.ts`
+- Reveal sequences registry: `src/system/motion-presets.ts` (`revealSequences`)
+- Typed getter: `getRevealSequence("intro")` in `src/system/motion-presets.ts`
 - Background + Logo: `src/app/HomePageContent.tsx`
 - Intro text reveal: `src/components/sections/Intro/index.tsx`
 - Client blinds: `src/components/sections/ClientsLogos/index.tsx`

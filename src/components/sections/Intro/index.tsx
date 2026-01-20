@@ -2,9 +2,10 @@
 
 import { ArrowDownIcon } from "@phosphor-icons/react";
 import { m, useReducedMotion, useTransform } from "motion/react";
-import { introRevealSequence, parallaxPresets, revealPresets } from "@/system/motion-presets";
+import { getRevealSequence, parallaxPresets, revealPresets } from "@/system/motion-presets";
 import { useScrollRange } from "@/hooks/useScrollRange";
-import { Reveal, MotionRangeOverlay } from "@/components/motion";
+import { useRevealSequence } from "@/hooks/useRevealSequence";
+import { Reveal, MotionRangePanel } from "@/components/motion";
 
 interface IntroProps {
   className?: string;
@@ -16,11 +17,7 @@ export function Intro({ className = "" }: IntroProps) {
   const parallaxY = useTransform(scrollYProgress, [0, 1], parallaxPresets.subtle);
   const titleY = parallaxY;
   const { range } = revealPresets.slow;
-  const ranges = introRevealSequence.map((item) => ({
-    label: item.label,
-    start: item.start,
-    end: item.start + range,
-  }));
+  const { ranges, getStart } = useRevealSequence(getRevealSequence("intro"), range);
 
   return (
     <section ref={sectionRef} className={`relative pb-24 z-0 bg-transparent ${className}`}>
@@ -43,7 +40,7 @@ export function Intro({ className = "" }: IntroProps) {
                 className="body-label text-accent"
                 preset="slow"
                 spring="calm"
-                start={introRevealSequence[0].start}
+                start={getStart("tag")}
                 progress={scrollYProgress}
               >
                 Design Leadership
@@ -52,7 +49,7 @@ export function Intro({ className = "" }: IntroProps) {
                 <Reveal
                   preset="slow"
                   spring="calm"
-                  start={introRevealSequence[1].start}
+                  start={getStart("title")}
                   progress={scrollYProgress}
                 >
                   <h2 className="heading-display text-primary">
@@ -66,7 +63,7 @@ export function Intro({ className = "" }: IntroProps) {
               <Reveal
                 preset="slow"
                 spring="calm"
-                start={introRevealSequence[2].start}
+                start={getStart("p1")}
                 progress={scrollYProgress}
               >
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
@@ -74,7 +71,7 @@ export function Intro({ className = "" }: IntroProps) {
               <Reveal
                 preset="slow"
                 spring="calm"
-                start={introRevealSequence[3].start}
+                start={getStart("p2")}
                 progress={scrollYProgress}
               >
                 You&apos;re not looking for a silver bullet. You want clarity. Someone who can see the whole thing end-to-end—how it works, how it looks, how it feels to use—and shape it into something that moves with purpose.
@@ -86,7 +83,7 @@ export function Intro({ className = "" }: IntroProps) {
                 className="heading-sm text-secondary"
                 preset="slow"
                 spring="calm"
-                start={introRevealSequence[4].start}
+                start={getStart("p3")}
                 progress={scrollYProgress}
               >
                 That&apos;s where I come in.
@@ -94,7 +91,7 @@ export function Intro({ className = "" }: IntroProps) {
               <Reveal
                 preset="slow"
                 spring="calm"
-                start={introRevealSequence[5].start}
+                start={getStart("p4")}
                 progress={scrollYProgress}
               >
                 I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.
@@ -106,9 +103,7 @@ export function Intro({ className = "" }: IntroProps) {
             </div>
 
           </div>
-          {process.env.NODE_ENV !== "production" && (
-            <MotionRangeOverlay title="Intro Reveal Ranges" progress={scrollYProgress} ranges={ranges} />
-          )}
+          <MotionRangePanel title="Intro Reveal Ranges" progress={scrollYProgress} ranges={ranges} />
     </section >
   );
 }

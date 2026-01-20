@@ -14,7 +14,7 @@ import {
 } from "motion/react";
 import { motionTokens } from "@/system/motion-tokens";
 import { springPresets } from "@/system/motion-presets";
-import { MotionDebugOverlay } from "@/components/motion";
+import { MotionDebugBar } from "@/components/motion";
 import { LogoGf } from "@/components/logo/LogoGf";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
@@ -193,15 +193,13 @@ export default function HomePageContent() {
             </main>
           </div>
         </div>
-        {process.env.NODE_ENV !== "production" && (
-          <MotionDebugOverlay
-            items={[
-              { label: "page", value: scrollYProgress },
-              { label: "logoScale", value: logoScale },
-              { label: "bgScale", value: bgScale },
-            ]}
-          />
-        )}
+        <MotionDebugBar
+          items={[
+            { label: "page", value: scrollYProgress },
+            { label: "logoScale", value: logoScale },
+            { label: "bgScale", value: bgScale },
+          ]}
+        />
       </MotionConfig>
     </LazyMotion>
   );

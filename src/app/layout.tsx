@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from 'next/script';
 import { switzer, azeretMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { MotionDebugProvider } from "@/components/motion";
 import "./globals.css";
 
 // Enhanced metadata with comprehensive SEO
@@ -212,6 +213,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <MotionDebugProvider>
           {/* Skip to main content link for accessibility */}
           <a
             href="#main-content"
@@ -221,6 +223,7 @@ export default function RootLayout({
           </a>
 
           {children}
+          </MotionDebugProvider>
 
           {/* Google Analytics using Next.js Script component - only in production */}
           {process.env.NODE_ENV === 'production' && (
