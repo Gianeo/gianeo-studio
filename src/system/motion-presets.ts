@@ -45,6 +45,10 @@ export const introRevealSequence = [
 
 export const revealSequences = {
   intro: introRevealSequence,
+  statement: [
+    { label: "tag", start: 0.2 },
+    { label: "title", start: 0.32 },
+  ],
 } as const;
 
 export type RevealSequenceKey = keyof typeof revealSequences;

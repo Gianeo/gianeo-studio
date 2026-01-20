@@ -13,7 +13,7 @@ export function useScrollRange<T extends HTMLElement>(
   options: ScrollRangeOptions = {}
 ) {
   const ref = useRef<T | null>(null);
-  const { offset = ["start end", "end start"], spring = "calm" } = options;
+  const { offset = ["start end", "center center"], spring = "calm" } = options;
 
   const { scrollYProgress } = useScroll({
     target: ref,
