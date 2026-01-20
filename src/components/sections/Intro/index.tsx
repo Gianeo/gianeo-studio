@@ -1,9 +1,8 @@
 "use client";
 
 import { ArrowDownIcon } from "@phosphor-icons/react";
-import { useRef } from "react";
-import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { motionTokens } from "@/system/motion-tokens";
+import { useMemo, useRef } from "react";
+import { m, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 
 interface IntroProps {
   className?: string;
@@ -16,11 +15,31 @@ export function Intro({ className = "" }: IntroProps) {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-12, 12]);
-  const baseTransition = {
-    duration: 1.1,
-    ease: motionTokens.easeOut,
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+  const springConfig = useMemo(
+    () => ({
+      stiffness: 140,
+      damping: 26,
+      mass: 0.9,
+    }),
+    []
+  );
+  const makeReveal = (start: number) => {
+    const end = start + 0.16;
+    const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
+    const y = useTransform(scrollYProgress, [start, end], [-60, 0]);
+    return {
+      opacity: useSpring(opacity, springConfig),
+      y: useSpring(y, springConfig),
+    };
   };
+  const tagReveal = makeReveal(0.18);
+  const titleReveal = makeReveal(0.26);
+  const firstReveal = makeReveal(0.34);
+  const secondReveal = makeReveal(0.42);
+  const thirdReveal = makeReveal(0.5);
+  const fourthReveal = makeReveal(0.58);
+  const titleY = useTransform([titleReveal.y, parallaxY], ([revealY, drift]) => revealY + drift);
 
   return (
     <section ref={sectionRef} className={`relative pb-24 z-0 bg-transparent ${className}`}>
@@ -41,20 +60,22 @@ export function Intro({ className = "" }: IntroProps) {
             <div className="md:col-start-8 xl:col-start-8 md:col-span-7 xl:col-span-4 space-y-8 max-w-xl md:pt-8 xl:pt-24">
               <m.p
                 className="body-label text-accent"
-                initial={reduceMotion ? false : { opacity: 0, y: -48 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                transition={{ ...baseTransition, delay: 0 }}
+                style={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: tagReveal.opacity, y: tagReveal.y, willChange: "transform, opacity" }
+                }
               >
                 Design Leadership
               </m.p>
-              <m.div style={reduceMotion ? undefined : { y: parallaxY }}>
+              <m.div style={reduceMotion ? undefined : { y: titleY }}>
                 <m.h2
                   className="heading-display text-primary"
-                  initial={reduceMotion ? false : { opacity: 0, y: -80 }}
-                  whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                  transition={{ ...baseTransition, delay: 0.5 }}
+                  style={
+                    reduceMotion
+                      ? undefined
+                      : { opacity: titleReveal.opacity, willChange: "opacity" }
+                  }
                 >
                   With intention, action, and care.
                 </m.h2>
@@ -63,18 +84,20 @@ export function Intro({ className = "" }: IntroProps) {
 
             <div className="md:col-start-5 xl:col-start-5 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
               <m.p
-                initial={reduceMotion ? false : { opacity: 0, y: -56 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                transition={{ ...baseTransition, delay: 1.0 }}
+                style={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: firstReveal.opacity, y: firstReveal.y, willChange: "transform, opacity" }
+                }
               >
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
               </m.p>
               <m.p
-                initial={reduceMotion ? false : { opacity: 0, y: -56 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                transition={{ ...baseTransition, delay: 1.5 }}
+                style={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: secondReveal.opacity, y: secondReveal.y, willChange: "transform, opacity" }
+                }
               >
                 You&apos;re not looking for a silver bullet. You want clarity. Someone who can see the whole thing end-to-end—how it works, how it looks, how it feels to use—and shape it into something that moves with purpose.
               </m.p>
@@ -83,18 +106,20 @@ export function Intro({ className = "" }: IntroProps) {
             <div className="md:col-start-8 xl:col-start-8 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
               <m.p
                 className="heading-sm text-secondary"
-                initial={reduceMotion ? false : { opacity: 0, y: -48 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                transition={{ ...baseTransition, delay: 2.0 }}
+                style={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: thirdReveal.opacity, y: thirdReveal.y, willChange: "transform, opacity" }
+                }
               >
                 That&apos;s where I come in.
               </m.p>
               <m.p
-                initial={reduceMotion ? false : { opacity: 0, y: -48 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ amount: 0.5, margin: "0px 0px -20% 0px", once: true }}
-                transition={{ ...baseTransition, delay: 2.5 }}
+                style={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: fourthReveal.opacity, y: fourthReveal.y, willChange: "transform, opacity" }
+                }
               >
                 I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.
               </m.p>
