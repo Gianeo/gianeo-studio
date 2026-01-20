@@ -1,14 +1,17 @@
 'use client';
 
-import { useMemo, memo, useCallback, useRef, useState } from "react";
+import { useEffect, useMemo, memo, useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
   m,
   useInView,
   useReducedMotion,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  type MotionValue,
 } from "motion/react";
-import { motionTokens } from "@/system/motion-tokens";
 
 interface ClientsLogosProps {
   className?: string;
@@ -140,31 +143,28 @@ const OptimizedLogoContainer = memo(({
   priority = false,
   delay = 0,
   index,
-  animate,
+  total,
+  progress,
   reduceMotion = false,
 }: {
   client: typeof clients[0];
   priority?: boolean;
   delay?: number;
   index: number;
-  animate: boolean;
+  total: number;
+  progress?: MotionValue<number>;
   reduceMotion?: boolean;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const stagger = 0.12;
-  const duration = 0.75;
-  const itemVariants = {
-    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
-    visible: (i: number) => ({
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration,
-        ease: motionTokens.easeOut,
-        delay: i * stagger,
-      },
-    }),
-  };
+  const fallbackProgress = useMotionValue(0);
+  const start = Math.min(1, index / total);
+  const end = Math.min(1, (index + 1) / total + 0.08);
+  const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const clipPath = useTransform(
+    reveal,
+    (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+  );
 
   // Lazy loading with intersection observer
   const { ref, inView } = useIntersectionInView({
@@ -194,11 +194,11 @@ const OptimizedLogoContainer = memo(({
       className="group relative flex items-center justify-center aspect-3/2 w-full "
       role="img"
       aria-label={`${client.name} logo - ${client.industry} company`}
-      variants={itemVariants}
-      custom={index}
-      initial={reduceMotion ? "visible" : "hidden"}
-      animate={reduceMotion ? "visible" : animate ? "visible" : "hidden"}
-      style={reduceMotion ? undefined : { willChange: "clip-path" }}
+      style={
+        reduceMotion || !progress
+          ? undefined
+          : { clipPath, willChange: "clip-path" }
+      }
     >
       {/* Logo Container with semantic meaning */}
       <div 
@@ -249,37 +249,34 @@ OptimizedLogoContainer.displayName = 'OptimizedLogoContainer';
 // Memoized "and many more" component with semantic meaning
 const AndManyMoreBox = memo(({
   index,
-  animate,
+  total,
+  progress,
   reduceMotion = false,
 }: {
   index: number;
-  animate: boolean;
+  total: number;
+  progress?: MotionValue<number>;
   reduceMotion?: boolean;
 }) => {
-  const stagger = 0.12;
-  const duration = 0.75;
-  const itemVariants = {
-    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
-    visible: (i: number) => ({
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration,
-        ease: motionTokens.easeOut,
-        delay: i * stagger,
-      },
-    }),
-  };
+  const fallbackProgress = useMotionValue(0);
+  const start = Math.min(1, index / total);
+  const end = Math.min(1, (index + 1) / total);
+  const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
+  const clipPath = useTransform(
+    reveal,
+    (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+  );
 
   return (
   <m.div 
     className="relative flex items-center justify-center aspect-3/2 w-full"
     role="text"
     aria-label="Additional client relationships beyond those displayed"
-    variants={itemVariants}
-    custom={index}
-    initial={reduceMotion ? "visible" : "hidden"}
-    animate={reduceMotion ? "visible" : animate ? "visible" : "hidden"}
-    style={reduceMotion ? undefined : { willChange: "clip-path" }}
+    style={
+      reduceMotion || !progress
+        ? undefined
+        : { clipPath, willChange: "clip-path" }
+    }
   >
     <div className="backdrop-blur-md bg-black/20 text-sm text-muted text-left font-mono flex items-center justify-center w-full h-full p-1 lg:p-6">
       <div className="max-w-sm mx-auto" role="presentation">
@@ -295,11 +292,11 @@ AndManyMoreBox.displayName = 'AndManyMoreBox';
 const LogoGrid = memo(({
   validClients,
   reduceMotion,
-  animate,
+  progress,
 }: {
   validClients: typeof clients;
   reduceMotion: boolean;
-  animate: boolean;
+  progress?: MotionValue<number>;
 }) => {
   // Create staggered loading delays for smooth loading experience
   const clientsWithDelays = useMemo(() => 
@@ -309,6 +306,8 @@ const LogoGrid = memo(({
       priority: index < 3, // First 3 logos are priority
     }))
   , [validClients]);
+
+  const totalSlots = clientsWithDelays.length + 1;
 
   return (
     <section 
@@ -331,13 +330,15 @@ const LogoGrid = memo(({
           priority={client.priority}
           delay={client.delay}
           index={index}
-          animate={animate}
+          total={totalSlots}
+          progress={progress}
           reduceMotion={reduceMotion}
         />
       ))}
       <AndManyMoreBox
         index={clientsWithDelays.length}
-        animate={animate}
+        total={totalSlots}
+        progress={progress}
         reduceMotion={reduceMotion}
       />
     </section>
@@ -359,6 +360,17 @@ export default function ClientsLogos({
     margin: "0px 0px -15% 0px",
     once: true,
   });
+  const revealBase = useMotionValue(0);
+  const revealProgress = useSpring(revealBase, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.9,
+  });
+  useEffect(() => {
+    if (reduceMotion || isInView) {
+      revealBase.set(1);
+    }
+  }, [isInView, reduceMotion, revealBase]);
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({
@@ -414,7 +426,7 @@ export default function ClientsLogos({
           <LogoGrid
             validClients={validClients}
             reduceMotion={Boolean(reduceMotion)}
-            animate={Boolean(isInView)}
+            progress={revealProgress}
           />
       </main>
     </section>

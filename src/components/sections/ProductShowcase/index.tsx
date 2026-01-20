@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   ArrowRightIcon,
   CalendarIcon,
@@ -13,8 +13,7 @@ import { LazyImage } from "@/components/media/LazyImage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
-import { m, useInView, useReducedMotion } from "motion/react";
-import { motionTokens } from "@/system/motion-tokens";
+import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 interface ProjectData {
   title: string;
@@ -60,17 +59,17 @@ export default function ProductShowcase({
     margin: "0px 0px -15% 0px",
     once: true,
   });
-  const blindVariants = {
-    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
-    visible: (index: number) => ({
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration: 0.75,
-        ease: motionTokens.easeOut,
-        delay: index * 0.12,
-      },
-    }),
-  };
+  const revealBase = useMotionValue(0);
+  const revealProgress = useSpring(revealBase, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.9,
+  });
+  useEffect(() => {
+    if (reduceMotion || galleryInView) {
+      revealBase.set(1);
+    }
+  }, [galleryInView, reduceMotion, revealBase]);
   const galleryItems = useMemo(() => ([
     {
       title: "Mobile Native App",
@@ -118,6 +117,48 @@ export default function ProductShowcase({
   const hasValidImage = (image?: ProjectData["images"][number]) =>
     Boolean(image?.src);
 
+  const GalleryImage = ({
+    image,
+    index,
+    total,
+    priority,
+  }: {
+    image?: ProjectData["images"][number];
+    index: number;
+    total: number;
+    priority?: boolean;
+  }) => {
+    const start = Math.min(1, index / total);
+    const end = Math.min(1, (index + 1) / total + 0.08);
+    const reveal = useTransform(revealProgress, [start, end], [0, 1]);
+    const clipPath = useTransform(
+      reveal,
+      (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+    );
+
+    return (
+      <m.div
+        className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+        style={
+          reduceMotion
+            ? undefined
+            : { clipPath, willChange: "clip-path" }
+        }
+      >
+        {hasValidImage(image) ? (
+          <LazyImage
+            image={image}
+            className="w-full aspect-4/3"
+            priority={priority}
+            showPlaceholder={false}
+          />
+        ) : (
+          <div className="w-full aspect-4/3" aria-hidden="true" />
+        )}
+      </m.div>
+    );
+  };
+
   return (
     <section className="text-foreground bg-background pb-8 md:pb-32">
       <SectionHeader
@@ -163,25 +204,12 @@ export default function ProductShowcase({
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
-              <m.div
-                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
-                variants={blindVariants}
-                custom={0}
-                initial={reduceMotion ? "visible" : "hidden"}
-                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
-                style={reduceMotion ? undefined : { willChange: "clip-path" }}
-              >
-                {hasValidImage(galleryItems[0]?.image) ? (
-                  <LazyImage
-                    image={galleryItems[0].image}
-                    className="w-full aspect-4/3"
-                    priority
-                    showPlaceholder={false}
-                  />
-                ) : (
-                  <div className="w-full aspect-4/3" aria-hidden="true" />
-                )}
-              </m.div>
+              <GalleryImage
+                image={galleryItems[0]?.image}
+                index={0}
+                total={galleryItems.length}
+                priority
+              />
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -202,24 +230,11 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              <m.div
-                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
-                variants={blindVariants}
-                custom={1}
-                initial={reduceMotion ? "visible" : "hidden"}
-                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
-                style={reduceMotion ? undefined : { willChange: "clip-path" }}
-              >
-                {hasValidImage(galleryItems[1]?.image) ? (
-                  <LazyImage
-                    image={galleryItems[1].image}
-                    className="w-full aspect-4/3"
-                    showPlaceholder={false}
-                  />
-                ) : (
-                  <div className="w-full aspect-4/3" aria-hidden="true" />
-                )}
-              </m.div>
+              <GalleryImage
+                image={galleryItems[1]?.image}
+                index={1}
+                total={galleryItems.length}
+              />
             </div>
           </div>
         </div>
@@ -227,24 +242,11 @@ export default function ProductShowcase({
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-6">
-              <m.div
-                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
-                variants={blindVariants}
-                custom={2}
-                initial={reduceMotion ? "visible" : "hidden"}
-                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
-                style={reduceMotion ? undefined : { willChange: "clip-path" }}
-              >
-                {hasValidImage(galleryItems[2]?.image) ? (
-                  <LazyImage
-                    image={galleryItems[2].image}
-                    className="w-full aspect-4/3"
-                    showPlaceholder={false}
-                  />
-                ) : (
-                  <div className="w-full aspect-4/3" aria-hidden="true" />
-                )}
-              </m.div>
+              <GalleryImage
+                image={galleryItems[2]?.image}
+                index={2}
+                total={galleryItems.length}
+              />
             </div>
             <div className="cols-start-7 col-span-5 self-stretch">
               <GalleryText
@@ -265,24 +267,11 @@ export default function ProductShowcase({
               />
             </div>
             <div className="order-1 md:order-0 cols-start-5 col-span-8">
-              <m.div
-                className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
-                variants={blindVariants}
-                custom={3}
-                initial={reduceMotion ? "visible" : "hidden"}
-                animate={reduceMotion || galleryInView ? "visible" : "hidden"}
-                style={reduceMotion ? undefined : { willChange: "clip-path" }}
-              >
-                {hasValidImage(galleryItems[3]?.image) ? (
-                  <LazyImage
-                    image={galleryItems[3].image}
-                    className="w-full aspect-4/3"
-                    showPlaceholder={false}
-                  />
-                ) : (
-                  <div className="w-full aspect-4/3" aria-hidden="true" />
-                )}
-              </m.div>
+              <GalleryImage
+                image={galleryItems[3]?.image}
+                index={3}
+                total={galleryItems.length}
+              />
             </div>
           </div>
         </div>

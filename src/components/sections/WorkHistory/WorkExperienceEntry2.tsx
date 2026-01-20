@@ -1,13 +1,12 @@
 "use client";
 
-import { memo, useMemo, useRef } from "react";
+import { memo, useEffect, useMemo, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
-import { m, useInView, useReducedMotion } from "motion/react";
-import { motionTokens } from "@/system/motion-tokens";
+import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -59,19 +58,51 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
     margin: "0px 0px -10% 0px",
     once: true,
   });
-  const blindVariants = {
-    hidden: { clipPath: "inset(0% 0% 100% 0%)" },
-    visible: (index: number) => ({
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration: 0.75,
-        ease: motionTokens.easeOut,
-        delay: index * 0.12,
-      },
-    }),
+  const revealBase = useMotionValue(0);
+  const revealProgress = useSpring(revealBase, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.9,
+  });
+  useEffect(() => {
+    if (reduceMotion || galleryInView) {
+      revealBase.set(1);
+    }
+  }, [galleryInView, reduceMotion, revealBase]);
+
+  const BlindItem = ({
+    children,
+    index,
+    total,
+  }: {
+    children: ReactNode;
+    index: number;
+    total: number;
+  }) => {
+    const start = Math.min(1, index / total);
+    const end = Math.min(1, (index + 1) / total + 0.08);
+    const reveal = useTransform(revealProgress, [start, end], [0, 1]);
+    const clipPath = useTransform(
+      reveal,
+      (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+    );
+
+    return (
+      <m.div
+        className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+        style={
+          reduceMotion
+            ? { aspectRatio: "4 / 3" }
+            : { aspectRatio: "4 / 3", clipPath, willChange: "clip-path" }
+        }
+      >
+        {children}
+      </m.div>
+    );
   };
 
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
+  const totalSlots = orderedItems.length;
 
   return (
     <div ref={galleryRef} role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
@@ -86,14 +117,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
-                <m.div
-                  className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
-                  style={reduceMotion ? { aspectRatio: "4 / 3" } : { aspectRatio: "4 / 3", willChange: "clip-path" }}
-                  variants={blindVariants}
-                  custom={idx}
-                  initial={reduceMotion ? "visible" : "hidden"}
-                  animate={reduceMotion ? "visible" : galleryInView ? "visible" : "hidden"}
-                >
+                <BlindItem index={idx} total={totalSlots}>
                   {item.type === "image" && item.src ? (
                     <LazyImage
                       image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
@@ -106,7 +130,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
                   )}
-                </m.div>
+                </BlindItem>
                 {captionText && (
                   <p className="body-sm text-muted max-w-sm px-6 md:px-0">
                     {captionText}

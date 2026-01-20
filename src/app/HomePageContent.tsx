@@ -9,6 +9,7 @@ import {
   m,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
 } from "motion/react";
 import { motionTokens } from "@/system/motion-tokens";
@@ -46,28 +47,34 @@ export default function HomePageContent() {
     return () => resizeObserver.disconnect();
   }, []);
 
-  const logoY = useTransform(scrollY, (value) => {
+  const springConfig = { stiffness: 140, damping: 26, mass: 0.9 };
+  const logoYRaw = useTransform(scrollY, (value) => {
     const offset = Math.max(0, viewportHeight / 2 - 80 - logoHeight / 2);
     const t = Math.min(value / (viewportHeight * 1.1), 1);
     const eased = 1 - Math.pow(1 - t, 3);
     return offset * (1 - eased);
   });
-  const logoScale = useTransform(scrollY, (value) => {
+  const logoScaleRaw = useTransform(scrollY, (value) => {
     const t = Math.min(value / (viewportHeight * 1.1), 1);
     const eased = 1 - Math.pow(1 - t, 3);
     return 1 - 0.75 * eased;
   });
-  const logoOpacity = useTransform(scrollY, (value) => {
+  const logoOpacityRaw = useTransform(scrollY, (value) => {
     const t = Math.min(value / (viewportHeight * 1.1), 1);
     const eased = 1 - Math.pow(1 - t, 3);
     return 1 - 0.95 * eased;
   });
-  const bgScale = useTransform(scrollY, (value) => {
+  const bgScaleRaw = useTransform(scrollY, (value) => {
     const t = Math.min(value / 1000, 1);
     const eased = 1 - Math.pow(1 - t, 3);
     return 1 - 0.25 * eased;
   });
-  const overlayOpacity = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.965]);
+  const overlayOpacityRaw = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.965]);
+  const logoY = useSpring(logoYRaw, springConfig);
+  const logoScale = useSpring(logoScaleRaw, springConfig);
+  const logoOpacity = useSpring(logoOpacityRaw, springConfig);
+  const bgScale = useSpring(bgScaleRaw, springConfig);
+  const overlayOpacity = useSpring(overlayOpacityRaw, springConfig);
 
   return (
     <LazyMotion features={domAnimation}>
