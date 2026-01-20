@@ -97,7 +97,7 @@ export default function HomePageContent() {
               <m.div className="absolute inset-0 bg-background" style={{ opacity: overlayOpacity }} />
             </m.div>
 
-            <div className="fixed left-1/2 top-0 z-10 -translate-x-1/2">
+            <div className="fixed left-1/2 top-4 z-10 -translate-x-1/2">
               <m.div
                 ref={logoRef}
                 className="relative w-full max-w-5xl aspect-video flex items-center justify-center"

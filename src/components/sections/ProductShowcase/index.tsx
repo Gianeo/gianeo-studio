@@ -147,7 +147,7 @@ export default function ProductShowcase({
       >
         {hasValidImage(image) ? (
           <LazyImage
-            image={image}
+            image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
             className="w-full aspect-4/3"
             priority={priority}
             showPlaceholder={false}
