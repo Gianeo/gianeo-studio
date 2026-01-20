@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
 
 interface ProjectData {
   title: string;
@@ -60,11 +61,7 @@ export default function ProductShowcase({
     once: true,
   });
   const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, {
-    stiffness: 140,
-    damping: 26,
-    mass: 0.9,
-  });
+  const revealProgress = useSpring(revealBase, springPresets.calm);
   useEffect(() => {
     if (reduceMotion || galleryInView) {
       revealBase.set(1);
@@ -128,12 +125,11 @@ export default function ProductShowcase({
     total: number;
     priority?: boolean;
   }) => {
-    const start = Math.min(1, index / total);
-    const end = Math.min(1, (index + 1) / total + 0.08);
+    const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
     const reveal = useTransform(revealProgress, [start, end], [0, 1]);
     const clipPath = useTransform(
       reveal,
-      (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+      (value) => getBlindClipPath(value)
     );
 
     return (

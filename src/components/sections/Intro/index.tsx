@@ -3,6 +3,7 @@
 import { ArrowDownIcon } from "@phosphor-icons/react";
 import { useMemo, useRef } from "react";
 import { m, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
+import { parallaxPresets, revealPresets, springPresets } from "@/system/motion-presets";
 
 interface IntroProps {
   className?: string;
@@ -15,19 +16,13 @@ export function Intro({ className = "" }: IntroProps) {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-10, 10]);
-  const springConfig = useMemo(
-    () => ({
-      stiffness: 140,
-      damping: 26,
-      mass: 0.9,
-    }),
-    []
-  );
+  const parallaxY = useTransform(scrollYProgress, [0, 1], parallaxPresets.subtle);
+  const springConfig = useMemo(() => springPresets.calm, []);
+  const { range, fromY } = revealPresets.slow;
   const makeReveal = (start: number) => {
-    const end = start + 0.16;
+    const end = Math.min(1, start + range);
     const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-    const y = useTransform(scrollYProgress, [start, end], [-60, 0]);
+    const y = useTransform(scrollYProgress, [start, end], [fromY, 0]);
     return {
       opacity: useSpring(opacity, springConfig),
       y: useSpring(y, springConfig),

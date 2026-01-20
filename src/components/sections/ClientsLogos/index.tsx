@@ -12,6 +12,7 @@ import {
   useMotionValue,
   type MotionValue,
 } from "motion/react";
+import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
 
 interface ClientsLogosProps {
   className?: string;
@@ -158,12 +159,11 @@ const OptimizedLogoContainer = memo(({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const fallbackProgress = useMotionValue(0);
-  const start = Math.min(1, index / total);
-  const end = Math.min(1, (index + 1) / total + 0.08);
+  const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
   const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
   const clipPath = useTransform(
     reveal,
-    (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+    (value) => getBlindClipPath(value)
   );
 
   // Lazy loading with intersection observer
@@ -259,12 +259,11 @@ const AndManyMoreBox = memo(({
   reduceMotion?: boolean;
 }) => {
   const fallbackProgress = useMotionValue(0);
-  const start = Math.min(1, index / total);
-  const end = Math.min(1, (index + 1) / total);
+  const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
   const reveal = useTransform(progress ?? fallbackProgress, [start, end], [0, 1]);
   const clipPath = useTransform(
     reveal,
-    (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+    (value) => getBlindClipPath(value)
   );
 
   return (
@@ -361,11 +360,7 @@ export default function ClientsLogos({
   });
   const revealProgress = reduceMotion
     ? useMotionValue(1)
-    : useSpring(scrollYProgress, {
-        stiffness: 140,
-        damping: 26,
-        mass: 0.9,
-      });
+    : useSpring(scrollYProgress, springPresets.calm);
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({

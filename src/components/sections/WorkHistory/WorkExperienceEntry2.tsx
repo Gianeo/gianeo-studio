@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
 import { m, useInView, useReducedMotion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -59,11 +60,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
     once: true,
   });
   const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, {
-    stiffness: 140,
-    damping: 26,
-    mass: 0.9,
-  });
+  const revealProgress = useSpring(revealBase, springPresets.calm);
   useEffect(() => {
     if (reduceMotion || galleryInView) {
       revealBase.set(1);
@@ -79,12 +76,11 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
     index: number;
     total: number;
   }) => {
-    const start = Math.min(1, index / total);
-    const end = Math.min(1, (index + 1) / total + 0.08);
+    const [start, end] = getStaggerRange(index, total, staggerPresets.blinds);
     const reveal = useTransform(revealProgress, [start, end], [0, 1]);
     const clipPath = useTransform(
       reveal,
-      (value) => `inset(0% 0% ${Math.max(0, 100 - value * 100)}% 0%)`
+      (value) => getBlindClipPath(value)
     );
 
     return (

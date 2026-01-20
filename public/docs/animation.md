@@ -5,7 +5,7 @@ This project uses **Motion for React** (`motion/react`, formerly Framer Motion) 
 ## Quick Cheat Sheet
 
 **Make reveals faster/slower**
-- Find `start + 0.16` (or similar) and change the `0.16`:
+- Find the `revealPresets` in `src/system/motion-presets.ts` and change `range`:
   - Smaller number = faster reveal
   - Bigger number = slower reveal
 
@@ -15,13 +15,15 @@ This project uses **Motion for React** (`motion/react`, formerly Framer Motion) 
 
 **Make spring snappier/softer**
 ```ts
-{ stiffness: 140, damping: 26, mass: 0.9 }
+// src/system/motion-presets.ts
+springPresets.calm
 ```
 - More stiffness = snappier
 - More damping = calmer
 - More mass = heavier/slower
 
 **Where to look**
+- Motion presets (global): `src/system/motion-presets.ts`
 - Background + Logo: `src/app/HomePageContent.tsx`
 - Intro text reveal: `src/components/sections/Intro/index.tsx`
 - Client blinds: `src/components/sections/ClientsLogos/index.tsx`
@@ -201,10 +203,14 @@ In `useTransform`:
 - For parallax: change `[-10, 10]` to `[-6, 6]` for a softer drift.
 
 ### Change the spring “feel”
-Shared config looks like this:
+Shared config lives in `src/system/motion-presets.ts`:
 
 ```ts
-{ stiffness: 140, damping: 26, mass: 0.9 }
+export const springPresets = {
+  calm: { stiffness: 140, damping: 26, mass: 0.9 },
+  soft: { stiffness: 110, damping: 24, mass: 1 },
+  snappy: { stiffness: 180, damping: 22, mass: 0.8 },
+} as const;
 ```
 
 - **More stiffness** = snappier

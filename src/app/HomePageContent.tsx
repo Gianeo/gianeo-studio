@@ -13,6 +13,7 @@ import {
   useTransform,
 } from "motion/react";
 import { motionTokens } from "@/system/motion-tokens";
+import { springPresets } from "@/system/motion-presets";
 import { LogoGf } from "@/components/logo/LogoGf";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
@@ -47,7 +48,6 @@ export default function HomePageContent() {
     return () => resizeObserver.disconnect();
   }, []);
 
-  const springConfig = { stiffness: 140, damping: 26, mass: 0.9 };
   const logoYRaw = useTransform(scrollY, (value) => {
     const offset = Math.max(0, viewportHeight / 2 - 80 - logoHeight / 2);
     const t = Math.min(value / (viewportHeight * 1.1), 1);
@@ -70,11 +70,11 @@ export default function HomePageContent() {
     return 1 - 0.25 * eased;
   });
   const overlayOpacityRaw = useTransform(scrollY, [0, viewportHeight * 0.75], [0.25, 0.965]);
-  const logoY = useSpring(logoYRaw, springConfig);
-  const logoScale = useSpring(logoScaleRaw, springConfig);
-  const logoOpacity = useSpring(logoOpacityRaw, springConfig);
-  const bgScale = useSpring(bgScaleRaw, springConfig);
-  const overlayOpacity = useSpring(overlayOpacityRaw, springConfig);
+  const logoY = useSpring(logoYRaw, springPresets.calm);
+  const logoScale = useSpring(logoScaleRaw, springPresets.calm);
+  const logoOpacity = useSpring(logoOpacityRaw, springPresets.calm);
+  const bgScale = useSpring(bgScaleRaw, springPresets.calm);
+  const overlayOpacity = useSpring(overlayOpacityRaw, springPresets.calm);
 
   return (
     <LazyMotion features={domAnimation}>
