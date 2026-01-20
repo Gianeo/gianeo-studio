@@ -2,7 +2,7 @@
 
 import { ArrowDownIcon } from "@phosphor-icons/react";
 import { useMemo, useRef } from "react";
-import { m, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { m, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
 
 interface IntroProps {
   className?: string;
@@ -39,7 +39,10 @@ export function Intro({ className = "" }: IntroProps) {
   const secondReveal = makeReveal(0.42);
   const thirdReveal = makeReveal(0.5);
   const fourthReveal = makeReveal(0.58);
-  const titleY = useTransform([titleReveal.y, parallaxY], ([revealY, drift]) => revealY + drift);
+  const titleY = useTransform(
+    [titleReveal.y, parallaxY] as MotionValue<number>[],
+    ([revealY, drift]: number[]) => revealY + drift
+  );
 
   return (
     <section ref={sectionRef} className={`relative pb-24 z-0 bg-transparent ${className}`}>
