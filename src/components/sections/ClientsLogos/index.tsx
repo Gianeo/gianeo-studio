@@ -133,11 +133,6 @@ const clients = [
   },
 ];
 
-// Memoized optimized logo component with enhanced accessibility
-// Replace the OptimizedLogoContainer component in ClientsLogos with this fixed version:
-
-// Replace the OptimizedLogoContainer component in ClientsLogos with this fixed version:
-
 const OptimizedLogoContainer = memo(({ 
   client,
   priority = false,
@@ -312,7 +307,10 @@ export default function ClientsLogos({
   // Memoize clients data to prevent recreation
   const memoizedClients = useMemo(() => clients, []);
   const reduceMotion = useReducedMotion();
-  const { ref: containerRef, progress: scrollYProgress } = useScrollRange<HTMLDivElement>();
+  const { ref: containerRef, progress: scrollYProgress } = useScrollRange<HTMLDivElement>({
+    offset: ["start end", "end 75%"],
+    endOffsetRem: 0,
+  });
   const revealProgress = reduceMotion
     ? useMotionValue(1)
     : useSpring(scrollYProgress, springPresets.calm);
