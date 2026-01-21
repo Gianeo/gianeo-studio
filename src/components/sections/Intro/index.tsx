@@ -13,11 +13,11 @@ interface IntroProps {
 
 export function Intro({ className = "" }: IntroProps) {
   const reduceMotion = useReducedMotion();
-  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>({
+  const { ref: sectionRef, progress: smoothProgress, rawProgress } = useScrollRange<HTMLElement>({
     offset: ["start end", "end end"],
     endOffsetRem: 10,
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], parallaxPresets.subtle);
+  const parallaxY = useTransform(smoothProgress, [0, 1], parallaxPresets.subtle);
   const titleY = parallaxY;
   const { range } = revealPresets.slow;
   const { ranges, getStart } = useRevealSequence(getRevealSequence("intro"), range);
@@ -44,7 +44,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="calm"
                 start={getStart("tag")}
-                progress={scrollYProgress}
+                progress={rawProgress}
               >
                 Design Leadership
               </Reveal>
@@ -53,7 +53,7 @@ export function Intro({ className = "" }: IntroProps) {
                   preset="slow"
                   spring="calm"
                   start={getStart("title")}
-                  progress={scrollYProgress}
+                  progress={rawProgress}
                 >
                   <h2 className="heading-display text-primary">
                     With intention, action, and care.
@@ -67,7 +67,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="calm"
                 start={getStart("p1")}
-                progress={scrollYProgress}
+                progress={rawProgress}
               >
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
               </Reveal>
@@ -75,7 +75,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="calm"
                 start={getStart("p2")}
-                progress={scrollYProgress}
+                progress={rawProgress}
               >
                 You&apos;re not looking for a silver bullet. You want clarity. Someone who can see the whole thing end-to-end—how it works, how it looks, how it feels to use—and shape it into something that moves with purpose.
               </Reveal>
@@ -87,7 +87,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="calm"
                 start={getStart("p3")}
-                progress={scrollYProgress}
+                progress={rawProgress}
               >
                 That&apos;s where I come in.
               </Reveal>
@@ -95,7 +95,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="calm"
                 start={getStart("p4")}
-                progress={scrollYProgress}
+                progress={rawProgress}
               >
                 I bring design that runs deep: usability grounded in insight, visual direction with taste, and systems that scale without losing agility. It&apos;s clarity made practical—so decisions get easier, teams move together, and the product holds up as it grows.
               </Reveal>
@@ -106,7 +106,7 @@ export function Intro({ className = "" }: IntroProps) {
             </div>
 
           </div>
-          <MotionRangePanel title="Intro Reveal Ranges" progress={scrollYProgress} ranges={ranges} />
+          <MotionRangePanel title="Intro Reveal Ranges" progress={rawProgress} ranges={ranges} />
     </section >
   );
 }

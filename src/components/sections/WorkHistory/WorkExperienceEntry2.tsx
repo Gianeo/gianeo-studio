@@ -86,7 +86,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
                 <BlindReveal
-                  className="overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+                  className="aspect-[4/3] overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
                   index={idx}
                   total={totalSlots}
                   progress={revealProgress}

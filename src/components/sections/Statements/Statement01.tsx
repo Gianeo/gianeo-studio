@@ -11,13 +11,13 @@ export function Statement() {
   const statementSequence = getRevealSequence("statement");
   const { getStart } = useRevealSequence(statementSequence, revealPresets.slow.range);
   const totalSlots = 3;
-  const { ref: sectionRef, progress: scrollYProgress } = useScrollRange<HTMLElement>({
+  const { ref: sectionRef, progress: smoothProgress, rawProgress } = useScrollRange<HTMLElement>({
     offset: ["start end", "end end"],
     endOffsetRem: 10,
   });
   const revealProgress = reduceMotion
     ? useMotionValue(1)
-    : useSpring(scrollYProgress, springPresets.calm);
+    : useSpring(smoothProgress, springPresets.calm);
 
   return (
     <section ref={sectionRef} className="text-foreground py-16 md:pt-16 md:pb-40">
@@ -40,7 +40,7 @@ export function Statement() {
             preset="slow"
             spring="calm"
             start={getStart("tag")}
-            progress={revealProgress}
+            progress={rawProgress}
           >
             Experience
           </Reveal>
@@ -49,7 +49,7 @@ export function Statement() {
             preset="slow"
             spring="calm"
             start={getStart("title")}
-            progress={revealProgress}
+            progress={rawProgress}
           >
             Playing at the intersection of design and technology.
           </Reveal>
