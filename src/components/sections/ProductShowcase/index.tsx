@@ -40,8 +40,8 @@ const sampleProject: ProjectData = {
   date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
-    // src: `/images/work/justscore/${i + 1}.webp`,
-    src: ``,
+    src: `/images/work/justscore/${i + 1}-test4.png`,
+    // src: ``,
     alt: `Showcase image ${i + 1}`,
     aspectRatio: "square" as const,
   })),
@@ -70,7 +70,7 @@ export default function ProductShowcase({
   }, [galleryInView, reduceMotion, revealBase]);
   const galleryItems = useMemo(() => ([
     {
-      title: "Mobile Native App",
+      title: "Mobile App",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: project.images[0],
@@ -127,7 +127,7 @@ export default function ProductShowcase({
     priority?: boolean;
   }) => (
     <BlindReveal
-      className="overflow-hidden bg-neutral-lighter dark:bg-neutral-darker"
+      className="overflow-hidden"
       index={index}
       total={total}
       progress={revealProgress}
@@ -136,8 +136,10 @@ export default function ProductShowcase({
         <LazyImage
           image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
           className="w-full aspect-4/3"
+          containerClassName="bg-background"
           priority={priority}
           showPlaceholder={false}
+          overlayClassName="opacity-0 group-hover:opacity-0"
         />
       ) : (
         <div className="w-full aspect-4/3" aria-hidden="true" />
@@ -185,7 +187,7 @@ export default function ProductShowcase({
       </div>
 
       {/* Gallery */}
-      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24">
+      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24 bg-background">
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">

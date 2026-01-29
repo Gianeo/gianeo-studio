@@ -14,6 +14,7 @@ interface RevealProps extends PropsWithChildren {
   start?: number;
   progress?: MotionValue<number>;
   smooth?: boolean;
+  offset?: Parameters<typeof useScroll>[0]["offset"];
 }
 
 export function Reveal({
@@ -24,12 +25,13 @@ export function Reveal({
   start = 0.2,
   progress,
   smooth = true,
+  offset = ["start end", "end start"],
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset,
   });
 
   const targetProgress = progress ?? scrollYProgress;
@@ -39,9 +41,11 @@ export function Reveal({
 
   const opacity = useTransform(targetProgress, [start, end], [0, 1]);
   const y = useTransform(targetProgress, [start, end], [fromY, 0]);
-  const shouldSpring = smooth && !progress;
-  const smoothOpacity = shouldSpring ? useSpring(opacity, springConfig) : opacity;
-  const smoothY = shouldSpring ? useSpring(y, springConfig) : y;
+  const springOpacity = useSpring(opacity, springConfig);
+  const springY = useSpring(y, springConfig);
+  const useSpringMotion = smooth && !progress;
+  const smoothOpacity = useSpringMotion ? springOpacity : opacity;
+  const smoothY = useSpringMotion ? springY : y;
 
   return (
     <m.div

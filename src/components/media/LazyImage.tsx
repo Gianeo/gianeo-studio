@@ -50,7 +50,7 @@ export function LazyImage({
     <div
       ref={ref}
       className={cn(
-        "group relative overflow-hidden bg-neutral-lighter dark:bg-neutral-darker",
+        "group relative overflow-hidden",
         containerClassName,
         className
       )}
