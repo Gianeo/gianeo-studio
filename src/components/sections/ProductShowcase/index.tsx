@@ -40,7 +40,7 @@ const sampleProject: ProjectData = {
   date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
-    src: `/images/work/justscore/${i + 1}-test4.png`,
+    src: `/images/work/justscore/${i + 1}-test13.png`,
     // src: ``,
     alt: `Showcase image ${i + 1}`,
     aspectRatio: "square" as const,
@@ -115,6 +115,12 @@ export default function ProductShowcase({
   const hasValidImage = (image?: ProjectData["images"][number]) =>
     Boolean(image?.src);
 
+  const getHoverSrc = (src: string) => {
+    const dotIndex = src.lastIndexOf(".");
+    if (dotIndex === -1) return `${src}_hover`;
+    return `${src.slice(0, dotIndex)}_hover${src.slice(dotIndex)}`;
+  };
+
   const GalleryImage = ({
     image,
     index,
@@ -125,27 +131,46 @@ export default function ProductShowcase({
     index: number;
     total: number;
     priority?: boolean;
-  }) => (
-    <BlindReveal
-      className="overflow-hidden"
-      index={index}
-      total={total}
-      progress={revealProgress}
-    >
-      {hasValidImage(image) ? (
-        <LazyImage
-          image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
-          className="w-full aspect-4/3"
-          containerClassName="bg-background"
-          priority={priority}
-          showPlaceholder={false}
-          overlayClassName="opacity-0 group-hover:opacity-0"
+  }) => {
+    const isOdd = index % 2 === 1;
+    return (
+      <BlindReveal
+        className="relative overflow-hidden bg-background"
+        index={index}
+        total={total}
+        progress={revealProgress}
+      >
+        {/* <div
+          className={`absolute z-50 bottom-0 ${isOdd ? "left-0" : "right-0"} h-full w-px bg-neutral-darker`}
+          aria-hidden="true"
+        /> */}
+        <div
+          className={`absolute z-50 bottom-0 h-px w-full bg-neutral-darker`}
+          aria-hidden="true"
         />
-      ) : (
-        <div className="w-full aspect-4/3" aria-hidden="true" />
-      )}
-    </BlindReveal>
-  );
+        <div
+          className={`absolute z-50 bottom-0 ${isOdd ? "right-0" : "left-0"} h-1/2 w-px bg-neutral-darker`}
+          aria-hidden="true"
+        />
+        <div className="relative z-10">
+          {hasValidImage(image) ? (
+            <LazyImage
+              image={{ src: image?.src ?? "", alt: image?.alt ?? "" }}
+              className="w-full aspect-4/3"
+              containerClassName=""
+              priority={priority}
+              showPlaceholder={false}
+              overlayClassName="opacity-0 group-hover:opacity-0"
+              hoverSrc={image?.src ? getHoverSrc(image.src) : undefined}
+              disableHoverScale
+            />
+          ) : (
+            <div className="w-full aspect-4/3" aria-hidden="true" />
+          )}
+        </div>
+      </BlindReveal>
+    );
+  };
 
   return (
     <section className="text-foreground bg-background pb-8 md:pb-32">

@@ -15,6 +15,8 @@ interface LazyImageProps {
   sizes?: string;
   quality?: number;
   style?: CSSProperties;
+  hoverSrc?: string;
+  disableHoverScale?: boolean;
 }
 
 /**
@@ -31,6 +33,8 @@ export function LazyImage({
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
   quality = 88,
   style,
+  hoverSrc,
+  disableHoverScale = false,
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -79,10 +83,21 @@ export function LazyImage({
               onLoad={handleLoad}
               onError={handleError}
               sizes={sizes}
-              className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
+              className={`h-full w-full object-cover transition-all duration-700${disableHoverScale ? "" : " group-hover:scale-105"}${hoverSrc ? " group-hover:opacity-0" : ""}`}
               priority={priority}
               quality={quality}
             />
+            {hoverSrc && (
+              <Image
+                src={hoverSrc}
+                alt={image.alt}
+                fill
+                sizes={sizes}
+                className="h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                priority={priority}
+                quality={quality}
+              />
+            )}
           </div>
         </div>
       )}
