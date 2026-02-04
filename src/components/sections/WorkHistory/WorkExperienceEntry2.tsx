@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useEffect, useMemo, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -86,7 +87,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
                 <BlindReveal
-                  className="aspect-[4/3] overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+                  className="aspect-4/3 overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
                   index={idx}
                   total={totalSlots}
                   progress={revealProgress}
@@ -100,11 +101,34 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={88}
                     />
-                  ) : item.type === "text" ? (
-                    <div className="h-full w-full bg-background flex items-center">
-                      <p className="body-base text-muted max-w-sm border-l-8 border-neutral-900 pl-8">
+                  ) : item.type === "quote" ? (
+                    <div className="h-full w-full bg-background flex flex-col gap-6">
+                      <div>
+                        {item.avatar ? (
+                          <Image
+                            src={item.avatar}
+                            alt={item.name ? `${item.name} portrait` : "Quote author portrait"}
+                            width={40}
+                            height={40}
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-neutral-darker" aria-hidden="true" />
+                        )}
+                      </div>
+                      <p className="body-base text-muted max-w-sm">
                         {item.content}
                       </p>
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <p className="body-sm text-primary font-medium">
+                            {item.name || "Anonymous"}
+                          </p>
+                          {item.title && (
+                            <p className="body-sm text-muted">{item.title}</p>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />

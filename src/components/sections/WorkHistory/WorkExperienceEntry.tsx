@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,54 +19,46 @@ const highlightSlots = [
   { span: "md:col-span-6 md:row-span-2" },
 ];
 
-const TextContainer = memo(({
+const QuoteContainer = memo(({
   content,
-  source,
+  name,
+  title,
+  avatar,
   className = ""
 }: {
   content: string;
-  source?: string;
+  name?: string;
+  title?: string;
+  avatar?: string;
   className?: string;
-}) => {
-  const lines = content.split('\n').filter(line => line.trim());
-  const sourceParts = source?.split(" - ").map((part) => part.trim()).filter(Boolean) || [];
-  const sourceName = sourceParts[0];
-  const sourceTitle = sourceParts.slice(1).join(" - ");
-
-  return (
-    <div
-      className={` w-full bg-neutral-lighter dark:bg-neutral-darker flex items-start body-base text-muted aspect-4/3 p-4 ${className}`}
-      role="text"
-      aria-label={`Key metrics: ${lines.join(', ')}`}
-    >
-      <div className="max-w-md md:max-w-sm xl:max-w-md p-4 lg:p-6 xl:p-8">
-        <div className="space-y-1">
-          {lines.map((line, index) => (
-            <p
-              key={index}
-              className="body-base-responsive">
-              {line}
-            </p>
-          ))}
-        </div>
-        {source && (
-          <div className="body-sm mt-6 md:mt-4 xl:mt-6">
-            {sourceName && <span className="font-semibold text-primary">{sourceName}</span>}
-            {sourceTitle && (
-              <>
-                {" "}
-                <span className="italic text-muted">{sourceTitle}</span>
-              </>
-            )}
-            {!sourceName && <span className="italic">{source}</span>}
-          </div>
-        )}
+}) => (
+  <div
+    className={`w-full bg-neutral-lighter dark:bg-neutral-darker flex flex-col justify-between text-muted aspect-4/3 p-6 ${className}`}
+    role="text"
+    aria-label={`Quote: ${content}`}
+  >
+    <p className="body-sm leading-relaxed">{content}</p>
+    <div className="flex items-center gap-3 pt-4">
+      {avatar ? (
+        <Image
+          src={avatar}
+          alt={name ? `${name} portrait` : "Quote author portrait"}
+          width={40}
+          height={40}
+          className="h-10 w-10 rounded-full object-cover"
+        />
+      ) : (
+        <div className="h-10 w-10 rounded-full bg-neutral-darker" aria-hidden="true" />
+      )}
+      <div>
+        <p className="body-sm text-primary font-medium">{name || "Anonymous"}</p>
+        {title && <p className="body-sm text-muted italic">{title}</p>}
       </div>
     </div>
-  );
-});
+  </div>
+));
 
-TextContainer.displayName = 'TextContainer';
+QuoteContainer.displayName = 'QuoteContainer';
 
 const ExternalLinkButton = memo(({
   url,
@@ -128,9 +121,11 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
 
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
-              <TextContainer
+              <QuoteContainer
                 content={item.content || ""}
-                source={item.source}
+                name={item.name}
+                title={item.title}
+                avatar={item.avatar}
                 className="w-full h-full"
               />
             </div>

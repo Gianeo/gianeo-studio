@@ -273,7 +273,7 @@ export default function SystemPage() {
               <p className="text-sm font-semibold">DotList + LazyImage</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
                 <DotList items={["Strategy", "Technology", "Design"]} />
-                <div className="w-full aspect-[4/3]">
+                <div className="w-full aspect-4/3">
                   <LazyImage
                     image={{ src: "/images/work/intro/1.webp", alt: "Sample" }}
                     className="h-full"

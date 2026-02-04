@@ -9,12 +9,14 @@ export interface Achievement {
 
 export interface GridItem {
   id: number;
-  type: 'image' | 'text';
+  type: 'image' | 'quote';
   src?: string;
   alt?: string;
   aspectRatio?: "square" | "landscape" | "portrait";
   content?: string;
-  source?: string;
+  name?: string;
+  title?: string;
+  avatar?: string;
 }
 
   export interface WorkExperience {
@@ -175,15 +177,19 @@ export interface GridItem {
         },
         {
           id: 6,
-          type: 'text',
+          type: 'quote',
           content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
-          source: 'Julia Hassing - - Snr Manager Research'
+          name: 'Julia Hassing',
+          title: 'Snr Manager, Research',
+          avatar: '/images/profile/gianni-favaretto.jpg'
         },
         {
           id: 7,
-          type: 'text',
+          type: 'quote',
           content: 'From our very first conversation, it was evident that Gianni was anything but conventional. His leadership style was a breath of fresh air, combining autonomy with meticulous attention to the finer details of delivery.',
-          source: 'Aparna Ravikumaran - - Snr Manager, Product Design'
+          name: 'Aparna Ravikumaran',
+          title: 'Snr Manager, Product Design',
+          avatar: ''
         },
         {
           id: 8,
@@ -218,9 +224,11 @@ export interface GridItem {
         },
         {
           id: 11,
-          type: 'text',
+          type: 'quote',
           content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
-          source: 'Jayaraj Elaraj - - Manager, Design Technology'
+          name: 'Jayaraj Elaraj',
+          title: 'Manager, Design Technology',
+          avatar: '/images/profile/gianni-favaretto.jpg'
         },
       ]
     },
