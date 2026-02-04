@@ -212,11 +212,11 @@ export default function ProductShowcase({
       </div>
 
       {/* Gallery */}
-      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-24 md:pb-24 bg-background">
+      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-32 md:pb-24 bg-background">
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="col-span-6">
+            <div className="col-span-7">
               <GalleryImage
                 image={galleryItems[0]?.image}
                 index={0}
@@ -224,7 +224,7 @@ export default function ProductShowcase({
                 priority
               />
             </div>
-            <div className="cols-start-7 col-span-5 self-stretch">
+            <div className="col-start-8 col-span-5 self-stretch">
               <GalleryText
                 title={galleryItems[0]?.title}
                 description={galleryItems[0]?.description}
@@ -235,14 +235,14 @@ export default function ProductShowcase({
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="order-2 md:order-0 col-span-4 self-stretch">
+            <div className="order-2 md:order-0 col-span-5 self-stretch">
               <GalleryText
                 title={galleryItems[1]?.title}
                 description={galleryItems[1]?.description}
                 className="md:text-right md:items-end"
               />
             </div>
-            <div className="order-1 md:order-0 cols-start-5 col-span-8">
+            <div className="order-1 md:order-0 cols-start-5 col-span-7">
               <GalleryImage
                 image={galleryItems[1]?.image}
                 index={1}
@@ -254,14 +254,14 @@ export default function ProductShowcase({
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="col-span-6">
+            <div className="col-span-7">
               <GalleryImage
                 image={galleryItems[2]?.image}
                 index={2}
                 total={galleryItems.length}
               />
             </div>
-            <div className="cols-start-7 col-span-5 self-stretch">
+            <div className="col-start-8 col-span-5 self-stretch">
               <GalleryText
                 title={galleryItems[2]?.title}
                 description={galleryItems[2]?.description}
@@ -272,14 +272,14 @@ export default function ProductShowcase({
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="order-2 md:order-0 col-span-4 self-stretch">
+            <div className="order-2 md:order-0 col-span-5 self-stretch">
               <GalleryText
                 title={galleryItems[3]?.title}
                 description={galleryItems[3]?.description}
                 className="md:text-right md:items-end"
               />
             </div>
-            <div className="order-1 md:order-0 cols-start-5 col-span-8">
+            <div className="order-1 md:order-0 cols-start-5 col-span-7">
               <GalleryImage
                 image={galleryItems[3]?.image}
                 index={3}
