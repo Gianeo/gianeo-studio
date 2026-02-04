@@ -2,6 +2,7 @@
 
 import { memo, useMemo } from "react";
 import Image from "next/image";
+import { QuotesIcon } from "lucide-react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,7 +49,9 @@ const QuoteContainer = memo(({
           className="h-10 w-10 rounded-full object-cover"
         />
       ) : (
-        <div className="h-10 w-10 rounded-full bg-neutral-darker" aria-hidden="true" />
+        <div className="h-10 w-10 rounded-full bg-neutral-darker flex items-center justify-center" aria-hidden="true">
+          <QuotesIcon className="h-4 w-4 text-white/80" />
+        </div>
       )}
       <div>
         <p className="body-sm text-primary font-medium">{name || "Anonymous"}</p>

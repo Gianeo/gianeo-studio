@@ -171,7 +171,7 @@ export interface GridItem {
         {
           id: 5,
           type: 'image',
-          src: '/images/work/chargebee/cb05.webp',
+          src: '/images/work/chargebee/cb08.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
@@ -181,7 +181,7 @@ export interface GridItem {
           content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
           name: 'Julia Hassing',
           title: 'Snr Manager, Research',
-          avatar: '/images/profile/gianni-favaretto.jpg'
+          avatar: ''
         },
         {
           id: 7,
@@ -218,7 +218,7 @@ export interface GridItem {
         {
           id: 10,
           type: 'image',
-          src: '/images/work/chargebee/8.webp',
+          src: '/images/work/chargebee/cb05.webp',
           alt: 'Chargebee project 4',
           aspectRatio: 'landscape'
         },
@@ -228,7 +228,7 @@ export interface GridItem {
           content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
           name: 'Jayaraj Elaraj',
           title: 'Manager, Design Technology',
-          avatar: '/images/profile/gianni-favaretto.jpg'
+          avatar: ''
         },
       ]
     },
@@ -258,31 +258,27 @@ export interface GridItem {
           alt: 'Zopa Bank project 1',
           aspectRatio: 'square'
         },
-        // {
-        //   id: 2,
-        //   type: 'text',
-        //   content: 'Scale-up\nFintech\nBank\n+'
-        // },
         {
-          id: 3,
+          id: 2,
           type: 'image',
           src: '/images/work/zopa/2.webp',
-          alt: 'Zopa Bank project 2',
-          aspectRatio: 'square'
-        },
-        {
-          id: 4,
-          type: 'image',
-          src: '/images/work/zopa/4.webp',
           alt: 'Zopa Bank project 3',
           aspectRatio: 'square'
         },
         {
-          id: 5,
+          id: 3,
           type: 'image',
           src: '/images/work/zopa/3.webp',
           alt: 'Zopa Bank project 3',
           aspectRatio: 'square'
+        },
+        {
+          id: 4,
+          type: 'quote',
+          content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
+          name: 'Jayaraj Elaraj',
+          title: 'Manager, Design Technology',
+          avatar: ''
         },
         // {
         //   id: 6,
@@ -294,20 +290,20 @@ export interface GridItem {
         //   type: 'text',
         //   content: '4.5/5\nCustomer\nsatisfaction'
         // },
-        {
-          id: 8,
-          type: 'image',
-          src: '/images/work/zopa/6.webp',
-          alt: 'Zopa Bank project 3',
-          aspectRatio: 'square'
-        },
-        {
-          id: 9,
-          type: 'image',
-          src: '/images/work/zopa/5.webp',
-          alt: 'Zopa Bank project 3',
-          aspectRatio: 'square'
-        },
+        // {
+        //   id: 8,
+        //   type: 'image',
+        //   src: '/images/work/zopa/6.webp',
+        //   alt: 'Zopa Bank project 3',
+        //   aspectRatio: 'square'
+        // },
+        // {
+        //   id: 9,
+        //   type: 'image',
+        //   src: '/images/work/zopa/5.webp',
+        //   alt: 'Zopa Bank project 3',
+        //   aspectRatio: 'square'
+        // },
       ]
     },
     {

@@ -2,6 +2,7 @@
 
 import { memo, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
+import { Quote } from "lucide-react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -102,7 +103,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       quality={88}
                     />
                   ) : item.type === "quote" ? (
-                    <div className="h-full w-full bg-background flex flex-col gap-6">
+                    <div className="h-full w-full bg-background flex flex-col gap-6 pr-8">
                       <div>
                         {item.avatar ? (
                           <Image
@@ -113,7 +114,9 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                             className="h-12 w-12 rounded-full object-cover"
                           />
                         ) : (
-                          <div className="h-10 w-10 rounded-full bg-neutral-darker" aria-hidden="true" />
+                          <div className="size-12 flex items-center justify-center" aria-hidden="true">
+                            <Quote className="size-12 text-accent stroke-1" />
+                          </div>
                         )}
                       </div>
                       <p className="body-base text-muted max-w-sm">
