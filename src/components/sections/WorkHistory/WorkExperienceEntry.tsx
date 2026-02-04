@@ -38,7 +38,7 @@ const QuoteContainer = memo(({
     role="text"
     aria-label={`Quote: ${content}`}
   >
-    <p className="body-sm leading-relaxed">{content}</p>
+    <p className="body-sm leading-relaxed whitespace-pre-line">{content}</p>
     <div className="flex items-center gap-3 pt-4">
       {avatar ? (
         <Image

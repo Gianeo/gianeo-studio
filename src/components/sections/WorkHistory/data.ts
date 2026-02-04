@@ -268,7 +268,7 @@ export interface GridItem {
         {
           id: 3,
           type: 'quote',
-          content: 'Gianni was instrumental in setting up our user experience design practice at Zopa – as soon as he came in, he managed to get the best out of the existing designers thanks to a set of effective design processes. /n/I can highly recommend Gianni if you are trying to create an effective design team that works well with the rest of the business. Gianni is also a very effective mentor and manager for the designers themselves.',
+          content: 'Gianni was instrumental in setting up our user experience design practice at Zopa – as soon as he came in, he managed to get the best out of the existing designers thanks to a set of effective design processes. \n\nI can highly recommend Gianni if you are trying to create an effective design team that works well with the rest of the business. Gianni is also a very effective mentor and manager for the designers themselves.',
           name: 'Didier Baclin',
           title: 'Chief Product Officer',
           avatar: ''

@@ -102,11 +102,12 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
         {orderedItems.map((item, idx) => {
           const slot = resolvedSlots[idx % resolvedSlots.length];
           const captionText = item.type === "image" ? placeholderCaption : "";
+          const isQuote = item.type === "quote";
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
                 <BlindReveal
-                  className="aspect-4/3 overflow-hidden rounded-none bg-neutral-lighter dark:bg-neutral-darker"
+                  className={`overflow-hidden rounded-none ${isQuote ? "" : " aspect-4/3"}`}
                   index={idx}
                   total={totalSlots}
                   progress={revealProgress}
@@ -121,7 +122,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       quality={88}
                     />
                   ) : item.type === "quote" ? (
-                    <div className="h-full w-full bg-background flex flex-col gap-6 pr-8">
+                    <div className="w-full bg-background flex flex-col gap-6 pr-8">
                       <div>
                         {item.avatar ? (
                           <Image
@@ -137,7 +138,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                           </div>
                         )}
                       </div>
-                      <p className="body-base text-muted max-w-sm">
+                      <p className="body-base text-muted max-w-sm whitespace-pre-line">
                         {item.content}
                       </p>
                       <div className="flex items-center gap-3">
