@@ -81,7 +81,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
       <div className="grid md:grid-cols-12 w-full h-full gap-12 md:gap-24">
         {orderedItems.map((item, idx) => {
           const slot = highlightSlots[idx % highlightSlots.length];
-          const captionText = item.type === "text" ? item.content || "" : placeholderCaption;
+          const captionText = item.type === "image" ? placeholderCaption : "";
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
               <div className="flex flex-col gap-4 pb-0">
@@ -100,6 +100,12 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={88}
                     />
+                  ) : item.type === "text" ? (
+                    <div className="h-full w-full bg-background flex items-center">
+                      <p className="body-base text-muted max-w-sm border-l-8 border-neutral-900 pl-8">
+                        {item.content}
+                      </p>
+                    </div>
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
                   )}
