@@ -256,28 +256,43 @@ export interface GridItem {
           type: 'image',
           src: '/images/work/zopa/1.webp',
           alt: 'Zopa Bank project 1',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         {
           id: 2,
           type: 'image',
           src: '/images/work/zopa/2.webp',
           alt: 'Zopa Bank project 3',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         {
           id: 3,
-          type: 'image',
-          src: '/images/work/zopa/3.webp',
-          alt: 'Zopa Bank project 3',
-          aspectRatio: 'square'
+          type: 'quote',
+          content: 'Gianni was instrumental in setting up our user experience design practice at Zopa – as soon as he came in, he managed to get the best out of the existing designers thanks to a set of effective design processes. /n/I can highly recommend Gianni if you are trying to create an effective design team that works well with the rest of the business. Gianni is also a very effective mentor and manager for the designers themselves.',
+          name: 'Didier Baclin',
+          title: 'Chief Product Officer',
+          avatar: ''
         },
         {
           id: 4,
+          type: 'image',
+          src: '/images/work/zopa/3.webp',
+          alt: 'Zopa Bank project 3',
+          aspectRatio: 'landscape'
+        },
+        {
+          id: 5,
+          type: 'image',
+          src: '/images/work/zopa/4.webp',
+          alt: 'Zopa Bank project 3',
+          aspectRatio: 'landscape'
+        },
+        {
+          id: 6,
           type: 'quote',
-          content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
-          name: 'Jayaraj Elaraj',
-          title: 'Manager, Design Technology',
+          content: 'Gianni built the experience design team from the ground up, bringing us together and creating a team culture where we could all thrive - a mix of challenge and trust.',
+          name: 'Millie Findla',
+          title: 'Design Lead',
           avatar: ''
         },
         // {

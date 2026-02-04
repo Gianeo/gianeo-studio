@@ -73,6 +73,24 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
 
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
   const totalSlots = orderedItems.length;
+  const resolvedSlots = (() => {
+    if (totalSlots <= 1) {
+      return [{ span: "md:col-span-12" }];
+    }
+    if (totalSlots === 2) {
+      return [{ span: "md:col-span-6" }, { span: "md:col-span-6" }];
+    }
+    if (totalSlots <= 5) {
+      return [
+        highlightSlots[0],
+        highlightSlots[1],
+        highlightSlots[2],
+        { span: "md:col-span-6" },
+        { span: "md:col-span-6" },
+      ].slice(0, totalSlots);
+    }
+    return highlightSlots;
+  })();
 
   return (
     <div ref={galleryRef} role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
@@ -82,7 +100,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
       </div>
       <div className="grid md:grid-cols-12 w-full h-full gap-12 md:gap-24">
         {orderedItems.map((item, idx) => {
-          const slot = highlightSlots[idx % highlightSlots.length];
+          const slot = resolvedSlots[idx % resolvedSlots.length];
           const captionText = item.type === "image" ? placeholderCaption : "";
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
@@ -138,7 +156,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   )}
                 </BlindReveal>
                 {captionText && (
-                  <p className="body-sm text-muted max-w-sm px-6 md:px-0">
+                  <p className="body-sm text-muted max-w-sm px-6 md:px-0 md:pr-8">
                     {captionText}
                   </p>
                 )}
