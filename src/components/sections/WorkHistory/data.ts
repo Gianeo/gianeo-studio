@@ -178,7 +178,7 @@ export interface GridItem {
         {
           id: 6,
           type: 'quote',
-          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.',
+          content: 'During my two years reporting to Gianni, I was consistently energized by his talent for transforming inefficiencies into opportunities.\nGianni brings a rare combination of bias for action, philosophical wisdom, technical insight, and authentic leadership that would be an invaluable asset to any organization serious about building impactful user experiences at scale.',
           name: 'Julia Hassing',
           title: 'Snr Manager, Research',
           avatar: ''
@@ -186,7 +186,7 @@ export interface GridItem {
         {
           id: 7,
           type: 'quote',
-          content: 'From our very first conversation, it was evident that Gianni was anything but conventional. His leadership style was a breath of fresh air, combining autonomy with meticulous attention to the finer details of delivery.',
+          content: 'From our very first conversation, it was evident that Gianni was anything but conventional. His leadership style was a breath of fresh air, combining autonomy with meticulous attention to the finer details of delivery. Gianni has been an incredible guide - keenly listening, asking the right questions to help me arrive at solutions independently, and creating the space for me to establish myself.\n\nAmong Gianni’s remarkable contributions, one stands out as truly trend-setting: establishing the role of front-end design technologists within the team to ensure consistency and control over deliveries. It’s a sustainable model that I deeply admire.',
           name: 'Aparna Ravikumaran',
           title: 'Snr Manager, Product Design',
           avatar: ''
@@ -225,7 +225,7 @@ export interface GridItem {
         {
           id: 11,
           type: 'quote',
-          content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.',
+          content: 'Gianni introduced the concept of Design Technology at Chargebee, building a specialized team that seamlessly blended design and engineering expertise to address long-standing challenges.\n\nBeyond his technical brilliance, Gianni is an outstanding mentor and craftsman. His leadership empowers teams to innovate boldly while ensuring a sharp focus on business goals.',
           name: 'Jayaraj Elaraj',
           title: 'Manager, Design Technology',
           avatar: ''
@@ -291,34 +291,10 @@ export interface GridItem {
           id: 6,
           type: 'quote',
           content: 'Gianni built the experience design team from the ground up, bringing us together and creating a team culture where we could all thrive - a mix of challenge and trust.',
-          name: 'Millie Findla',
+          name: 'Millie Findlay',
           title: 'Design Lead',
           avatar: ''
         },
-        // {
-        //   id: 6,
-        //   type: 'text',
-        //   content: '+27%\nincrease in\nCustomers'
-        // },
-        // {
-        //   id: 7,
-        //   type: 'text',
-        //   content: '4.5/5\nCustomer\nsatisfaction'
-        // },
-        // {
-        //   id: 8,
-        //   type: 'image',
-        //   src: '/images/work/zopa/6.webp',
-        //   alt: 'Zopa Bank project 3',
-        //   aspectRatio: 'square'
-        // },
-        // {
-        //   id: 9,
-        //   type: 'image',
-        //   src: '/images/work/zopa/5.webp',
-        //   alt: 'Zopa Bank project 3',
-        //   aspectRatio: 'square'
-        // },
       ]
     },
     {
@@ -348,56 +324,35 @@ export interface GridItem {
           alt: 'Sainsbury\'s Argos project 1',
           aspectRatio: 'landscape'
         },
-        // {
-        //   id: 2,
-        //   type: 'text',
-        //   content: 'Enterprise\nEcommerce\nFintech\nIn-Store\n+'
-        // },
         {
-          id: 3,
+          id: 2,
           type: 'image',
           src: '/images/work/argos/2.webp',
           alt: 'Sainsbury\'s Argos project 2',
           aspectRatio: 'square'
         },
-        // {
-        //   id: 4,
-        //   type: 'text',
-        //   content: 'Argos Financial Services\nTu Clothing\nHabitat'
-        // },
         {
-          id: 5,
+          id: 3,
           type: 'image',
           src: '/images/work/argos/3.webp',
           alt: 'Sainsbury\'s Argos project 3',
           aspectRatio: 'landscape'
         },
         {
-          id: 6,
-          type: 'image',
-          src: '/images/work/argos/7.webp',
-          alt: 'Sainsbury\'s Argos project 3',
-          aspectRatio: 'landscape'
-        },
-        {
-          id: 7,
+          id: 4,
           type: 'image',
           src: '/images/work/argos/4.webp',
           alt: 'Sainsbury\'s Argos project 3',
           aspectRatio: 'landscape'
         },
         {
-          id: 8,
-          type: 'image',
-          src: '/images/work/argos/5.webp',
-          alt: 'Sainsbury\'s Argos project 3',
-          aspectRatio: 'landscape'
+          id: 5,
+          type: 'quote',
+          content: 'During the time Gianni and I worked together at Argos, I was impressed with his professionalism, ability to spot key issues, and ability to "roll up his sleeves" and teach by doing.\n\nWhen Gianni started at Argos he immediately identified opportunities in our ways of working; proposed and gained support for necessary changes; and then guided the team through the transition in a way that gave every team member a way to feel good about the process.\n\nGianni frequently wrote his own UX prototypes to ensure the changes proposed were workable for the organisation before presenting them to the team. He also held brown bags and open design meetings including Product Management and members of other organisational UX teams, including merchandising and brand.​',
+          name: 'Melissa Dunn',
+          title: 'Director Product Development',
+          avatar: ''
         },
-        // {
-        //   id: 9,
-        //   type: 'text',
-        //   content: 'Design Systems\nOptimization\nEfficiency\n+'
-        // },
       ]
     },
     {
