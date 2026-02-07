@@ -13,9 +13,7 @@ import { LazyImage } from "@/components/media/LazyImage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
-import { useReducedMotion, useMotionValue } from "motion/react";
 import { BlindReveal } from "@/components/motion";
-import { useScrollRange } from "@/hooks/useScrollRange";
 
 interface ProjectData {
   title: string;
@@ -54,13 +52,6 @@ interface ProjectShowcaseProps {
 export default function ProductShowcase({
   project = sampleProject,
 }: ProjectShowcaseProps) {
-  const reduceMotion = useReducedMotion();
-  const { ref: galleryRef, progress: revealProgress } = useScrollRange<HTMLDivElement>({
-    offset: ["start end", "end 75%"],
-    endOffsetRem: 0,
-  });
-  const fallbackProgress = useMotionValue(1);
-  const resolvedProgress = reduceMotion ? fallbackProgress : revealProgress;
   const galleryItems = useMemo(() => ([
     {
       title: "Mobile App",
@@ -131,7 +122,7 @@ export default function ProductShowcase({
         className="relative overflow-hidden bg-background"
         index={index}
         total={total}
-        progress={resolvedProgress}
+        stagger="none"
       >
         {/* <div
           className={`absolute z-50 bottom-0 ${isOdd ? "left-0" : "right-0"} h-full w-px bg-neutral-darker`}
@@ -205,7 +196,7 @@ export default function ProductShowcase({
       </div>
 
       {/* Gallery */}
-      <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-12 md:gap-32 md:pb-24 bg-background">
+      <div className="grid grid-cols-1 md:grid-cols-12 md:gap-32 md:pb-24 bg-background">
 
         <div className="md:col-start-1 xl:col-start-3 md:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 md:grid-cols-12">

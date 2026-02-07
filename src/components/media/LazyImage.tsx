@@ -9,6 +9,7 @@ interface LazyImageProps {
   image: { src: string; alt: string };
   className?: string;
   priority?: boolean;
+  forceLoad?: boolean;
   showPlaceholder?: boolean;
   overlayClassName?: string;
   containerClassName?: string;
@@ -27,6 +28,7 @@ export function LazyImage({
   image,
   className,
   priority = false,
+  forceLoad = false,
   showPlaceholder = true,
   overlayClassName = "from-primary/10 to-accent/10",
   containerClassName,
@@ -48,7 +50,7 @@ export function LazyImage({
   const handleLoad = useCallback(() => setIsLoaded(true), []);
   const handleError = useCallback(() => setHasError(true), []);
 
-  const shouldLoad = priority || inView;
+  const shouldLoad = forceLoad || priority || inView;
 
   return (
     <div

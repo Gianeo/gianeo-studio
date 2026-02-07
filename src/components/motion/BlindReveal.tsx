@@ -6,6 +6,7 @@ import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from
 
 type SpringPreset = keyof typeof springPresets;
 type StaggerPreset = keyof typeof staggerPresets;
+type BlindStagger = StaggerPreset | "none";
 
 interface BlindRevealProps extends PropsWithChildren {
   className?: string;
@@ -13,7 +14,7 @@ interface BlindRevealProps extends PropsWithChildren {
   total: number;
   progress?: MotionValue<number>;
   spring?: SpringPreset;
-  stagger?: StaggerPreset;
+  stagger?: BlindStagger;
 }
 
 export function BlindReveal({
@@ -34,8 +35,16 @@ export function BlindReveal({
   const springConfig = useMemo(() => springPresets[spring], [spring]);
   const resolvedProgress = progress ?? useSpring(scrollYProgress, springConfig);
 
-  const [start, end] = getStaggerRange(index, total, staggerPresets[stagger]);
-  const reveal = useTransform(resolvedProgress, [start, end], [0, 1]);
+  const [start, end] =
+    stagger === "none"
+      ? ([0, 1] as const)
+      : getStaggerRange(index, total, staggerPresets[stagger]);
+  const reveal = useTransform(
+    resolvedProgress,
+    [start, end],
+    [0, 1],
+    { clamp: true }
+  );
   const clipPath = useTransform(reveal, (value) => getBlindClipPath(value));
 
   return (

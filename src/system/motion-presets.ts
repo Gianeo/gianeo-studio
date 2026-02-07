@@ -18,6 +18,7 @@ export const parallaxPresets = {
 export const staggerPresets = {
   blinds: { range: 0.16, overlap: 0.08 },
   quickBlinds: { range: 0.12, overlap: 0.06 },
+  slowBlinds: { range: 0.28, overlap: 0.1 },
 } as const;
 
 export const getStaggerRange = (
