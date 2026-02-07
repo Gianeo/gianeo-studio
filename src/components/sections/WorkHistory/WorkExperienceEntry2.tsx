@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useMemo, useRef } from "react";
+import { memo, useMemo } from "react";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import Link from "next/link";
@@ -8,8 +8,6 @@ import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
-import { useInView, useReducedMotion, useMotionValue, useSpring } from "motion/react";
-import { springPresets } from "@/system/motion-presets";
 import { BlindReveal } from "@/components/motion";
 
 const highlightSlots = [
@@ -55,22 +53,6 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
 }) => {
   if (gridItems.length === 0) return null;
 
-  const reduceMotion = useReducedMotion();
-  const galleryRef = useRef<HTMLDivElement | null>(null);
-  const galleryInView = useInView(galleryRef, {
-    amount: "some",
-    margin: "0px 0px -10% 0px",
-    once: true,
-  });
-  const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, springPresets.calm);
-  useEffect(() => {
-    if (reduceMotion || galleryInView) {
-      revealBase.set(1);
-    }
-  }, [galleryInView, reduceMotion, revealBase]);
-
-
   const orderedItems = [...gridItems].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
   const totalSlots = orderedItems.length;
   const resolvedSlots = (() => {
@@ -93,7 +75,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
   })();
 
   return (
-    <div ref={galleryRef} role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
+    <div role="region" aria-label={`${companyName} project gallery`} className="space-y-2">
       <div className="sr-only">
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
@@ -110,7 +92,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   className={`overflow-hidden rounded-none ${isQuote ? "" : " aspect-4/3"}`}
                   index={idx}
                   total={totalSlots}
-                  progress={revealProgress}
+                  stagger="none"
                 >
                   {item.type === "image" && item.src ? (
                     <LazyImage
