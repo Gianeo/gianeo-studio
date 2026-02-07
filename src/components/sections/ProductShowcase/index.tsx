@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import {
   ArrowRightIcon,
   CalendarIcon,
@@ -13,9 +13,9 @@ import { LazyImage } from "@/components/media/LazyImage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
-import { useInView, useReducedMotion, useMotionValue, useSpring } from "motion/react";
-import { springPresets } from "@/system/motion-presets";
+import { useReducedMotion, useMotionValue } from "motion/react";
 import { BlindReveal } from "@/components/motion";
+import { useScrollRange } from "@/hooks/useScrollRange";
 
 interface ProjectData {
   title: string;
@@ -55,19 +55,12 @@ export default function ProductShowcase({
   project = sampleProject,
 }: ProjectShowcaseProps) {
   const reduceMotion = useReducedMotion();
-  const galleryRef = useRef<HTMLDivElement | null>(null);
-  const galleryInView = useInView(galleryRef, {
-    amount: 0.35,
-    margin: "0px 0px -15% 0px",
-    once: true,
+  const { ref: galleryRef, progress: revealProgress } = useScrollRange<HTMLDivElement>({
+    offset: ["start end", "end 75%"],
+    endOffsetRem: 0,
   });
-  const revealBase = useMotionValue(0);
-  const revealProgress = useSpring(revealBase, springPresets.calm);
-  useEffect(() => {
-    if (reduceMotion || galleryInView) {
-      revealBase.set(1);
-    }
-  }, [galleryInView, reduceMotion, revealBase]);
+  const fallbackProgress = useMotionValue(1);
+  const resolvedProgress = reduceMotion ? fallbackProgress : revealProgress;
   const galleryItems = useMemo(() => ([
     {
       title: "Mobile App",
@@ -138,7 +131,7 @@ export default function ProductShowcase({
         className="relative overflow-hidden bg-background"
         index={index}
         total={total}
-        progress={revealProgress}
+        progress={resolvedProgress}
       >
         {/* <div
           className={`absolute z-50 bottom-0 ${isOdd ? "left-0" : "right-0"} h-full w-px bg-neutral-darker`}
@@ -149,7 +142,7 @@ export default function ProductShowcase({
           aria-hidden="true"
         />
         {/* <div
-          className={`absolute z-50 bottom-0 ${isOdd ? "right-0" : "left-0"} h-1/2 w-px bg-neutral-darker`}
+          className={`absolute z-50 top-0 ${isOdd ? "right-0" : "left-0"} size-8 bg-neutral-darker`}
           aria-hidden="true"
         /> */}
         <div className="relative z-10">
