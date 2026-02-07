@@ -329,7 +329,7 @@ export interface GridItem {
           type: 'image',
           src: '/images/work/argos/2.webp',
           alt: 'Sainsbury\'s Argos project 2',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         {
           id: 3,
@@ -388,65 +388,24 @@ export interface GridItem {
           alt: 'Ocado Technology project 2',
           aspectRatio: 'landscape'
         },
-        // {
-        //   id: 3,
-        //   type: 'text',
-        //   content: '0-1\nRaaS/PaaS\nEcommerce\n+'
-        // },
-        // {
-        //   id: 4,
-        //   type: 'text',
-        //   content: '95%\nEmployee\nretention'
-        // },
         {
-          id: 5,
+          id: 3,
           type: 'image',
           src: '/images/work/osp/3.webp',
           alt: 'Ocado Technology project 3',
           aspectRatio: 'landscape'
         },
         {
-          id: 6,
+          id: 4,
           type: 'image',
           src: '/images/work/osp/4.webp',
           alt: 'Ocado Technology project 4',
           aspectRatio: 'landscape'
         },
         {
-          id: 7,
+          id: 5,
           type: 'image',
           src: '/images/work/osp/5.webp',
-          alt: 'Ocado Technology project 4',
-          aspectRatio: 'landscape'
-        },
-        // {
-        //   id: 8,
-        //   type: 'text',
-        //   content: 'Kroger\nSobeys\nGroupe Casino\nMorrisons\nBon Preu\nIca\n+'
-        // },
-        {
-          id: 9,
-          type: 'image',
-          src: '/images/work/osp/6.webp',
-          alt: 'Ocado Technology project 4',
-          aspectRatio: 'landscape'
-        },
-        // {
-        //   id: 10,
-        //   type: 'text',
-        //   content: 'Growth\n593%\nShare Value'
-        // },
-        {
-          id: 11,
-          type: 'image',
-          src: '/images/work/osp/7.webp',
-          alt: 'Ocado Technology project 4',
-          aspectRatio: 'landscape'
-        },
-        {
-          id: 12,
-          type: 'image',
-          src: '/images/work/osp/8.webp',
           alt: 'Ocado Technology project 4',
           aspectRatio: 'landscape'
         },
@@ -474,93 +433,95 @@ export interface GridItem {
           type: 'image',
           src: '/images/work/ogm/1.webp',
           alt: 'Ocado General Merchandise project 1',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
-        // {
-        //   id: 2,
-        //   type: 'text',
-        //   content: '0-1\nRetail\nEcommerce\n+'
-        // },
         {
-          id: 3,
+          id: 2,
           type: 'image',
           src: '/images/work/ogm/2.webp',
           alt: 'Ocado General Merchandise project 2',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
+        },
+        {
+          id: 3,
+          type: 'image',
+          src: '/images/work/ogm/3.webp',
+          alt: 'Ocado General Merchandise project 2',
+          aspectRatio: 'landscape'
         },
         {
           id: 4,
           type: 'image',
-          src: '/images/work/ogm/5.webp',
+          src: '/images/work/ogm/4.webp',
           alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         {
           id: 5,
           type: 'image',
-          src: '/images/work/ogm/3.webp',
+          src: '/images/work/ogm/5.webp',
           alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         {
           id: 6,
           type: 'image',
-          src: '/images/work/ogm/4.webp',
+          src: '/images/work/ogm/6.webp',
           alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
+          aspectRatio: 'landscape'
         },
         // {
         //   id: 7,
         //   type: 'text',
         //   content: '>34% YoY growth\nin general merchandise\nrevenue'
         // },
-        {
-          id: 8,
-          type: 'image',
-          src: '/images/work/ogm/6.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
+        // {
+        //   id: 8,
+        //   type: 'image',
+        //   src: '/images/work/ogm/6.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
         // {
         //   id: 9,
         //   type: 'text',
         //   content: 'Platform as a Service\nDesign System\nIn-store tech\n+'
         // },
-        {
-          id: 10,
-          type: 'image',
-          src: '/images/work/ogm/7.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
-        {
-          id: 11,
-          type: 'image',
-          src: '/images/work/ogm/8.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
-        {
-          id: 12,
-          type: 'image',
-          src: '/images/work/ogm/9.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
-        {
-          id: 13,
-          type: 'image',
-          src: '/images/work/ogm/11.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
-        {
-          id: 14,
-          type: 'image',
-          src: '/images/work/ogm/10.webp',
-          alt: 'Ocado General Merchandise project 3',
-          aspectRatio: 'square'
-        },
+        // {
+        //   id: 10,
+        //   type: 'image',
+        //   src: '/images/work/ogm/7.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
+        // {
+        //   id: 11,
+        //   type: 'image',
+        //   src: '/images/work/ogm/8.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
+        // {
+        //   id: 12,
+        //   type: 'image',
+        //   src: '/images/work/ogm/9.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
+        // {
+        //   id: 13,
+        //   type: 'image',
+        //   src: '/images/work/ogm/11.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
+        // {
+        //   id: 14,
+        //   type: 'image',
+        //   src: '/images/work/ogm/10.webp',
+        //   alt: 'Ocado General Merchandise project 3',
+        //   aspectRatio: 'square'
+        // },
         // {
         //   id: 13,
         //   type: 'image',
@@ -602,11 +563,6 @@ export interface GridItem {
           alt: 'Ocado.com project 2',
           aspectRatio: 'landscape'
         },
-        // {
-        //   id: 3,
-        //   type: 'text',
-        //   content: 'Scale-up\nRetail\nEcommerce\n+'
-        // },
       ]
     },
     {

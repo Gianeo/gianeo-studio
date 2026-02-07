@@ -40,7 +40,7 @@ const sampleProject: ProjectData = {
   date: "2025-26",
   images: Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
-    src: `/images/work/justscore/${i + 1}-test13.png`,
+    src: `/images/work/justscore/${i + 1}.webp`,
     // src: ``,
     alt: `Showcase image ${i + 1}`,
     aspectRatio: "square" as const,
@@ -148,10 +148,10 @@ export default function ProductShowcase({
           className={`absolute z-50 bottom-0 h-px w-full bg-neutral-darker`}
           aria-hidden="true"
         />
-        <div
+        {/* <div
           className={`absolute z-50 bottom-0 ${isOdd ? "right-0" : "left-0"} h-1/2 w-px bg-neutral-darker`}
           aria-hidden="true"
-        />
+        /> */}
         <div className="relative z-10">
           {hasValidImage(image) ? (
             <LazyImage
