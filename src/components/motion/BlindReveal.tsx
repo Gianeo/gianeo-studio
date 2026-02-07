@@ -30,7 +30,7 @@ export function BlindReveal({
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["start end", "start 40%"],
   });
   const springConfig = useMemo(() => springPresets[spring], [spring]);
   const resolvedProgress = progress ?? useSpring(scrollYProgress, springConfig);
