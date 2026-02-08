@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, CSSProperties } from "react";
+import { useCallback, useEffect, useState, CSSProperties } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,8 @@ interface LazyImageProps {
   quality?: number;
   style?: CSSProperties;
   hoverSrc?: string;
+  autoSwapOnMobile?: boolean;
+  autoSwapDelayMs?: number;
   disableHoverScale?: boolean;
 }
 
@@ -36,10 +38,13 @@ export function LazyImage({
   quality = 88,
   style,
   hoverSrc,
+  autoSwapOnMobile = false,
+  autoSwapDelayMs = 320,
   disableHoverScale = false,
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [showHover, setShowHover] = useState(false);
 
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -51,6 +56,19 @@ export function LazyImage({
   const handleError = useCallback(() => setHasError(true), []);
 
   const shouldLoad = forceLoad || priority || inView;
+  useEffect(() => {
+    setShowHover(false);
+  }, [image.src, hoverSrc]);
+
+  useEffect(() => {
+    if (!autoSwapOnMobile || !hoverSrc || !isLoaded || hasError) return;
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(max-width: 767px)");
+    if (!media.matches) return;
+    const delay = Math.max(0, autoSwapDelayMs ?? 0);
+    const timer = window.setTimeout(() => setShowHover(true), delay);
+    return () => window.clearTimeout(timer);
+  }, [autoSwapOnMobile, autoSwapDelayMs, hoverSrc, isLoaded, hasError]);
 
   return (
     <div
@@ -85,7 +103,7 @@ export function LazyImage({
               onLoad={handleLoad}
               onError={handleError}
               sizes={sizes}
-              className={`h-full w-full object-cover transition-all duration-700${disableHoverScale ? "" : " group-hover:scale-105"}${hoverSrc ? " group-hover:opacity-0" : ""}`}
+              className={`h-full w-full object-cover transition-all duration-700${disableHoverScale ? "" : " group-hover:scale-105"}${hoverSrc ? " group-hover:opacity-0" : ""}${showHover ? " opacity-0" : ""}`}
               priority={priority}
               quality={quality}
             />
@@ -95,7 +113,7 @@ export function LazyImage({
                 alt={image.alt}
                 fill
                 sizes={sizes}
-                className="h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                className={`h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100${showHover ? " opacity-100" : ""}`}
                 priority={priority}
                 quality={quality}
               />
