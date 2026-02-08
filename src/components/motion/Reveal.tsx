@@ -54,7 +54,11 @@ export function Reveal({
       style={
         reduceMotion
           ? undefined
-          : { opacity: smoothOpacity, y: smoothY, willChange: "transform, opacity" }
+          : {
+              opacity: smoothOpacity,
+              y: fromY === 0 ? undefined : smoothY,
+              willChange: fromY === 0 ? "opacity" : "transform, opacity",
+            }
       }
     >
       {children}

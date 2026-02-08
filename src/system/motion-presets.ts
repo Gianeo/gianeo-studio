@@ -8,6 +8,7 @@ export const revealPresets = {
   slow: { range: 0.16, fromY: -90 },
   medium: { range: 0.12, fromY: -48 },
   fast: { range: 0.1, fromY: -36 },
+  fade: { range: 0.14, fromY: 0 },
 } as const;
 
 export const parallaxPresets = {
