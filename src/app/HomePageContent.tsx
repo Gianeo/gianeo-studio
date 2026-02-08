@@ -88,7 +88,7 @@ export default function HomePageContent() {
               aria-hidden="true"
             >
               <Image
-                src="/images/hero/19.png"
+                src="/images/hero/hero.webp"
                 alt="Hero background"
                 fill
                 className="object-cover"
@@ -109,7 +109,7 @@ export default function HomePageContent() {
                 }
               >
                 <LogoGf
-                  className="relative z-10 w-32 md:w-40 lg:w-64 h-auto"
+                  className="relative z-10 w-32 md:w-40 lg:w-64 h-auto ml-16"
                   aria-label="Gianeo Studio logo"
                 />
               </m.div>
