@@ -11,14 +11,14 @@ import { GridItem, WorkExperience } from "./data";
 import { BlindReveal, FadeReveal } from "@/components/motion";
 
 const highlightSlots = [
-  { span: "md:col-span-4" },
-  { span: "md:col-span-8 md:row-span-2" },
-  { span: "md:col-span-4" },
-  { span: "md:col-span-8 md:row-span-2" },
-  { span: "md:col-span-4" },
-  { span: "md:col-span-4" },
-  { span: "md:col-span-6 md:row-span-2" },
-  { span: "md:col-span-6 md:row-span-2" },
+  { span: "lg:col-span-4" },
+  { span: "lg:col-span-8 lg:row-span-2" },
+  { span: "lg:col-span-4" },
+  { span: "lg:col-span-8 lg:row-span-2" },
+  { span: "lg:col-span-4" },
+  { span: "lg:col-span-4" },
+  { span: "lg:col-span-6 lg:row-span-2" },
+  { span: "lg:col-span-6 lg:row-span-2" },
 ];
 
 const placeholderCaption =
@@ -57,18 +57,18 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
   const totalSlots = orderedItems.length;
   const resolvedSlots = (() => {
     if (totalSlots <= 1) {
-      return [{ span: "md:col-span-12" }];
+      return [{ span: "lg:col-span-12" }];
     }
     if (totalSlots === 2) {
-      return [{ span: "md:col-span-6" }, { span: "md:col-span-6" }];
+      return [{ span: "lg:col-span-6" }, { span: "lg:col-span-6" }];
     }
     if (totalSlots <= 5) {
       return [
         highlightSlots[0],
         highlightSlots[1],
         highlightSlots[2],
-        { span: "md:col-span-6" },
-        { span: "md:col-span-6" },
+        { span: "lg:col-span-6" },
+        { span: "lg:col-span-6" },
       ].slice(0, totalSlots);
     }
     return highlightSlots;
@@ -80,7 +80,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
         <h4>Project Gallery for {companyName}</h4>
         <p>Visual examples and key metrics from work completed at {companyName}</p>
       </div>
-      <div className="grid md:grid-cols-12 w-full h-full gap-12 md:gap-24">
+      <div className="grid lg:grid-cols-12 w-full h-full gap-12 lg:gap-24">
         {orderedItems.map((item, idx) => {
           const slot = resolvedSlots[idx % resolvedSlots.length];
           const captionText = item.type === "image" ? placeholderCaption : "";
@@ -143,7 +143,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   )}
                 </BlindReveal>
                 {captionText && (
-                  <p className="body-sm text-muted max-w-sm px-6 md:px-0 md:pr-8">
+                  <p className="body-sm text-muted max-w-sm px-6 lg:px-0 lg:pr-8">
                     {captionText}
                   </p>
                 )}
@@ -192,7 +192,7 @@ export const WorkExperienceEntry2 = memo(({
   }), [experience]);
 
   const CompanyInfo = memo(() => (
-    <aside className="md:col-start-2 md:col-span-10 xl:col-span-2 px-6 md:px-0 xl:px-6">
+    <aside className="lg:col-start-2 lg:col-span-10 xl:col-span-2 px-6 lg:px-0 xl:px-6">
       <div className="xl:sticky top-24">
         <FadeReveal>
           <time
@@ -218,14 +218,14 @@ export const WorkExperienceEntry2 = memo(({
   CompanyInfo.displayName = "CompanyInfo";
 
   const ContentSection = memo(() => (
-    <div className="md:col-span-12 xl:col-span-4 xl:-mt-25 relative">
+    <div className="lg:col-span-12 xl:col-span-4 xl:-mt-25 relative">
       <div className="hidden xl:block heading-base leading-4 text-muted/75 pb-8">
         {index + 1}/{total}
       </div>
       <div className="hidden xl:block size-10 bg-decoration absolute top-3 right-0" />
       <article className="space-y-4 pt-8 xl:pt-0">
-        <div className="grid grid-cols-1 md:grid-cols-12 xl:gap-16 px-6 md:px-0">
-          <header className="md:row-start-1 md:col-start-2 md:col-span-10 xl:col-start-1 xl:col-span-7 space-y-8 pb-8 xl:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 xl:gap-16 px-6 lg:px-0">
+          <header className="lg:row-start-1 lg:col-start-2 lg:col-span-10 xl:col-start-1 xl:col-span-7 space-y-8 pb-8 xl:pb-0">
             <FadeReveal>
               <h3
                 className="heading-display text-primary max-w-4xl xl:-mt-1.5"
@@ -244,7 +244,7 @@ export const WorkExperienceEntry2 = memo(({
             )}
           </header>
           <div
-            className="md:row-start-2 xl:row-start-1 md:col-start-2 md:col-span-10 xl:col-start-8 xl:col-span-4"
+            className="lg:row-start-2 xl:row-start-1 lg:col-start-2 lg:col-span-10 xl:col-start-8 xl:col-span-4"
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, paragraphIndex) => (
@@ -260,7 +260,7 @@ export const WorkExperienceEntry2 = memo(({
         {/* <section aria-labelledby={`responsibilities-${experience.id}`} className="grid grid-cols-10">
           <div className="hidden row-start-2 col-start-1 col-span-12">
             <ul
-              className="space-y-1.5 grid grid-cols-12 pt-16 gap-6 md:gap-16"
+              className="space-y-1.5 grid grid-cols-12 pt-16 gap-6 lg:gap-16"
               role="list"
               aria-label={`Key achievements and responsibilities at ${experience.company}`}
             >
@@ -285,7 +285,7 @@ export const WorkExperienceEntry2 = memo(({
 
   return (
     <article
-      className="grid grid-cols-1 md:grid-cols-12 pb-32 xl:pb-24"
+      className="grid grid-cols-1 lg:grid-cols-12 pb-32 xl:pb-24"
       aria-labelledby={`work-${experience.id}`}
     >
       <script
@@ -297,7 +297,7 @@ export const WorkExperienceEntry2 = memo(({
 
       <CompanyInfo />
 
-      <div className="xl:col-start-3 md:col-span-12 xl:col-span-10 space-y-10 md:space-y-20">
+      <div className="xl:col-start-3 lg:col-span-12 xl:col-span-10 space-y-10 lg:space-y-20">
         <ContentSection />
 
         {experience.gridItems && experience.gridItems.length > 0 && (

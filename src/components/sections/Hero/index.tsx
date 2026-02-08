@@ -44,7 +44,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
         </div>
       </div>
 
-      <div className="w-full p-6 mt-80 md:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
+      <div className="w-full p-6 mt-80 lg:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
             <div className="space-y-6">
@@ -70,7 +70,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="col-span-12 lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="space-y-6">
               <p className="body-label text-muted">
                 What I do
@@ -92,7 +92,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               </ul>
             </div>
 
-            <div className="hidden md:block space-y-6">
+            <div className="hidden lg:block space-y-6">
               <p className="body-label text-muted">
                 Served
               </p>

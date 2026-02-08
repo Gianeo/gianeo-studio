@@ -22,9 +22,9 @@ export function Intro({ className = "" }: IntroProps) {
             />
             <div className="absolute inset-0 bg-background/20" />
           </div> */}
-          <div className="grid grid-cols-1 md:grid-cols-12 body-base text-muted space-y-8 px-6 md:px-0 md:pt-24 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 body-base text-muted space-y-8 px-6 lg:px-0 lg:pt-24 relative">
 
-            <div className="md:col-start-8 xl:col-start-8 md:col-span-7 xl:col-span-4 space-y-8 max-w-xl md:pt-8 xl:pt-24">
+            <div className="lg:col-start-8 xl:col-start-8 lg:col-span-7 xl:col-span-4 space-y-8 max-w-xl lg:pt-8 xl:pt-24">
               <FadeReveal className="body-label text-accent">
                 Design Leadership
               </FadeReveal>
@@ -37,7 +37,7 @@ export function Intro({ className = "" }: IntroProps) {
               </div>
             </div>
 
-            <div className="md:col-start-5 xl:col-start-5 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
+            <div className="lg:col-start-5 xl:col-start-5 lg:col-span-3 space-y-6 lg:mt-24 xl:mt-32 lg:pr-16">
               <FadeReveal>
                 You&apos;ve got something in motion. A team pushing hard. A roadmap full of ambition. Some pieces clicking, others... not quite. It&apos;s not failure—it&apos;s friction. The kind that slows momentum, clouds decisions, and makes it harder to see the path ahead.
               </FadeReveal>
@@ -46,7 +46,7 @@ export function Intro({ className = "" }: IntroProps) {
               </FadeReveal>
             </div>
 
-            <div className="md:col-start-8 xl:col-start-8 md:col-span-3 space-y-6 md:mt-24 xl:mt-32 md:pr-16">
+            <div className="lg:col-start-8 xl:col-start-8 lg:col-span-3 space-y-6 lg:mt-24 xl:mt-32 lg:pr-16">
               <FadeReveal className="heading-sm text-secondary">
                 That&apos;s where I come in.
               </FadeReveal>
@@ -55,7 +55,7 @@ export function Intro({ className = "" }: IntroProps) {
               </FadeReveal>
             </div>
 
-            <div className="hidden row-start-2 col-start-1 pb-6 md:flex flex-col justify-end items-end">
+            <div className="hidden row-start-2 col-start-1 pb-6 lg:flex flex-col justify-end items-end">
               <ArrowDownIcon className="size-8 text-accent animate-bounce" />
             </div>
 

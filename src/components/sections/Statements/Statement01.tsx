@@ -17,8 +17,8 @@ export function Statement() {
     : useSpring(smoothProgress, springPresets.calm);
 
   return (
-    <section ref={sectionRef} className="text-foreground py-16 md:pt-16 md:pb-40">
-      <div className="relative grid grid-cols-1 md:grid-cols-12 px-6 md:px-0">
+    <section ref={sectionRef} className="text-foreground py-16 lg:pt-16 lg:pb-40">
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-0">
 
         {/* Decoration 1 */}
         <BlindReveal
@@ -31,7 +31,7 @@ export function Statement() {
         </BlindReveal>
 
         {/* main content */}
-        <div className="md:col-start-3 md:col-span-8 relative mx-auto w-full flex flex-col gap-4">
+        <div className="lg:col-start-3 lg:col-span-8 relative mx-auto w-full flex flex-col gap-4">
           <FadeReveal className="body-label text-muted">
             Experience
           </FadeReveal>
@@ -42,7 +42,7 @@ export function Statement() {
 
         {/* Decoration 2 */}
         <BlindReveal
-          className="hidden md:block md:col-start-12 xl:col-start-11 xl:col-span-2 bg-decoration pointer-events-none"
+          className="hidden lg:block lg:col-start-12 xl:col-start-11 xl:col-span-2 bg-decoration pointer-events-none"
           index={2}
           total={totalSlots}
           progress={revealProgress}
