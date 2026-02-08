@@ -10,7 +10,10 @@ interface IntroProps {
 }
 
 export function Intro({ className = "" }: IntroProps) {
-  const fadeOffset = useMemo(() => (["start 90%", "start 60%"] as const), []);
+  const fadeOffset: NonNullable<Parameters<typeof useScroll>[0]>["offset"] = [
+    "start 90%",
+    "start 60%",
+  ];
   const fadeSpring = useMemo(() => springPresets.soft, []);
 
   const FadeBlock = ({
