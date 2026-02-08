@@ -99,7 +99,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       image={{ src: item.src, alt: item.alt || `Work sample showcasing ${experienceId}` }}
                       className="h-full w-full"
                       containerClassName="h-full w-full"
-                      overlayClassName="from-primary/10 to-accent/10"
+                      overlayClassName="opacity-0 group-hover:opacity-0"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={88}
                     />
