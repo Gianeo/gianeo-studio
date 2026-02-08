@@ -104,7 +104,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                       quality={88}
                     />
                   ) : item.type === "quote" ? (
-                    <div className="w-full bg-background flex flex-col gap-6 pr-8">
+                    <div className="w-full bg-background flex flex-col gap-6 px-6 lg:px-0 lg:pr-8">
                       <div>
                         {item.avatar ? (
                           <Image

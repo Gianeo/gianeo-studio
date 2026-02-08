@@ -72,7 +72,13 @@
     @apply text-base;
   }
   .heading-base {
-    @apply text-lg leading-15 tracking-[-0.025em];
+    @apply leading-15 tracking-[-0.025em];
+    font-size: var(--text-md);
+  }
+  @media (min-width: 768px) {
+    .heading-base {
+      font-size: var(--text-lg);
+    }
   }
   .heading-display {
     @apply text-lg md:text-xl leading-15 md:leading-20 tracking-[-0.025em];

@@ -42,6 +42,7 @@
   --text-sm: 0.75rem;   /* 12px */
   /* --text-base: 1.125rem; 18px */
   --text-base: 0.96rem; /* 18px */
+  --text-md: 2.5rem;   /* 56px only for mobile */
   --text-lg: 3.5rem;   /* 56px */
   --text-xl: 5.125rem;      /* 82px */
 
