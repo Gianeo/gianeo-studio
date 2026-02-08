@@ -1,7 +1,7 @@
 "use client";
 
 import { LazyImage } from "@/components/media/LazyImage";
-import { BlindReveal } from "@/components/motion";
+import { BlindReveal, FadeReveal } from "@/components/motion";
 import type { GalleryItem, ProjectData } from "./data";
 import { getHoverSrc } from "./data";
 
@@ -21,10 +21,10 @@ export function ProductShowcaseMobile({
         const hoverSrc = image?.src ? getHoverSrc(image.src) : "";
         return (
           <article key={item.title} className="space-y-6">
-            <div className="space-y-4 px-6">
+            <FadeReveal className="space-y-4 px-6">
               <h3 className="heading-base text-primary">{item.title}</h3>
               <p className="body-sm text-muted">{item.description}</p>
-            </div>
+            </FadeReveal>
 
             <BlindReveal
               className="relative overflow-hidden bg-background"

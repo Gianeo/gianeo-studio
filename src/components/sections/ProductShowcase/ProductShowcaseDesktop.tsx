@@ -1,7 +1,7 @@
 "use client";
 
 import { LazyImage } from "@/components/media/LazyImage";
-import { BlindReveal } from "@/components/motion";
+import { BlindReveal, FadeReveal } from "@/components/motion";
 import type { GalleryItem, ProjectData } from "./data";
 import { getHoverSrc } from "./data";
 
@@ -23,12 +23,12 @@ export function ProductShowcaseDesktop({
     description?: string;
     className?: string;
   }) => (
-    <div className={`flex h-full flex-col p-6 pb-16 md:px-16 md:py-0 xl:px-24 xl:py-0 space-y-4 md:space-y-0 ${className}`}>
+    <FadeReveal className={`flex h-full flex-col p-6 pb-16 md:px-16 md:py-0 xl:px-24 xl:py-0 space-y-4 md:space-y-0 ${className}`}>
       <div className="flex flex-1 items-center">
         <h3 className="heading-base text-primary">{title}</h3>
       </div>
       <p className="body-sm text-muted max-w-md mt-auto">{description}</p>
-    </div>
+    </FadeReveal>
   );
 
   const GalleryImage = ({

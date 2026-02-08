@@ -8,7 +8,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LazyImage } from "@/components/media/LazyImage";
 import { GridItem, WorkExperience } from "./data";
-import { BlindReveal } from "@/components/motion";
+import { BlindReveal, FadeReveal } from "@/components/motion";
 
 const highlightSlots = [
   { span: "md:col-span-4" },
@@ -120,19 +120,23 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                           </div>
                         )}
                       </div>
-                      <p className="body-base text-muted max-w-sm whitespace-pre-line">
-                        {item.content}
-                      </p>
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <p className="body-sm text-primary font-medium">
-                            {item.name || "Anonymous"}
-                          </p>
-                          {item.title && (
-                            <p className="body-sm text-muted">{item.title}</p>
-                          )}
+                      <FadeReveal>
+                        <p className="body-base text-muted max-w-sm whitespace-pre-line">
+                          {item.content}
+                        </p>
+                      </FadeReveal>
+                      <FadeReveal>
+                        <div className="flex items-center gap-3">
+                          <div>
+                            <p className="body-sm text-primary font-medium">
+                              {item.name || "Anonymous"}
+                            </p>
+                            {item.title && (
+                              <p className="body-sm text-muted">{item.title}</p>
+                            )}
+                          </div>
                         </div>
-                      </div>
+                      </FadeReveal>
                     </div>
                   ) : (
                     <div className="h-full w-full bg-neutral-lighter dark:bg-neutral-darker" aria-hidden="true" />
@@ -190,16 +194,20 @@ export const WorkExperienceEntry2 = memo(({
   const CompanyInfo = memo(() => (
     <aside className="md:col-start-2 md:col-span-10 xl:col-span-2 px-6 md:px-0 xl:px-6">
       <div className="xl:sticky top-24">
-        <time
-          className="body-sm mb-2 block"
-          dateTime={`${experience.startDate}/${experience.endDate}`}
-          aria-label={`Employment period: ${experience.duration}`}
-        >
-          {experience.duration}
-        </time>
-        <h3 className="heading-sm text-primary leading-none mb-1">
-          {experience.company}
-        </h3>
+        <FadeReveal>
+          <time
+            className="body-sm mb-2 block"
+            dateTime={`${experience.startDate}/${experience.endDate}`}
+            aria-label={`Employment period: ${experience.duration}`}
+          >
+            {experience.duration}
+          </time>
+        </FadeReveal>
+        <FadeReveal>
+          <h3 className="heading-sm text-primary leading-none mb-1">
+            {experience.company}
+          </h3>
+        </FadeReveal>
         <p className="body-sm font-mono sr-only">
           Role: {experience.role}
         </p>
@@ -218,19 +226,21 @@ export const WorkExperienceEntry2 = memo(({
       <article className="space-y-4 pt-8 xl:pt-0">
         <div className="grid grid-cols-1 md:grid-cols-12 xl:gap-16 px-6 md:px-0">
           <header className="md:row-start-1 md:col-start-2 md:col-span-10 xl:col-start-1 xl:col-span-7 space-y-8 pb-8 xl:pb-0">
-            <h3
-              className="heading-display text-primary max-w-4xl xl:-mt-1.5"
-              id={`work-${experience.id}`}
-            >
-              {experience.title}
-            </h3>
+            <FadeReveal>
+              <h3
+                className="heading-display text-primary max-w-4xl xl:-mt-1.5"
+                id={`work-${experience.id}`}
+              >
+                {experience.title}
+              </h3>
+            </FadeReveal>
             {experience.buttonUrl && (
-              <div className="xl:pt-4">
+              <FadeReveal className="xl:pt-4">
                 <ExternalLinkButton
                   url={experience.buttonUrl}
                   company={experience.company}
                 />
-              </div>
+              </FadeReveal>
             )}
           </header>
           <div
@@ -238,9 +248,12 @@ export const WorkExperienceEntry2 = memo(({
             aria-describedby={`work-${experience.id}`}
           >
             {experience.description.split('\n').map((paragraph, paragraphIndex) => (
-              <p key={paragraphIndex} className={`body-base ${paragraphIndex > 0 ? 'mt-4' : ''}`}>
+              <FadeReveal
+                key={paragraphIndex}
+                className={`body-base ${paragraphIndex > 0 ? 'mt-4' : ''}`}
+              >
                 {paragraph}
-              </p>
+              </FadeReveal>
             ))}
           </div>
         </div>

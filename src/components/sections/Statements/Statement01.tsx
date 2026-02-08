@@ -1,17 +1,14 @@
 "use client";
 
 import { useReducedMotion, useSpring, useMotionValue } from "motion/react";
-import { BlindReveal, Reveal } from "@/components/motion";
-import { getRevealSequence, revealPresets, springPresets } from "@/system/motion-presets";
-import { useRevealSequence } from "@/hooks/useRevealSequence";
+import { BlindReveal, FadeReveal } from "@/components/motion";
+import { springPresets } from "@/system/motion-presets";
 import { useScrollRange } from "@/hooks/useScrollRange";
 
 export function Statement() {
   const reduceMotion = useReducedMotion();
-  const statementSequence = getRevealSequence("statement");
-  const { getStart } = useRevealSequence(statementSequence, revealPresets.slow.range);
   const totalSlots = 3;
-  const { ref: sectionRef, progress: smoothProgress, rawProgress } = useScrollRange<HTMLElement>({
+  const { ref: sectionRef, progress: smoothProgress } = useScrollRange<HTMLElement>({
     offset: ["start end", "end end"],
     endOffsetRem: 10,
   });
@@ -35,24 +32,12 @@ export function Statement() {
 
         {/* main content */}
         <div className="md:col-start-3 md:col-span-8 relative mx-auto w-full flex flex-col gap-4">
-          <Reveal
-            className="body-label text-muted"
-            preset="slow"
-            spring="calm"
-            start={getStart("tag")}
-            progress={rawProgress}
-          >
+          <FadeReveal className="body-label text-muted">
             Experience
-          </Reveal>
-          <Reveal
-            className="heading-display text-muted/75 max-w-4xl"
-            preset="slow"
-            spring="calm"
-            start={getStart("title")}
-            progress={rawProgress}
-          >
+          </FadeReveal>
+          <FadeReveal className="heading-display text-muted/75 max-w-4xl">
             Playing at the intersection of design and technology.
-          </Reveal>
+          </FadeReveal>
         </div>
 
         {/* Decoration 2 */}

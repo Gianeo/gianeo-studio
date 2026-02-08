@@ -11,6 +11,7 @@ import type { PersonalProfile } from "./data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SectionHeader } from "@/components/primitives/SectionHeader";
+import { FadeReveal } from "@/components/motion";
 
 interface PersonalProfileProps {
   profile?: PersonalProfile;
@@ -204,10 +205,8 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
   <section className="relative grid grid-cols-1 lg:grid-cols-12 pt-8 lg:pt-20 pb-8 px-6 lg:px-1">
     <article className="lg:col-start-3 lg:col-span-4">
       {/* Profile metadata */}
-      <div 
+      <FadeReveal
         className="flex flex-wrap gap-4 mb-8 text-xs"
-        role="group"
-        aria-label="Profile metadata"
       >
         <div className="flex items-center gap-2 font-mono">
           <TagIcon size={16} aria-hidden="true" />
@@ -221,18 +220,20 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
           <MapPinIcon size={16} aria-hidden="true" />
           <span>{profile.location}</span>
         </div>
-      </div>
+      </FadeReveal>
 
       {/* Main heading with proper structure */}
-      <h1 
-        className="heading-display text-primary mb-6"
-        id="profile-heading"
-      >
-        {formatTextWithLineBreaks(profile.name)}
-      </h1>
+      <FadeReveal>
+        <h1
+          className="heading-display text-primary mb-6"
+          id="profile-heading"
+        >
+          {formatTextWithLineBreaks(profile.name)}
+        </h1>
+      </FadeReveal>
 
       {/* Personal statement with enhanced readability */}
-      <div 
+      <div
         className="body-base mb-8 max-w-lg"
         role="region"
         aria-labelledby="profile-heading"
@@ -240,9 +241,11 @@ const HeroSection = memo(({ profile }: { profile: PersonalProfile }) => (
       >
         <div id="profile-statement" className="space-y-4">
           {profile.personalStatement.split('\n\n').map((paragraph, index) => (
-            <p key={index}>
-              {formatTextWithLineBreaks(paragraph)}
-            </p>
+            <FadeReveal key={index}>
+              <p>
+                {formatTextWithLineBreaks(paragraph)}
+              </p>
+            </FadeReveal>
           ))}
         </div>
       </div>
@@ -334,7 +337,7 @@ export default function PersonalProfile({
 
 
   return (
-    <section className="bg-background text-foreground">
+    <section className="bg-background text-foreground pb-48">
       {/* Comprehensive structured data */}
       <script
         type="application/ld+json"
