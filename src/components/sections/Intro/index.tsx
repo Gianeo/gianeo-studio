@@ -19,7 +19,7 @@ export function Intro({ className = "" }: IntroProps) {
   const { ranges } = useRevealSequence(getRevealSequence("intro"), range);
 
   return (
-    <section ref={sectionRef} className={`relative pb-24 z-0 bg-transparent ${className}`}>
+    <section ref={sectionRef} className={`relative pb-0 lg:pb-24 z-0 bg-transparent ${className}`}>
 
           {/* <div className="absolute inset-0 opacity-30">
             <Image
@@ -40,7 +40,7 @@ export function Intro({ className = "" }: IntroProps) {
                 preset="slow"
                 spring="soft"
                 start={0}
-                offset={["start 50%", "start 0%"]}
+                offset={["start 75%", "start 0%"]}
                 smooth
               >
                 Design Leadership
@@ -50,7 +50,7 @@ export function Intro({ className = "" }: IntroProps) {
                   preset="slow"
                   spring="soft"
                   start={0}
-                  offset={["start 50%", "start 0%"]}
+                  offset={["start 75%", "start 0%"]}
                   smooth
                 >
                   <h2 className="heading-display text-primary">
