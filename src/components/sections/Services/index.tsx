@@ -8,7 +8,7 @@ import {
 
 // Import the data structure
 import { studioServicesData } from "./data";
-import type { StudioServices, Capability } from "./data";
+import type { StudioServices } from "./data";
 import { SectionHeader } from "@/components/primitives/SectionHeader";
 import { SectionIntro } from "@/components/primitives/SectionIntro";
 import { DotList } from "@/components/primitives/DotList";

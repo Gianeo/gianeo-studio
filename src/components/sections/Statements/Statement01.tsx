@@ -12,9 +12,9 @@ export function Statement() {
     offset: ["start end", "end end"],
     endOffsetRem: 10,
   });
-  const revealProgress = reduceMotion
-    ? useMotionValue(1)
-    : useSpring(smoothProgress, springPresets.calm);
+  const staticProgress = useMotionValue(1);
+  const springProgress = useSpring(smoothProgress, springPresets.calm);
+  const revealProgress = reduceMotion ? staticProgress : springProgress;
 
   return (
     <section ref={sectionRef} className="relative text-foreground py-16 lg:pt-16 lg:pb-40">

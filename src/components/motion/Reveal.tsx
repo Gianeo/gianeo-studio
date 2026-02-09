@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 type RevealPreset = keyof typeof revealPresets;
 type SpringPreset = keyof typeof springPresets;
+type ScrollOffset = NonNullable<Parameters<typeof useScroll>[0]>["offset"];
 
 interface RevealProps extends PropsWithChildren {
   className?: string;
@@ -15,7 +16,7 @@ interface RevealProps extends PropsWithChildren {
   start?: number;
   progress?: MotionValue<number>;
   smooth?: boolean;
-  offset?: Parameters<typeof useScroll>[0]["offset"];
+  offset?: ScrollOffset;
 }
 
 export function Reveal({

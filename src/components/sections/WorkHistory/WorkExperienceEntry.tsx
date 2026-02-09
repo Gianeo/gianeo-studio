@@ -2,7 +2,7 @@
 
 import { memo, useMemo } from "react";
 import Image from "next/image";
-import { QuotesIcon } from "lucide-react";
+import { QuoteIcon } from "lucide-react";
 import Link from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +50,7 @@ const QuoteContainer = memo(({
         />
       ) : (
         <div className="h-10 w-10 rounded-full bg-neutral-darker flex items-center justify-center" aria-hidden="true">
-          <QuotesIcon className="h-4 w-4 text-white/80" />
+          <QuoteIcon className="h-4 w-4 text-white/80" />
         </div>
       )}
       <div>

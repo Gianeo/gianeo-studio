@@ -37,7 +37,8 @@ export function BlindReveal({
     offset,
   });
   const springConfig = useMemo(() => springPresets[spring], [spring]);
-  const resolvedProgress = progress ?? useSpring(scrollYProgress, springConfig);
+  const springProgress = useSpring(scrollYProgress, springConfig);
+  const resolvedProgress = progress ?? springProgress;
 
   const [start, end] =
     stagger === "none"

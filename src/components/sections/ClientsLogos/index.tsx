@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, memo, useCallback, useRef, useState } from "react";
+import { useMemo, memo, useCallback, useState } from "react";
 import Image from "next/image";
 import { useInView as useIntersectionInView } from "react-intersection-observer";
 import {
@@ -241,11 +241,9 @@ AndManyMoreBox.displayName = 'AndManyMoreBox';
 // Memoized logo grid component with enhanced semantics
 const LogoGrid = memo(({
   validClients,
-  reduceMotion,
   progress,
 }: {
   validClients: typeof clients;
-  reduceMotion: boolean;
   progress?: MotionValue<number>;
 }) => {
   // Create staggered loading delays for smooth loading experience
@@ -306,14 +304,13 @@ export default function ClientsLogos({
   
   // Memoize clients data to prevent recreation
   const memoizedClients = useMemo(() => clients, []);
-  const reduceMotion = useReducedMotion();
   const { ref: containerRef, progress: scrollYProgress } = useScrollRange<HTMLDivElement>({
     offset: ["start end", "end 75%"],
     endOffsetRem: 0,
   });
-  const revealProgress = reduceMotion
-    ? useMotionValue(1)
-    : useSpring(scrollYProgress, springPresets.calm);
+  const staticProgress = useMotionValue(1);
+  const springProgress = useSpring(scrollYProgress, springPresets.calm);
+  const revealProgress = useReducedMotion() ? staticProgress : springProgress;
 
   // Generate structured data for client organizations
   const clientsStructuredData = useMemo(() => ({
@@ -368,7 +365,6 @@ export default function ClientsLogos({
           </div>
           <LogoGrid
             validClients={validClients}
-            reduceMotion={Boolean(reduceMotion)}
             progress={revealProgress}
           />
       </main>
