@@ -23,7 +23,9 @@ export function ProductShowcaseMobile({
           <article key={item.title} className="space-y-6">
             <FadeReveal className="space-y-4 px-6">
               <h3 className="heading-base text-primary">{item.title}</h3>
-              <p className="body-sm text-muted">{item.description}</p>
+              <FadeReveal>
+                <p className="body-sm text-muted">{item.description}</p>
+              </FadeReveal>
             </FadeReveal>
 
             <BlindReveal

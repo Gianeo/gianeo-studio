@@ -27,7 +27,9 @@ export function ProductShowcaseDesktop({
       <div className="flex flex-1 items-center">
         <h3 className="heading-base text-primary">{title}</h3>
       </div>
-      <p className="body-sm text-muted max-w-md mt-auto">{description}</p>
+      <FadeReveal>
+        <p className="body-sm text-muted max-w-md mt-auto">{description}</p>
+      </FadeReveal>
     </FadeReveal>
   );
 

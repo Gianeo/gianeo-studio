@@ -143,9 +143,11 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                   )}
                 </BlindReveal>
                 {captionText && (
-                  <p className="body-sm text-muted max-w-sm px-6 lg:px-0 lg:pr-8">
-                    {captionText}
-                  </p>
+                  <FadeReveal>
+                    <p className="body-sm text-muted max-w-sm px-6 lg:px-0 lg:pr-8">
+                      {captionText}
+                    </p>
+                  </FadeReveal>
                 )}
               </div>
             </div>
