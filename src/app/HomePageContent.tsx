@@ -81,7 +81,7 @@ export default function HomePageContent() {
     <LazyMotion features={domAnimation}>
       <MotionConfig transition={{ duration: motionTokens.durationShort, ease: motionTokens.easeOut }}>
         <div className="relative">
-          <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="fixed inset-0 z-0 pointer-events-none w-screen overflow-hidden">
             <m.div
               className="absolute inset-0"
               style={prefersReducedMotion ? { scale: 1 } : { scale: bgScale }}

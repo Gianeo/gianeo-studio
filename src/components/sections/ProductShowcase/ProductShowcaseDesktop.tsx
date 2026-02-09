@@ -77,7 +77,7 @@ export function ProductShowcaseDesktop({
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-32 lg:pb-24 bg-background">
       <div className="lg:col-start-1 xl:col-start-3 lg:col-span-12 xl:col-span-10">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="col-span-6 xl:col-span-7">
+          <div className="col-span-1 lg:col-span-7">
             <GalleryImage
               image={project.images[items[0]?.imageIndex ?? 0]}
               index={0}
@@ -85,7 +85,7 @@ export function ProductShowcaseDesktop({
               priority
             />
           </div>
-          <div className="col-start-7 xl:col-start-8 col-span-3 xl:col-span-5 self-stretch">
+          <div className="col-span-1 lg:col-start-8 lg:col-span-5 self-stretch">
             <GalleryText
               title={items[0]?.title}
               description={items[0]?.description}
@@ -96,14 +96,14 @@ export function ProductShowcaseDesktop({
 
       <div className="lg:col-start-1 xl:col-start-3 lg:col-span-12 xl:col-span-10">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="col-start-1 col-span-3 xl:col-span-5 self-stretch">
+          <div className="col-span-1 lg:col-span-5 self-stretch">
             <GalleryText
               title={items[1]?.title}
               description={items[1]?.description}
               className="lg:text-right lg:items-end"
             />
           </div>
-          <div className="col-start-4 xl:col-start-5 col-span-6 xl:col-span-7">
+          <div className="col-span-1 lg:col-start-6 lg:col-span-7">
             <GalleryImage
               image={project.images[items[1]?.imageIndex ?? 0]}
               index={1}
@@ -115,14 +115,14 @@ export function ProductShowcaseDesktop({
 
       <div className="lg:col-start-1 xl:col-start-3 lg:col-span-12 xl:col-span-10">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="col-span-6 xl:col-span-7">
+          <div className="col-span-1 lg:col-span-7">
             <GalleryImage
               image={project.images[items[2]?.imageIndex ?? 0]}
               index={2}
               total={items.length}
             />
           </div>
-          <div className="col-start-7 xl:col-start-8 col-span-3 xl:col-span-5 self-stretch">
+          <div className="col-span-1 lg:col-start-8 lg:col-span-5 self-stretch">
             <GalleryText
               title={items[2]?.title}
               description={items[2]?.description}
@@ -133,14 +133,14 @@ export function ProductShowcaseDesktop({
 
       <div className="lg:col-start-1 xl:col-start-3 lg:col-span-12 xl:col-span-10">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          <div className="col-start-1 col-span-3 xl:col-span-5 self-stretch">
+          <div className="col-span-1 lg:col-span-5 self-stretch">
             <GalleryText
               title={items[3]?.title}
               description={items[3]?.description}
               className="lg:text-right lg:items-end"
             />
           </div>
-          <div className="col-start-4 xl:col-start-5 col-span-6 xl:col-span-7">
+          <div className="col-span-1 lg:col-start-6 lg:col-span-7">
             <GalleryImage
               image={project.images[items[3]?.imageIndex ?? 0]}
               index={3}
