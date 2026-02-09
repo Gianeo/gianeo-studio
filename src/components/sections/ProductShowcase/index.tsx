@@ -66,10 +66,10 @@ export default function ProductShowcase({
       </div>
 
       {/* Gallery */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <ProductShowcaseMobile project={project} items={galleryItems} />
       </div>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <ProductShowcaseDesktop project={project} items={galleryItems} />
       </div>
     </section>
