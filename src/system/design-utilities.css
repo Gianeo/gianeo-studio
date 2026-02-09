@@ -60,7 +60,7 @@
     @apply text-[10px] font-mono font-bold uppercase tracking-[0.42em];
   }
   .body-sm {
-    @apply text-sm font-medium tracking-wider subpixel-antialiased;
+    @apply text-sm font-normal tracking-wider subpixel-antialiased;
   }
   .body-base {
     @apply text-base font-normal leading-6;
