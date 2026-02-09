@@ -74,7 +74,7 @@ export function ProductShowcaseDesktop({
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-32 lg:pb-24 bg-background">
+    <div className="grid grid-cols-1 lg:grid-cols-12 space-y-32 lg:pb-24 bg-background">
       <div className="lg:col-start-1 xl:col-start-3 lg:col-span-12 xl:col-span-10">
         <div className="grid grid-cols-1 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-7">

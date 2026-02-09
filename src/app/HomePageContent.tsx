@@ -98,10 +98,10 @@ export default function HomePageContent() {
               <m.div className="absolute inset-0 bg-background" style={{ opacity: overlayOpacity }} />
             </m.div>
 
-            <div className="fixed left-1/2 top-4 z-10 -translate-x-1/2">
+            <div className="absolute top-4 left-0 right-0 z-10 flex justify-center">
               <m.div
                 ref={logoRef}
-                className="relative w-full max-w-5xl aspect-video flex items-center justify-center"
+                className="relative w-full max-w-[90vw] lg:max-w-5xl aspect-video flex items-center justify-center"
                 style={
                   prefersReducedMotion
                     ? { y: 0, scale: 1, opacity: 1 }
