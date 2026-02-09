@@ -25,7 +25,7 @@ export interface GalleryItem {
 export const sampleProject: ProjectData = {
   title: "JustScore",
   description:
-    "JustScore is an AI-powered performance management tool that helps team leaders score real-time actions and behaviours—turning quick observations into clear, data-driven insights. It replaces gut-feel evaluations and delayed feedback with a simple, human-friendly interface that delivers consistent, actionable reviews in minutes.",
+    "Justscore is an employee performance platform I ideated and co-founded with a team of engineers and my daughter. We defined an API-first, AI-assistant-led strategy, shaping the product from brand to architecture—replacing gut-feel evaluations and delayed feedback with a simple, human-friendly experience that delivers consistent, actionable reviews in minutes.",
   category: "Co-founder / Product & Brand development, GTM.",
   client: "JustScore",
   date: "2025-26",
@@ -41,25 +41,25 @@ export const galleryItems: GalleryItem[] = [
   {
     title: "Mobile App",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "From idea to interface, I led the mobile app as ideator, designer, and UI engineer—shaping an API-first foundation that enabled a fast, flexible front-end.",
     imageIndex: 0,
   },
   {
     title: "Web App",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Justscore began as a web app. I led ideation, design, and UI engineering, using the web experience to define the APIs, information architecture, and user flows that later scaled across the platform.",
     imageIndex: 1,
   },
   {
     title: "Marketing",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Justscore’s marketing site was where product and story met. I led design, UI engineering, positioning, and brand—working closely with my daughter and co-founder, whom I mentored throughout the process.",
     imageIndex: 2,
   },
   {
     title: "Brand",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "We built the Justscore brand from the inside out—developing the logo, personality, voice, and visual identity that define the product’s character.",
     imageIndex: 3,
   },
 ];

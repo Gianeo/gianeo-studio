@@ -83,7 +83,10 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
       <div className="grid lg:grid-cols-12 w-full h-full gap-12 lg:gap-24">
         {orderedItems.map((item, idx) => {
           const slot = resolvedSlots[idx % resolvedSlots.length];
-          const captionText = item.type === "image" ? placeholderCaption : "";
+          const captionText =
+            item.type === "image"
+              ? (item.captionText || placeholderCaption)
+              : "";
           const isQuote = item.type === "quote";
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
