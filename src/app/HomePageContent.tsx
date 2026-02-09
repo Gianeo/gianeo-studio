@@ -60,11 +60,7 @@ export default function HomePageContent() {
     const eased = 1 - Math.pow(1 - t, 3);
     return 1 - 0.75 * eased;
   });
-  const logoOpacityRaw = useTransform(scrollY, (value) => {
-    const t = Math.min(value / (viewportHeight * 1.1), 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    return 1 - 0.95 * eased;
-  });
+  const logoOpacityRaw = useTransform(logoScaleRaw, [1, 0.25], [1, 0], { clamp: true });
   const bgScaleRaw = useTransform(scrollY, (value) => {
     const t = Math.min(value / 1000, 1);
     const eased = 1 - Math.pow(1 - t, 3);

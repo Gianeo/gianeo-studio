@@ -12,7 +12,7 @@ export function Intro({ className = "" }: IntroProps) {
   return (
     <section className={`relative pb-0 lg:pb-24 z-0 bg-transparent ${className}`}>
 
-          <FadeReveal className="hidden lg:block absolute inset-0 opacity-30!">
+          <FadeReveal className="hidden lg:block absolute inset-0 opacity-50!">
             <Image
               src="/images/hero/intro.webp"
               alt="Hero background"
