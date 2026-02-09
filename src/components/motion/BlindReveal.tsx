@@ -3,6 +3,7 @@
 import { m, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
 import { useMemo, useRef, type PropsWithChildren } from "react";
 import { getBlindClipPath, getStaggerRange, springPresets, staggerPresets } from "@/system/motion-presets";
+import { cn } from "@/lib/utils";
 
 type SpringPreset = keyof typeof springPresets;
 type StaggerPreset = keyof typeof staggerPresets;
@@ -53,7 +54,7 @@ export function BlindReveal({
   return (
     <m.div
       ref={ref}
-      className={className}
+      className={cn("relative", className)}
       style={
         reduceMotion
           ? undefined

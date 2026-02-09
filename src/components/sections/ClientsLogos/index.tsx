@@ -349,7 +349,7 @@ export default function ClientsLogos({
   const validClients = useMemo(() => memoizedClients, [memoizedClients]);
 
   return (
-    <section className="text-foreground backdrop-blur-md bg-background/20">
+    <section className="relative text-foreground backdrop-blur-md bg-background/20">
       {/* Structured data for client relationships */}
       <script
         type="application/ld+json"
@@ -358,7 +358,7 @@ export default function ClientsLogos({
         }}
       />
 
-      <main ref={containerRef} className={`pb-16 lg:pb-0 ${className}`}>
+      <main ref={containerRef} className={`relative pb-16 lg:pb-0 ${className}`}>
           <div className="mb-6 sr-only">
             <h2>Client Portfolio Overview</h2>
             <p>

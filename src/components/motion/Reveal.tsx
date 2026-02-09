@@ -3,6 +3,7 @@
 import { m, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
 import { useMemo, useRef, type PropsWithChildren } from "react";
 import { revealPresets, springPresets } from "@/system/motion-presets";
+import { cn } from "@/lib/utils";
 
 type RevealPreset = keyof typeof revealPresets;
 type SpringPreset = keyof typeof springPresets;
@@ -50,7 +51,7 @@ export function Reveal({
   return (
     <m.div
       ref={ref}
-      className={className}
+      className={cn("relative", className)}
       style={
         reduceMotion
           ? undefined

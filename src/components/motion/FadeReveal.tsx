@@ -3,6 +3,7 @@
 import { m, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { useMemo, useRef, type PropsWithChildren } from "react";
 import { springPresets } from "@/system/motion-presets";
+import { cn } from "@/lib/utils";
 
 type SpringPreset = keyof typeof springPresets;
 type ScrollOffset = NonNullable<Parameters<typeof useScroll>[0]>["offset"];
@@ -32,7 +33,7 @@ export function FadeReveal({
   return (
     <m.div
       ref={ref}
-      className={className}
+      className={cn("relative", className)}
       style={reduceMotion ? undefined : { opacity: smoothOpacity, willChange: "opacity" }}
     >
       {children}

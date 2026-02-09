@@ -183,6 +183,19 @@ export default function RootLayout({
       className="scroll-smooth" // Improves scroll behavior
     >
       <head>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (function () {
+              try {
+                var saved = localStorage.getItem('theme');
+                var theme = saved || 'dark';
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+              } catch (e) {
+                document.documentElement.classList.add('dark');
+              }
+            })();
+          `}
+        </Script>
         {/* Structured Data - JSON-LD */}
         <script
           type="application/ld+json"

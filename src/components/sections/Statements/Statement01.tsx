@@ -17,7 +17,7 @@ export function Statement() {
     : useSpring(smoothProgress, springPresets.calm);
 
   return (
-    <section ref={sectionRef} className="text-foreground py-16 lg:pt-16 lg:pb-40">
+    <section ref={sectionRef} className="relative text-foreground py-16 lg:pt-16 lg:pb-40">
       <div className="relative grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-0">
 
         {/* Decoration 1 */}
