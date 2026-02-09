@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowDownIcon } from "@phosphor-icons/react";
-import { FadeReveal } from "@/components/motion";
+import { FadeReveal, BlindReveal } from "@/components/motion";
 import Image from "next/image";
 
 interface IntroProps {
@@ -12,7 +12,13 @@ export function Intro({ className = "" }: IntroProps) {
   return (
     <section className={`relative pb-0 lg:pb-24 z-0 bg-transparent ${className}`}>
 
-          <FadeReveal className="hidden lg:block absolute inset-0 opacity-50!">
+          <BlindReveal
+            className="hidden lg:block absolute inset-0 opacity-30"
+            index={0}
+            total={1}
+            stagger="none"
+            offset={["start 85%", "start 0%"]}
+          >
             <Image
               src="/images/hero/intro.webp"
               alt="Hero background"
@@ -21,8 +27,8 @@ export function Intro({ className = "" }: IntroProps) {
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-background/20" />
-          </FadeReveal>
+            <div className="absolute inset-0 bg-background/10" />
+          </BlindReveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 body-base text-muted space-y-8 px-6 lg:px-0 lg:pt-24 relative">
 
             <div className="lg:col-start-5 xl:col-start-8 lg:col-span-7 xl:col-span-4 space-y-8 max-w-xl lg:pt-8 xl:pt-24">
