@@ -21,9 +21,6 @@ const highlightSlots = [
   { span: "lg:col-span-6 lg:row-span-2" },
 ];
 
-const placeholderCaption =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
-
 const ExternalLinkButton = memo(({
   url,
   company
@@ -83,10 +80,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
       <div className="grid lg:grid-cols-12 w-full h-full gap-12 lg:gap-24">
         {orderedItems.map((item, idx) => {
           const slot = resolvedSlots[idx % resolvedSlots.length];
-          const captionText =
-            item.type === "image"
-              ? (item.captionText || placeholderCaption)
-              : "";
+          const captionText = item.type === "image" ? (item.captionText || "") : "";
           const isQuote = item.type === "quote";
           return (
             <div key={`${experienceId}-${item.id ?? idx}`} className={slot.span}>
@@ -147,7 +141,7 @@ const GridGallery = memo(({ gridItems, experienceId, companyName }: {
                 </BlindReveal>
                 {captionText && (
                   <FadeReveal>
-                    <p className="body-sm text-muted max-w-sm px-6 lg:px-0 lg:pr-8">
+                    <p className="body-sm text-muted max-w-sm px-6 py-4 xl:p-0 xl:pr-8">
                       {captionText}
                     </p>
                   </FadeReveal>

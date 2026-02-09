@@ -15,7 +15,7 @@ export function ProductShowcaseMobile({
   items,
 }: ProductShowcaseMobileProps) {
   return (
-    <div className="space-y-16 pb-12">
+    <div className="space-y-16 sm:py-12">
       {items.map((item, index) => {
         const image = project.images[item.imageIndex];
         const hoverSrc = image?.src ? getHoverSrc(image.src) : "";
