@@ -1,9 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import Navigation from "@/components/navigation/Navigation";
 import { ArrowDownIcon } from "@phosphor-icons/react";
-import { MessagesSquare } from "lucide-react";
+import { Check, Copy, MessagesSquare } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface HeroSectionProps {
   className?: string;
@@ -35,6 +37,27 @@ const history = [
 ];
 
 export default function HeroSection({ className = "" }: HeroSectionProps) {
+  const [copied, setCopied] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const email = "giannijfavaretto@gmail.com";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch (error) {
+      console.error("Failed to copy email", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!popoverOpen) return;
+    const handleScroll = () => setPopoverOpen(false);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [popoverOpen]);
+
   return (
     <section
       className={`relative text-primary min-h-screen flex flex-col ${className}`}
@@ -60,14 +83,34 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               </h1>
             </div>
             <div>
-              <Button asChild variant="accent" size="base" className="gap-2">
-                <a href="mailto:giannijfavaretto@gmail.com">
-                  <span className="inline-flex size-7 items-center justify-center">
-                   <MessagesSquare />
-                  </span>
-                  Shall we chat?
-                </a>
-              </Button>
+              <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="accent" size="base" className="gap-2 data-[state=open]:opacity-50 cursor-pointer">
+                    <span className="inline-flex size-7 items-center justify-center">
+                      <MessagesSquare />
+                    </span>
+                    Shall we chat?
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align="start" className="w-54 space-y-2 mb-2 bg-background/80 backdrop-blur-sm shadow-xl">
+                  <button
+                    type="button"
+                    onClick={handleCopy}
+                    className="flex w-full items-center justify-between rounded-md border border-border bg-background px-3 py-2 text-sm transition hover:text-accent cursor-pointer"
+                    aria-label="Copy email to clipboard"
+                  >
+                    <span className="font-medium text-foreground-strong">
+                      {copied ? "Email copied" : "Copy my email"}
+                    </span>
+                    <span className="flex items-center justify-center shrink-0 size-5">
+                      {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+                    </span>
+                  </button>
+                  <div className="rounded-md border border-transparent px-3 py-2 text-sm text-muted">
+                    Chatbox coming soon.
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </div>
 
