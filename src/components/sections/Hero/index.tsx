@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation/Navigation";
 import { ArrowDownIcon } from "@phosphor-icons/react";
+import { MessagesSquare } from "lucide-react";
 
 interface HeroSectionProps {
   className?: string;
@@ -62,9 +63,9 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               <Button asChild variant="accent" size="base" className="gap-2">
                 <a href="mailto:giannijfavaretto@gmail.com">
                   <span className="inline-flex size-7 items-center justify-center">
-                    ↗
+                   <MessagesSquare />
                   </span>
-                  Hire me
+                  Shall we chat?
                 </a>
               </Button>
             </div>
