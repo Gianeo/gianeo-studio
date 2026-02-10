@@ -92,7 +92,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                     Shall we chat?
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent align="start" className="w-54 space-y-2 mb-2 bg-background/80 backdrop-blur-sm shadow-xl">
+                <PopoverContent align="start" className="w-54 space-y-2 my-2 bg-background/80 backdrop-blur-sm shadow-xl">
                   <button
                     type="button"
                     onClick={handleCopy}
