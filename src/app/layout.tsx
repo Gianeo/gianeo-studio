@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from 'next/script';
+import FullStory from '@/components/analytics/FullStory';
 import { switzer, azeretMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { MotionDebugProvider } from "@/components/motion";
@@ -225,6 +226,7 @@ export default function RootLayout({
         className={`${switzer.variable} ${azeretMono.variable} font-copy antialiased`}
         suppressHydrationWarning
       >
+        <FullStory orgId="C5N0G" />
         <ThemeProvider>
           <MotionDebugProvider>
           {/* Skip to main content link for accessibility */}
