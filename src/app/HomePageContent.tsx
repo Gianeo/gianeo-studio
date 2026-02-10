@@ -105,7 +105,7 @@ export default function HomePageContent() {
                 }
               >
                 <LogoGf
-                  className="relative z-10 w-32 md:w-64 h-auto ml-8 lg:ml-16"
+                  className="relative z-10 w-32 md:w-64 h-auto ml-8 lg:ml-16 mt-8 md:mt-0"
                   aria-label="Gianeo Studio logo"
                 />
               </m.div>

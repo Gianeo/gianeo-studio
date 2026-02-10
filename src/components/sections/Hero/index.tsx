@@ -68,7 +68,7 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
         </div>
       </div>
 
-      <div className="w-full p-6 mt-80 lg:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
+      <div className="w-full p-6 mt-88 lg:mt-0 lg:p-10 lg:px-12 space-y-12 lg:space-y-16 backdrop-blur-md bg-background/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="col-span-12 lg:col-span-4 space-y-12 flex flex-col justify-between pb-8 lg:pb-0">
             <div className="space-y-6">
